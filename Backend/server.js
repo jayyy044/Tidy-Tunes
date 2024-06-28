@@ -48,7 +48,7 @@ app.use((req, res, next) => {
 
 app.use('/',  UserRoutes)
 
-app.use('/Auth', AuthRoutes)
+app.use('/callback', AuthRoutes)
 
 mongoose.connect(process.env.MONGO_URL)
  .then(() => {

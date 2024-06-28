@@ -21,7 +21,7 @@ function App() {
         <Route index element = {<HomePage/>}/>
         <Route path = '/register' element = {<RegisterPage/>}/>
         <Route path = '/login' element = {<LoginPage/>}/>
-        <Route path = '/Auth' element = {<SpotifyPage/>}/>
+        <Route path = '/callback' element = {<SpotifyPage/>}/>
       </Route>
     )
   )

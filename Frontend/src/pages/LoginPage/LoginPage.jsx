@@ -5,7 +5,7 @@ import './LoginPage.css'
 import { useAuthContext } from '../../hooks/useAuthContext';
 
 const LoginForm = () => {
-    const { dispatch } = useAuthContext()
+    const { state , dispatch } = useAuthContext()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({email: '', password: ''});
@@ -41,15 +41,17 @@ const LoginForm = () => {
                 setErrors({});
                 toast.success('User Logged in! Welcome back to Tidy Tunes');
                 dispatch({ type: 'LOGIN', payload: responseData.token });
-                const SpotifyAuthUrl = async () => {
+                
+                const SpotifyAuthUrl = async (token) => {
+
                     try {
-                        if(!state.token){
+                        if(!token){
                         toast.error("Please log in")
                         throw new Error("Please Log in")
                         }
-                        const response = await fetch('/api/auth/spotify',{
+                        const response = await fetch('/api/callback/spotify',{
                         headers:{
-                            'Authorization': `Bearer ${state.token}`
+                            'Authorization': `Bearer ${token}`
                         }
                         });
                         if (!response.ok) {
@@ -61,7 +63,7 @@ const LoginForm = () => {
                         console.error('An error occurred:', error);
                     }
                 };
-                SpotifyAuthUrl();
+                SpotifyAuthUrl(responseData.token);
             }
         } catch (error) {
             toast.error('Error During Logging In');
