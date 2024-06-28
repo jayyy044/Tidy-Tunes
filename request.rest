@@ -1,0 +1,13 @@
+POST "https://accounts.spotify.com/api/token"
+Content-Type: application/x-www-form-urlencoded
+
+    grant_type=client_credentials&client_id=your-client-id&client_secret=your-client-secret
+
+###
+
+GET http://localhost:3000/auth
+Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.VGVzdDFAZ21haWwuY29t.WZxP4if059FKpUF6bc33BZ-e96ORN-Ih-5ttYtaxE50
+
+###
+
+

@@ -1,0 +1,36 @@
+.in {
+    display: flex;
+    justify-content: space-between;    
+    border-bottom: 4px solid white;
+    padding: 10px;
+    background-color: #3d52a1;
+    height: 10vh;
+    align-items: center;
+}
+
+.in a{
+    color: white;
+    text-decoration: none; 
+    border: 2px solid white;
+    border-radius: 25px;
+    padding: 5px 35px; 
+}
+
+.in a:hover{
+    background-color: #7191e6;
+}
+
+.ButtonHome {
+    justify-content: flex-start;
+    margin-left: 2vw;
+  }
+  
+.features {
+    justify-content: flex-end; 
+    display: flex;
+    flex-direction: row;
+    
+  }
+.features a{
+    margin-right: 3vw;
+}

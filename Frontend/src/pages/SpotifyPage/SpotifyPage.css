@@ -1,0 +1,14 @@
+.pop {
+    border: 1px solid #ccc; /* Adjust border color as needed */
+    width: 30vw;
+    margin-left: 20vw;
+    padding: 20px; /* Adjust padding as needed */
+    background-color: #fff; /* Adjust background color as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
+  }
+.contain{
+  background-color: #EDE8F5;
+}
+  
+
