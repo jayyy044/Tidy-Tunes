@@ -34,14 +34,34 @@ const LoginForm = () => {
                         break;
                 }
                 return;
-            } else {
+            } 
+            else {
                 setEmail('');
                 setPassword('');
                 setErrors({});
                 toast.success('User Logged in! Welcome back to Tidy Tunes');
-                localStorage.setItem('token', responseData.token);
                 dispatch({ type: 'LOGIN', payload: responseData.token });
-                navigate('/Auth');
+                const SpotifyAuthUrl = async () => {
+                    try {
+                        if(!state.token){
+                        toast.error("Please log in")
+                        throw new Error("Please Log in")
+                        }
+                        const response = await fetch('/api/auth/spotify',{
+                        headers:{
+                            'Authorization': `Bearer ${state.token}`
+                        }
+                        });
+                        if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                        }
+                        const data = await response.json();
+                        window.location.href = data.authUrl;
+                    } catch (error) {
+                        console.error('An error occurred:', error);
+                    }
+                };
+                SpotifyAuthUrl();
             }
         } catch (error) {
             toast.error('Error During Logging In');
