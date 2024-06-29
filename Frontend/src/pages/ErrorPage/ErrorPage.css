@@ -1,0 +1,56 @@
+.errorcontainer{
+
+    background-color: #EDE8F5;
+
+    height: 100vh;
+    
+}
+
+.message{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+    background-color:white;
+    border: 4px solid #ccc;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); 
+    width: 95vw;
+    margin:auto;
+    margin-top: 17vh;
+    border-radius: 50px;
+}
+.errortext{
+    width: 60vw;
+    height: 35vh;
+    margin-left: 5vw;
+    
+}
+.errortext h2{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    font-size: 250%;
+}
+.errortext h3{
+    margin-bottom: 8vh;
+    font-size: 150%;
+}
+.errortext a{
+    text-decoration: none;
+    color: black;
+    border: 3px solid black ;
+    border-radius: 50px;
+    padding: 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease; 
+    font-size: 120%;
+}
+
+.errortext a:hover {
+    transform: translateY(-10px);
+    background-color: #ccc; /* Optional: Add a background color change on hover */
+}
+
+.image{
+    width:20vw;
+    margin-right: 5vw;
+}

@@ -5,29 +5,6 @@ import './SpotifyPage.css'
 
 const SpotifyPage = () => {
   const { state } = useAuthContext()
-  // useEffect(() => {
-  //   const SpotifyAuthUrl = async () => {
-  //     try {
-  //       if(!state.token){
-  //         toast.error("Please log in")
-  //         throw new Error("Please Log in")
-  //       }
-  //       const response = await fetch('/api/auth/spotify',{
-  //         headers:{
-  //           'Authorization': `Bearer ${state.token}`
-  //         }
-  //       });
-  //       if (!response.ok) {
-  //         throw new Error('Network response was not ok');
-  //       }
-  //       const data = await response.json();
-  //       window.location.href = data.authUrl;
-  //     } catch (error) {
-  //       console.error('An error occurred:', error);
-  //     }
-  //   };
-  //   SpotifyAuthUrl();
-  // }, []);
   return (
     <>
       <div className="contain">
