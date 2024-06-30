@@ -66,65 +66,62 @@ const RegisterPage = () => {
 
     return (
         <>
-            <div className="container">
-                <div className="welcomeCard_R">
-                    <h1 className='welcomeTitle_R'>
+            <div className="Register_Container">
+                <div className="Register_WelcomeCard">
+                    <h1>
                         Welcome
                     </h1>
-                    <h2 className='welcomeText_R'>
+                    <h2>
                         Do you already have an 
                         account with us 
                         click here to login
                     </h2>
                     <Link className='login' to= '/login'>Login</Link>
                 </div>
-                <div className="formCard_R">
-                    <h1 className='formTitle_R'>
+                <div className="Register_FormCard">
+                    <h1>
                         Create an Account
                     </h1>
-                    <h2 className='formText_R'>
+                    <h2>
                         Begin redefining listening to music today with Tidy Tunes
                     </h2>
-                    <form className="create_R" onSubmit={handleSubmit}>
-                        <label className= 'label_R' htmlFor="username">Username:</label>
+                    <form onSubmit={handleSubmit}>
+                        <label  htmlFor="username">Username:</label>
                         <br />
                         <input
                             type="text"
-                            className="input_R"
                             onChange={(event) => setUsername(event.target.value)}
                             onFocus={() => handleFocus('username')}
                             required
                             value={username}
                             style={{border: errors.username && "2px solid red"}}
                         />
-                        {errors.username && <div className="error">{errors.username}</div>}
+                        {errors.username && <div className="Register_Error">{errors.username}</div>}
                         <br />
-                        <label className= 'label_R' htmlFor="email">Email:</label>
+                        <label htmlFor="email">Email:</label>
                         <br />
                         <input
                             type="email"
-                            className="input_R"
                             onChange={(event) => setEmail(event.target.value)}
                             onFocus={() => handleFocus('email')}
                             required
                             value={email}
                             style={{border: errors.email && "2px solid red"}}
                         />
-                        {errors.email && <div className="error">{errors.email}</div>}
+                        {errors.email && <div className="Register_Error">{errors.email}</div>}
                         <br />
-                        <label className= 'label_R' htmlFor="password">Password:</label>
+                        <label htmlFor="password">Password:</label>
                         <br />
                         <input
                             type="password"
-                            className='input_R'
                             onChange={(event) => setPassword(event.target.value)}
                             onFocus={() => handleFocus('password')}
                             required
                             value={password}
                         />
                         <br />
-                        <button className='registerButton_R'>Sign Up</button>
-                    </form>
+                        <button>Sign Up</button>
+                    </form> 
                 </div>
             </div>
         </>

@@ -4,37 +4,54 @@ const beginSpotifyAuth = async (req, res) => {
     console.log(`error: ${req.query.error}`)
     res.redirect('http://localhost:4000/error')
     return 
-    
     }
   const code = req.query.code
-  if(code){
-    res.redirect('http://localhost:4000/callback')
-    console.log(`The Code we got: ${code}`)
-    const req_body = new URLSearchParams ({
-      'code':code,
-      'grant_type':"authorization_code",
-      'redirect_uri': process.env.REDIRECT_URI,
-      'client_id': process.env.CLIENT_ID,
-      'client_secret': process.env.CLIENT_SECRET
-    })
-    try{
-      response = await fetch (process.env.TOKEN_URL,{
-        method: 'POST',
-        body: req_body
-      })
-      const data = await response.json()
-      if(!response.ok){
-        res.send("ERROR")
-        console.log("ERROR")
-      }
-      console.log(data)
-
-    }
-    catch (error) {
-      console.error('Error fetching token:', error);
-    }
-    
+  if (code){
+    console.log(code)
+    res.redirect(`http://localhost:4000/callback/auth?code=${code}`)
   }
+  
+}
+
+const SpotifyTokens = async (req, res) => {
+  const {code} = req.body
+  const req_body = new URLSearchParams ({
+    'code':code,
+    'grant_type':"authorization_code",
+    'redirect_uri': process.env.REDIRECT_URI,
+    'client_id': process.env.CLIENT_ID,
+    'client_secret': process.env.CLIENT_SECRET
+  })
+  try {
+    const response = await fetch(process.env.TOKEN_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: req_body
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.error("ERROR", data);
+      res.status(response.status).json({ error: "Failed to fetch token", details: data });
+      return;
+    }
+
+    console.log(data);
+    res.json(data); // Send the token data back to the frontend
+
+  } catch (error) {
+    console.error('Error fetching token:', error);
+    res.status(500).json({ error: 'Internal Server Error', details: error.message });
+  }
+}
+
+  
+
+    
+
 
  
 
@@ -68,7 +85,7 @@ const beginSpotifyAuth = async (req, res) => {
 //   }
 // }
 
-};
+
 
 const SpotifyAuthUrl = (req, res) => {
   const scope = 'user-read-private user-read-email'
@@ -86,5 +103,6 @@ const SpotifyAuthUrl = (req, res) => {
 }
 module.exports = {
   beginSpotifyAuth,
-  SpotifyAuthUrl
+  SpotifyAuthUrl,
+  SpotifyTokens
 };

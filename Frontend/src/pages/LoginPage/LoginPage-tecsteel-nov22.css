@@ -1,15 +1,24 @@
- .Login_Container{
+.container_L{
     display: flex;
     flex:1;
     flex-direction: row;
     height: 86vh;
     width: 100vw;
+    margin: auto;
     background-color: #EDE8F5;
     align-items: center;
 }
-.Login_WelcomeCard {
+.welcomeCard_L {
     border: 4px solid #ccc;
     box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.4); 
+  }
+
+.formCard_L{
+    border: 4px solid #ccc;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4); 
+}
+
+.welcomeCard {
     background-color:#ADBBDA;
     width: 30vw;
     height: 80vh;
@@ -19,45 +28,24 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+
 }
 
-.Login_FormCard{
-    border: 4px solid #ccc;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4); 
-    background-color: #8697C4;
-    width: 70vw;
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
-    margin-right: 5vw;
-    height: 80vh;
-}
-.Login_WelcomeCard h1{
+.welcomeTitle_L {
     font-size: 350%;
     text-align: center; 
     margin-bottom: 10vh;
     margin-top: 10vh;
 }
 
-.Login_FormCard h1{
-    font-size: 350%;
-    text-align: center; 
-    margin-bottom: 5vh;
-    margin-top: 3vh;
-}
-
-.Login_WelcomeCard h2{
+.welcomeText_L {
     text-align: center; 
     margin-bottom: 10vh;
+    padding-left: 1.2vw;
+    padding-right: 1.2vw;
 }
 
-.Login_FormCard h2{
-    text-align: center; 
-    margin-bottom: 7vh;
-    font-style: italic;
-    width: 62.5vw;
-}
-
-.Login_WelcomeCard a{
+.signUP{
     padding: 1% 7%;
     font-size: 2em;
     background-color: #ADBBDA;
@@ -72,46 +60,70 @@
     color: black;
 }
 
-.Login_WelcomeCard a:hover{
-    transform: translateY(-8px); 
+.signUP:hover {
+    transform: translateY(-5px); 
 }
 
-.Login_FormCard form{
+.formCard_L{
+    background-color: #8697C4;
+    width: 70%;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    margin-right: 5vw;
+    height: 80vh;
+}
+
+.formTitle_L {
+    font-size: 350%;
+    text-align: center; 
+    margin-bottom: 5vh;
+    margin-top: 5vh;
+}
+
+.formText_L {
+    text-align: center; 
+    margin-bottom: 7vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    font-style: italic;
+}
+
+.create_L {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%; 
+
 }
 
-.Login_FormCard form label{
+
+
+.label_L {
     align-self: flex-start;
     margin-left: 11vw;
     font-size: 150%;
-    
 }
 
-.Login_FormCard form input{
-    font-size: 100%;
+.input_L {
     font-size: 100%;
     font-weight: 550;
     padding: 1.5%;
     margin-top: 1vh;
     margin-bottom: 2vh;
-    margin-left: 1vw;
-    width: 42vw;
+    margin-left: 3%;
+    width: 70%;
     border: 1px solid #ddd;
-    border-radius: 6px;
+    border-radius: 4px;
     box-sizing: border-box;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.Login_FormCard form input:active,
-.Login_FormCard form input:focus{
+.input_L:active,  .input_L:focus{
     box-shadow: 5px 10px 25px rgba(255, 255, 255, 1);
     transform: translateY(-3px);
 }
-
-.Login_FormCard form button{
+    
+.registerButton_L{
     padding: 1% 5%;
     font-size: 1.5em;
     background-color:#8697C4;
@@ -126,12 +138,11 @@
 
 }
 
-.Login_FormCard form button:hover{
-    transform: translateY(-8px); 
-
+.registerButton_L:hover {
+    transform: translateY(-5px); 
 }
 
-.Login_Error{
+.error{
     align-self: flex-start;
     margin-left: 11vw;
     margin-bottom: 2vh;

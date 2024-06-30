@@ -1,6 +1,6 @@
 .out {
     display: flex;
-    justify-content: space-between; /* Ensures items are spaced out evenly */    
+    justify-content: space-between;   
     border-bottom: 6px solid white;
     padding: 10px;
     background-color: #3d52a1;

@@ -12,8 +12,7 @@ import LoginPage from './pages/LoginPage/LoginPage'
 import SpotifyPage from './pages/SpotifyPage/SpotifyPage'
 import ErrorPage from './pages/ErrorPage/ErrorPage'
 import "./app.css";
-// import { useEffect } from 'react'
-// import { useAuthContext } from './hooks/useAuthContext'
+
 
 function App() {
   const router = createBrowserRouter(
@@ -23,7 +22,7 @@ function App() {
           <Route index element = {<HomePage/>}/>
           <Route path = '/register' element = {<RegisterPage/>}/>
           <Route path = '/login' element = {<LoginPage/>}/>
-          <Route path = '/callback' element = {<SpotifyPage/>}/>
+          <Route path = '/callback/Auth' element = {<SpotifyPage/>}/>
           <Route path='/error' element={<ErrorPage/>}/>
         </Route>
         

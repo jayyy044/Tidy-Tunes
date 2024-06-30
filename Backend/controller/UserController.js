@@ -40,17 +40,25 @@ const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
         const user = await User.findOne({ email });
+
         if (!user) {
             console.log("No Such Email");
+            const isPasswordValid = await User.findOne({ password: await bcrypt.hash(password, 10) });
+            if(!isPasswordValid){
+                return res.status(400).json({ error: 'Invalid Email and Password'});
+            }
             return res.status(400).json({ error: 'Invalid Email' });
         }
+
         const isPasswordValid = await bcrypt.compare(password, user.password);
+
         if (!isPasswordValid) {
             console.log("No Such Password");
             return res.status(400).json({ error: 'Invalid Password' });
         }
+
         console.log("User Logged in");
-        const token = jwt.sign(email, process.env.ACCESS_TOKEN_SECRET)
+        const token = jwt.sign({ email: user.email }, process.env.ACCESS_TOKEN_SECRET);
         console.log("Generated Token:", token);
         res.status(200).json({ message: 'User logged in successfully', token });
     } catch (error) {
@@ -58,6 +66,7 @@ const loginUser = async (req, res) => {
         res.status(500).json({ error: 'Error Logging In' });
     }
 };
+
 
 module.exports = {
     createNewUser,
