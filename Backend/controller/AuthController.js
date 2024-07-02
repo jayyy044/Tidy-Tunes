@@ -1,9 +1,10 @@
 
+require('dotenv').config()
+
 const beginSpotifyAuth = async (req, res) => {
    if (req.query.error) {
-    console.log(`error: ${req.query.error}`)
-    res.redirect('http://localhost:4000/error')
-    return 
+      console.log(`error: ${req.query.error}`)
+      return res.redirect('http://localhost:4000/error')
     }
   const code = req.query.code
   if (code){
@@ -14,38 +15,66 @@ const beginSpotifyAuth = async (req, res) => {
 }
 
 const SpotifyTokens = async (req, res) => {
-  const {code} = req.body
-  const req_body = new URLSearchParams ({
-    'code':code,
-    'grant_type':"authorization_code",
-    'redirect_uri': process.env.REDIRECT_URI,
-    'client_id': process.env.CLIENT_ID,
-    'client_secret': process.env.CLIENT_SECRET
-  })
+  const { code } = req.body
+  const req_body = new URLSearchParams({
+    code: code,
+    grant_type: 'authorization_code',
+    redirect_uri: process.env.REDIRECT_URI,
+    client_id: process.env.CLIENT_ID,
+    client_secret: process.env.CLIENT_SECRET,
+  }).toString();
+  
   try {
     const response = await fetch(process.env.TOKEN_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: req_body
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: req_body,
     });
 
     const data = await response.json();
+    if (response.ok) {
+        console.log("This is the data", data)
+        const { access_token, refresh_token, expires_in } = data;
+        console.log("Access Token:", access_token);
+        //return res.redirect('/playlists/'+ access_token);
+        try {
+          const response = await fetch(process.env.API_BASE_URL + 'me/playlists', {
+            headers: {
+              'Authorization': `Bearer ${access_token}`
+            }
+          });
+      
+          if (!response.ok) {
+            // Handle error response from the Spotify API
+            return res.status(response.status).json({ error: 'Failed to fetch playlists' });
+          }
+      
+          const playlists = await response.json();
+          console.log(playlists)
+          res.json(playlists);
 
-    if (!response.ok) {
-      console.error("ERROR", data);
-      res.status(response.status).json({ error: "Failed to fetch token", details: data });
-      return;
+        } 
+        catch (error) {
+          // Handle any other errors
+          console.error('Error fetching playlists:', error);
+          res.status(500).json({ error: 'Internal Server Error' });
+        }
+    } 
+    else {
+      console.log('Failed to fetch access token:', data.error);
+      return res.status(response.status).json({ error: 'Failed to fetch access token' });
     }
-
-    console.log(data);
-    res.json(data); // Send the token data back to the frontend
-
-  } catch (error) {
-    console.error('Error fetching token:', error);
-    res.status(500).json({ error: 'Internal Server Error', details: error.message });
+  } 
+  catch (error) {
+        console.error('Error fetching access token:', error);
+        return res.status(500).json({ error: 'Internal server error' });
   }
+
+  
+
+   
 }
 
   
@@ -88,18 +117,19 @@ const SpotifyTokens = async (req, res) => {
 
 
 const SpotifyAuthUrl = (req, res) => {
-  const scope = 'user-read-private user-read-email'
-  const params = new URLSearchParams({
+  //You can add state parameter to teh params and send a jwt token
+  {/*You can then create seperate middle ware for all the spotify shit 
+    this will use that state parameter to verify it */}
+    const scope = 'user-read-private user-read-email'
+    const params = new URLSearchParams({
       client_id: process.env.CLIENT_ID,
       response_type: 'code',
       scope: scope,
       redirect_uri: process.env.REDIRECT_URI,
-      show_dialog: true
-  })
-
-
-  const authUrl = `${process.env.AUTH_URL}?${params.toString()}`;
-  res.json({ authUrl: authUrl });
+      show_dialog: true,
+    });
+    const authUrl = `${process.env.AUTH_URL}?${params.toString()}`;
+    res.json({ authUrl });
 }
 module.exports = {
   beginSpotifyAuth,

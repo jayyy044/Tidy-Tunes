@@ -27,6 +27,7 @@ def login():
         'response_type': 'code',
         'scope': scope,
         'redirect_uri': REDIRECT_URI,
+        'show_dialog': True
     }
 
     auth_url = f"{AUTH_URL}?{urllib.parse.urlencode(params)}"
@@ -35,6 +36,7 @@ def login():
 
 @app.route('/callback')
 def callback():
+    print("This is the auth code ", request.args['code'])
     if 'error' in request.args:
         return jsonify({"error": request.args['error']})
     
@@ -57,6 +59,7 @@ def callback():
     
 @app.route('/playlists')
 def get_playlists():
+    print(session['access_token'])
     if 'access_token' not in session:
         return redirect('/login')
     

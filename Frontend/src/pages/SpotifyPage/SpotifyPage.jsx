@@ -5,15 +5,15 @@ import './SpotifyPage.css'
 
 const SpotifyPage = () => {
   const { state } = useAuthContext()
-  const [code, setCode] = useState(null);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const codeParam = urlParams.get('code');
     if (codeParam) {
-      setCode(codeParam);
+      console.log(codeParam)
+      SpotifyAccessToken(codeParam)
     }
-    SpotifyAccessToken(code)
+
   }, []);
 
 
@@ -44,7 +44,6 @@ const SpotifyPage = () => {
 
          <div className="pop">
             {`This is my jwt token ${state.token}`}
-            {code ? `this the access code from spotify ${code}` : "Error"}
           </div>
       </div>
     </>
