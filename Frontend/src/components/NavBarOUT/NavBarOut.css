@@ -2,10 +2,10 @@
     display: flex;
     justify-content: space-between;   
     padding: 10px;
-    background-color: #000912;
-    height: 10vh;
+    background-color: #030f1b;
+    height: 8vh;
     align-items: center;
-    border-bottom: 4px solid #ccc;
+    border-bottom: 2px solid #ccc;
 }
 .out a{
     color: white;
@@ -13,11 +13,12 @@
     border: 2px solid white;
     border-radius: 25px;
     padding: 5px 35px; 
-
+    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
-
 .out a:hover{
-    background-color: #7191e6;
+    border-color:#ffa500bf ;
+    box-shadow: 0 0 15px 5px #ffa500bf;
+    color: #ffa500bf;
 }
 .homeButton {
     justify-content: flex-start;
@@ -28,10 +29,11 @@
     justify-content: flex-end; 
     display: flex;
     flex-direction: row;
-    
+    padding-left: 1vw;    
   }
 .user a{
-    margin-right: 3vw;
+    margin-block: 1.5vh;
+    margin-inline: 3vw;
 }
 
 
