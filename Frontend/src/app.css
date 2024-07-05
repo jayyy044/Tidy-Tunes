@@ -1,7 +1,14 @@
 *{
     margin: 0;
     padding: 0;
-    overflow: hidden;
     font-family: 'Aclonica', sans-serif;
+}
 
+body{
+    background-color: #000912;
+}
+
+:root{
+    --navbarHeight: 98.55px;
+    --AccentColor: #dc8b30; 
 }

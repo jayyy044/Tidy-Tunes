@@ -1,40 +1,111 @@
-.out {
+.NavContainer {
     display: flex;
-    justify-content: space-between;   
-    padding: 10px;
+    padding-inline: 1vw;
+    padding-block: 1vh;
     background-color: #030f1b;
     height: 8vh;
     align-items: center;
     border-bottom: 2px solid #ccc;
 }
-.out a{
+.NavContainer a{
+    text-decoration: none;
+}
+.NavContainer h2{
+    font-size: 1.7rem;
     color: white;
-    text-decoration: none; 
     border: 2px solid white;
     border-radius: 25px;
-    padding: 5px 35px; 
-    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out, color 0.5s ease-in-out;
+    padding: 8px 35px; 
+    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out, 
+    color 0.5s ease-in-out, text-shadow 0.5s ease-in-out;
 }
-.out a:hover{
-    border-color:#ffa500bf ;
-    box-shadow: 0 0 15px 5px #ffa500bf;
-    color: #ffa500bf;
+.NavContainer h2:hover{
+    border-color:var(--AccentColor) ;
+    box-shadow: 0 0 15px 5px var(--AccentColor);
+    color: var(--AccentColor);
+    text-shadow: 1px 3px 5px var(--AccentColor);
 }
 .homeButton {
     justify-content: flex-start;
-    margin-left: 2vw;
-  }
+    margin-left: 0.5vw;
+}
+
+.NavContainer a img {
+    width: 77px;
+    height: auto;
+}
   
 .user {
-    justify-content: flex-end; 
+    margin-left: auto;
     display: flex;
     flex-direction: row;
-    padding-left: 1vw;    
   }
-.user a{
-    margin-block: 1.5vh;
-    margin-inline: 3vw;
+.user h2{
+    margin-inline: 2vw;
 }
+
+.icon {
+    margin-left: auto;
+    color: whitesmoke;
+    font-size: 35px; 
+    margin-right: 20px;
+    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+.icon:hover {
+    border-color: var(--AccentColor);
+    box-shadow: 0 0 15px 5px var(--AccentColor);
+    color: var(--AccentColor);
+}
+
+.drawer{
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+
+}
+
+.drawer .ant-drawer-header {
+    background-color: #030f1b;
+
+}
+
+.drawer .ant-drawer-close{
+    color: whitesmoke;
+}
+
+.drawer .ant-drawer-title{
+    color:var(--AccentColor);
+    font-size: 1.2rem;
+    margin-left: 2vw;
+    margin-top: 0.5vh;
+}
+
+.drawer .ant-drawer-body {
+    background: radial-gradient(circle farthest-side at 90% 100%,#7d7d7d,#051423,#030e19);
+}
+
+.drawer .ant-drawer-body h2{
+
+    border-bottom: 1px solid slategray;
+    padding: 20px;
+    margin-bottom: 10px;
+    color:whitesmoke;
+    font-size:1.2rem;
+    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out, 
+    text-shadow 0.5s ease-in-out, color 0.5s ease-in-out;
+
+}
+
+.drawer .ant-drawer-body h2:hover{
+    border-color: var(--AccentColor);
+    box-shadow: 0 0 15px 5px var(--AccentColor);
+    color: var(--AccentColor);
+    text-shadow: 1px 5px 10px var(--AccentColor);
+}
+
+
+
+
 
 
  

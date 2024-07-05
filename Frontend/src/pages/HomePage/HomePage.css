@@ -1,12 +1,6 @@
-:root{
-    --WelcomeTitle: clamp(4.8rem, 1.2rem + 4vw, 6rem);
-    --MissionTitle: clamp(3rem, 0rem + 3.333vw, 4rem)
-    
-}
-
 .HomeContainer{
-    background: radial-gradient(circle farthest-side at 50% 47%,#7d7d7d,#030e19,#000912);
-    height: 100dvh;
+    background: radial-gradient(circle farthest-side at clamp(36.25rem, 2.917rem + 44.444vw, 56.25rem) clamp(21.875rem, 16.667rem + 6.944vw, 25rem),#7d7d7d,#030e19,#000912);
+    height: calc(100dvh - var(--navbarHeight));
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -17,67 +11,63 @@
     width: 27vw;
     margin-top: 2vh;
     margin-left: 1vw;
-    height: 83vh;
+    padding-inline: 1vw;
 }
 .part2{
     margin-left: 1vw;
-    color:#ffa500bf;
+    color:var(--AccentColor);
 }
 .HomePage_Welcome h1{
-    font-size:var(--WelcomeTitle);
+    font-size:clamp(4rem, 0.667rem + 4.444vw, 6rem);
     padding-inline: 1vw;
     padding-top: 6vh;
     margin-bottom: 6vh;
-    line-height: var(--WelcomeTitle);
+    line-height:clamp(4.5rem, 1.167rem + 4.444vw, 6.5rem);
 }
 
 .HomePage_Welcome p{
-    font-size: calc(var(--WelcomeTitle)/2);
-    padding-left: 2vw;
+    font-size: clamp(2rem, 0.235rem + 3.137vw, 4rem);
+    padding-inline: 1vw;
     padding-top: 2vh;
-    margin-bottom: 4vh;
-    line-height: 4rem;
+    line-height: clamp(3rem, 1.676rem + 2.353vw, 4.5rem);
 }
 .HomePage_Content{
-    border-radius: 50px;
     margin-top: 2vh;
-    margin-right: 1vw;
-    height: 83vh;
+    margin-right: 2vw;
     width: 27vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .HomePage_Content h1{
-    font-size: var(--MissionTitle);
-    margin-bottom: 5vh;
-    padding-left: 2vw;
+    font-size: clamp(3rem, 1.333rem + 2.222vw, 4rem);
+    margin-bottom: 4vh;
     padding-top: 6vh;
-    color:#ffa500bf;
-
+    color:var(--AccentColor);
 }
 
 .HomePage_Content p{
-    font-size: calc(var(--MissionTitle)/2);
-    margin-bottom: 8vh;
-    line-height: calc(var(--MissionTitle) - 1rem);
-
+    font-size: clamp(1.7rem, 0.867rem + 1.111vw, 2.2rem);
+    margin-bottom: clamp(1.563rem, -1.563rem + 4.167vw, 3.438rem);
+    line-height: clamp(2rem, 0.333rem + 2.222vw, 3rem) ;
     text-align: center;
 }
 
 .HomePage_Content a{
     text-decoration: none;
     color:whitesmoke;
-    font-size:calc(var(--MissionTitle)/2);
+    font-size: clamp(1.2rem, -0.133rem + 1.778vw, 2rem);
     border: 2px solid whitesmoke;
     padding: 15px;
     border-radius: 50px;
-    margin-left: 7vw;
     transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
 .HomePage_Content a:hover{
-    border-color:#ffa500bf ;
-    box-shadow: 0 0 15px 5px #ffa500bf;
-    color: #ffa500bf;
+    border-color:var(--AccentColor) ;
+    box-shadow: 0 0 15px 5px var(--AccentColor);
+    color: var(--AccentColor);
 }
 
 
@@ -85,13 +75,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 4vh;
+    margin-top: clamp(2.5rem, 10.833rem + -6.944vw, 5.625rem);
     width: 37vw; 
     height: 40vw;
     border-radius: 50%; 
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
     transition: box-shadow 0.7s ease-in-out, border-color 0.7s ease-in-out;
-
+    margin-left: -6vw;
 }
 
 .HomePage_Image img {
@@ -101,6 +91,110 @@
 }
 
 .HomePage_Image:hover {
-    border-color:#ffa500bf ;
-    box-shadow: 0 0 15px 5px #ffa500bf;
+    border-color:var(--AccentColor) ;
+    box-shadow: 0 0 15px 5px var(--AccentColor);
 } 
+
+@media only screen and (max-width:1199px) {
+
+    .HomeContainer{
+        background: radial-gradient(#030e19,#000912);
+    }
+    .HomePage_Welcome{
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .HomePage_Welcome h1{
+        line-height: clamp(4rem, 0.99rem + 5.351vw, 5rem);
+        font-size: clamp(4rem, 0.99rem + 5.351vw, 5rem);
+    }
+    .HomePage_Welcome a{
+        text-decoration: none;
+        color:whitesmoke;
+        font-size: clamp(1.3rem, 0.698rem + 1.07vw, 1.5rem);
+        border: 2px solid whitesmoke;
+        padding: 15px;
+        border-radius: 50px;
+        margin-right: clamp(6.25rem, -30.391rem + 76.336vw, 12.5rem);
+        margin-top: 50px;
+        transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out, color 0.5s ease-in-out;
+    }
+    .HomePage_Welcome a:hover{
+        border-color:var(--AccentColor) ;
+        box-shadow: 0 0 15px 5px var(--AccentColor);
+        color: var(--AccentColor);
+    }
+    .HomePage_Image{
+        background: radial-gradient(circle farthest-corner at 300px 320px,#a1a1a1,#717171,#030e19,#000912);
+        width: clamp(29.75rem, 0.026rem + 52.843vw, 39.625rem);
+        height: clamp(30.625rem, 6.168rem + 43.478vw, 38.75rem);
+        margin-top: 25px;
+        margin-right:clamp(1.563rem, 0.998rem + 1.003vw, 1.75rem);
+    }
+    .HomePage_Image img{
+        width: 80%; 
+        height: 95%; 
+        object-fit: cover; 
+    }
+    .HomePage_Content{
+        color: white;
+        padding-inline: 2vw;
+        width: auto;
+    }
+    .HomePage_Content h1{
+        padding-top:clamp(0rem, -21.01rem + 38.462vw, 7.813rem);
+    }
+    .HomePage_Content p{
+        line-height: 2.5rem;
+        margin-bottom: 4vh;
+    }
+    
+}
+
+@media only screen and (max-width:899px){
+    .HomePage_Image{
+        width: clamp(27.5rem, 14.309rem + 27.481vw, 29.75rem);
+        height: clamp(27.188rem, 7.038rem + 41.979vw, 30.625rem);
+    }
+    .HomePage_Content p{
+        line-height:clamp(2rem, -0.931rem + 6.107vw, 2.5rem);
+        margin-bottom: 4vh;
+        font-size: 1.5rem;
+    }
+
+}
+
+@media only screen and (max-width:749px){
+    .HomePage_Welcome{
+        width: auto;
+        text-align: center;
+        margin: 0;
+    }
+    .HomePage_Welcome h1{
+        padding-top: 10vh;
+        font-size: clamp(3.5rem, 2.381rem + 5.594vw, 5rem);
+        line-height: clamp(3.5rem, 2.754rem + 3.73vw, 4.5rem);
+    }
+    .HomePage_Welcome p{
+        font-size: clamp(2rem, 0.881rem + 5.594vw, 3.5rem);
+        line-height: clamp(2.5rem, 1.381rem + 5.594vw, 4rem);
+    }
+    .HomePage_Welcome a{
+        margin-inline: auto;
+        font-size: clamp(1.2rem, 0.603rem + 2.984vw, 2rem);
+    }
+    .HomePage_Image{
+        background: radial-gradient(circle farthest-corner at clamp(13.125rem, 8.929rem + 20.979vw, 18.75rem) 
+        clamp(16.25rem, 13.453rem + 13.986vw, 20rem),#a1a1a1,#717171,#030e19,#000912);
+        margin-inline: auto;
+        margin-top: -1vh;
+        margin-bottom: 10vh;
+        width: clamp(18.125rem, 8.335rem + 48.951vw, 31.25rem);
+        height: clamp(18.75rem, 9.426rem + 46.62vw, 31.25rem);
+    }
+    .HomePage_Content{
+        margin-inline: 3vw;
+    }
+}
