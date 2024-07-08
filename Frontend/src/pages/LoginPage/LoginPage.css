@@ -1,150 +1,201 @@
- .Login_Container{
+.Login_Container{
     display: flex;
     flex-direction: row;
     align-items: center;
     height: calc(100dvh - var(--navbarHeight));
-    background: radial-gradient(circle farthest-corner at 1000px 900px,#7d7d7d,#040f19,#000912);
+    background: radial-gradient(circle farthest-corner at 950px 900px,#7d7d7d,#030f19,#000912);
 }
-
-
 
 .Login_WelcomeCard {
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(1.7px);
-    -webkit-backdrop-filter: blur(1.7px);
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    width: 30vw;
-    height: 80vh;  
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid #030f19;
+    width: 576px;
+    height: 766px;  
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-    box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.4); 
-    margin-left: 4vw;
+    box-shadow: -10px 13px 28px -4px rgba(0,0,0,0.75);
+    margin-left: 77px;
     display: flex;
     flex-direction: column;
-    justify-content: center; 
+    justify-content: center;
+    align-items: center; 
 }
 
-.Login_FormCard{
-    background: rgba(255, 255, 255, 0.1);
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4); 
-    width: 70vw;
-    margin-right: 5vw;
-    height: 80vh;
-}
 .Login_WelcomeCard h1{
-    font-size: 350%;
-    text-align: center; 
-    margin-bottom: 10vh;
-    margin-top: 10vh;
-}
-
-.Login_FormCard h1{
-    font-size: 350%;
-    text-align: center; 
-    margin-bottom: 5vh;
-    margin-top: 3vh;
+    font-size: 5rem;
+    margin-bottom: 50px;
+    color: var(--AccentColor)
 }
 
 .Login_WelcomeCard h2{
+    font-size: 1.5rem;
     text-align: center; 
-    margin-bottom: 10vh;
-}
-
-.Login_FormCard h2{
-    text-align: center; 
-    margin-bottom: 7vh;
-    font-style: italic;
-    width: 62.5vw;
+    margin-bottom: 50px;
+    color: var(--FontBorderColor)
 }
 
 .Login_WelcomeCard a{
-    padding: 1% 7%;
-    font-size: 2em;
-    background-color: #ADBBDA;
+    padding: 7px 25px;
+    font-size: 1.9rem;
     border-radius: 50px;
-    margin: 0 auto; 
-    margin-bottom: 10vh;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
-    border: 3px solid black; 
-    transition: transform 0.3s ease; 
+    border: 2px solid var(--FontBorderColor);
+    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out, 
+    color 0.5s ease-in-out, text-shadow 0.5s ease-in-out, transform 0.5s ease-in-out; 
     text-decoration: none;
-    color: black;
+    color: var(--FontBorderColor);
 }
 
 .Login_WelcomeCard a:hover{
     transform: translateY(-8px); 
+    border-color:var(--AccentColor) ;
+    box-shadow: 0 0 15px 5px var(--AccentColor);
+    color: var(--AccentColor);
+    text-shadow: 1px 3px 5px var(--AccentColor);
+}
+
+.Login_FormCard{
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid #030f19;
+    width: 1344px;
+    height: 766px;  
+    box-shadow: 15px 9px 22px 5px rgba(0,0,0,0.75);
+    margin-right: 77px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+ .Login_FormCard h1{
+    font-size: 5rem;
+    margin-top: 8.5rem;
+    margin-bottom: 50px;
+    color: var(--FontBorderColor);
+}
+
+.Login_FormCard h2{
+    font-size: 2rem;
+    margin-bottom: 50px;
+    font-style: italic;
+    color: var(--AccentColor);
 }
 
 .Login_FormCard form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%; 
+    margin-top: -15px;
 }
 
-.Login_FormCard form label{
-    align-self: flex-start;
-    margin-left: 11vw;
-    font-size: 150%;
-    
+.Login_FormCard form label {
+    position: relative;
+    margin-inline: 0;
 }
 
-.Login_FormCard form input{
-    font-size: 100%;
-    font-size: 100%;
-    font-weight: 550;
-    padding: 1.5%;
-    margin-top: 1vh;
-    margin-bottom: 2vh;
-    margin-left: 1vw;
-    width: 42vw;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+
+.Login_FormCard form label:nth-child(2){
+    margin-top: 2.9rem;
+}
+
+.input_field_L {
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-bottom: 15px;
+    font-size: 1.2rem;
+    width: 803px;
     box-sizing: border-box;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    display: block;
+    border: 1px solid var(--FontBorderColor);
+    color: var(--FontBorderColor);
+    background: transparent;
+    border-radius: 6px;
 }
 
-.Login_FormCard form input:active,
-.Login_FormCard form input:focus{
-    box-shadow: 5px 10px 25px rgba(255, 255, 255, 1);
-    transform: translateY(-3px);
+.input_field_L:focus,
+.input_field_L:active {
+    outline: none;
+    border: 2px solid var(--AccentColor);
 }
+
+.input_label_PL,
+.input_label_EL{
+    margin-top: 16px;
+    margin-left: 5px;
+    font-size: 1.5rem;
+    padding: 2px 20px; 
+    color: var(--FontBorderColor);
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    transform: translate(0, 0);
+    transform-origin: 0 0;
+    transition: transform 180ms ease-in-out;
+}
+
+.input_field_L:focus + .input_label_PL,
+.input_field_L.has-value + .input_label_PL{
+    margin-top: 7px;
+    background: linear-gradient(to top, #4b5257, #4b5257);
+    transform: translate(.25rem, -65%) scale(.8);
+    color: var(--AccentColor);
+}
+
+.input_field_L:focus + .input_label_EL,
+.input_field_L.has-value + .input_label_EL{
+    margin-top: 7px;
+    background: linear-gradient(to top, #3d454c, #3c444b);
+    transform: translate(.25rem, -65%) scale(.8);
+    color: var(--AccentColor);
+}
+
 
 .Login_FormCard form button{
+    background: transparent;
     padding: 1% 5%;
     font-size: 1.5em;
-    background-color:#8697C4;
     border-radius: 50px;
     margin: 0 auto; 
-    margin-top: 3vh;
-    font-family: 'Times New Roman', Times, serif;
+    margin-top: 3rem;
     font-weight: bold;
-    border: 3px solid black; 
-    transition: transform 0.3s ease; 
-    color: black;
+    border: 2px solid var(--FontBorderColor); 
+    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out, 
+    color 0.5s ease-in-out, text-shadow 0.5s ease-in-out, transform 0.5s ease-in-out;
+    color: var(--FontBorderColor);
 
 }
 
 .Login_FormCard form button:hover{
     transform: translateY(-8px); 
+    border-color:var(--AccentColor) ;
+    box-shadow: 0 0 15px 5px var(--AccentColor);
+    color: var(--AccentColor);
+    text-shadow: 1px 2px 5px var(--AccentColor);
 
 }
 
-.Login_Error{
-    align-self: flex-start;
-    margin-left: 11vw;
-    margin-bottom: 2vh;
-    color: red;
-} 
+.Login_Error_E {
+    margin-left: auto;
+    margin-right: 0.25vw;
+    margin-top: 0.5vh;
+    margin-bottom: 2.5vh;
+    color: red; 
+}
 
+.Login_Error_P {
+    margin-left: auto;
+    margin-right: 0.25vw;
+    margin-top: 0.5vh;
+    margin-bottom: -2.15vh;
+    color: red; 
+}
+
+
+.input_label_PL.error ,
+.input_label_EL.error {
+    color: red !important;
+}
 
 
 

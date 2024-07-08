@@ -1,143 +1,214 @@
- .Register_Container{
+.Register_Container{
     display: flex;
-    flex:1;
     flex-direction: row;
-    height: 86vh;
-    width: 100vw;
-    margin: auto;
     align-items: center;
-
+    height: calc(100dvh - var(--navbarHeight));
+    background: radial-gradient(circle farthest-corner at 950px 900px,#7d7d7d,#030f19,#000912);
 }
 
-.Register_WelcomeCard{
-    border: 4px solid #ccc;
-    box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.4); 
-    background-color:#8697C4;
+.Register_WelcomeCard {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid #030f19;
     width: 30vw;
-    height: 80vh;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
+    height: 80vh;  
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: -10px 13px 28px -4px rgba(0,0,0,0.75);
+    margin-left: 77px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 4vw;
-}
-
-.Register_FormCard{
-    border: 4px solid #ccc;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4); 
-    background-color: #ADBBDA;
-    width: 70vw;
-    height: 80vh;
-    margin-right: 4vw;
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
+    align-items: center; 
 }
 
 .Register_WelcomeCard h1{
-    font-size: 320%;
-    text-align: center; 
-    margin-bottom: 7vh;
-    margin-top: 12vh;
-}
-
-.Register_FormCard h1{
-    font-size: 280%;
-    text-align: center; 
-    margin-bottom: 3vh;
-    margin-top: 3vh;
+    font-size: 5rem;
+    margin-bottom: 50px;
+    color: var(--FontBorderColor)
 }
 
 .Register_WelcomeCard h2{
+    padding-inline: 1vw;
+    font-size: 1.5rem;
     text-align: center; 
-    margin-bottom: 7vh;
-    padding-left: 1vw;
-    padding-right: 1vw;
-}
-
-.Register_FormCard h2{
-    text-align: center; 
-    margin-bottom: 3vh;
-    padding-left: 1vw;
-    padding-right: 1vw;
-    font-style: italic;
-    font-size: 140%;
+    margin-bottom: 50px;
+    color: var(--AccentColor)
 }
 
 .Register_WelcomeCard a{
-    padding: 1% 7%;
-    font-size: 2em;
-    background-color: #8697C4;
+    padding: 7px 25px;
+    font-size: 1.9rem;
     border-radius: 50px;
-    margin: 0 auto; 
-    margin-bottom: 10vh;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
-    border: 3px solid black; 
-    transition: transform 0.3s ease; 
+    border: 2px solid var(--FontBorderColor);
+    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out, 
+    color 0.5s ease-in-out, text-shadow 0.5s ease-in-out, transform 0.5s ease-in-out; 
     text-decoration: none;
-    color: black;
+    color: var(--FontBorderColor);
 }
 
 .Register_WelcomeCard a:hover{
     transform: translateY(-8px); 
+    border-color:var(--AccentColor) ;
+    box-shadow: 0 0 15px 5px var(--AccentColor);
+    color: var(--AccentColor);
+    text-shadow: 1px 3px 5px var(--AccentColor);
+}
+
+.Register_FormCard{
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid #030f19;
+    width: 70vh;
+    height: 80vh;  
+    box-shadow: 15px 9px 22px 5px rgba(0,0,0,0.75);
+    margin-right: 77px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px; 
+}
+
+.Register_FormCard h1{
+    font-size: 5rem;
+    margin-top: 5rem;
+    margin-bottom: 50px;
+    color: var(--FontBorderColor);
+}
+
+.Register_FormCard h2{
+    font-size: 1.8rem;
+    margin-bottom: 50px;
+    font-style: italic;
+    color: var(--AccentColor);
 }
 
 .Register_FormCard form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* width: 100%;  */
-
 }
 
-.Register_FormCard form label{
-    align-self: flex-start;
-    margin-left: 11vw;
-    font-size: 120%;
+.input_R {
+    position: relative;
 }
 
-.Register_FormCard form input{
-    font-size: 100%;
-    font-weight: 550;
-    padding: 1%;
-    margin-top: 1vh;
-    margin-bottom: 2vh;
-    margin-left: 3%;
-    width: 70%;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+
+
+.input_field_ER,
+.input_field_PR {
+    margin-top: 3rem;
+}
+
+.input_field_PR,
+.input_field_ER,
+.input_field_UR{
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-bottom: 15px;
+    font-size: 1.2rem;
+    width: 803px;
     box-sizing: border-box;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    display: block;
+    border: 1px solid var(--FontBorderColor);
+    color: var(--FontBorderColor);
+    background: transparent;
+    border-radius: 6px;
 }
 
-.Register_FormCard form input:active,
-.Register_FormCard form input:focus{
-    box-shadow: 5px 10px 25px rgba(255, 255, 255, 1);
-    transform: translateY(-3px);
+.input_field_PR:focus,
+.input_field_ER:focus,
+.input_field_UR:focus,
+.input_field_PR:active,
+.input_field_ER:active,
+.input_field_UR:active {
+    outline: none;
+    border: 2px solid var(--AccentColor);
+}
+.input_label_UR{
+   margin-top: 16px; 
+}
+
+.input_label_ER,
+.input_label_PR {
+    margin-top: 6.5vh;
+}
+
+
+.input_label_PR,
+.input_label_ER,
+.input_label_UR{
+    
+    margin-left: 5px;
+    font-size: 1.5rem;
+    padding: 2px 20px; 
+    color: var(--FontBorderColor);
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    transform: translate(0, 0);
+    transform-origin: 0 0;
+    transition: transform 180ms ease-in-out;
+}
+
+.input_field_PR:focus + .input_label_PR,
+.input_field_PR.has-value + .input_label_PR{
+    margin-top: 5.8vh;
+    background: linear-gradient(to top, #565b60, #565b61);
+    transform: translate(.25rem, -65%) scale(.8);
+    color: var(--AccentColor);
+}
+
+.input_field_ER:focus + .input_label_ER,
+.input_field_ER.has-value + .input_label_ER{
+    margin-top: 5.8vh;
+    background: linear-gradient(to top, #464d53, #464d53);
+    transform: translate(.25rem, -65%) scale(.8);
+    color: var(--AccentColor);
+}
+
+.input_field_UR:focus + .input_label_UR,
+.input_field_UR.has-value + .input_label_UR{
+    margin-top: 7px;
+    background: linear-gradient(to top, #353e45, #343d45);
+    transform: translate(.25rem, -65%) scale(.8);
+    color: var(--AccentColor);
 }
 
 .Register_FormCard form button{
+    background: transparent;
     padding: 1% 5%;
     font-size: 1.5em;
-    background-color: #ADBBDA;
     border-radius: 50px;
     margin: 0 auto; 
-    margin-top: 1vh;
-    font-family: 'Times New Roman', Times, serif;
+    margin-top: 3vh;
     font-weight: bold;
-    border: 3px solid black; 
-    transition: transform 0.3s ease; 
-    color: black;
+    border: 2px solid var(--FontBorderColor); 
+    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out, 
+    color 0.5s ease-in-out, text-shadow 0.5s ease-in-out, transform 0.5s ease-in-out;
+    color: var(--FontBorderColor);
 }
 
-
-.Register_FormCard form button:hover {
+.Register_FormCard form button:hover{
     transform: translateY(-8px); 
+    border-color:var(--AccentColor) ;
+    box-shadow: 0 0 15px 5px var(--AccentColor);
+    color: var(--AccentColor);
+    text-shadow: 1px 2px 5px var(--AccentColor);
 }
-.Register_Error{
-    align-self: flex-start;
-    margin-left: 11vw;
-    margin-bottom: -1vh;
-    color: red;
+
+.Register_Error {
+    margin-left: auto;
+    margin-right: 0.25vw;
+    margin-top: 0.6vh;
+    margin-bottom: -2rem;
+    color: red; 
 }
+
+
+.input_label_ER.error,
+.input_label_UR.error,
+.input_label_PR.error {
+    color: red !important;
+}
+

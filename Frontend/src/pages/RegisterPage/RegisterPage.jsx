@@ -59,6 +59,7 @@ const RegisterPage = () => {
             console.log(error);
         }
     };
+
     const handleFocus = (inputName) => {
         setErrors({...errors, [inputName]: ''})
 
@@ -67,8 +68,8 @@ const RegisterPage = () => {
     return (
         <>
             <div className="Register_Container">
-                <div className="Register_WelcomeCard">
-                    <h1>
+            <div className="Register_WelcomeCard">
+                     <h1>
                         Welcome
                     </h1>
                     <h2>
@@ -79,49 +80,67 @@ const RegisterPage = () => {
                     <Link className='login' to= '/login'>Login</Link>
                 </div>
                 <div className="Register_FormCard">
-                    <h1>
+                     <h1>
                         Create an Account
                     </h1>
                     <h2>
                         Begin redefining listening to music today with Tidy Tunes
                     </h2>
                     <form onSubmit={handleSubmit}>
-                        <label  htmlFor="username">Username:</label>
-                        <br />
-                        <input
-                            type="text"
+
+                        <label className='input_R'>
+
+                            <input 
+                            className={`input_field_UR ${username ? 'has-value' : ''}`} 
+                            type="text" 
+                            placeholder=" "
                             onChange={(event) => setUsername(event.target.value)}
                             onFocus={() => handleFocus('username')}
                             required
                             value={username}
-                            style={{border: errors.username && "2px solid red"}}
-                        />
+                            style={{border: errors.username && "2px solid red"}} />
+
+                            <span className={`input_label_UR ${errors.username ? 'error' : ''}`}>Username</span>
+                        
+                        </label>
+
                         {errors.username && <div className="Register_Error">{errors.username}</div>}
-                        <br />
-                        <label htmlFor="email">Email:</label>
-                        <br />
-                        <input
-                            type="email"
+
+                        <label className='input_R'>
+                            
+                            <input 
+                            className={`input_field_ER ${email ? 'has-value' : ''}`} 
+                            type="email" 
+                            placeholder=" "
                             onChange={(event) => setEmail(event.target.value)}
                             onFocus={() => handleFocus('email')}
                             required
                             value={email}
-                            style={{border: errors.email && "2px solid red"}}
-                        />
+                            style={{border: errors.email && "2px solid red"}} />
+
+                            <span className={`input_label_ER ${errors.email ? 'error' : ''}`}>Email</span>
+
+                        </label>
+
                         {errors.email && <div className="Register_Error">{errors.email}</div>}
-                        <br />
-                        <label htmlFor="password">Password:</label>
-                        <br />
-                        <input
-                            type="password"
+                        
+                        <label className='input_R'>
+                            
+                            <input 
+                            className={`input_field_PR ${password ? 'has-value' : ''}`} 
+                            type="password" 
+                            placeholder=" "
                             onChange={(event) => setPassword(event.target.value)}
                             onFocus={() => handleFocus('password')}
                             required
                             value={password}
-                        />
-                        <br />
-                        <button>Sign Up</button>
-                    </form> 
+                            style={{border: errors.password && "2px solid red"}} />
+
+                            <span className={`input_label_PR ${errors.password ? 'error' : ''}`}>Password</span>
+
+                        </label>
+                        <button type="submit">Sign Up</button>
+                    </form>  
                 </div>
             </div>
         </>

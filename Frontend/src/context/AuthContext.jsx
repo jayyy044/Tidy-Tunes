@@ -3,8 +3,11 @@ import React, { createContext, useReducer } from 'react';
 export const AuthContext = createContext();
 
 
-const tokenState = {
-    token: null
+const UserState = {
+    JWT_access: null,
+    Spotify_access: null,
+    Spotify_refresh: null,
+    Username: null
 };
 
 export const AuthReducer = (state, action) => {
@@ -12,7 +15,8 @@ export const AuthReducer = (state, action) => {
         case 'LOGIN':
             return {
                 ...state,
-                token: action.payload,
+                JWT_access: action.payload.JWT_access,
+                Username: action.payload.Username,
             };
         case 'LOGOUT':
             return {
@@ -25,7 +29,8 @@ export const AuthReducer = (state, action) => {
 };
 
 export const AuthContextProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(AuthReducer, tokenState)
+    const [state, dispatch] = useReducer(AuthReducer, UserState)
+    localStorage.setItem('userState', JSON.stringify(UserState));
   return (
     <AuthContext.Provider value = {{ state, dispatch}}>
         { children }

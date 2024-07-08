@@ -10,4 +10,13 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.VGVzdDFAZ21haWwuY29t.WZxP4if059FKpUF6b
 
 ###
 
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "t@tt.com",
+    "password": "t"
+}
+
+
 
