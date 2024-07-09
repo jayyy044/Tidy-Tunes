@@ -20,8 +20,10 @@ export const AuthReducer = (state, action) => {
             };
         case 'LOGOUT':
             return {
-                ...state,
-                token: null,
+                JWT_access: null,
+                Spotify_access: null,
+                Spotify_refresh: null,
+                Username: null
             };
         default:
             return state;
@@ -30,7 +32,7 @@ export const AuthReducer = (state, action) => {
 
 export const AuthContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AuthReducer, UserState)
-    localStorage.setItem('userState', JSON.stringify(UserState));
+   
   return (
     <AuthContext.Provider value = {{ state, dispatch}}>
         { children }

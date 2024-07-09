@@ -1,59 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import './LoginPage.css';
 import { useLogin } from '../../hooks/useLogin'
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 const LoginForm = () => {
-    const { state, dispatch } = useAuthContext();
+    const navigate = useNavigate()
+    const {state} = useAuthContext()
+    const { isLoading, Login, errors } = useLogin();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
     useEffect(() => {
-        if (state.token){
-            console.log("State token updated:", state.token);
-            SpotifyAuthUrl(state.token)
+        if (state.JWT_access) {
+            console.log("State token updated:", state.JWT_access);
+            SpotifyAuthUrl(state.JWT_access);
         }
-    }, [state.token]);
+    }, [state.JWT_access]);
 
     const FormSubmit = async (event) => {
         event.preventDefault();
-        useLogin()
-        try {
-            const response = await fetch('/api/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password })
-            });
-            const json_response = await response.json();
-            if (!response.ok) {
-                switch (json_response.error) {
-                    case "Invalid Email":
-                        setErrors({ ...errors, email: 'Invalid Email' });
-                        break;
-                    case "Invalid Password":
-                        setErrors({ ...errors, password: 'Invalid Password' });
-                        break;
-                    default:
-                        break;
-                }
-                return;
-            } 
-            else {
-                setEmail('');
-                setPassword('');
-                setErrors({});
-                toast.success('User Logged in! Welcome back to Tidy Tunes');
-                dispatch({ type: 'LOGIN', payload: json_response.token });
-            }
-        } 
-        catch(error){
-            toast.error('Error During Logging In');
-            console.log(error);
+        await Login(email,password)
+        if (!errors.username && !errors.email && !errors.default) {
+            setEmail('');
+            setPassword('');
+            navigate('/error')
         }
     };
     const handleFocus = (inputName) => {
-        setErrors({...errors, [inputName]: ''})
-    }
+        if (errors[inputName]) {
+            errors[inputName] = '';
+        }
+    };
     const SpotifyAuthUrl = async (token) => {
         try {
             if(!token){
@@ -100,7 +78,7 @@ const LoginForm = () => {
                         required
                         value={email}
                         style={{border: errors.email && "2px solid red"}} />
-                        <span className={`input_label_EL ${errors.email ? 'error' : ''}`}>Email</span>
+                        <span className={`input_label_L ${errors.email ? 'error' : ''}`}>Email</span>
                     </label>
 
                     {errors.email && <div className="Login_Error_E">{errors.email}</div>}
@@ -115,7 +93,7 @@ const LoginForm = () => {
                         required
                         value={password}
                         style={{border: errors.password && "2px solid red"}} />
-                        <span className={`input_label_PL ${errors.password ? 'error' : ''}`} >Password</span>
+                        <span className={`input_label_L ${errors.password ? 'error' : ''}`} >Password</span>
                     </label>
 
                     {errors.password && <div className="Login_Error_P">{errors.password}</div>}

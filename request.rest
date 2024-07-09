@@ -10,11 +10,22 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.VGVzdDFAZ21haWwuY29t.WZxP4if059FKpUF6b
 
 ###
 
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "username": "ww",
+    "email": "t@w.com",
+    "password": "t"
+}
+
+###
+
 POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "t@tt.com",
+    "email": "t@t.com",
     "password": "t"
 }
 

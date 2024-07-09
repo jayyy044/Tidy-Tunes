@@ -1,69 +1,33 @@
-import React, { useState } from 'react'
-import './RegisterPage.css'
-import { Link, useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify';
+
+import React, { useState } from 'react';
+
+import { Link, useNavigate } from 'react-router-dom';
+import './RegisterPage.css';
+import { useSignup } from '../../hooks/useSignup'
 
 const RegisterPage = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const { isLoading, SignUp, errors } = useSignup();
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [errors, setErrors] = useState({username: '', email: ''});
 
     const handleSubmit = async (event) => {
         // Preventing refresh on submit
         event.preventDefault();
-        try{
-            const newUser = { username, email, password };
-
-            const response = await fetch('/api/register', {
-                method: 'POST',
-                body: JSON.stringify(newUser),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-
-            const Response = await response.json();
-
-            if (!response.ok) {
-                switch (Response.error) {
-                    case `The email: ${email} already exists`:
-                        setErrors({ ...errors, email: `The email: ${email} already exists` });
-                        break;
-                    case `The username: ${username} already exists`:
-                        setErrors({ ...errors, username: `The username: ${username} already exists` });
-                        break;
-                    case `Both he email: ${email} and the username ${username} already exists`:
-                        setErrors({
-                            ...errors,
-                            username: `The username: ${username} already exists`,
-                            email: `The email: ${email} already exists`
-                        });
-                        break;
-                    default:
-                        break;
-                }
-                return;
-            } else {
-                setUsername('');
-                setEmail('');
-                setPassword('');
-                setErrors({});
-                toast.success(`New user created ! Welcome ${username} to Tidy Tunes`)
-                navigate('/')
-            }
-        }
-        catch(error){
-            toast.error('Error During Registration');
-            console.log(error);
+        await SignUp(username, email, password);
+        if (!errors.username && !errors.email && !errors.default) {
+            setUsername('');
+            setEmail('');
+            setPassword('');
         }
     };
 
     const handleFocus = (inputName) => {
-        setErrors({...errors, [inputName]: ''})
-
-    }
+        if (errors[inputName]) {
+            errors[inputName] = '';
+        }
+    };
 
     return (
         <>
@@ -91,7 +55,7 @@ const RegisterPage = () => {
                         <label className='input_R'>
 
                             <input 
-                            className={`input_field_UR ${username ? 'has-value' : ''}`} 
+                            className={`input_field_R ${username ? 'has-value' : ''}`} 
                             type="text" 
                             placeholder=" "
                             onChange={(event) => setUsername(event.target.value)}
@@ -100,16 +64,16 @@ const RegisterPage = () => {
                             value={username}
                             style={{border: errors.username && "2px solid red"}} />
 
-                            <span className={`input_label_UR ${errors.username ? 'error' : ''}`}>Username</span>
+                            <span className={`input_label_R ${errors.username ? 'error' : ''}`}>Username</span>
                         
                         </label>
 
-                        {errors.username && <div className="Register_Error">{errors.username}</div>}
+                        {errors.username && <div className="Register_Error_RU">{errors.username}</div>}
 
                         <label className='input_R'>
                             
                             <input 
-                            className={`input_field_ER ${email ? 'has-value' : ''}`} 
+                            className={`input_field_R ${email ? 'has-value' : ''}`} 
                             type="email" 
                             placeholder=" "
                             onChange={(event) => setEmail(event.target.value)}
@@ -118,16 +82,16 @@ const RegisterPage = () => {
                             value={email}
                             style={{border: errors.email && "2px solid red"}} />
 
-                            <span className={`input_label_ER ${errors.email ? 'error' : ''}`}>Email</span>
+                            <span className={`input_label_R ${errors.email ? 'error' : ''}`}>Email</span>
 
                         </label>
 
-                        {errors.email && <div className="Register_Error">{errors.email}</div>}
+                        {errors.email && <div className="Register_Error_RE">{errors.email}</div>}
                         
                         <label className='input_R'>
                             
                             <input 
-                            className={`input_field_PR ${password ? 'has-value' : ''}`} 
+                            className={`input_field_R ${password ? 'has-value' : ''}`} 
                             type="password" 
                             placeholder=" "
                             onChange={(event) => setPassword(event.target.value)}
@@ -136,7 +100,7 @@ const RegisterPage = () => {
                             value={password}
                             style={{border: errors.password && "2px solid red"}} />
 
-                            <span className={`input_label_PR ${errors.password ? 'error' : ''}`}>Password</span>
+                            <span className={`input_label_R ${errors.password ? 'error' : ''}`}>Password</span>
 
                         </label>
                         <button type="submit">Sign Up</button>

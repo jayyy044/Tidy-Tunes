@@ -11,7 +11,7 @@ const MainLayout = () => {
   const {state} = useAuthContext()
   return (
     <>
-        {state.token ? <NavBarIn/> : <NavBarOut/>}
+        {state.JWT_access ? <NavBarIn/> : <NavBarOut/>}
         <Outlet/>
         <ToastContainer/>
     </>
