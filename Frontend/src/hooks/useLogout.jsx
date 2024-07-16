@@ -8,13 +8,11 @@ export const useLogout = () => {
 
 
     const LogOut = () => {
-        localStorage.removeItem('userState');
+        localStorage.removeItem('User')
+        localStorage.removeItem('spotifyAuthCode');
+        localStorage.removeItem('SpotifyTokens')
         dispatch({ type: 'LOGOUT'})
-        console.log(state.JWT_access)
-        console.log("The TOken is ", state.JWT_access)
-
-
-    }
+     }
 
   return { LogOut }
 }

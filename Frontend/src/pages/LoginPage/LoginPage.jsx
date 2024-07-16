@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './LoginPage.css';
 import { useLogin } from '../../hooks/useLogin'
+import { useSpotifyAuthUrl } from '../../../../test/useSpotifyAuthUrl';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
 const LoginForm = () => {
-    const navigate = useNavigate()
+    const {SpotifyAuthUrl} = useSpotifyAuthUrl()
     const {state} = useAuthContext()
     const { isLoading, Login, errors } = useLogin();
     const [email, setEmail] = useState('');
@@ -13,7 +14,7 @@ const LoginForm = () => {
 
     useEffect(() => {
         if (state.JWT_access) {
-            console.log("State token updated:", state.JWT_access);
+            console.log("State token updated:");
             SpotifyAuthUrl(state.JWT_access);
         }
     }, [state.JWT_access]);
@@ -24,32 +25,11 @@ const LoginForm = () => {
         if (!errors.username && !errors.email && !errors.default) {
             setEmail('');
             setPassword('');
-            navigate('/error')
         }
     };
     const handleFocus = (inputName) => {
         if (errors[inputName]) {
             errors[inputName] = '';
-        }
-    };
-    const SpotifyAuthUrl = async (token) => {
-        try {
-            if(!token){
-                toast.error("Please log in")
-                throw new Error("Please Log in")
-            }
-            const response = await fetch('/api/callback/spotify',{
-                headers:{
-                    'Authorization': `Bearer ${token}`
-            }
-            });
-            if (!response.ok) {
-                throw new Error('Network Response Error');
-            }
-            const data = await response.json();
-            window.location.href = data.authUrl;
-        } catch (error) {
-            console.error('An error occurred:', error);
         }
     };
     return (
@@ -98,7 +78,7 @@ const LoginForm = () => {
 
                     {errors.password && <div className="Login_Error_P">{errors.password}</div>}
 
-                    <button type="submit">Login</button>
+                    <button type="submit" disabled={isLoading}>Login</button>
                 </form>
             </div>
         </div>

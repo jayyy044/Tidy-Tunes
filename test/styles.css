@@ -1,0 +1,109 @@
+.container {
+  display: flex;
+  margin: 50px;
+  column-gap: 20px;
+}
+
+.scrollbar {
+  height: 300px;
+  width: 50%;
+  overflow: auto;
+  padding: 0 10px;
+}
+/*       ScrollBar 1        */
+
+#scrollbar1::-webkit-scrollbar {
+  width: 10px;
+}
+
+#scrollbar1::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #e7e7e7;
+  border: 1px solid #cacaca;
+}
+
+#scrollbar1::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #d55959;
+}
+/*       ScrollBar 2        */
+
+#scrollbar2::-webkit-scrollbar {
+  width: 12px;
+}
+
+#scrollbar2::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #e7e7e7;
+  border: 1px solid #cacaca;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+}
+
+#scrollbar2::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #363636;
+}
+/*        ScrollBar 3    */
+
+#scrollbar3::-webkit-scrollbar {
+  width: 12px;
+}
+
+#scrollbar3::-webkit-scrollbar-track {
+  background-color: #e7e7e7;
+  border: 1px solid #cacaca;
+}
+
+#scrollbar3::-webkit-scrollbar-thumb {
+  background-color: #060b9a;
+}
+/*        ScrollBar 4    */
+
+#scrollbar4::-webkit-scrollbar {
+  width: 12px;
+}
+
+#scrollbar4::-webkit-scrollbar-track {
+  background-color: transparent;
+  border: 1.5px solid #7e7e7e;
+  border-radius: 8px;
+}
+
+#scrollbar4::-webkit-scrollbar-thumb {
+  background-color: #f1f1f1;
+  border: 2px solid #616161;
+  border-radius: 8px;
+}
+/*        ScrollBar 5    */
+
+#scrollbar5::-webkit-scrollbar {
+  background-color: #000;
+  width: 12px;
+  border-radius: 10px;
+}
+
+#scrollbar5::-webkit-scrollbar-track {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+#scrollbar5::-webkit-scrollbar-thumb {
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(.5, #a520ca), color-stop(1, #2681cc));
+  border-radius: 10px;
+}
+/*       ScrollBar 6        */
+
+#scrollbar6::-webkit-scrollbar {
+  width: 12px;
+}
+
+#scrollbar6::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #95a5a6;
+  border: 1px solid #cacaca;
+}
+
+#scrollbar6::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #2c3e50;
+}

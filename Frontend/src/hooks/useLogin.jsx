@@ -36,9 +36,9 @@ export const useLogin = () => {
                 return;
             } 
             else {
-                const userState = { JWT_access: data.JWT_access, Username: data.username }
-                localStorage.setItem('userState', JSON.stringify(userState));
-                dispatch({ type: 'LOGIN', payload: userState });
+                const User = { JWT_access: data.JWT_access, Username: data.username }
+                localStorage.setItem('User', JSON.stringify(User));
+                dispatch({ type: 'LOGIN', payload: User });
                 setErrors({}); 
                 setIsLoading(false);
             }
