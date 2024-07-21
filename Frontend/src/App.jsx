@@ -26,7 +26,7 @@ function App() {
     const user = JSON.parse(localStorage.getItem("User"));
     const SpotifyTokens = JSON.parse(localStorage.getItem('SpotifyTokens'))
     const playlistId = localStorage.getItem('RefinePlaylist');
-
+    // Hello from the local sotarge branch
     if (user) {
       dispatch({ type: "LOGIN", payload: user }); 
     }
