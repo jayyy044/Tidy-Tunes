@@ -20,6 +20,10 @@ const userSchema = new Schema({
     playlistId: {
         type:String,
         default: ''
+    },
+    playlistName:{
+        type: String,
+        default: ''
     }
 }, { timestamps: true });
 

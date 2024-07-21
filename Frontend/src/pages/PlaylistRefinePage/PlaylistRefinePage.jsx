@@ -11,7 +11,7 @@ const PlaylistRefinePage = () => {
   const { state, dispatch } = useAuthContext()
   const [ playlists, setPlaylist ] = useState([])
   const [ isLoading, setIsLoading ] = useState(true)
-  const [ playlistInfo, setPlaylistInfo ]= useState([])
+  const [playlistInfo, setPlaylistInfo] = useState(null);
   
   useEffect(() => {
     if(!state.PlaylistId){
@@ -19,28 +19,19 @@ const PlaylistRefinePage = () => {
         (filteredPlaylists) => {
           if (filteredPlaylists) {
             setPlaylist(filteredPlaylists);
+            setIsLoading(false);
+
           }
         }
       );
     }
-    else{
-      
+    else{  
+      console.log("Playlist ID exists")  
+      setPlaylistInfo({
+        name: state.PlaylistName,
+        Id: state.PlaylistId
+      });
     }
-
-    if(state.PlaylistId){
-      const selectedPlaylist = playlists.find(playlist => playlist.Id === id);
-      if (selectedPlaylist) {
-        setPlaylistInfo({
-          name: selectedPlaylist.Name,
-          Id: selectedPlaylist.Id,
-          TotalTracks: selectedPlaylist.TotalTracks
-        });
-      }
-      setPlaylist(null); // Clear the playlists state
-      getPlaylistTracks(state.Spotify_access, state.JWT_access, playlistInfo);
-
-    }
-    setIsLoading(false);
   }, []);
 
   const handlePlaylistClick = (id) => {
@@ -49,16 +40,22 @@ const PlaylistRefinePage = () => {
     const selectedPlaylist = playlists.find(playlist => playlist.Id === id);
     if (selectedPlaylist) {
       setPlaylistInfo({
-        name: selectedPlaylist.Name,
-        Id: selectedPlaylist.Id,
+        PlaylistName: selectedPlaylist.Name,
+        PlaylistId: selectedPlaylist.Id,
         TotalTracks: selectedPlaylist.TotalTracks
       });
     }
-    localStorage.setItem('RefinePlaylist', id);
-    dispatch({ type:'PLAYLIST_ID', payload: id})
-    setPlaylist(null); 
-    getPlaylistTracks(state.Spotify_access, state.JWT_access, playlistInfo); 
+ 
   };
+
+  useEffect(()=>{
+    if(playlistInfo){
+      console.log("Info", playlistInfo)
+      setPlaylist(null);
+      getPlaylistTracks(state.Spotify_access, state.JWT_access, playlistInfo, state.Email);
+      setIsLoading(false)
+    }
+  }, [playlistInfo])
 
   if (isLoading) {
     return <Loader/>

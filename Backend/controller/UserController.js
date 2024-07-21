@@ -60,7 +60,7 @@ const loginUser = async (req, res) => {
         }
         const JWT_access = jwt.sign({ email: user.email }, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '2h'});
         console.log("User Logged in and Generated Token:", JWT_access);
-        res.status(200).json({ JWT_access, email: user.email  });
+        res.status(200).json({ JWT_access, email: user.email, playlistId:user.playlistId, playlistName: user.playlistName });
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: `An Error Occured ${error}` });

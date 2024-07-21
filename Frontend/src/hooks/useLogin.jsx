@@ -36,9 +36,13 @@ export const useLogin = () => {
                 return;
             } 
             else {
-                const User = { JWT_access: data.JWT_access, Email: data.email }
-                dispatch({ type: 'LOGIN', payload: User })
+                const database = { JWT_access: data.JWT_access, Email: data.email, id: data.playlistId, name: data.playlistName}
+                const User = {JWT_access: data.JWT_access, Email: data.email}
+                const playlistStorage = {PlaylistId: data.playlistId, PlaylistName: data.playlistName}
+                console.log("USER", playlistStorage)
+                dispatch({ type: 'LOGIN', payload: database })
                 localStorage.setItem('UserState', JSON.stringify(User));
+                localStorage.setItem('PlaylistData', JSON.stringify(playlistStorage))
                 setErrors({}); 
                 setIsLoading(false);
             }

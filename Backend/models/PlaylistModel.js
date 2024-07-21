@@ -32,4 +32,4 @@ const UserPlaylistSchema = new Schema({
     }
 }, { timestamps: true });
 
-module.exports = mongoose.model('UserPlaylist', UserPlaylistSchema);
+module.exports = mongoose.model('User_Playlist', UserPlaylistSchema);

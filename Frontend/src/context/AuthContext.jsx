@@ -8,7 +8,8 @@ const UserState = {
     Spotify_access: null,
     Spotify_refresh: null,
     Email: null,
-    PlaylistId:null
+    PlaylistId:null,
+    PlaylistName:null
 
 };
 
@@ -19,6 +20,8 @@ export const AuthReducer = (state, action) => {
                 ...state,
                 JWT_access: action.payload.JWT_access,
                 Email: action.payload.Email,
+                PlaylistId:action.payload.id,
+                PlaylistName:action.payload.name
             };
         case 'SPOTIFY_ACCESS':
             return {

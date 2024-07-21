@@ -15,7 +15,7 @@ const LoginForm = () => {
     useEffect(() => {
         if (state.JWT_access) {
             console.log("State token updated:", state.JWT_access);
-            SpotifyAuthUrl(state.JWT_access);
+            //SpotifyAuthUrl(state.JWT_access);
         }
     }, [state.JWT_access]);
 

@@ -10,19 +10,12 @@ export const usePlaylistFetch = () => {
                 headers: { 'Authorization' : `Bearer ${JWT_access}`}
             })
             const data = await response.json()
-            const { information } = data
             if(!response.ok){
                 console.log("An Error occured with playlist fetching or user checking")
                 toast.error("An Error occured with playlist Authorization")
                 return
             }
-            if (information.filteredPlaylists) {
-                console.log("Playlist Authorization Successful");
-                return information.filteredPlaylists;
-            } else if (information.message) {
-                console.log("This user is already authorized");
-                return;
-            }
+            return data
         }
         catch(error){
             console.log("An error occured", error.message)

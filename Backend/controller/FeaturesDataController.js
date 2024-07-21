@@ -1,23 +1,23 @@
 const cron = require('node-cron');
-const User = require('../models/UserModel');
+const UserModel = require('../models/UserModel');
+const PlaylistModel = require('../models/PlaylistModel')
 const mongoose = require('mongoose');
 
 const getPlaylistInfo = async (req, res) => {
     const { SAT, email } = req.query;
-
     if (!SAT || !email) {
-        console.log("Either the Spotify Access token was not received: ", SAT,
-            "or the user email wasn't: ", email);
-        res.json({ error: 'There was an error receiving either the user email or Spotify access token' });
+        console.log("Something is missing from the reqeust");
+        console.log("This is SAT:", SAT)
+        console.log("This is the user Email", email)
+        res.json({ error: 'There was an error receiving one of the request parameters' });
         return;
     }
-
-    const user = await User.findOne({ email });
+    const user = await UserModel.findOne({ email });
     if (!user) {
         console.log("Error finding user");
         return res.status(404).json({ error: 'Failed to find user, invalid email' });
     }
-    if(!user.playlistsongs) {
+    else{
         try {
             const response = await fetch(process.env.API_BASE_URL + 'me', {
                 headers: { 'Authorization': `Bearer ${SAT}` }
@@ -28,7 +28,9 @@ const getPlaylistInfo = async (req, res) => {
                 console.log("Error fetching user");
                 return res.status(404).json({ error: 'Failed to fetch Spotify user' });
             }
-            
+
+            console.log("Display Name recieved")
+
             const response2 = await fetch(process.env.API_BASE_URL + 'me/playlists?limit=50&offset=0', {
                 headers: { 'Authorization': `Bearer ${SAT}` }
             });
@@ -47,60 +49,87 @@ const getPlaylistInfo = async (req, res) => {
                 Owner: playlist.owner.display_name,
                 TotalTracks: playlist.tracks.total
             }));
-            // const databasePlaylistObj = data2.items.map()
             const filteredPlaylists = PlaylistObj.filter(playlist => playlist.Owner === data.display_name);
-            const information = {
-                filteredPlaylists,
-                message: ''
+            const userPlaylist = await PlaylistModel.findOne({email})
+            if(!userPlaylist){
+                const playlistModelformat = {
+                    email,
+                    playlists: filteredPlaylists.map(playlist => ({
+                        playlistName: playlist.Name,
+                        playlistId: playlist.Id,
+                        RecentlyPlayed: [],
+                        RecentlySkipped: []
+                    }))
+                }
+                const playlistsaved = await PlaylistModel.create(playlistModelformat)
+                console.log("dfad", playlistsaved)
             }
-            return res.json({ information });
-        } catch (error) {
+            return res.json(filteredPlaylists);
+        }
+        catch (error) {
             console.log("An Error Occurred", error.message);
             return res.status(500).json({ error: 'Internal Server Error' });
         }
-    }
-    else{
-        const information = {
-            filteredPlaylists: [],
-            message: 'Playlist Already Received'
-        }
-        return res.json({ information })
-    }
-   
+    }   
 };
 
 const getPlaylistTracks = async (req, res) => {
-    const { SAT, Info } = req.query;
-    const JSONparsedInfo = JSON.parse(Info)
-    if (!SAT || !Info) {
-        console.log("Either the Spotify Access token was not received: ", SAT,
-            "or the playlist Info wasn't: ", Info);
-        res.json({ error: 'There was an error receiving either the playlist Info or Spotify access token' });
+    const { SAT, Info, email } = req.query;
+    let offset;
+    const parsedInfo = JSON.parse(Info)
+    if (!SAT || !Info || !email) {
+        console.log("Something is missing from the reqeust");
+        console.log("This is SAT:", SAT)
+        console.log('This is the Playlist Info', Info)
+        console.log("This is the user Email", email)
+        res.json({ error: 'There was an error receiving one of the request parameters' });
         return;
-    }   
-    try {
-        const playlistTracks = await Promise.all(JSONparsedInfo.map(async (playlist) => {
-            const offset = Math.max(playlist.TotalTracks - 5, 0); // Calculate offset for the last 10 tracks
-            const response = await fetch(`${process.env.API_BASE_URL}playlists/${playlist.Id}/tracks?limit=5&offset=${offset}&fields=items(track(name,artists(name),album(images(url))))`, {
-                headers: { 'Authorization': `Bearer ${SAT}` }
-            });
-            
-            if (!response.ok) {
-                console.log("Error fetching recently added tracks for playlist:", playlist.Id);
-                return { error: 'Failed to fetch recently added tracks' };
-            }
+    }
+    if(!parsedInfo.TotalTracks){
+        console.log("NO total tracks")
+      try{
+            const playlistCheck = await fetch(`${process.env.API_BASE_URL}playlists/${parsedInfo.PlaylistId}`,{
+                headers:{'Authorization' : `Bearer ${SAT}`}
+            })
+            const playlistCheckData = await playlistCheck.json()
+            console.log("DADA", playlistCheckData)
+        }  
+        catch(error){
+            console.log("error BRO", error.message)
+        }
+    }
+    else{
+        offset = Math.max(parsedInfo.TotalTracks - 5, 0)
+    }
+    const user = await UserModel.findOne({email});
+    if (!user) {
+        console.log("Error finding user");
+        return res.status(404).json({ error: 'Failed to find user, invalid email' });
+    }
+    else{
+        user.playlistId = parsedInfo.PlaylistId;
+        user.playlistName = parsedInfo.PlaylistName
+        await user.save();
+        console.log("User's Playlist Id set:", user.playlistId);
+        console.log("User's Playlist Name set:", user.playlistName);
 
-            const data = await response.json();
-            return data.items.map(item => ({
-                playlistName: playlist.name,
-                trackTitle: item.track.name,
-                artistName: item.track.artists.map(artist => artist.name).join(', '),
-                imageUrl: item.track.album.images[0].url,
-            })).reverse();
-        }));
-        console.log("Recently Added tracks recieved")
-        const validTracks = playlistTracks.flat()
-        res.json(validTracks);
+    }
+    try {
+        const response = await fetch(`${process.env.API_BASE_URL}playlists/${parsedInfo.PlaylistId}/tracks?limit=5&offset=${offset}&fields=items(track(name,album(images,url),artists(name)))`, {
+            headers: { 'Authorization': `Bearer ${SAT}` }
+        });
+        if (!response.ok) {
+            console.log("Error fetching recently added tracks for playlist:", parsedInfo.PlaylistId);
+            return { error: 'Failed to fetch recently added tracks' };
+        }
+        const data = await response.json()
+        console.log("Recently added track for playlist recieved")
+        const Info_Obj = data.items.map(item => ({
+            trackName: item.track.name,
+            artistName: item.track.artists.map(artist => artist.name).join(', '),
+            imageUrl: item.track.album.images[0]?.url
+          })).reverse();
+        return res.json(Info_Obj)
     }
     catch(error){
         console.log("An error occured while fetching recent tracks: ", error.message)
@@ -112,4 +141,3 @@ module.exports = {
     getPlaylistInfo,
     getPlaylistTracks
 };
-
