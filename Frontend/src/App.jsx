@@ -26,8 +26,7 @@ function App() {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("UserState"));
-    const playlist = localStorage.getItem('PlaylistData');
-    // Hello from the local sotarge branch
+    const playlist = JSON.parse(localStorage.getItem('PlaylistData')); 
     if (user) {
       dispatch({ type: "SET_USER_STATE", payload: user }); 
     }

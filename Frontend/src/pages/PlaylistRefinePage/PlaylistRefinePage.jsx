@@ -3,18 +3,21 @@ import './PlaylistRefinePage.css'
 import { usePlaylistFetch } from '../../hooks/usePlaylistFetch'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { usePlaylistTracks } from '../../hooks/usePlaylistTracks'
+import { usePlaylistContext } from '../../hooks/usePlaylistContext'
 import Loader from '../../components/Loader/Loader';
 
 const PlaylistRefinePage = () => {
   const { getPlaylistTracks }= usePlaylistTracks()
   const { PlaylistFetch }= usePlaylistFetch()
-  const { state, dispatch } = useAuthContext()
+  const { state } = useAuthContext()
+  const { state: playlistState} = usePlaylistContext()
   const [ playlists, setPlaylist ] = useState([])
   const [ isLoading, setIsLoading ] = useState(true)
   const [playlistInfo, setPlaylistInfo] = useState(null);
   
   useEffect(() => {
-    if(!state.PlaylistId){
+    if(!playlistState.PlaylistId){
+      console.log("THis is the playid", playlistState.PlaylistId)
       PlaylistFetch(state.JWT_access, state.Spotify_access, state.Email).then(
         (filteredPlaylists) => {
           if (filteredPlaylists) {
@@ -28,8 +31,8 @@ const PlaylistRefinePage = () => {
     else{  
       console.log("Playlist ID exists")  
       setPlaylistInfo({
-        name: state.PlaylistName,
-        Id: state.PlaylistId
+        PlaylistName: playlistState.PlaylistName,
+        PlaylistId: playlistState.PlaylistId
       });
     }
   }, []);

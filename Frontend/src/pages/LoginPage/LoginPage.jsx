@@ -17,10 +17,10 @@ const LoginForm = () => {
     useEffect(() => {
         if (state.JWT_access) {
             console.log("User was logged in:", state.JWT_access);
-            console.log('Playlist data retrieved', playlistState.PlaylistName)
+            console.log('Playlist data retrieved', playlistState.PlaylistName);
             SpotifyAuthUrl(state.JWT_access);
         }
-    }, [state.JWT_access]);
+    }, [playlistState.PlaylistName, state.JWT_access]);
 
     const FormSubmit = async (event) => {
         event.preventDefault();

@@ -17,7 +17,7 @@ export const PlaylistReducer = (state, action) => {
                 PlaylistName:action.payload.PlaylistName
             };
         case "SET_PLAYLIST_STATE":
-            return action.payload 
+            return action.payload
         case 'LOGOUT':
             return {
                 PlaylistId:null,
