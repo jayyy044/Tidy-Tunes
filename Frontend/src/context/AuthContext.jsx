@@ -26,14 +26,8 @@ export const AuthReducer = (state, action) => {
                 Spotify_access: action.payload.Spotify_access,
                 Spotify_refresh: action.payload.Spotify_refresh
             }
-        // case "SET_USER_STATE":
-        //     return{
-        //         ...state,
-        //         JWT_access: action.payload.JWT_access,
-        //         Email: action.payload.Email,
-        //         Spotify_access: action.payload.Spotify_access,
-        //         Spotify_refresh: action.payload.Spotify_refresh
-        //     }
+        case "SET_USER_STATE":
+            return action.payload
         case 'PLAYLIST_ID':
             return{
                 ...state,

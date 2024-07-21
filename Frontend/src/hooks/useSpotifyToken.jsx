@@ -17,25 +17,24 @@ export const useSpotifyToken = () => {
         console.log(`error: ${Error}`);
         toast.error("An Error occurred with your authorization");
         navigate('/error');
-        return null;
+        return ;
       }
       if (!Spotify_access || !Spotify_refresh) {
         console.log("Either Refresh or Access Tokens were not received");
         toast.error("You weren't given authorization, please try again");
         navigate('/login');
-        return null;
+        return ;
       }
   
       console.log('Spotify Access Received');
-      // let userState = JSON.parse(localStorage.getItem('UserState'));
-      // userState = {
-      //     ...userState,
-      //     Spotify_access: Spotify_access,
-      //     Spotify_refresh: Spotify_refresh
-      // };
+      let userState = JSON.parse(localStorage.getItem('UserState'));
+      userState = {
+          ...userState,
+          Spotify_access: Spotify_access,
+          Spotify_refresh: Spotify_refresh
+      };
+      localStorage.setItem('UserState', JSON.stringify(userState));
       const SpotifyTokens = { Spotify_access, Spotify_refresh }
-      localStorage.setItem('SpotifyTokens', JSON.stringify(SpotifyTokens));
-      // const SpotifyTokens = { Spotify_access, Spotify_refresh }
       dispatch({ type: "SPOTIFY_ACCESS", payload: SpotifyTokens });
       return SpotifyTokens
     }

@@ -8,9 +8,7 @@ export const useLogout = () => {
 
 
     const LogOut = () => {
-        localStorage.removeItem('User')
-        localStorage.removeItem('spotifyAuthCode');
-        localStorage.removeItem('SpotifyTokens')
+        localStorage.clear()
         dispatch({ type: 'LOGOUT'})
      }
 

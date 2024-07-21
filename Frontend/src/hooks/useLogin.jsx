@@ -36,10 +36,9 @@ export const useLogin = () => {
                 return;
             } 
             else {
-                console.log("DADD", data)
                 const User = { JWT_access: data.JWT_access, Email: data.email }
                 dispatch({ type: 'LOGIN', payload: User })
-                localStorage.setItem('User', JSON.stringify(User));
+                localStorage.setItem('UserState', JSON.stringify(User));
                 setErrors({}); 
                 setIsLoading(false);
             }

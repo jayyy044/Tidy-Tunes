@@ -23,15 +23,11 @@ function App() {
   const [isLoading, setIsLoading] = useState(true); // Loading state
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("User"));
-    const SpotifyTokens = JSON.parse(localStorage.getItem('SpotifyTokens'))
+    const user = JSON.parse(localStorage.getItem("UserState"));
     const playlistId = localStorage.getItem('RefinePlaylist');
     // Hello from the local sotarge branch
     if (user) {
-      dispatch({ type: "LOGIN", payload: user }); 
-    }
-    if(SpotifyTokens){
-      dispatch({ type: 'SPOTIFY_ACCESS', payload: SpotifyTokens})
+      dispatch({ type: "SET_USER_STATE", payload: user }); 
     }
     if(playlistId){
       dispatch({ type: 'PLAYLIST_ID', payload: playlistId})
