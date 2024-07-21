@@ -15,22 +15,24 @@ import ErrorPage from './pages/ErrorPage/ErrorPage'
 import PlaylistRefinePage from './pages/PlaylistRefinePage/PlaylistRefinePage'
 import "./app.css";
 import { useAuthContext } from './hooks/useAuthContext'
+import { usePlaylistContext } from './hooks/usePlaylistContext'
 import Loader from './components/Loader/Loader'
 
 
 function App() {
+  const { dispatch: playlistDispatch }= usePlaylistContext()
   const { state, dispatch } = useAuthContext(); // Context for authentication
   const [isLoading, setIsLoading] = useState(true); // Loading state
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("UserState"));
-    const playlistId = localStorage.getItem('RefinePlaylist');
+    const playlist = localStorage.getItem('PlaylistData');
     // Hello from the local sotarge branch
     if (user) {
       dispatch({ type: "SET_USER_STATE", payload: user }); 
     }
-    if(playlistId){
-      dispatch({ type: 'PLAYLIST_ID', payload: playlistId})
+    if(playlist){
+      playlistDispatch({ type: 'SET_PLAYLIST_STATE', payload: playlist})
     }
     setIsLoading(false); 
   }, []);

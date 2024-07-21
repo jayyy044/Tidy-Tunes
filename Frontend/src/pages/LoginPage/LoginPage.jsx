@@ -4,9 +4,11 @@ import './LoginPage.css';
 import { useLogin } from '../../hooks/useLogin'
 import { useSpotifyAuthUrl } from '../../hooks/useSpotifyAuthUrl';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { usePlaylistContext } from '../../hooks/usePlaylistContext';
 
 const LoginForm = () => {
     const {SpotifyAuthUrl} = useSpotifyAuthUrl()
+    const {state:playlistState} = usePlaylistContext()
     const {state} = useAuthContext()
     const { isLoading, Login, errors } = useLogin();
     const [email, setEmail] = useState('');
@@ -14,8 +16,9 @@ const LoginForm = () => {
 
     useEffect(() => {
         if (state.JWT_access) {
-            console.log("State token updated:", state.JWT_access);
-            //SpotifyAuthUrl(state.JWT_access);
+            console.log("User was logged in:", state.JWT_access);
+            console.log('Playlist data retrieved', playlistState.PlaylistName)
+            SpotifyAuthUrl(state.JWT_access);
         }
     }, [state.JWT_access]);
 
