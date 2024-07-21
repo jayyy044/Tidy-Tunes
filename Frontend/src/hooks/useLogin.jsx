@@ -3,7 +3,7 @@ import { useAuthContext } from './useAuthContext'
 import { toast } from 'react-toastify';
 
 export const useLogin = () => {
-    const {dispatch} = useAuthContext()
+    const {state, dispatch} = useAuthContext()
     const [isLoading, setIsLoading] = useState(null);
     const [errors, setErrors] = useState({username: '', email: '', default: ''});
 
@@ -36,9 +36,10 @@ export const useLogin = () => {
                 return;
             } 
             else {
-                const User = { JWT_access: data.JWT_access, Username: data.username }
+                console.log("DADD", data)
+                const User = { JWT_access: data.JWT_access, Email: data.email }
+                dispatch({ type: 'LOGIN', payload: User })
                 localStorage.setItem('User', JSON.stringify(User));
-                dispatch({ type: 'LOGIN', payload: User });
                 setErrors({}); 
                 setIsLoading(false);
             }

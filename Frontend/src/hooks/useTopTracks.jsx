@@ -9,14 +9,14 @@ export const useTopTracks = () => {
           'Authorization': `Bearer ${JWT_access}`
         },
       })
-      const { tracksList }= await response.json()
+      const { sortedTrackList }= await response.json()
       if(!response.ok){
         toast.error("Couldn't get tracks")
         console.log('Error fetching tracks')
         return
       }
       console.log("Top Tracks recieved")
-      return tracksList
+      return sortedTrackList
     }
     catch(error){
       console.log("An error occured", error.message)

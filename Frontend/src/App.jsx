@@ -12,8 +12,10 @@ import RegisterPage from './pages/RegisterPage/RegisterPage'
 import LoginPage from './pages/LoginPage/LoginPage'
 import SpotifyPage from './pages/SpotifyPage/SpotifyPage'
 import ErrorPage from './pages/ErrorPage/ErrorPage'
+import PlaylistRefinePage from './pages/PlaylistRefinePage/PlaylistRefinePage'
 import "./app.css";
 import { useAuthContext } from './hooks/useAuthContext'
+import Loader from './components/Loader/Loader'
 
 
 function App() {
@@ -22,23 +24,23 @@ function App() {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("User"));
-    const AuthCode = localStorage.getItem('spotifyAuthCode')
     const SpotifyTokens = JSON.parse(localStorage.getItem('SpotifyTokens'))
+    const playlistId = localStorage.getItem('RefinePlaylist');
 
     if (user) {
-      dispatch({ type: "LOGIN", payload: user }); // Log in user if found in local storage
-    }
-    if(AuthCode){
-      dispatch({ type: 'SPOTIFY_AUTH_CODE', payload: AuthCode})
+      dispatch({ type: "LOGIN", payload: user }); 
     }
     if(SpotifyTokens){
       dispatch({ type: 'SPOTIFY_ACCESS', payload: SpotifyTokens})
     }
-    setIsLoading(false); // Set loading to false
+    if(playlistId){
+      dispatch({ type: 'PLAYLIST_ID', payload: playlistId})
+    }
+    setIsLoading(false); 
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>; 
+    return <Loader/>; 
   }
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -48,6 +50,7 @@ function App() {
           <Route path = '/register' element = {<RegisterPage/>}/>
           <Route path = '/login' element = {<LoginPage/>}/>
           <Route path='/dashboard' element={state.JWT_access ? <SpotifyPage /> : <Navigate to='/login' />} />
+          <Route path= '/playlistRefine' element={state.JWT_access ? <PlaylistRefinePage/> : <Navigate to='/login'/>}/>
           <Route path='/error' element={<ErrorPage/>}/>
         </Route>
         

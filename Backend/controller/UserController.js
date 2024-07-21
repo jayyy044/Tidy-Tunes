@@ -34,7 +34,7 @@ const createNewUser = async (req, res) => {
         });
         const JWT_access = jwt.sign({ email: newUser.email }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '2h' });
         console.log("New User Created: ", newUser);
-        res.status(201).json({ JWT_access, username: newUser.username });
+        res.status(201).json({ JWT_access, email: newUser.email, username: newUser.username });
     } catch (error) {
         console.log("Failed to create new user:", error.message);
         res.status(500).json({ error: "Internal Server Error" });
@@ -60,7 +60,7 @@ const loginUser = async (req, res) => {
         }
         const JWT_access = jwt.sign({ email: user.email }, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '2h'});
         console.log("User Logged in and Generated Token:", JWT_access);
-        res.status(200).json({ JWT_access, username: user.username  });
+        res.status(200).json({ JWT_access, email: user.email  });
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: `An Error Occured ${error}` });

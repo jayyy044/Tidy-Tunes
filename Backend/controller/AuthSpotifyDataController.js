@@ -5,7 +5,7 @@ require('dotenv').config()
 const getTopTracks = async (req, res) => {
     const access_token = req.params.token
     try{
-        const response = await fetch(process.env.API_BASE_URL + 'me/top/tracks?limit=10&&offset=0',{
+        const response = await fetch(process.env.API_BASE_URL + 'me/top/tracks?limit=50&&offset=0',{
             headers:{'Authorization':`Bearer ${access_token}`}
         })
         const data = await response.json();
@@ -13,13 +13,16 @@ const getTopTracks = async (req, res) => {
             return res.status(404).json({error: 'Failed to fetch top tracks'})
         }
         console.log('Top tracks recieved')
+
         const tracksList = data.items.map(track => ({
             artistName: track.artists[0].name, 
             trackName: track.name,
-            trackImage: track.album.images[2].url
+            trackImage: track.album.images[2].url,
+            trackPop: track.popularity
         }));
-    
-        return res.json({ tracksList });
+
+        const sortedTrackList = (tracksList.sort((a,b) => b.trackPop - a.trackPop)).slice(0,10)
+        return res.json({ sortedTrackList });
     }
     catch(error){
         console.log("Error Fetching Top Tracks", error.message)

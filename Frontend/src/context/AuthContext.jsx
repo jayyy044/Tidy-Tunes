@@ -7,8 +7,9 @@ const UserState = {
     JWT_access: null,
     Spotify_access: null,
     Spotify_refresh: null,
-    Spotify_Auth_Code:null,
-    Username: null
+    Email: null,
+    PlaylistId:null
+
 };
 
 export const AuthReducer = (state, action) => {
@@ -17,7 +18,7 @@ export const AuthReducer = (state, action) => {
             return {
                 ...state,
                 JWT_access: action.payload.JWT_access,
-                Username: action.payload.Username,
+                Email: action.payload.Email,
             };
         case 'SPOTIFY_ACCESS':
             return {
@@ -25,18 +26,26 @@ export const AuthReducer = (state, action) => {
                 Spotify_access: action.payload.Spotify_access,
                 Spotify_refresh: action.payload.Spotify_refresh
             }
-        case 'SPOTIFY_AUTH_CODE':
-            return {
+        // case "SET_USER_STATE":
+        //     return{
+        //         ...state,
+        //         JWT_access: action.payload.JWT_access,
+        //         Email: action.payload.Email,
+        //         Spotify_access: action.payload.Spotify_access,
+        //         Spotify_refresh: action.payload.Spotify_refresh
+        //     }
+        case 'PLAYLIST_ID':
+            return{
                 ...state,
-                Spotify_Auth_Code: action.payload,
+                PlaylistId: action.payload
             }
         case 'LOGOUT':
             return {
                 JWT_access: null,
                 Spotify_access: null,
                 Spotify_refresh: null,
-                Spotify_Auth_Code:null,
-                Username: null
+                Email: null,
+                PlaylistId:null
             };
         default:
             return state;

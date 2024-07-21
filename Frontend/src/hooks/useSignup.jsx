@@ -45,11 +45,11 @@ export const useSignup = () => {
             }
             else {
                 setErrors({})
-                const userState = { JWT_access: data.JWT_access, Username: data.username }
-                localStorage.setItem('userState', JSON.stringify(userState));
+                const userState = { JWT_access: data.JWT_access, email: data.email }
+                localStorage.setItem('UserState', JSON.stringify(userState));
                 dispatch({ type: 'LOGIN', payload: userState });
                 setIsLoading(false)
-                toast.success(`New user created! Welcome ${username} to Tidy Tunes`);
+                toast.success(`New user created! Welcome ${data.username} to Tidy Tunes`);
             }
         }
         catch (error) {

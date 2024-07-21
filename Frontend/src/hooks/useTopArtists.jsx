@@ -16,10 +16,11 @@ export const useTopArtists = () => {
         return
       }
       console.log("Artist Data was recieved")
+      const sortedArtistInfo = ArtistInfo.sort((a, b) => b.ArtistPop - a.ArtistPop);
       const TopArtistsObj = {
-        ArtistInfo,
+        sortedArtistInfo,
         topGenresFiltered
-      }
+      } 
       return TopArtistsObj
     }
     catch(error){

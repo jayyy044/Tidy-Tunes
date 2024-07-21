@@ -10,6 +10,8 @@ const SpotifyToken = require('./routes/AuthSpotifyTokenRoutes')
 
 const SpotifyData = require('./routes/AuthSpotifyDataRoutes')
 
+const FeaturesData = require('./routes/FeaturesData')
+
 const corsOptions = {
     origin: '*',
     credentials:true,           
@@ -34,6 +36,8 @@ app.use('/',  UserRoutes)
 app.use('/Auth', SpotifyToken)
 
 app.use('/dashboard', SpotifyData)
+
+app.use('/feature', FeaturesData)
 
 mongoose.connect(process.env.MONGO_URL)
  .then(() => {

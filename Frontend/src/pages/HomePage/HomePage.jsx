@@ -29,7 +29,7 @@ const HomePage = () => {
             <h1>Our Mission</h1>
             <p>
               At Tidy Tunes, our mission is to enhance your 
-              music listening experience by helping you culivate 
+              music listening experience by helping culivate 
               your music. We gaurantee you'll always have a playlist that 
               resonates with your musical taste, ensuring every listening session is a joy.
             </p>

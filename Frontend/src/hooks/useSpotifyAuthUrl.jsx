@@ -21,7 +21,7 @@ export const useSpotifyAuthUrl = () => {
             if(!response.ok){
                 navigate('/login')
                 toast.error("Network Response Error Please Try again Later")
-                console.log('The response was not ok')
+                console.log('Unable to Fetch Auth Url')
             }
             window.location.href = data.authUrl;
         }

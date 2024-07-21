@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './LoginPage.css';
 import { useLogin } from '../../hooks/useLogin'
-import { useSpotifyAuthUrl } from '../../../../test/useSpotifyAuthUrl';
+import { useSpotifyAuthUrl } from '../../hooks/useSpotifyAuthUrl';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
 const LoginForm = () => {
@@ -14,7 +14,7 @@ const LoginForm = () => {
 
     useEffect(() => {
         if (state.JWT_access) {
-            console.log("State token updated:");
+            console.log("State token updated:", state.JWT_access);
             SpotifyAuthUrl(state.JWT_access);
         }
     }, [state.JWT_access]);

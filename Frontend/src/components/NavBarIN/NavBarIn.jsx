@@ -47,25 +47,30 @@ const NavBarIn = () => {
 
   return (
     <>
-            <nav ref= {elementRef} className='NavContainer'>
-        <Link to ='/' className='LogoImage'>
+      <nav ref= {elementRef} className='InNavContainer'>
+        <Link to ='/dashboard' className='LogoImage'>
           <img src={LogoImg} alt='Logo Image'/>
         </Link>
-        <Link to = '/' className='homeButton'>
-            <h2>
-                Tidy Tunes
-            </h2>
+        <Link to = '/dashboard' className='homeButton'>
+          <h2>
+          Tidy Tunes
+          </h2>
         </Link>
         <MediaQuery minWidth={750}>
-          <div className="user">
+          <div className="Features">
+            <NavLink to='/dashboard' >
+              <h2>
+                Dashboard
+              </h2>
+            </NavLink>
+            <NavLink to='/playlistRefine' >
+              <h2>
+                Playlist refine
+              </h2>
+            </NavLink>
             <NavLink onClick={handleClicker} >
               <h2>
                 Logout
-              </h2>
-            </NavLink>
-            <NavLink to='/register' >
-            <h2>
-                Add Links to features
               </h2>
             </NavLink>
           </div>
@@ -73,9 +78,9 @@ const NavBarIn = () => {
         <MediaQuery maxWidth={749}>
           <TfiAlignJustify className= 'icon' onClick={showDrawer}/>
           <Drawer title="Get Started" onClose={closeDrawer} open={open} className='drawer'>
-            <NavLink to= '/login' onClick={closeDrawer} >
+            <NavLink to='/playlistRefine' >
               <h2>
-                Add Links to features
+                Playlist refine
               </h2>
             </NavLink>
             <NavLink to='/register' onClick={closeDrawer} >
@@ -86,25 +91,6 @@ const NavBarIn = () => {
           </Drawer>
         </MediaQuery>
       </nav>
-      {/* <nav className='in'>
-        <Link to = '/' className='ButtonHome'>
-          <h2>
-            Tidy Tunes
-          </h2>
-        </Link>
-        <div className="features">
-          <NavLink to= '/test1'>
-            <h2>
-              Add Links to features
-            </h2>
-          </NavLink>
-          <NavLink to= '/test2'>
-            <h2>
-              Test 2
-            </h2>
-          </NavLink>
-        </div>
-      </nav> */}
     </>
   )
 }

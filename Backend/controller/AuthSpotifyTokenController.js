@@ -2,7 +2,7 @@ require('dotenv').config()
 
 
 const SpotifyAuthUrl = (req, res) => {
-    const scope = 'user-read-private user-read-email user-top-read';
+    const scope = 'user-read-private user-read-email user-top-read playlist-read-private';
     const params = new URLSearchParams({
       client_id: process.env.CLIENT_ID,
       response_type: 'code',
