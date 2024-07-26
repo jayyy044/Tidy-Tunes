@@ -12,7 +12,6 @@ export const usePlaylistTracks = () => {
         PlaylistName: playlistinfo.PlaylistName
     };
     localStorage.setItem('PlaylistData', JSON.stringify(playlistData));
-    console.log("the poop", playlistData)
     dispatch({ type:'PLAYLIST_ID', payload:playlistData})
     const parsedInfo = JSON.stringify(playlistinfo)
     try {    
@@ -26,6 +25,11 @@ export const usePlaylistTracks = () => {
       }
       const data = await response.json()
       console.log("Recently added tracks to playlist recieved")
+      if (data.message === 'Playlist deleted successfully') {
+        localStorage.removeItem('PlaylistData');
+        window.location.reload();
+        console.log("Playlist deleted successfully");
+      }
       return data
     }
     catch(error){

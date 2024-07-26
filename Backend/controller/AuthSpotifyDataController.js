@@ -1,5 +1,3 @@
-const { response } = require('express')
-
 require('dotenv').config()
 
 const getTopTracks = async (req, res) => {

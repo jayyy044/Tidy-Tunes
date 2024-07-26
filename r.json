@@ -1,0 +1,100 @@
+const getTop100 = async(req, res) => {
+    const { SAT, Id, email } = req.query
+    let offset
+    let allTracks = []
+    let uniqueTrackIds = new Set();
+    let analyses = [];
+    if (!SAT || !Id || !email) {
+        console.log("Something is missing from the reqeust");
+        console.log("This is SAT:", SAT)
+        console.log('This is the Playlist Id', Id)
+        console.log("This is the user Email", email)
+        res.status(404).json({ error: 'There was an error receiving one of the request parameters' });
+        return;
+    }
+    //We need the user playlist model to start loading data in  maybe
+    const user = await PlaylistModel.findOne({email});
+    if (!user) {
+        console.log("Error finding user");
+        return res.status(404).json({ error: 'Failed to find user, invalid email' });
+    }
+    try{
+        const SelectPlaylist = await fetch(process.env.API_BASE_URL + 'me/playlists?limit=50&offset=0', {
+            headers: { 'Authorization': `Bearer ${SAT}` }
+        });
+        const SelectPlaylistData = await SelectPlaylist.json();
+        
+        if (!SelectPlaylist.ok) {
+            console.log("Error fetching user playlists");
+            return res.status(404).json({ error: 'Failed to fetch user playlists' });
+        }
+        console.log('Users Playlists received');
+        const FindSelectPlaylist = SelectPlaylistData.items.find(playlist => playlist.id === Id);
+        if(!FindSelectPlaylist){
+            console.log("Could Not find playlist with this", Id,"Id")
+            res.status(404).json({error: 'There was an error finding the playlist'})
+        }
+        const totalTracks = FindSelectPlaylist.tracks.total;
+        if(totalTracks<50){
+            offset = 0
+        }
+        offset = Math.max(totalTracks - 50, 0)
+        const response = await fetch(`${process.env.API_BASE_URL}playlists/${Id}/tracks?limit=50&offset=${offset}&fields=items(track(name,id))`, {
+            headers: { 'Authorization': `Bearer ${SAT}` }
+        });
+
+        if (!response.ok) {
+            console.log("Error fetching recently added tracks for playlist:", Id);
+            return { error: 'Failed to fetch recently added tracks' };
+        }
+
+        const data = await response.json();
+
+        const recentlyAddedTracks = data.items
+        .filter(item => item.track && item.track.name && item.track.id)
+        .map(item => ({
+            name: item.track.name,
+            id: item.track.id,
+        }));
+
+        console.log("Recently added tracks recieved");
+        recentlyAddedTracks.forEach(track => {
+            if (!uniqueTrackIds.has(track.id)) {
+                uniqueTrackIds.add(track.id);
+                allTracks.push(track);
+            }
+        });
+        
+    }
+    catch(error){
+        console.log("An error occured while fetching recent tracks: ", error.message)
+        res.status(500).json({ error: 'An error occurred while fetching the playlist tracks' });
+    }
+    try{
+        const response = await fetch(`${process.env.API_BASE_URL}me/top/tracks?time_range=long_term&limit=50&offset=0`,{
+            headers:{'Authorization': `Bearer ${SAT}`}
+        })
+        const data = await response.json()
+        if(!response.ok){
+            console.log("There was an error fetching top 50 songs")
+            res.status(404).json({error: "There was an error fetching the 50 most popular songs"})
+        }
+        const MostPopTracks = data.items.map(track => ({
+            trackName: track.name,
+            trackId: track.id
+        }))
+        console.log("Most Popular Tracks recieved")
+        MostPopTracks.forEach(track => {
+            if (!uniqueTrackIds.has(track.id)) {
+                uniqueTrackIds.add(track.id);
+                allTracks.push(track);
+            }
+        });
+    }
+    catch(error){
+        console.log("There was an error with the 50 most popular songs request: ", error.message)
+        res.status(404).json({error: "There was an error fetch most popular tracks"})
+    }
+    const trackIds = allTracks
+        .map(track => track.id) // Extract the track IDs
+        .filter(id => id !== null && id !== undefined);

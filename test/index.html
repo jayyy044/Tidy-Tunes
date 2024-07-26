@@ -3,117 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bento Box Layout</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Tooltip Example</title>
+    <style>
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position the tooltip above the text */
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="scrollbar" id="scrollbar1">
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-                Maecenas ut bibendum augue. Nam pretium fermentum mattis. Aenean nec magna id sapien gravida suscipit. Aliquam molestie hendrerit nulla, sit amet tempor arcu rutrum in. Cras varius turpis id rhoncus vehicula. Sed interdum, orci egestas
-                mollis maximus,
-            </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-                Maecenas ut bibendum augue. Nam pretium fermentum mattis. Aenean nec magna id sapien gravida suscipit. Aliquam molestie hendrerit nulla, sit amet tempor arcu rutrum in. Cras varius turpis id rhoncus vehicula. Sed interdum, orci egestas
-                mollis maximus,
-            </div>
-
-
-        </div>
-        <div class="scrollbar" id="scrollbar2">
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-                Maecenas ut bibendum augue. Nam pretium fermentum mattis. Aenean nec magna id sapien gravida suscipit. Aliquam molestie hendrerit nulla, sit amet tempor arcu rutrum in. Cras varius turpis id rhoncus vehicula. Sed interdum, orci egestas
-                mollis maximus,
-            </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-                Maecenas ut bibendum augue. Nam pretium fermentum mattis. Aenean nec magna id sapien gravida suscipit. Aliquam molestie hendrerit nulla, sit amet tempor arcu rutrum in. Cras varius turpis id rhoncus vehicula. Sed interdum, orci egestas
-                mollis maximus,
-            </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-                Maecenas ut bibendum augue. Nam pretium fermentum mattis. Aenean nec magna id sapien gravida suscipit. Aliquam molestie hendrerit nulla, sit amet tempor arcu rutrum in. Cras varius turpis id rhoncus vehicula. Sed interdum, orci egestas
-                mollis maximus,
-            </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-                Maecenas ut bibendum augue. Nam pretium fermentum mattis. Aenean nec magna id sapien gravida suscipit. Aliquam molestie hendrerit nulla, sit amet tempor arcu rutrum in. Cras varius turpis id rhoncus vehicula. Sed interdum, orci egestas
-                mollis maximus,
-            </div>
-        </div>
-        <div class="scrollbar" id="scrollbar3">
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-                Maecenas ut bibendum augue. Nam pretium fermentum mattis. Aenean nec magna id sapien gravida suscipit. Aliquam molestie hendrerit nulla, sit amet tempor arcu rutrum in. Cras varius turpis id rhoncus vehicula. Sed interdum, orci egestas
-                mollis maximus,
-            </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-                Maecenas ut bibendum augue. Nam pretium fermentum mattis. Aenean nec magna id sapien gravida suscipit. Aliquam molestie hendrerit nulla, sit amet tempor arcu rutrum in. Cras varius turpis id rhoncus vehicula. Sed interdum, orci egestas
-                mollis maximus,
-            </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-                Maecenas ut bibendum augue. Nam pretium fermentum mattis. Aenean nec magna id sapien gravida suscipit. Aliquam molestie hendrerit nulla, sit amet tempor arcu rutrum in. Cras varius turpis id rhoncus vehicula. Sed interdum, orci egestas
-                mollis maximus,
-            </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-                Maecenas ut bibendum augue. Nam pretium fermentum mattis. Aenean nec magna id sapien gravida suscipit. Aliquam molestie hendrerit nulla, sit amet tempor arcu rutrum in. Cras varius turpis id rhoncus vehicula. Sed interdum, orci egestas
-                mollis maximus,
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="scrollbar" id="scrollbar4">
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-                Maecenas ut bibendum augue. Nam pretium fermentum mattis. Aenean nec magna id sapien gravida suscipit. Aliquam molestie hendrerit nulla, sit amet tempor arcu rutrum in. Cras varius turpis id rhoncus vehicula. Sed interdum, orci egestas
-                mollis maximus,
-            </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-                Maecenas ut bibendum augue. Nam pretium fermentum mattis. Aenean nec magna id sapien gravida suscipit. Aliquam molestie hendrerit nulla, sit amet tempor arcu rutrum in. Cras varius turpis id rhoncus vehicula. Sed interdum, orci egestas
-                mollis maximus,
-            </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-                Maecenas ut bibendum augue. Nam pretium fermentum mattis. Aenean nec magna id sapien gravida suscipit. Aliquam molestie hendrerit nulla, sit amet tempor arcu rutrum in. Cras varius turpis id rhoncus vehicula. Sed interdum, orci egestas
-                mollis maximus,
-            </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-                Maecenas ut bibendum augue. Nam pretium fermentum mattis. Aenean nec magna id sapien gravida suscipit. Aliquam molestie hendrerit nulla, sit amet tempor arcu rutrum in. Cras varius turpis id rhoncus vehicula. Sed interdum, orci egestas
-                mollis maximus,
-            </div>
-        </div>
-        <div class="scrollbar" id="scrollbar5">
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-                Maecenas ut bibendum augue. Nam pretium fermentum mattis. Aenean nec magna id sapien gravida suscipit. Aliquam molestie hendrerit nulla, sit amet tempor arcu rutrum in. Cras varius turpis id rhoncus vehicula. Sed interdum, orci egestas
-                mollis maximus,
-            </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-                Maecenas ut bibendum augue. Nam pretium fermentum mattis. Aenean nec magna id sapien gravida suscipit. Aliquam molestie hendrerit nulla, sit amet tempor arcu rutrum in. Cras varius turpis id rhoncus vehicula. Sed interdum, orci egestas
-                mollis maximus,
-            </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-                Maecenas ut bibendum augue. Nam pretium fermentum mattis. Aenean nec magna id sapien gravida suscipit. Aliquam molestie hendrerit nulla, sit amet tempor arcu rutrum in. Cras varius turpis id rhoncus vehicula. Sed interdum, orci egestas
-                mollis maximus,
-            </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-            </div>
-        </div>
-        <div class="scrollbar" id="scrollbar6">
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-                Maecenas ut bibendum augue. Nam pretium fermentum mattis. Aenean nec magna id sapien gravida suscipit. Aliquam molestie hendrerit nulla, sit amet tempor arcu rutrum in. Cras varius turpis id rhoncus vehicula. Sed interdum, orci egestas
-                mollis maximus,
-            </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-                Maecenas ut bibendum augue. Nam pretium fermentum mattis. Aenean nec magna id sapien gravida suscipit. Aliquam molestie hendrerit nulla, sit amet tempor arcu rutrum in. Cras varius turpis id rhoncus vehicula. Sed interdum, orci egestas
-                mollis maximus,
-            </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-                Maecenas ut bibendum augue. Nam pretium fermentum mattis. Aenean nec magna id sapien gravida suscipit. Aliquam molestie hendrerit nulla, sit amet tempor arcu rutrum in. Cras varius turpis id rhoncus vehicula. Sed interdum, orci egestas
-                mollis maximus,
-            </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu posuere eros. Aliquam finibus ipsum vel massa molestie semper. Praesent cursus finibus est eu feugiat. Vestibulum aliquam faucibus malesuada. Mauris rhoncus odio id blandit porta.
-                Maecenas ut bibendum augue. Nam pretium fermentum mattis. Aenean nec magna id sapien gravida suscipit. Aliquam molestie hendrerit nulla, sit amet tempor arcu rutrum in. Cras varius turpis id rhoncus vehicula. Sed interdum, orci egestas
-                mollis maximus,
-            </div>
-        </div>
-    </div>
-  
-
-      
-   
+    <p class="tooltip">Hover over this text
+        <span class="tooltiptext">Tooltip text</span>
+    </p>
 </body>
 </html>
