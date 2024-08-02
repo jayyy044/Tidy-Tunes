@@ -11,72 +11,77 @@ const getPlaylistInfo = async (req, res) => {
         res.json({ error: 'There was an error receiving one of the request parameters' });
         return;
     }
-    const user = await UserModel.findOne({ email });
-    if (!user) {
+
+    const user = await UserModel.findOne({ email })
+    if(!user){
         console.log("Error finding user");
         return res.status(404).json({ error: 'Failed to find user, invalid email' });
     }
-    else{
-        try {
-            const response = await fetch(process.env.API_BASE_URL + 'me', {
-                headers: { 'Authorization': `Bearer ${SAT}` }
-            });
-            const data = await response.json();
-            
-            if (!response.ok) {
-                console.log("Error fetching user");
-                return res.status(404).json({ error: 'Failed to fetch Spotify user' });
-            }
-
-            console.log("Display Name recieved")
-
-            const response2 = await fetch(process.env.API_BASE_URL + 'me/playlists?limit=50&offset=0', {
-                headers: { 'Authorization': `Bearer ${SAT}` }
-            });
-            const data2 = await response2.json();
-            
-            if (!response2.ok) {
-                console.log("Error fetching user playlists");
-                return res.status(404).json({ error: 'Failed to fetch user playlists' });
-            }
-            console.log('Users Playlists received');
-            const PlaylistObj = data2.items.map(playlist => ({
-                Id:playlist.id,
-                Image: playlist.images[0].url,
-                Name: playlist.name,
-                Owner: playlist.owner.display_name,
-                TotalTracks: playlist.tracks.total
-            }));
-            const filteredPlaylists = PlaylistObj.filter(playlist => playlist.Owner === data.display_name);
-            const userPlaylist = await PlaylistModel.findOne({email})
-            const playlistModelformat = {
-                    email,
-                    playlists: filteredPlaylists.map(playlist => ({
-                        playlistName: playlist.Name,
-                        playlistId: playlist.Id,
-                        RecentlyPlayed: [],
-                        RecentlySkipped: []
-                    }))
-                }
-            if(!userPlaylist){
-                const playlistsaved = await PlaylistModel.create(playlistModelformat)
-                console.log("New playlist information saved", playlistsaved)
-            }
-            else{
-                const filter = { email: email };  // Assuming email is the unique identifier
-                const update = { $set: playlistModelformat };
-                const options = { upsert: true, new: true };
-
-                const playlistsaved = await PlaylistModel.findOneAndUpdate(filter, update, options);
-                console.log("Updated Playlist: ", playlistsaved);
-            }
-            return res.json(filteredPlaylists);
+    try {
+        const response = await fetch(process.env.API_BASE_URL + 'me', {
+            headers: { 'Authorization': `Bearer ${SAT}` }
+        });
+        const data = await response.json();
+        
+        if (!response.ok) {
+            console.log("Error fetching user");
+            return res.status(404).json({ error: 'Failed to fetch Spotify user' });
         }
-        catch (error) {
-            console.log("An Error Occurred", error.message);
-            return res.status(500).json({ error: 'Internal Server Error' });
+
+        console.log("Display Name recieved")
+
+        const response2 = await fetch(process.env.API_BASE_URL + 'me/playlists?limit=50&offset=0', {
+            headers: { 'Authorization': `Bearer ${SAT}` }
+        });
+        const data2 = await response2.json();
+        
+        if (!response2.ok) {
+            console.log("Error fetching user playlists");
+            return res.status(404).json({ error: 'Failed to fetch user playlists' });
         }
-    }   
+        console.log('Users Playlists received');
+        const PlaylistObj = data2.items.map(playlist => ({
+            Id:playlist.id,
+            Image: playlist.images[0].url,
+            Name: playlist.name,
+            Owner: playlist.owner.display_name,
+            TotalTracks: playlist.tracks.total
+        }));
+        const filteredPlaylists = PlaylistObj.filter(playlist => playlist.Owner === data.display_name);
+        const userPlaylist = await PlaylistModel.findOne({email})
+        const playlistModelformat = {
+                email,
+                playlists: filteredPlaylists.map(playlist => ({
+                    playlistName: playlist.Name,
+                    playlistId: playlist.Id,
+                }))
+            }
+        if(!userPlaylist){
+            const playlistsaved = await PlaylistModel.create(playlistModelformat)
+            console.log("New playlist information saved", playlistsaved)
+        }
+        const existingPlaylistNames = new Set(userPlaylist.playlists.map(playlist => playlist.playlistName));
+        const newPlaylists = filteredPlaylists.filter(playlist => !existingPlaylistNames.has(playlist.Name));
+        if(newPlaylists.length > 0){
+            const updatedPlaylists = [...userPlaylist.playlists, ...newPlaylists.map(playlist => ({
+                playlistName: playlist.Name,
+                playlistId: playlist.Id,
+            }))];
+
+            const filter = { email: email };
+            const update = { $set: { playlists: updatedPlaylists } };
+            const options = { new: true };
+
+            const playlistsaved = await PlaylistModel.findOneAndUpdate(filter, update, options);
+            const playlistNames = playlistsaved.playlists.map(playlist => playlist.playlistName);
+            console.log("Updated Playlist: ", playlistNames);
+        }
+        return res.json(filteredPlaylists);
+    }
+    catch (error) {
+        console.log("An Error Occurred", error.message);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
 };
 
 const getPlaylistTracks = async (req, res) => {
@@ -198,7 +203,8 @@ const getPlaylistTracks = async (req, res) => {
         }));
         };
         const updatedTracks = await AddArtistImage(recentTracks);
-        console.log("THe data", updatedTracks)
+        const recentlyAddedTrackNames = updatedTracks.map(track => track.trackName)
+        console.log("Recently Added Tracks", recentlyAddedTrackNames)
         // AddArtistImage(recentTracks).then(data => console.log("Updated Tracks" ,data));
 
 
@@ -223,7 +229,65 @@ const getPlaylistTracks = async (req, res) => {
     }
 }
 
+const getRecentlyPlayed = async (req, res) => {
+    const { SAT } = req.query;
+    if (!SAT) {
+        console.log("Something is missing from the reqeust");
+        console.log("This is SAT:", SAT)
+        res.status(404).json({ error: 'There was an error receiving one of the request parameters' });
+        return;
+    }
+    const now = new Date();
+    const currentTime = now.getTime();
+    console.log("TIME", currentTime)
+    try {     
+        const response = await fetch(`https://api.spotify.com/v1/me/player/recently-played?limit=5&before=${currentTime}`, {
+            headers: {'Authorization': `Bearer ${SAT}`}
+        });
+        const data = await response.json()
+        if(!response.ok){
+            console.log("There was an error in recieving the recently played tracks")
+            res.status(404).json({error: "Error fetching recently played tracks"})
+        }
+        const tracks = data.items.map(item => ({
+            track: item.track.name,
+            artist: item.track.artists.map(artist => artist.name).join(', '),
+            trackImg: item.track.album.images[0].url,
+            played_at: item.played_at
+        }));
+        const newNow = new Date()
+        const current = newNow.getTime();
+        tracks.forEach(track => {
+            const playedAt = new Date(track.played_at).getTime();
+            const differenceInMilliseconds = current - playedAt;
+            const differenceInMinutes = Math.floor(differenceInMilliseconds / 60000);
+      
+            let timeAgo;
+            if (differenceInMinutes < 1) {
+              timeAgo = "just now";
+            } else if (differenceInMinutes < 30) {
+              timeAgo = `${differenceInMinutes} minute${differenceInMinutes > 1 ? 's' : ''} ago`;
+            } else if (differenceInMinutes < 60) {
+              timeAgo = "30 minutes ago";
+            } else if (differenceInMinutes < 120) {
+              timeAgo = "1 hour ago";
+            } else {
+              timeAgo = "over an hour ago";
+            }
+      
+            track.time_ago = timeAgo; 
+          });
+        console.log("We got recently played tracks")
+        res.status(200).json(tracks)
+    }
+    catch(error){
+        console.log("Error occured when trying to fetch recently played:", error.message)
+        res.status(404).json({error: "There was an error when trying to fetch recently played tracks"})
+    }
+}
+
 module.exports = {
     getPlaylistInfo,
-    getPlaylistTracks
+    getPlaylistTracks,
+    getRecentlyPlayed
 };

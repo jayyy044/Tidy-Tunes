@@ -11,13 +11,13 @@ const playlistSchema = new Schema({
         type:String,
         required: true
     },
-    RecentlyPlayed: {
-        type: [String],
+    playlistData: {
+        type: Array,
         default: []
     },
-    RecentlySkipped: {
-        type: [String],
-        default: []
+    totalTracks: {
+        type: Number,
+        default: 0
     }
 }, { _id: false });
 

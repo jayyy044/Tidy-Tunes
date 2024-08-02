@@ -4,7 +4,8 @@ const AuthenticateToken = require('../middleware/AuthenticateToken');
 
 const {
     getPlaylistInfo,
-    getPlaylistTracks
+    getPlaylistTracks,
+    getRecentlyPlayed
 } = require('../controller/PlaylistRecentsController')
 
 const {
@@ -15,5 +16,6 @@ router.use(AuthenticateToken);
 router.get('/playlist', getPlaylistInfo)
 router.get('/playlistTracks', getPlaylistTracks)
 router.get('/Top100', getTop100)
+router.get('/RecentlyPlayed', getRecentlyPlayed)
 
 module.exports = router;

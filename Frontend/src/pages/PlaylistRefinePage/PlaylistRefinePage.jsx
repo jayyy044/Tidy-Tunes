@@ -8,20 +8,29 @@ import Loader from '../../components/Loader/Loader';
 import { Carousel } from 'antd';
 import { MdOutlineRefresh } from "react-icons/md";
 import { useSongAnalysis } from '../../hooks/useSongAnalysis'
-
+import { useRecentlyPlayed } from '../../hooks/useRecentlyPlayed'
 
 
 const PlaylistRefinePage = () => {
   const { RunSongAnalysis } = useSongAnalysis()
   const { getPlaylistTracks }= usePlaylistTracks()
   const { PlaylistFetch }= usePlaylistFetch()
+  const {fetchRecentlyPlayed} = useRecentlyPlayed()
   const { state } = useAuthContext()
   const { state: playlistState} = usePlaylistContext()
   const [ playlists, setPlaylist ] = useState([])
   const [ isLoading, setIsLoading ] = useState(true)
   const [playlistInfo, setPlaylistInfo] = useState(null);
   const [recentlyadded, setRecentlyAdded ] = useState(null)
-  
+  const [recentlyplayed, setRecentlyPlayed] = useState(null)
+  const contentStyle = {
+    margin: 0,
+    height: '160px',
+    color: '#fff',
+    lineHeight: '160px',
+    textAlign: 'center',
+    background: '#364d79',
+  };
   useEffect(() => {
     PlaylistFetch(state.JWT_access, state.Spotify_access, state.Email).then(
       (filteredPlaylists) => {
@@ -59,6 +68,11 @@ const PlaylistRefinePage = () => {
     if(playlistInfo){
       console.log("Playlist information set: ", playlistInfo)
       setPlaylist(null);
+      fetchRecentlyPlayed(state.Spotify_access, state.JWT_access).then(
+        (data) => {setRecentlyPlayed(data)
+          console.log("GOOOOD", recentlyplayed)
+        }
+      )
       getPlaylistTracks(state.Spotify_access, state.JWT_access, playlistInfo, state.Email).then(
         (data) => {
             const recentlyAddedObject = {
@@ -161,7 +175,23 @@ const PlaylistRefinePage = () => {
             Run analysis
           </a>
         </div>
-        <div className="refine-3"> hello 3</div>
+        <div className="refine-3"> 
+          <div className="RecentlyPlayedTitle">
+            <p>Recently Played</p>
+          </div>
+          <Carousel arrows dotPosition="right" infinite className='RecentlyPlayCarousel'>
+          {recentlyplayed.map((recentTrack, index) => (
+            <div key = {index} className="RecentlyPlayedTrackCont" >
+              <img src={recentTrack.trackImg} alt = {`${recentTrack.track}`}/>
+              <div className="RecentTracksText">
+                <p style={{fontSize: '2.5rem'}}>{recentTrack.track}</p>
+                <p style={{color: 'var(--AccentColor)'}}>{recentTrack.artist}</p>
+                <p style={{lineHeight: '1.5rem'}}>{recentTrack.time_ago}</p>
+              </div>
+            </div>
+            ))}
+          </Carousel>
+        </div>
       </div>
       
     }

@@ -286,15 +286,6 @@
 
 
 
-  
-
-
-
-
-
-
-
-
 .refine-2 { 
     grid-area: refine-2;
     background: linear-gradient(to top,#1f2130, #11162a,#14182e);
@@ -315,7 +306,36 @@
     border: 1px solid rgba(255, 255, 255, 0.20);
     box-shadow: 3px 1px 17px 3px rgba(255,255,255,0.5);
 
-
-
-
 }
+.RecentlyPlayedTitle{
+    font-size: 2.5rem;
+    padding: 25px 0px 0px 30px;
+    color: var(--AccentColor);
+}
+
+.RecentlyPlayCarousel{
+    margin-top: 2vh;
+    height: 32vh;
+}
+
+
+.RecentlyPlayedTrackCont img{
+    width: 245px;
+    border-radius: 25px;
+    margin-right: 4vw;
+}
+
+.RecentlyPlayedTrackCont{
+    display: flex !important;
+    align-items: center;
+    padding-left: 35px;
+    height: 29vh;
+}
+
+.RecentTracksText{
+    margin-bottom: auto;
+    margin-top: 4vh;
+    color: white;
+    line-height: 3rem;
+}
+
