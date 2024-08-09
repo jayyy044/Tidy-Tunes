@@ -84,15 +84,6 @@ const PlaylistRefinePage = () => {
       }
     )
     const playlistTracksdata = await getPlaylistTracks(state.Spotify_access, state.JWT_access, Info, state.Email)
-    console.log(playlistTracksdata)
-    console.log("he;;o")
-    // const recentlyAddedObject = {
-    //   username: playlistTracksdata.username,
-    //   playlistName: playlistTracksdata.playlistname,
-    //   playlistImage: playlistTracksdata.playlistImage,
-    //   TotalTracks: playlistTracksdata.totalTracks,
-    //   recentlyAddedTracks: playlistTracksdata.recentTracks,
-    // };
     setRecentlyAdded(playlistTracksdata);
     }
     finally{
@@ -170,7 +161,11 @@ const PlaylistRefinePage = () => {
                 <p className='TT'>{`Total Tracks: ${recentlyadded.totalTracks}`}</p>
               </div>
             </div>
-            <Tooltip className='refreshTracks' color='rgba(255, 255, 255, 0.15)' placement='bottom' title ={<p style={{color: 'var(--AccentColor)'}}>Refresh Tracks</p>}>
+            <Tooltip className='refreshTracks' 
+            color='rgba(255, 255, 255, 0.15)' placement='bottom' 
+            title ={<p style={{color: 'var(--AccentColor)'}}>Refresh Tracks</p>}
+            onClick={() => window.location.reload()}>
+              
               <MdOutlineRefresh className="RefreshIcon" />
             </Tooltip>
           </div>

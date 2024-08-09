@@ -297,7 +297,11 @@ const getsonganalysis = async(req, res) => {
         console.log("Refining Tracks recieved", RefiningTrackCanidates )
         const SimilarityData = await SimilarityFetch(updatedTracks)
         if(SimilarityData){
-            console.log(SimilarityData)
+            const similaritytracknames = SimilarityData.map(track => ({
+                name: track.trackname,
+                decision: track.decision
+            }))
+            console.log("Similarity Analysis:", similaritytracknames)
             console.log("Similarity Analysis on tracks completed")
 
         }

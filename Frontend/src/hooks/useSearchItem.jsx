@@ -11,8 +11,8 @@ export const useSearchItem = () => {
             if(!response.ok){
                 console.log("There was an error when trying to look up item")
             }
-            console.log(data)
-            console.log("GOT THE DATa")
+            console.log("Retrieved Search Data")
+            return data
         }
         catch(error){
             console.log("An error occured when trying to search item: ", error.message)

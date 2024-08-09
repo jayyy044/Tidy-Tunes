@@ -15,7 +15,10 @@ const {
 
 const {
     searchitem,
+    TrackAnalyzer,
+    AlbumAnalyzer,
 } = require('../controller/SearchDataController')
+
 
 router.use(AuthenticateToken);
 router.get('/playlist', getPlaylistInfo)
@@ -24,4 +27,6 @@ router.get('/RecentlyPlayed', getRecentlyPlayed)
 router.get('/songanalysis', getsonganalysis)
 router.get('/delete', deleteTrack)
 router.get('/searchitem', searchitem )
+router.get('/analyzetrack', TrackAnalyzer )
+router.get('/analyzealbum', AlbumAnalyzer )
 module.exports = router;
