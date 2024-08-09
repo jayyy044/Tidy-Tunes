@@ -17,6 +17,7 @@ import "./app.css";
 import { useAuthContext } from './hooks/useAuthContext'
 import { usePlaylistContext } from './hooks/usePlaylistContext'
 import Loader from './components/Loader/Loader'
+import AlbumRefinePage from './pages/AlbumRefinePage/AlbumRefinePage'
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
           <Route path = '/login' element = {<LoginPage/>}/>
           <Route path='/dashboard' element={state.JWT_access ? <SpotifyPage /> : <Navigate to='/login' />} />
           <Route path= '/playlistRefine' element={state.JWT_access ? <PlaylistRefinePage/> : <Navigate to='/login'/>}/>
+          <Route path = '/albumRefine' element={state.JWT_access ? <AlbumRefinePage/> : <Navigate to= '/login'/>}/>
           <Route path='/error' element={<ErrorPage/>}/>
         </Route>
         

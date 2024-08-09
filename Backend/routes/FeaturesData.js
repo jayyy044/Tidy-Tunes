@@ -9,13 +9,19 @@ const {
 } = require('../controller/PlaylistRecentsController')
 
 const {
-    getTop100
-} = require('../controller/SongAnalysisController')
+    getsonganalysis,
+    deleteTrack
+} = require('../controller/SongComparisonController')
+
+const {
+    searchitem,
+} = require('../controller/SearchDataController')
 
 router.use(AuthenticateToken);
 router.get('/playlist', getPlaylistInfo)
 router.get('/playlistTracks', getPlaylistTracks)
-router.get('/Top100', getTop100)
 router.get('/RecentlyPlayed', getRecentlyPlayed)
-
+router.get('/songanalysis', getsonganalysis)
+router.get('/delete', deleteTrack)
+router.get('/searchitem', searchitem )
 module.exports = router;

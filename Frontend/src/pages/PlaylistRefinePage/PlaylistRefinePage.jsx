@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import './PlaylistRefinePage.css'
 import { usePlaylistFetch } from '../../hooks/usePlaylistFetch'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { usePlaylistTracks } from '../../hooks/usePlaylistTracks'
 import { usePlaylistContext } from '../../hooks/usePlaylistContext'
 import Loader from '../../components/Loader/Loader';
-import { Carousel } from 'antd';
-import { MdOutlineRefresh } from "react-icons/md";
 import { useSongAnalysis } from '../../hooks/useSongAnalysis'
 import { useRecentlyPlayed } from '../../hooks/useRecentlyPlayed'
+import { useDeleteTrack } from '../../hooks/useDeleteTrack'
+import { Carousel, Modal, Tooltip } from 'antd';
+import { FiAlertTriangle } from "react-icons/fi";
+import { MdOutlineRefresh } from "react-icons/md";
+import { GrCircleQuestion } from "react-icons/gr";
+import { toast } from 'react-toastify'
 
 
 const PlaylistRefinePage = () => {
@@ -16,31 +20,31 @@ const PlaylistRefinePage = () => {
   const { getPlaylistTracks }= usePlaylistTracks()
   const { PlaylistFetch }= usePlaylistFetch()
   const {fetchRecentlyPlayed} = useRecentlyPlayed()
+  const { DeleteTrack } = useDeleteTrack()
+  const requestsent = useRef(false)
   const { state } = useAuthContext()
   const { state: playlistState} = usePlaylistContext()
   const [ playlists, setPlaylist ] = useState([])
   const [ isLoading, setIsLoading ] = useState(true)
-  const [playlistInfo, setPlaylistInfo] = useState(null);
+  // const [playlistInfo, setPlaylistInfo] = useState(null);
   const [recentlyadded, setRecentlyAdded ] = useState(null)
   const [recentlyplayed, setRecentlyPlayed] = useState(null)
-  const contentStyle = {
-    margin: 0,
-    height: '160px',
-    color: '#fff',
-    lineHeight: '160px',
-    textAlign: 'center',
-    background: '#364d79',
-  };
+  const [analyzedsongs, setAnalzedSongs] = useState(null)
+  const [visible, setVisible] = useState(false);
+  const [selectedTrack, setSelectedTrack] = useState(null);
+
+
   useEffect(() => {
     PlaylistFetch(state.JWT_access, state.Spotify_access, state.Email).then(
       (filteredPlaylists) => {
         if (filteredPlaylists) {
           if (playlistState.PlaylistId) {
             console.log("Playlist ID exists");
-            setPlaylistInfo({
+            const playlistInfo = {
               PlaylistName: playlistState.PlaylistName,
               PlaylistId: playlistState.PlaylistId,
-            });
+            }
+            fetchalldata(playlistInfo)
           } else {
             setPlaylist(filteredPlaylists);
             setIsLoading(false);
@@ -53,50 +57,78 @@ const PlaylistRefinePage = () => {
   const handlePlaylistClick = (id) => {
     console.log("This is the clicked playlist", id)
     setIsLoading(true)
+    setPlaylist(null);
     const selectedPlaylist = playlists.find(playlist => playlist.Id === id);
     if (selectedPlaylist) {
-      setPlaylistInfo({
+      const playlistInfo = {
         PlaylistName: selectedPlaylist.Name,
         PlaylistId: selectedPlaylist.Id,
         TotalTracks: selectedPlaylist.TotalTracks
-      });
+      }
+      fetchalldata(playlistInfo)
     }
  
   };
 
-  useEffect(()=>{
-    if(playlistInfo){
-      console.log("Playlist information set: ", playlistInfo)
-      setPlaylist(null);
-      fetchRecentlyPlayed(state.Spotify_access, state.JWT_access).then(
-        (data) => {setRecentlyPlayed(data)
-          console.log("GOOOOD", recentlyplayed)
-        }
-      )
-      getPlaylistTracks(state.Spotify_access, state.JWT_access, playlistInfo, state.Email).then(
-        (data) => {
-            const recentlyAddedObject = {
-              username: data.username,
-              playlistName: playlistState.PlaylistName,
-              playlistImage: data.playlistImage,
-              TotalTracks: data.totalTracks,
-              recentlyAddedTracks: data.recentTracks,
-            };
-            setRecentlyAdded(recentlyAddedObject);
-            setIsLoading(false)
-          }
-      );
+  const fetchalldata = async (Info) =>{
+    try {   
+    setPlaylist(null);
+    const songanalysisdata = await RunSongAnalysis(state.Spotify_access, 
+      state.JWT_access, 
+      Info.PlaylistId,
+      state.Email)
+    setAnalzedSongs(songanalysisdata)
+    fetchRecentlyPlayed(state.Spotify_access, state.JWT_access).then(
+      (data) => {
+        setRecentlyPlayed(data)
+      }
+    )
+    const playlistTracksdata = await getPlaylistTracks(state.Spotify_access, state.JWT_access, Info, state.Email)
+    console.log(playlistTracksdata)
+    console.log("he;;o")
+    // const recentlyAddedObject = {
+    //   username: playlistTracksdata.username,
+    //   playlistName: playlistTracksdata.playlistname,
+    //   playlistImage: playlistTracksdata.playlistImage,
+    //   TotalTracks: playlistTracksdata.totalTracks,
+    //   recentlyAddedTracks: playlistTracksdata.recentTracks,
+    // };
+    setRecentlyAdded(playlistTracksdata);
     }
-  }, [playlistInfo])
+    finally{
+      setIsLoading(false)
+    }
+  }
 
-  const SongAnalyzer = async (event) => {
-    event.preventDefault();
-    RunSongAnalysis(state.Spotify_access, 
+
+  const showModal = (track) => {
+    setSelectedTrack(track);
+    setVisible(true);
+  };
+
+  const handleOk = async (event) => {
+    event.preventDefault()
+    setVisible(false);
+    if (selectedTrack) {
+      console.log(`Deleting track: ${selectedTrack.trackname}`);
+      DeleteTrack(state.Spotify_access, 
       state.JWT_access, 
       playlistState.PlaylistId,
-      state.Email)
-  }
- 
+      selectedTrack)
+    }
+   };
+  
+  useEffect(() =>{
+    const DeletedTrack = localStorage.getItem('Deletion-Track')
+    if (DeletedTrack) {
+      toast.success(`${DeletedTrack} deleted successfully!`);
+      localStorage.removeItem('trackDeleted');
+    }
+  }, [])
+
+  const handleCancel = () => {
+    setVisible(false);
+  };
 
   if (isLoading) {
     return <Loader/>
@@ -132,48 +164,105 @@ const PlaylistRefinePage = () => {
             <img src={recentlyadded.playlistImage}/>
             <div className="PlaylistText">
               <p>Playlist</p>
-              <h2>{recentlyadded.playlistName}</h2>
+              <h2>{recentlyadded.playlistname}</h2>
               <div className="UserText">
                 <p>{`User: ${recentlyadded.username}  | `}</p>
-                <p className='TT'>{`Total Tracks: ${recentlyadded.TotalTracks}`}</p>
+                <p className='TT'>{`Total Tracks: ${recentlyadded.totalTracks}`}</p>
               </div>
             </div>
-            <div className="tooltip">
+            <Tooltip className='refreshTracks' color='rgba(255, 255, 255, 0.15)' placement='bottom' title ={<p style={{color: 'var(--AccentColor)'}}>Refresh Tracks</p>}>
               <MdOutlineRefresh className="RefreshIcon" />
-              <span className="tooltiptext">Refresh Recents</span>
-            </div>
+            </Tooltip>
           </div>
           <div className="RefineTitle2">
-            Recently Added Tracks
+            Refine Your Playlist
           </div>
           <Carousel arrows infinite className='RefineCarousel'>
-            {recentlyadded.recentlyAddedTracks.map((track, index) => (
-              <div key={index} className="RecentTracksCont">
-                <div className="Track">
-                  <img src ={track.trackImage} alt={`${track.trackName}'s Image`}/>
-                  <p style={{fontSize: '2rem', marginTop: '1vh'}}>{`${track.trackName}`}</p>
-                  <p>{`${track.artistName}`}</p>
+          {analyzedsongs.map((track, index) => (
+              <div key={index} className="RefiningTracksCont">
+                <div className="Refine-Track">
+                  <img src ={track.trackimg} alt={`${track.trackname}'s Image`}/>
+                  <p style={{fontSize: '1.5rem', marginTop: '1vh',
+                    maxwidth: "100%",
+                    wordWrap: 'break-word',
+                    overflowWrap: 'break-word',
+                    color: 'var(--AccentColor)' 
+                  }}>{`${track.trackname}`}</p>
+                  <p>{`${track.artistname}`}</p>
                 </div>
-                <div className="Artist">
-                  <img src={track.artistImage} alt={`${track.artistName}'s Name`}/>
-                  <div className="artistdescription">
-                    <p style={{ fontSize: '3rem', 
-                                borderBottom: '1px solid darkgrey',
-                                width: 'fit-content',
-                                color: 'var(--AccentColor)'
-                              }}>{`${track.mainArtist}`}</p>
-                    <p>{`${track.artistFollowers} Followers`}</p>
-                    <p>{`Main Genres: ${track.artistGenres}`}</p>
+                <div className="Refine-ArtistCont">
+                  <div className="Refine-Artist">
+                    <img src={track.artistImage} alt={`${track.mainartistname}'s Name`}/>
+                    <div className="Refine-ArtistDescription">
+                      <p style={{ fontSize: '3rem', 
+                                  borderBottom: '1px solid darkgrey',
+                                  color: 'var(--AccentColor)',
+                                  maxwidth: "100%",
+                                  wordWrap: 'break-word',
+                                  overflowWrap: 'break-word' ,
+                                }}>{`${track.mainartistname}`}</p>
+                      <p>{`${track.artistFollowers} Followers`}</p>
+                      <p>{`Main Genres: ${track.artistGenres}`}</p>
+                    </div>
                   </div>
+                  <div className="similarity">
+                    <div className="similaritytext">
+                      
+                      <span style={{display: 'flex', alignItems: 'center'}}>
+                        Tidy Tunes Similarity Decision
+                        <Tooltip placement='top'  color='rgba(0, 0, 0, 0.8)' title={
+                          <p style={{color: 'var(--AccentColor)'}}
+                          >The similarity analysis is not 100% percent accurate user discretion advised</p>
+                          }>
+                          <GrCircleQuestion style={{
+                          marginInline: '0.2vw',
+                          fontSize: '20px'}} />
+                        </Tooltip>
+                        :
+                      </span>
+                      <p style={{marginLeft: '0.4vw'}}>{track.decision}</p>
+                    </div>
+                    <button className='TrackDelete' type="primary" onClick={() => showModal(track)}><p>Delete Track</p></button> 
+                    <Modal
+                      className='DeleteTrackModal'
+                      title={<span style={{color: 'var(--AccentColor)',
+                        display: 'flex',
+                        alignContent: 'center'
+                      }}><FiAlertTriangle style={{fontSize: '20px', marginRight: '0.25vw'}}/> Warning</span> }
+                      centered
+                      open={visible}
+                      onOk={handleOk}
+                      onCancel={handleCancel}
+                      okText="Confirm"
+                      cancelText="Cancel"
+                      okButtonProps={{ className: 'okButton' }}
+                      cancelButtonProps={{ className: 'cancelButton'}}
+                    >
+                      <p>Are your sure you would like to delete this song?</p>
+                    </Modal>
+                  </div>
+                  
                 </div>
               </div>
             ))}
           </Carousel>
         </div>
         <div className="refine-2">
-          <a onClick={SongAnalyzer}>
-            Run analysis
-          </a>
+          <div className="RecentlyAddedTitle">
+            <p>Recently Added </p>
+          </div>
+          <Carousel arrows infinite dotPosition="right" className='RecentlyAddedCarousel'>
+            {recentlyadded.recentTracks.map((track, index) => (
+               <div key={index} className="RecentAddedCont">
+                  <img src ={track.trackImage} alt={`${track.trackName}'s Image`}/>
+                   <div className="RecentlyAddedTrack">
+                    <p style={{fontSize: '2rem'}}>{`${track.trackName}`}</p>
+                    <p style={{color: 'var(--AccentColor)'}}>{`${track.artistName}`}</p>
+                    <p>{track.addedAt}</p>
+                  </div>
+                </div>
+              ))} 
+          </Carousel>
         </div>
         <div className="refine-3"> 
           <div className="RecentlyPlayedTitle">
@@ -184,9 +273,10 @@ const PlaylistRefinePage = () => {
             <div key = {index} className="RecentlyPlayedTrackCont" >
               <img src={recentTrack.trackImg} alt = {`${recentTrack.track}`}/>
               <div className="RecentTracksText">
-                <p style={{fontSize: '2.5rem'}}>{recentTrack.track}</p>
+                <p style={{fontSize: '2rem', 
+                  lineHeight: '2.4rem'}}>{recentTrack.track}</p>
                 <p style={{color: 'var(--AccentColor)'}}>{recentTrack.artist}</p>
-                <p style={{lineHeight: '1.5rem'}}>{recentTrack.time_ago}</p>
+                <p>{recentTrack.time_ago}</p>
               </div>
             </div>
             ))}

@@ -154,57 +154,22 @@
 .TT{
     margin-left: 0.5vw;
 }
-.tooltip .RefreshIcon{
+.refreshTracks{
+    margin: 3vh 3vw auto auto;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    transition: border-color 0.5s ease-in-out;
+}
+
+.refreshTracks:hover{
+    border-color:var(--AccentColor) ;
+}
+.RefreshIcon{
     font-size: 45px;
     color:var(--AccentColor);
 }
 
-.tooltip:hover{
-    transform: translateY(-8px); 
-    border-color:var(--AccentColor) ;
-    box-shadow: 0px 2px 10px 2px var(--AccentColor);
-}
-
-.tooltip {
-    margin-left: auto;
-    margin-right: 3vw;
-    margin-bottom: auto;
-    margin-top: 3vh;
-    padding-inline: 10px;
-    padding-top: 10px;
-    padding-bottom: 5px;
-    border-radius: 15px;
-    position: relative;
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(0px);
-    -webkit-backdrop-filter: blur(0px);
-    border: 1px solid rgba(255, 255, 255, 0.3); 
-    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out, 
-    color 0.5s ease-in-out, transform 0.5s ease-in-out; 
-}
-
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 150px;
-    background: rgba(255, 255, 255, 0.15);
-    color: var(--AccentColor);
-    text-align: center;
-    border-radius: 5px;
-    padding-inline: 5px;
-    padding-block: 8px;
-    position: absolute;
-    z-index: 1;
-    bottom: -80%; 
-    left: -70%;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-}
 
 .RefineTitle2{
     color: var(--AccentColor);
@@ -218,71 +183,129 @@
     height: 50vh;
 
 }
-.RecentTracksCont {
+.RefiningTracksCont {
     display: flex !important;
     color: white;
     width: fit-content !important;
     padding-inline: 10px;
 
 }
-.Artist{
+.Refine-Artist{
     border: 1px solid gray;
     width: 36vw;
     border-radius: 25px;
     display: flex;
-    height: 45vh;
+    height: 38vh;
+
     
 }
 
-.Artist img {
-    width: 300px;
-    height: 410px !important;
+.Refine-Artist img {
+    width: 350px;
+    height: 350px !important;
     border-radius: 25px;
-    margin-block: auto;
     padding-left: 5px;
+    padding-block: 5px;
 }
-.artistdescription{
-    border-radius: 25px;
+.Refine-ArtistDescription{
     overflow-y: auto;
     margin-right:0.5vw;
     margin-block: 1vh;
     margin-left: 1.5vw;
-
+    overflow-x: hidden;
 }
-.artistdescription::-webkit-scrollbar {
+.Refine-ArtistDescription::-webkit-scrollbar {
     width: 12px;
 }
 
-.artistdescription::-webkit-scrollbar-track {
+.Refine-ArtistDescription::-webkit-scrollbar-track {
     border-radius: 8px;
     background: transparent;
     box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
 }
 
-.artistdescription::-webkit-scrollbar-thumb {
+.Refine-ArtistDescription::-webkit-scrollbar-thumb {
     border-radius: 8px;
     background-color: #cbcbcb;
 }
-.artistdescription P{
-    font-size: 1.5rem;    
+.Refine-ArtistDescription P{
+    font-size: 1.4rem;    
     margin-top: 2vh;
-
+    word-wrap: break-word;  
+    overflow-wrap: break-word;
 }
 
-.Track{
+.Refine-Track{
     margin-right: 2vw;
-
-
+    width: 16vw;
+    height: 45vh;
+    overflow-y:auto;
+    padding-right: 10px;
+    overflow-x: hidden;
+    
 }
 
-.Track p {
+.Refine-Track::-webkit-scrollbar {
+    width: 12px;
+}
+
+.Refine-Track::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background: transparent;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+}
+
+.Refine-Track::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #cbcbcb;
+}
+.Refine-Track p {
     padding-left: 10px;
 }
-.Track img{
+.Refine-Track img{
     width: 300px !important;
     height: 300px !important;
     border-radius: 30px;
 }
+
+.similarity{
+    display: flex !important;
+    align-items: center;
+    margin-top: 2vh;
+    justify-content: space-between;
+}
+.similarity p,
+.similarity span{
+    font-size: 1.2rem;
+}
+
+
+
+.similaritytext{
+    display: flex;
+    
+}
+.TrackDelete{
+
+    background:transparent;
+    border-radius: 15px;
+    padding: 7px 15px 3px 15px;
+    border: 1px solid gray;
+    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out, 
+    color 0.5s ease-in-out, transform 0.5s ease-in-out; 
+}
+
+.TrackDelete:hover{
+    transform: translateY(-4px); 
+    border-color:var(--AccentColor) ;
+    box-shadow: 0px 2px 10px 2px var(--AccentColor);
+}
+
+.TrackDelete p{
+    font-size: 1.5rem;
+    color: var(--AccentColor);
+}
+
 
 
 
@@ -296,6 +319,44 @@
     box-shadow: 3px -1px 17px 3px rgba(255,255,255,0.5);
 
 }
+
+.RecentlyAddedCarousel{
+    height: 32vh;
+    margin-top: 2vh;
+}
+.RecentlyAddedTitle{
+    font-size: 2.5rem;
+    padding: 25px 0px 0px 30px;
+    color: var(--AccentColor);
+}
+
+.RecentAddedCont img{
+    width: 245px;
+    border-radius: 25px;
+    margin-right: 4vw;
+}
+
+.RecentAddedCont{
+    display: flex !important;
+    color: white;
+    align-items: center;
+    padding-left: 30px;
+    height: 29vh;
+
+
+}
+.RecentlyAddedTrack{
+    margin-bottom: auto;
+    margin-top: 4vh;
+    color: white;
+    line-height: 2.5rem;
+}
+.RecentlyAddedTrack p{
+    max-width: 100%;
+    word-Wrap: break-word;
+    overflow-Wrap: break-word
+}
+
 
 .refine-3 { 
     grid-area: refine-3; 
@@ -336,6 +397,27 @@
     margin-bottom: auto;
     margin-top: 4vh;
     color: white;
-    line-height: 3rem;
+    line-height: 2.5rem;
 }
 
+.RecentTracksText p{
+    max-Width: 90%;
+
+}
+
+.ant-modal-mask{
+    background-color: rgba(0, 0, 0, 0.1) !important;
+
+}
+.okButton{
+    background-color: var(--AccentColor);
+}
+
+.okButton:hover{
+   background-color:  #e5a255 !important;
+}
+
+.cancelButton:hover{
+    border-color: #e5a255 !important;
+    color: #e5a255 !important   ;
+}

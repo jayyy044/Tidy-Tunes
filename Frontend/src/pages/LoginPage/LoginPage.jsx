@@ -30,11 +30,13 @@ const LoginForm = () => {
             setPassword('');
         }
     };
+
     const handleFocus = (inputName) => {
         if (errors[inputName]) {
             errors[inputName] = '';
         }
     };
+    
     return (
         <div className="Login_Container">
              <div className="Login_WelcomeCard">

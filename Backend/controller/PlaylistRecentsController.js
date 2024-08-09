@@ -109,6 +109,7 @@ const getPlaylistTracks = async (req, res) => {
         }
         console.log('Users Playlists received');
         const PlaylistObj = CheckedData.items.map(playlist => ({
+            name:playlist.name,
             Id:playlist.id,
             TotalTracks: playlist.tracks.total,
             Image: playlist.images[0].url,
@@ -172,54 +173,40 @@ const getPlaylistTracks = async (req, res) => {
         }
         const data = await response.json()
         console.log("Recently added track for playlist recieved")
-
-
-        const recentTracks = data.items.map(item => ({
-            addedAt: item.added_at,
-            trackName: item.track.name,
-            artistName: item.track.artists.map(artist => artist.name).join(', '),
-            trackImage: item.track.album.images[0]?.url,
-            id: item.track.artists[0].id,
-            mainArtist: item.track.artists[0]?.name
-        })).reverse();
-
-
-        const AddArtistImage = async (tracks) => {
-        return Promise.all(tracks.map(async (track) => {
-            const response = await fetch(`${process.env.API_BASE_URL}artists/${track.id}`, {
-                headers: { 'Authorization': `Bearer ${SAT}` }
-            });
-            const { images, followers, genres } = await response.json();
-            if(!response.ok){
-                console.log("Error Fetching artist image")
-                return res.status(404).json({error: "Error fetching artist image"})
-            }
-            return {
-                ...track,
-                artistImage: images[0]?.url,
-                artistFollowers: followers.total,
-                artistGenres: genres
-            };
-        }));
+        const options = { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric'
         };
-        const updatedTracks = await AddArtistImage(recentTracks);
-        const recentlyAddedTrackNames = updatedTracks.map(track => track.trackName)
+
+
+        const recentTracks = data.items.map(item => {
+            const date = new Date(item.added_at);
+            const formattedDate = date.toLocaleDateString('en-US', options);
+        
+            return {
+                addedAt: formattedDate,
+                trackName: item.track.name,
+                artistName: item.track.artists.map(artist => artist.name).join(', '),
+                trackImage: item.track.album.images[0]?.url
+            };
+        }).reverse();
+   
+        const recentlyAddedTrackNames = recentTracks.map(track => track.trackName)
         console.log("Recently Added Tracks", recentlyAddedTrackNames)
-        // AddArtistImage(recentTracks).then(data => console.log("Updated Tracks" ,data));
-
-
-
         const user = await UserModel.findOne({ email })
         if(user){
             const username = user.username
             if(matchedPlaylist){
                 const Info_Obj = {
                     username: username,
+                    playlistname:matchedPlaylist.name,
                     playlistImage: matchedPlaylist.Image,
                     totalTracks:matchedPlaylist.TotalTracks,
-                    recentTracks: updatedTracks
+                    recentTracks: recentTracks
                 }
-                return res.json(Info_Obj)
+                return res.status(200).json(Info_Obj)
             }
         }
     }

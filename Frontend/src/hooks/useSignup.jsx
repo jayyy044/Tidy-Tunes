@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import { useAuthContext } from './useAuthContext'
+import { usePlaylistContext } from './usePlaylistContext'
+
 import { toast } from 'react-toastify';
 
 export const useSignup = () => {
     const {dispatch} = useAuthContext()
+    const {dispatch:playlistDispatch} = usePlaylistContext()
     const [isLoading, setIsLoading] = useState(null);
     const [errors, setErrors] = useState({username: '', email: '', default: ''});
     
@@ -45,9 +48,12 @@ export const useSignup = () => {
             }
             else {
                 setErrors({})
-                const userState = { JWT_access: data.JWT_access, email: data.email }
+                const userState = { JWT_access: data.JWT_access, Email: data.email }
+                const playlistStorage = {PlaylistId: data.playlistId, PlaylistName: data.playlistName}
                 localStorage.setItem('UserState', JSON.stringify(userState));
+                localStorage.setItem('PlaylistData', JSON.stringify(playlistStorage))
                 dispatch({ type: 'LOGIN', payload: userState });
+                playlistDispatch({ type: 'LOGIN', payload:playlistStorage})
                 setIsLoading(false)
                 toast.success(`New user created! Welcome ${data.username} to Tidy Tunes`);
             }

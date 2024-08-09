@@ -63,9 +63,14 @@ const NavBarIn = () => {
                 Dashboard
               </h2>
             </NavLink>
+            <NavLink to='/albumRefine' >
+              <h2>
+                Refine Album
+              </h2>
+            </NavLink>
             <NavLink to='/playlistRefine' >
               <h2>
-                Playlist refine
+                Refine Playlist
               </h2>
             </NavLink>
             <NavLink onClick={handleClicker} >
