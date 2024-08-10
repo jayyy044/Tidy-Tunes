@@ -21,13 +21,7 @@ const SpotifyPage = () => {
   const { SpotifyTokenSearch } = useSpotifyToken()
 
   useEffect(() => {
-    let Token;
-    if (!state.Spotify_access || !state.Spotify_refresh){
-      Token = SpotifyTokenSearch();
-    }
-    else{
-      Token = {Spotify_access:state.Spotify_access, Spotify_refresh:state.Spotify_refresh}
-    }
+    const Token = SpotifyTokenSearch();
     UserTopTracks(state.JWT_access, Token.Spotify_access).then(
       (data) => { setTracks(data); });
 

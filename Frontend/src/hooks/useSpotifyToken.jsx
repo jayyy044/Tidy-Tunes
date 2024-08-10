@@ -12,7 +12,7 @@ export const useSpotifyToken = () => {
       const Spotify_access = urlSearch.get('SAT');
       const Spotify_refresh = urlSearch.get('SRT');
       const Error = urlSearch.get('error');
-  
+
       if (Error) {
         console.log(`error: ${Error}`);
         toast.error("An Error occurred with your authorization");

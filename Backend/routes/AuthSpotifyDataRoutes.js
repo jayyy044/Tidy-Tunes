@@ -9,7 +9,7 @@ const {
 const AuthenticateToken = require('../middleware/AuthenticateToken');
 
 router.use(AuthenticateToken);
-router.get('/TopTracks/:token', getTopTracks)
+router.get('/TopTracks/', getTopTracks)
 router.get('/TopArtists/:token', getTopArtists_Genres)
 router.get('/TopAlbums', getTopAlbums)
 

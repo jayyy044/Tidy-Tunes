@@ -1,12 +1,17 @@
 require('dotenv').config()
 
 const getTopTracks = async (req, res) => {
-    const access_token = req.params.token
+    const{ SAT } = req.query
+    if(!SAT){
+        console.log("Spotify Access token missing")
+        res.status(404).json({error: "Missing a request parameter"})
+    }
     try{
-        const response = await fetch(process.env.API_BASE_URL + 'me/top/tracks?limit=50&&offset=0',{
-            headers:{'Authorization':`Bearer ${access_token}`}
+        const response = await fetch(`${process.env.API_BASE_URL}me/top/tracks?limit=50&offset=0`,{
+            headers:{'Authorization':`Bearer ${SAT}`}
         })
         const data = await response.json();
+
         if(!response.ok){
             return res.status(404).json({error: 'Failed to fetch top tracks'})
         }

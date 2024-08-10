@@ -2,12 +2,12 @@ import React from 'react'
 import { toast } from 'react-toastify'
 
 export const useTopTracks = () => {
-  const UserTopTracks = async (JWT_access, Spotify_access_Token) => {
+  const UserTopTracks = async (JWT, SAT) => {
     try{
-      const response = await fetch( `/api/dashboard/TopTracks/${Spotify_access_Token}`,{
+      const response = await fetch( `/api/dashboard/TopTracks?SAT=${SAT}`,{
         headers:{
-          'Authorization': `Bearer ${JWT_access}`
-        },
+          'Authorization': `Bearer ${JWT}`
+        }
       })
       const { sortedTrackList }= await response.json()
       if(!response.ok){
