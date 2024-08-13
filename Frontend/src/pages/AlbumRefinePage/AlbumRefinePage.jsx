@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './AlbumRefinePage.css'
 import { useSearchItem } from '../../hooks/useSearchItem'
 import { useAuthContext } from '../../hooks/useAuthContext'
+import { usePlaylistContext } from '../../hooks/usePlaylistContext'
 import Loader from '../../components/Loader/Loader';
 import { useAlbumAnalysis } from '../../hooks/useAlbumAnalysis';
 import { useTrackAnalysis } from '../../hooks/useTrackAnalysis';
@@ -9,6 +10,7 @@ import { useTrackAnalysis } from '../../hooks/useTrackAnalysis';
 const AlbumRefinePage = () => {
     const { searchitem } = useSearchItem()
     const { state } = useAuthContext()
+    const { state: PlaylistState } = usePlaylistContext()
     const { AlbumAnalysis } = useAlbumAnalysis()
     const { TrackAnalysis } = useTrackAnalysis()
     const [albums, setAlbums] = useState(null)
@@ -24,32 +26,39 @@ const AlbumRefinePage = () => {
                 (data) =>{
                     setTracks(data.TrackResults)
                     setAlbums(data.AlbumResults)
-                    console.log("BOW",data.TrackResults )
                     setIsLoading(false)
                 }
             )  
         }
     }
 
-    // const AnalyzeTrack = async (track) => {
-    //     if(track){
-    //       setIsLoading(true)
-    //       const TrackAnalysisResult = await TrackAnalysis(track, state.JWT_access, state.Spotify_access)
-    //       console.log(TrackAnalysisResult)
-    //       console.log("Track Result")
-    //       setIsLoading(false)
-    //     }
-    // }
+    const AnalyzeTrack = async (track) => {
+        if(track){
+            console.log("Track data recieved")
+            const TrackAnalysisResult = await TrackAnalysis(track, 
+                state.JWT_access, 
+                state.Spotify_access,
+                state.Email,
+                PlaylistState.PlaylistId
+                )
+            setIsLoading(false)
+        }
+    }
 
-    // const AnalyzeAlbum = async (album) => {
-    //     if(album){
-    //       setIsLoading(true)
-    //       const AlbumAnalysisResult = await AlbumAnalysis(album, state.JWT_access, state.Spotify_access)
-    //       console.log(AlbumAnalysisResult)
-    //       console.log("Album Result")
-    //       setIsLoading(false)
-    //     }
-    // }
+    const AnalyzeAlbum = async (album) => {
+        if(album){
+          setIsLoading(true)
+          const AlbumAnalysisResult = await AlbumAnalysis(
+            album, 
+            state.JWT_access, 
+            state.Spotify_access,
+            state.Email
+            )
+          console.log(AlbumAnalysisResult)
+          console.log("Album Result")
+          setIsLoading(false)
+        }
+    }
 
     if (isloading) {
         return <Loader/>
@@ -81,11 +90,12 @@ const AlbumRefinePage = () => {
                     <p>
                         Search up a track 
                     </p>
-                </div> :
+                </div> 
+                :
                 <div className="ColumnContainer">
                     <div className="Column">
                      {tracks.slice(0,4).map((item) => (
-                    <div key={item.trackid} className="resultsCont" >
+                    <div key={item.trackid} className="resultsCont" onClick={() => AnalyzeTrack(item)}>
                         <img  src={item.trackimg} alt={item.name} />
                         <div className="resultText">
                             <p>{item.name}</p>
@@ -96,7 +106,7 @@ const AlbumRefinePage = () => {
                     </div>
                     <div className="Column">
                     {tracks.slice(4,8).map((item) => (
-                    <div key={item.trackid} className="resultsCont" >
+                    <div key={item.trackid} className="resultsCont" onClick={() => AnalyzeTrack(item)}>
                         <img src={item.trackimg} alt={item.name} />
                         <div className="resultText">
                             <p>{item.name}</p>
@@ -120,7 +130,7 @@ const AlbumRefinePage = () => {
                 <div className="ColumnContainer">
                     <div className="Column">
                         {albums.slice(0, 4).map((album) => (
-                            <div key={album.albumid} className="resultsCont" >
+                            <div key={album.albumid} className="resultsCont" onClick={() => AnalyzeAlbum(album)}>
                                 <img src={album.albumimg}/>
                                 <div className="resultText">
                                     <p>{album.name}</p>
@@ -132,7 +142,7 @@ const AlbumRefinePage = () => {
                     </div>
                     <div className="Column">
                         {albums.slice(4, 8).map((album) => (
-                            <div key={album.albumid} className="resultsCont" >
+                            <div key={album.albumid} className="resultsCont" onClick={() => AnalyzeAlbum(album)} >
                                 <img src={album.albumimg}/>
                                 <div className="resultText">
                                     <p>{album.name}</p>

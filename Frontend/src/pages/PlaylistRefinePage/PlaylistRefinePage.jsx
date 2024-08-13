@@ -26,7 +26,6 @@ const PlaylistRefinePage = () => {
   const { state: playlistState} = usePlaylistContext()
   const [ playlists, setPlaylist ] = useState([])
   const [ isLoading, setIsLoading ] = useState(true)
-  // const [playlistInfo, setPlaylistInfo] = useState(null);
   const [recentlyadded, setRecentlyAdded ] = useState(null)
   const [recentlyplayed, setRecentlyPlayed] = useState(null)
   const [analyzedsongs, setAnalzedSongs] = useState(null)
@@ -44,7 +43,10 @@ const PlaylistRefinePage = () => {
               PlaylistName: playlistState.PlaylistName,
               PlaylistId: playlistState.PlaylistId,
             }
-            fetchalldata(playlistInfo)
+            if(!requestsent.current){
+              fetchalldata(playlistInfo)
+            }
+
           } else {
             setPlaylist(filteredPlaylists);
             setIsLoading(false);
@@ -73,6 +75,7 @@ const PlaylistRefinePage = () => {
   const fetchalldata = async (Info) =>{
     try {   
     setPlaylist(null);
+    requestsent.current = true
     const songanalysisdata = await RunSongAnalysis(state.Spotify_access, 
       state.JWT_access, 
       Info.PlaylistId,
