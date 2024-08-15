@@ -9,8 +9,8 @@ export const useRecentlyPlayed = () => {
             })
             const data = await response.json()
             if(!response.ok){
-                toast.error("An Error Occured while trying to fetch recently played songs")
-                console.log("An Error occuring with recent played tracks fetch")
+                toast.error("Failed to fetch recently played songs")
+                console.log("Reponse Error, failed to retrieve recent played tracks ")
                 return
             }
             console.log("Recently played tracks recieved")
@@ -18,7 +18,7 @@ export const useRecentlyPlayed = () => {
 
         }
         catch(error){
-            toast.error("An Error Occured while trying to fetch recently played songs")
+            toast.error("Failed to fetch recently played songs")
             console.log("An Error occuring with recent played tracks fetch:", error.message)
         }
 

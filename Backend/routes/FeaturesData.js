@@ -4,13 +4,15 @@ const AuthenticateToken = require('../middleware/AuthenticateToken');
 
 const {
     getPlaylistInfo,
-    getPlaylistTracks,
-    getRecentlyPlayed
+    getRecentlyAdded,
+    getRecentlyPlayed,
+    updatePlaylistdata
 } = require('../controller/PlaylistRecentsController')
 
 const {
     getsonganalysis,
-    deleteTrack
+    deleteTrack,
+    changeplaylist
 } = require('../controller/SongComparisonController')
 
 const {
@@ -22,7 +24,9 @@ const {
 
 router.use(AuthenticateToken);
 router.get('/playlist', getPlaylistInfo)
-router.get('/playlistTracks', getPlaylistTracks)
+router.post('/updateplaylist', updatePlaylistdata)
+router.post('/recentlyadded', getRecentlyAdded)
+router.get('/changeplaylist', changeplaylist)
 router.get('/RecentlyPlayed', getRecentlyPlayed)
 router.get('/songanalysis', getsonganalysis)
 router.get('/delete', deleteTrack)

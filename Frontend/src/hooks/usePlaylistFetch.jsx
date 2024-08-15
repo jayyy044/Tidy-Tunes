@@ -11,7 +11,7 @@ export const usePlaylistFetch = () => {
             })
             const data = await response.json()
             if(!response.ok){
-                console.log("An Error occured with playlist fetching or user checking")
+                console.log("Response Error, occured with playlist fetching or user checking")
                 toast.error("An Error occured with playlist Authorization")
                 return
             }

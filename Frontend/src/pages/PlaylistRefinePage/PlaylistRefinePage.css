@@ -154,7 +154,16 @@
 .TT{
     margin-left: 0.5vw;
 }
-.refreshTracks{
+
+.buttonscont{
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4vh;
+}
+.buttonsTooltip{
+    font-size: 45px;
+    color:var(--AccentColor);
     margin: 3vh 3vw auto auto;
     padding: 10px;
     border-radius: 15px;
@@ -162,12 +171,8 @@
     transition: border-color 0.5s ease-in-out;
 }
 
-.refreshTracks:hover{
+.buttonsTooltip:hover{
     border-color:var(--AccentColor) ;
-}
-.RefreshIcon{
-    font-size: 45px;
-    color:var(--AccentColor);
 }
 
 

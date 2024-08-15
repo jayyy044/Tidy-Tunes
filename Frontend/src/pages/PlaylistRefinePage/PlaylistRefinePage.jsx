@@ -1,27 +1,31 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import './PlaylistRefinePage.css'
 import { usePlaylistFetch } from '../../hooks/usePlaylistFetch'
+import { usePlaylistUpdate } from '../../hooks/usePlaylistUpdate'
 import { useAuthContext } from '../../hooks/useAuthContext'
-import { usePlaylistTracks } from '../../hooks/usePlaylistTracks'
+import { useRecentlyAdded } from '../../hooks/useRecentlyAdded'
 import { usePlaylistContext } from '../../hooks/usePlaylistContext'
 import Loader from '../../components/Loader/Loader';
 import { useSongAnalysis } from '../../hooks/useSongAnalysis'
 import { useRecentlyPlayed } from '../../hooks/useRecentlyPlayed'
 import { useDeleteTrack } from '../../hooks/useDeleteTrack'
+import { usePlaylistChange } from '../../hooks/usePlaylistChange'
 import { Carousel, Modal, Tooltip } from 'antd';
 import { FiAlertTriangle } from "react-icons/fi";
 import { MdOutlineRefresh } from "react-icons/md";
 import { GrCircleQuestion } from "react-icons/gr";
+import { PiPlaylist } from "react-icons/pi";
 import { toast } from 'react-toastify'
 
 
 const PlaylistRefinePage = () => {
-  const { RunSongAnalysis } = useSongAnalysis()
-  const { getPlaylistTracks }= usePlaylistTracks()
   const { PlaylistFetch }= usePlaylistFetch()
+  const { UpdatePlaylist } = usePlaylistUpdate()
+  const { RunSongAnalysis } = useSongAnalysis()
+  const { fetchRecentlyAdded }= useRecentlyAdded()
   const {fetchRecentlyPlayed} = useRecentlyPlayed()
   const { DeleteTrack } = useDeleteTrack()
-  const requestsent = useRef(false)
+  const { ChangePlaylist } = usePlaylistChange()
   const { state } = useAuthContext()
   const { state: playlistState} = usePlaylistContext()
   const [ playlists, setPlaylist ] = useState([])
@@ -36,22 +40,31 @@ const PlaylistRefinePage = () => {
   useEffect(() => {
     PlaylistFetch(state.JWT_access, state.Spotify_access, state.Email).then(
       (filteredPlaylists) => {
-        if (filteredPlaylists) {
-          if (playlistState.PlaylistId) {
-            console.log("Playlist ID exists");
-            const playlistInfo = {
-              PlaylistName: playlistState.PlaylistName,
-              PlaylistId: playlistState.PlaylistId,
-            }
-            if(!requestsent.current){
-              fetchalldata(playlistInfo)
-            }
-
-          } else {
+        if(playlistState.PlaylistId){
+          const playlistfind = filteredPlaylists.find(play => play.Id === playlistState.PlaylistId)
+          if(!playlistfind){
+            UpdatePlaylist(
+              state.JWT_access, 
+              state.Spotify_access, 
+              state.Email, 
+              filteredPlaylists,
+              playlistState.PlaylistId
+            )
             setPlaylist(filteredPlaylists);
             setIsLoading(false);
           }
+          console.log("Playlist exists");
+          const playlistInfo = {
+            PlaylistName: playlistfind.Name,
+            PlaylistId: playlistfind.Id,
+          }
+          fetchalldata(playlistInfo)
         }
+        else{
+          setPlaylist(filteredPlaylists);
+          setIsLoading(false);
+        }
+
       }
     );
   }, []);
@@ -65,9 +78,9 @@ const PlaylistRefinePage = () => {
       const playlistInfo = {
         PlaylistName: selectedPlaylist.Name,
         PlaylistId: selectedPlaylist.Id,
-        TotalTracks: selectedPlaylist.TotalTracks
       }
       fetchalldata(playlistInfo)
+
     }
  
   };
@@ -75,25 +88,22 @@ const PlaylistRefinePage = () => {
   const fetchalldata = async (Info) =>{
     try {   
     setPlaylist(null);
-    requestsent.current = true
-    const songanalysisdata = await RunSongAnalysis(state.Spotify_access, 
+    const playlistRecentlyAdded = await fetchRecentlyAdded(state.Spotify_access, state.JWT_access, Info, state.Email)
+    setRecentlyAdded(playlistRecentlyAdded);
+    const playlistRecentlyPlayed = await fetchRecentlyPlayed(state.Spotify_access, state.JWT_access)
+    setRecentlyPlayed(playlistRecentlyPlayed)
+    const songanalysisdata = await RunSongAnalysis(
+      state.Spotify_access, 
       state.JWT_access, 
       Info.PlaylistId,
       state.Email)
     setAnalzedSongs(songanalysisdata)
-    fetchRecentlyPlayed(state.Spotify_access, state.JWT_access).then(
-      (data) => {
-        setRecentlyPlayed(data)
-      }
-    )
-    const playlistTracksdata = await getPlaylistTracks(state.Spotify_access, state.JWT_access, Info, state.Email)
-    setRecentlyAdded(playlistTracksdata);
+
     }
     finally{
       setIsLoading(false)
     }
   }
-
 
   const showModal = (track) => {
     setSelectedTrack(track);
@@ -105,7 +115,8 @@ const PlaylistRefinePage = () => {
     setVisible(false);
     if (selectedTrack) {
       console.log(`Deleting track: ${selectedTrack.trackname}`);
-      DeleteTrack(state.Spotify_access, 
+      DeleteTrack(
+      state.Spotify_access, 
       state.JWT_access, 
       playlistState.PlaylistId,
       selectedTrack)
@@ -114,15 +125,24 @@ const PlaylistRefinePage = () => {
   
   useEffect(() =>{
     const DeletedTrack = localStorage.getItem('Deletion-Track')
+    const ChangedPlaylist = localStorage.getItem('playlist_update')
     if (DeletedTrack) {
       toast.success(`${DeletedTrack} deleted successfully!`);
-      localStorage.removeItem('trackDeleted');
+      localStorage.removeItem('Deletion-Track');
+    }
+    if(ChangePlaylist){
+      toast.success("Playlist Succesfully changed")
+      localStorage.removeItem('playlist_update')
     }
   }, [])
 
   const handleCancel = () => {
     setVisible(false);
   };
+
+  const playlistchange = async () => {
+    ChangePlaylist(state.JWT_access,state.Email)
+  }
 
   if (isLoading) {
     return <Loader/>
@@ -155,22 +175,30 @@ const PlaylistRefinePage = () => {
       <div className="PlaylistCont">
         <div className="refine-1">
           <div className="PlaylistContainer">
-            <img src={recentlyadded.playlistImage}/>
-            <div className="PlaylistText">
+            <img src={recentlyadded.playlistImage} alt = {`${recentlyadded.playlistname} Image`}/>
+            <div className="PlaylistText" >
               <p>Playlist</p>
               <h2>{recentlyadded.playlistname}</h2>
               <div className="UserText">
                 <p>{`User: ${recentlyadded.username}  | `}</p>
                 <p className='TT'>{`Total Tracks: ${recentlyadded.totalTracks}`}</p>
               </div>
+            </div >
+            <div className='buttonscont'>
+              <Tooltip className='buttonsTooltip' 
+              color='rgba(255, 255, 255, 0.15)' placement='left' 
+              title ={<p style={{color: 'var(--AccentColor)'}}>Refresh Tracks</p>}
+              onClick={() => window.location.reload()}>
+                <MdOutlineRefresh />
+              </Tooltip>
+              <Tooltip className='buttonsTooltip'
+              color='rgba(255, 255, 255, 0.15)' placement='left' 
+              title ={<p style={{color: 'var(--AccentColor)'}}>Switch Playlist</p>}
+              onClick={() => playlistchange()}>
+                <PiPlaylist  />
+              </Tooltip>
             </div>
-            <Tooltip className='refreshTracks' 
-            color='rgba(255, 255, 255, 0.15)' placement='bottom' 
-            title ={<p style={{color: 'var(--AccentColor)'}}>Refresh Tracks</p>}
-            onClick={() => window.location.reload()}>
-              
-              <MdOutlineRefresh className="RefreshIcon" />
-            </Tooltip>
+            
           </div>
           <div className="RefineTitle2">
             Refine Your Playlist
