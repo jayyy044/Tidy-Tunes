@@ -98,7 +98,6 @@ const PlaylistRefinePage = () => {
       Info.PlaylistId,
       state.Email)
     setAnalzedSongs(songanalysisdata)
-
     }
     finally{
       setIsLoading(false)
@@ -130,7 +129,7 @@ const PlaylistRefinePage = () => {
       toast.success(`${DeletedTrack} deleted successfully!`);
       localStorage.removeItem('Deletion-Track');
     }
-    if(ChangePlaylist){
+    if(ChangedPlaylist){
       toast.success("Playlist Succesfully changed")
       localStorage.removeItem('playlist_update')
     }

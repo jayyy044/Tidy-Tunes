@@ -272,17 +272,15 @@ const CheckSelectPlaylist = async (res, Id, SAT, userdocument) =>{
             headers: { 'Authorization': `Bearer ${SAT}` }
         });
         const usersplaylistdata = await usersplaylist.json();
-    
         if (!usersplaylist.ok) {
             console.log("Response Error, couldn't retrieve user's playlists");
             return res.status(404).json({ error: "Response Error, couldn't retrieve user's playlists" });
         }
         console.log('Users Playlists retrieved');
-
         const SelectPlaylist = usersplaylistdata.items.find(playlist => playlist.id === Id);
-        if(!SelectPlaylist){
-            DeleteProfileInfo(userdocument, Id)
-        }
+        // if(!SelectPlaylist){
+        //     DeleteProfileInfo(userdocument, Id)
+        // }
         return SelectPlaylist
     }
     catch(error){
@@ -334,10 +332,11 @@ const getsonganalysis = async(req, res) => {
 
     const updatedAt = new Date(playlistDocument.updatedAt);
     const now = new Date();
-    const oneMonthInMillis = 30 * 24 * 60 * 60 * 1000; // Approximation of one month in milliseconds
+    const oneMonthInMillis = 30 * 24 * 60 * 60 * 1000; 
     const timeSinceUpdate = now - updatedAt;
+    const totaltrackscondition = checkedPlaylist.tracks.total - storedPlaylist.totalTracks
 
-    if((storedPlaylist.totalTracks !== checkedPlaylist.tracks.total) || 
+    if(( totaltrackscondition > 5) || 
         (timeSinceUpdate > oneMonthInMillis) ||
         (storedPlaylist.playlistData.length === 0) ){
         const recentIds = await fetchRecentTracks(res, checkedPlaylist.tracks.total, SAT, Id)
@@ -430,7 +429,7 @@ const deleteTrack = async (req, res) => {
     }
     catch(error){
         console.log("An Error occured while trying to deleting select track", error.message)
-        res.status(404).json({error: "An error occured when trying to delete song, backend"})
+        res.status(404).json({error: "An error occured when trying to delete song"})
     }
     
 }
@@ -459,6 +458,12 @@ const changeplaylist = async (req, res) => {
 module.exports = {
     getsonganalysis,
     deleteTrack,
-    changeplaylist
+    changeplaylist,
+    CheckSelectPlaylist,
+    fetchRecentTracks,
+    fetchAudioAnalysis,
+    fetchMostPopularTracks,
+    SavePlaylistData,
+    SimilarityFetch,
 }
 

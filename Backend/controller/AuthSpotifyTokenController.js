@@ -45,12 +45,10 @@ const SpotifyTokens = async (req, res) => {
       console.log("Access to Api recieved")
       const { access_token, refresh_token, expires_in } = data;
       console.log("This is the access token", access_token)
-      //Find out how your going to store teh experis_in
       return res.redirect(`http://localhost:4000/dashboard?SAT=${access_token}&SRT=${refresh_token}`)
     } 
     else {
       console.log('Failed to get access:', data.error);
-      // return res.status(response.status).json({ error: 'Server Error' });
       return res.redirect(`http://localhost:4000/dashboard?error=ServerError`)
     }
   } 
