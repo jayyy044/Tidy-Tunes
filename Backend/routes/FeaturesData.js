@@ -20,6 +20,7 @@ const {
     searchitem,
     TrackAnalyzer,
     AlbumAnalyzer,
+    AddTrack
 } = require('../controller/SearchDataController')
 
 
@@ -32,6 +33,7 @@ router.get('/songanalysis', getsonganalysis)
 router.get('/updateplaylist', updatePlaylistdata)
 router.get('/delete', deleteTrack)
 router.get('/RecentlyPlayed', getRecentlyPlayed)
+router.post('/addtrack', AddTrack)
 router.get('/searchitem', searchitem )
 
 // router.post('/analyzetrack', TrackAnalyzer )

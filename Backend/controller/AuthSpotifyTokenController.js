@@ -51,7 +51,6 @@ const SpotifyTokens = async (req, res) => {
     } 
     else {
       console.log('Failed to get access:', data.error);
-      // return res.status(response.status).json({ error: 'Server Error' });
       return res.redirect(`http://localhost:4000/dashboard?error=ServerError`)
     }
   } 

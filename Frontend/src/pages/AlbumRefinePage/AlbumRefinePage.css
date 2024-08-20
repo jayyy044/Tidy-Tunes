@@ -90,14 +90,40 @@
     background: linear-gradient(to top,#1f2130, #11162a,#14182e);
     margin-bottom: 2vh;
     margin-left: 1vw;
+    /* position: relative; */
 }
 
 .tracksresulttite{
-    color: var(--AccentColor);
-    font-size: 2rem;
+    /* color: var(--AccentColor);
+    font-size: 2rem; */
     padding-left: 25px;
     padding-top: 20px;
+    display: flex;
+    justify-content: center; /* Centers the "Tracks Results" text */
+    position: relative;
 
+}
+.tracksresulttite p{
+    margin: 0;
+    color: var(--AccentColor);
+    font-size: 2rem;
+}
+
+.backbutton{
+    position: absolute; /* Positions the back button absolutely */
+    left: 2.5%;
+    top: 10%; 
+    font-size: 30px;
+    margin-top: 1vh;
+    border: 1px solid gray;
+    padding: 5px;
+    border-radius: 10px;
+    transition: border-color 0.5s ease-in-out, color 0.5s ease-in-out;
+
+}
+.backbutton:hover{
+    border-color:var(--AccentColor) ;
+    color: var(--AccentColor);
 }
 
 
@@ -173,7 +199,7 @@
 }
 
 .FillinText{
-    height: 85%;
+    height: 43vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -181,5 +207,233 @@
 
 .FillinText p{
     font-size: 2.5rem;
+    margin-bottom: 2vh;
 
 }
+
+.Trackanalysiscont{
+    margin-top: 1vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.Trackanalysiscont img{
+    width: 320px;
+    height: 320px;
+    border-radius: 15px;
+}
+
+.a_trackcont{
+    display: flex;
+    margin-top: 5vh;
+    padding-right: 5px;
+    padding-left: 15px;
+
+
+}
+.a_tracktextCont{
+    overflow-y: auto;
+    padding-inline: 10px;
+    padding-top: 10px;
+    margin-top: 2vh;
+    font-size: 1.3rem;
+    line-height: 1.6rem;
+}
+.a_tracktextCont::-webkit-scrollbar {
+    width: 12px;
+}
+
+.a_tracktextCont::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background: transparent;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+}
+
+.a_tracktextCont::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #cbcbcb;
+}
+.a_trackcont p{
+    font-size: 1.1rem;
+    padding-left: 5px;
+    margin-top: 0.25vh;
+    max-width: 100%;
+}
+
+.similarRating{
+    padding-left: 15px;
+    padding-top: 20px;
+    display: flex;
+    margin-top: 1vh;
+}
+
+.similarRating p,
+.similarRating span{
+    font-size: 1.4rem;
+}
+
+.similarRating p{
+    padding-left: 10px;
+}
+.addsongbutton{
+    color: white ;
+    font-size: 1.2rem;
+    background: transparent;
+    margin-left: auto;
+    margin-right: 2vw;
+    border: 1px solid gray;
+    padding: 5px;
+    padding-top: 10px;
+    border-radius: 15px;
+    transition: border-color 0.5s ease-in-out,
+    color 0.5s ease-in-out;
+    
+}
+
+.addsongbutton:hover{
+    border-color: var(--AccentColor);
+    color: var(--AccentColor);
+}
+
+.albumanalysiscont{
+    display: flex;
+}
+
+.albumanalysisinfo{
+    /* border: 2px solid beige; */
+    width: min-content;
+    padding-left: 5px;
+    margin-top: 1.5vh;
+    margin-left: 1vw;
+}
+
+.albumanalysisinfo img{
+    width: 240px;
+    height: 230px;
+    border-radius: 15px;
+    margin-bottom: 1vh;
+}
+
+.albumanalysisinfotext{
+    height: 22vh;
+    padding-left: 5px;
+    overflow-y: auto;
+}
+.albumanalysisinfotext::-webkit-scrollbar {
+    width: 10px;
+}
+
+.albumanalysisinfotext::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background: transparent;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+}
+
+.albumanalysisinfotext::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #cbcbcb;
+}
+
+.albumanalysisinfotext p{
+    max-width: 99%;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+
+}
+.AlbumTracksInfo{
+    margin-left: 1.5vw;
+    margin-top: 1.5vh;
+    width: 67%;
+}
+
+.analyzedsongstitles{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vh;
+    width: 98%;
+    
+}
+
+.analyzedsongstitles p,
+.analyzedsongstitles span{
+    font-size: 1.5rem;
+    border-bottom: 1px solid gray;
+    color: var(--AccentColor);
+    padding-bottom: 5px;
+}
+
+.AnalyzedSongsInfoCont{
+
+    height: 42vh;
+    overflow-y: auto;
+}
+
+.AnalyzedSongsInfoCont::-webkit-scrollbar {
+    width: 10px;
+}
+
+.AnalyzedSongsInfoCont::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background: transparent;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .8);
+}
+
+.AnalyzedSongsInfoCont::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #cbcbcb;
+}
+
+.analyzedsongsinfo{
+    display: flex; 
+    margin-bottom: 2vh;
+    padding-bottom: 5px;
+    border-bottom: 1px solid gray;
+    justify-content: space-between;
+    margin-right: 0.5vw;
+    padding-top: 8px;
+    padding-inline: 5px;
+}
+.analyzedsongsinfo:hover{
+    background: rgba(255, 255, 255, 0.1);
+
+}
+
+.analyzedsongsinfo p {
+    font-size: 1.3rem;
+}
+
+
+
+/* .albumrefine2s::after {
+    width: 48px;
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: #FF3D00;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
+
+.albumrefine2s::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    position: absolute;
+    border-radius: 20px;
+    opacity: 50%;
+} */
