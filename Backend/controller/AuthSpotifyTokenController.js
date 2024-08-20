@@ -44,9 +44,10 @@ const SpotifyTokens = async (req, res) => {
     if (response.ok) {
       console.log("Access to Api recieved")
       const { access_token, refresh_token, expires_in } = data;
+      const expirationTime = Date.now() + (expires_in * 1000) 
       console.log("This is the access token", access_token)
-      //Find out how your going to store teh experis_in
-      return res.redirect(`http://localhost:4000/dashboard?SAT=${access_token}&SRT=${refresh_token}`)
+      console.log("Expiration Time", expirationTime)
+      return res.redirect(`http://localhost:4000/dashboard?SAT=${access_token}&expiresin=${expirationTime}`)
     } 
     else {
       console.log('Failed to get access:', data.error);

@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
+import { useFetch } from './useFetch'
 
 export const useArtistAlbums = () => {
-    const getArtistAlbums = async (JWT_access, Spotify_access, artistdata) => {
+    const { AuthFetch }= useFetch()
+    const getArtistAlbums = async (JWT, SAT, artistdata, EXPT) => {
         try{
-            const response = await fetch(`/api/dashboard/TopAlbums?SAT=${Spotify_access}&artistID=${artistdata.id}`,
+            const response = await AuthFetch(`/api/dashboard/TopAlbums?SAT=${SAT}&artistID=${artistdata.id}&EXPT=${EXPT}`,
                 {
-                headers: {'Authorization':`Bearer ${JWT_access}`}
+                headers: {'Authorization':`Bearer ${JWT}`}
             })
             
             const data = await response.json()
@@ -35,7 +37,6 @@ export const useArtistAlbums = () => {
         }
         catch(error){
             console.log("An error occuring in getting albums: ", error.message)
-            toast.error('An error occuring in fetching albums')
         }
     }
   return {getArtistAlbums}

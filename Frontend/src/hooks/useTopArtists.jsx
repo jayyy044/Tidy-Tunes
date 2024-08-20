@@ -1,12 +1,14 @@
 import React from 'react'
 import { toast } from 'react-toastify'
+import { useFetch } from './useFetch'
 
 export const useTopArtists = () => {
-  const UserTopArtists = async (JWT_access, Spotify_access) => {
+  const { AuthFetch } = useFetch()
+  const UserTopArtists = async (JWT, SAT, EXPT) => {
     try{
-      const response = await fetch( `/api/dashboard/TopArtists/${Spotify_access}`,{
+      const response = await AuthFetch( `/api/dashboard/TopArtists?SAT=${SAT}&EXPT=${EXPT}`,{
         headers:{
-          'Authorization': `Bearer ${JWT_access}`
+          'Authorization': `Bearer ${JWT}`
         },
       })
       const {topGenresFiltered, ArtistInfo} = await response.json()
@@ -24,7 +26,7 @@ export const useTopArtists = () => {
       return TopArtistsObj
     }
     catch(error){
-      console.log("An error occured", error.message)
+      console.log("Error occured with retrieving users top artists: ", error.message)
     }
       
   }

@@ -1,10 +1,13 @@
 import React from 'react'
 import { toast } from 'react-toastify'
+import { useFetch } from './useFetch'
 
 export const useTopTracks = () => {
-  const UserTopTracks = async (JWT, SAT) => {
+  const { AuthFetch } = useFetch()
+  const UserTopTracks = async (JWT, SAT, expirationTime) => {
     try{
-      const response = await fetch( `/api/dashboard/TopTracks?SAT=${SAT}`,{
+      console.log("TIME", expirationTime)
+      const response = await AuthFetch( `/api/dashboard/TopTracks?SAT=${SAT}&EXPT=${expirationTime}`,{
         headers:{
           'Authorization': `Bearer ${JWT}`
         }
@@ -19,7 +22,7 @@ export const useTopTracks = () => {
       return sortedTrackList
     }
     catch(error){
-      console.log("An error occured", error.message)
+      console.log("Error with retrieving users top tracks: ", error.message)
     }
       
   }

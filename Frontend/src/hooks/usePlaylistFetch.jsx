@@ -1,13 +1,15 @@
 import React from 'react'
 import { toast } from 'react-toastify'
+import { useFetch } from './useFetch'
 
 
 export const usePlaylistFetch = () => {
-    const PlaylistFetch = async (JWT_access, Spotify_access, email) => {
+    const { AuthFetch } = useFetch()
+    const PlaylistFetch = async (JWT, SAT, email, EXPT) => {
         try {
-            const response = await fetch(`/api/feature/playlist?SAT=${Spotify_access}&email=${email}`,
+            const response = await AuthFetch(`/api/feature/playlist?SAT=${SAT}&email=${email}&EXPT=${EXPT}`,
                 {
-                headers: { 'Authorization' : `Bearer ${JWT_access}`}
+                headers: { 'Authorization' : `Bearer ${JWT}`}
             })
             const data = await response.json()
             if(!response.ok){
@@ -18,7 +20,7 @@ export const usePlaylistFetch = () => {
             return data
         }
         catch(error){
-            console.log("An error occured", error.message)
+            console.log("Error occured failed to fetch user's playlists:  ", error.message)
         }
     }
 

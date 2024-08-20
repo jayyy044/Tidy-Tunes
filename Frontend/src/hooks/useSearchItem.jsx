@@ -1,10 +1,11 @@
 import React from 'react'
+import { useFetch } from './useFetch'
 
 export const useSearchItem = () => {
-    const searchitem = async (item, JWT, SAT) => {
+    const { AuthFetch } = useFetch()
+    const searchitem = async (item, JWT, SAT, EXPT) => {
         try {
-
-            const response = await fetch(`/api/feature/searchitem?SAT=${SAT}&item=${item}`, {
+            const response = await AuthFetch(`/api/feature/searchitem?SAT=${SAT}&item=${item}&EXPT=${EXPT}`, {
                 headers: {'Authorization' : `Bearer ${JWT}`}
             })
             const data = await response.json()

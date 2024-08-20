@@ -84,10 +84,9 @@ const getPlaylistInfo = async (req, res) => {
 };
 
 const updatePlaylistdata = async(req,res) => {
-    const { SAT, email, Id } = req.body;
-    if (!SAT || !email || !Id ) {
+    const { email, Id } = req.body;
+    if (!email || !Id ) {
         console.log("Something is missing from the reqeust");
-        console.log("This is SAT:", SAT)
         console.log("This is the user Email", email)
         console.log("This is the playlist id", Id)
         res.status(404).json({ error: 'There was an error receiving one of the request parameters' });

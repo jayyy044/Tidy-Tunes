@@ -1,10 +1,12 @@
 import React from 'react'
 import { toast } from 'react-toastify'
+import { useFetch } from './useFetch'
 
 export const useRecentlyPlayed = () => {
-    const fetchRecentlyPlayed = async (SAT, JWT) =>{
+    const { AuthFetch } = useFetch()
+    const fetchRecentlyPlayed = async (SAT, JWT, EXPT) =>{
         try{
-            const response = await fetch(`/api/feature/RecentlyPlayed?SAT=${SAT}`,{
+            const response = await AuthFetch(`/api/feature/RecentlyPlayed?SAT=${SAT}&EXPT=${EXPT}`,{
                 headers: {'Authorization' : `Bearer ${JWT}`}
             })
             const data = await response.json()
@@ -18,7 +20,6 @@ export const useRecentlyPlayed = () => {
 
         }
         catch(error){
-            toast.error("Failed to fetch recently played songs")
             console.log("An Error occuring with recent played tracks fetch:", error.message)
         }
 

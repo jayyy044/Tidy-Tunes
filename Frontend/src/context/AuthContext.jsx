@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 const UserState = {
     JWT_access: null,
     Spotify_access: null,
-    Spotify_refresh: null,
+    expirationTime: null,
     Email: null,
 };
 
@@ -22,7 +22,7 @@ export const AuthReducer = (state, action) => {
             return {
                 ...state,
                 Spotify_access: action.payload.Spotify_access,
-                Spotify_refresh: action.payload.Spotify_refresh
+                expirationTime: action.payload.expirationTime
             }
         case "SET_USER_STATE":
             return action.payload
@@ -35,7 +35,7 @@ export const AuthReducer = (state, action) => {
             return {
                 JWT_access: null,
                 Spotify_access: null,
-                Spotify_refresh: null,
+                expirationTime: null,
                 Email: null,
                 PlaylistId:null
             };

@@ -1,15 +1,14 @@
 import React from 'react'
 import { useAuthContext } from './useAuthContext'
-import { useNavigate } from 'react-router-dom'
+import { usePlaylistContext } from './usePlaylistContext'
 
 export const useLogout = () => {
-    const navigate = useNavigate()
-    const {state, dispatch} = useAuthContext()
-
-
+    const { dispatch} = useAuthContext()
+    const {dispatch:playlistDispatch}= usePlaylistContext()
     const LogOut = () => {
         localStorage.clear()
         dispatch({ type: 'LOGOUT'})
+        playlistDispatch({type: 'LOGOUT'})
      }
 
   return { LogOut }

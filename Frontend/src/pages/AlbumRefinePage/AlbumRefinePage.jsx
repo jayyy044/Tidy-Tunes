@@ -22,7 +22,7 @@ const AlbumRefinePage = () => {
         event.preventDefault()
         if(itemSearch){
             setIsLoading(true)
-            searchitem(itemSearch, state.JWT_access, state.Spotify_access,).then (
+            searchitem(itemSearch, state.JWT_access, state.Spotify_access, state.expirationTime).then (
                 (data) =>{
                     setTracks(data.TrackResults)
                     setAlbums(data.AlbumResults)

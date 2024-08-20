@@ -6,13 +6,18 @@ const authorizeToken = (req, res, next) => {
     
     if (token == null) {
         console.log("No Authorization Token");
-        return res.status(401).json({ error: "No Authorization Token"});
+        return res.status(403).json({ error: "No Authorization Token"});
     }  
 
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
         if (err) {
-            console.log("Token Verification Error:", err);
-            return res.status(403).json({ error: "Token Verification Error"});
+            if (err.name === 'TokenExpiredError') {
+                console.warn("Jwt Acces Token Expired");
+                return res.status(403).json({ error: "Token Expired" });
+            } else {
+                console.log("Token Verification Error:", err);
+                return res.status(403).json({ error: "Token Verification Error" });
+            }
         }
         req.user = user;  
         next();

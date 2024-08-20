@@ -8,7 +8,7 @@ const UserRoutes = require('./routes/UserRoutes')
 
 const SpotifyToken = require('./routes/AuthSpotifyTokenRoutes')
 
-const SpotifyData = require('./routes/AuthSpotifyDataRoutes')
+const SpotifyData = require('./routes/DashboardDataRoutes')
 
 const FeaturesData = require('./routes/FeaturesData')
 

@@ -38,17 +38,19 @@ const PlaylistRefinePage = () => {
 
 
   useEffect(() => {
-    PlaylistFetch(state.JWT_access, state.Spotify_access, state.Email).then(
+    PlaylistFetch(state.JWT_access, state.Spotify_access, state.Email, state.expirationTime).then(
       (filteredPlaylists) => {
+        localStorage.removeItem('Deletion-Track');
+        localStorage.removeItem('playlist_update')
         if(playlistState.PlaylistId){
           const playlistfind = filteredPlaylists.find(play => play.Id === playlistState.PlaylistId)
           if(!playlistfind){
             UpdatePlaylist(
               state.JWT_access, 
-              state.Spotify_access, 
               state.Email, 
               filteredPlaylists,
-              playlistState.PlaylistId
+              playlistState.PlaylistId,
+              state.expirationTime
             )
             setPlaylist(filteredPlaylists);
             setIsLoading(false);
@@ -88,15 +90,24 @@ const PlaylistRefinePage = () => {
   const fetchalldata = async (Info) =>{
     try {   
     setPlaylist(null);
-    const playlistRecentlyAdded = await fetchRecentlyAdded(state.Spotify_access, state.JWT_access, Info, state.Email)
+    const playlistRecentlyAdded = await fetchRecentlyAdded(
+      state.Spotify_access, 
+      state.JWT_access, 
+      Info, 
+      state.Email,
+      state.expirationTime)
     setRecentlyAdded(playlistRecentlyAdded);
-    const playlistRecentlyPlayed = await fetchRecentlyPlayed(state.Spotify_access, state.JWT_access)
+    const playlistRecentlyPlayed = await fetchRecentlyPlayed(
+      state.Spotify_access, 
+      state.JWT_access,
+      state.expirationTime)
     setRecentlyPlayed(playlistRecentlyPlayed)
     const songanalysisdata = await RunSongAnalysis(
       state.Spotify_access, 
       state.JWT_access, 
       Info.PlaylistId,
-      state.Email)
+      state.Email,
+      state.expirationTime)
     setAnalzedSongs(songanalysisdata)
 
     }
@@ -119,7 +130,8 @@ const PlaylistRefinePage = () => {
       state.Spotify_access, 
       state.JWT_access, 
       playlistState.PlaylistId,
-      selectedTrack)
+      selectedTrack,
+      state.expirationTime)
     }
    };
   
@@ -128,11 +140,9 @@ const PlaylistRefinePage = () => {
     const ChangedPlaylist = localStorage.getItem('playlist_update')
     if (DeletedTrack) {
       toast.success(`${DeletedTrack} deleted successfully!`);
-      localStorage.removeItem('Deletion-Track');
     }
-    if(ChangePlaylist){
+    if(ChangedPlaylist){
       toast.success("Playlist Succesfully changed")
-      localStorage.removeItem('playlist_update')
     }
   }, [])
 

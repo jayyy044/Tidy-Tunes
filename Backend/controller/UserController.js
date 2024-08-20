@@ -58,7 +58,7 @@ const loginUser = async (req, res) => {
             console.log("No Such Password");
             return res.status(400).json({ error: 'Invalid Password' });
         }
-        const JWT_access = jwt.sign({ email: user.email }, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '2h'});
+        const JWT_access = jwt.sign({ email: user.email }, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '90m'});
         console.log("User Logged in and Generated Token:", JWT_access);
         res.status(200).json({ JWT_access, email: user.email, playlistId: user.playlistId, playlistName: user.playlistName });
     } catch (error) {

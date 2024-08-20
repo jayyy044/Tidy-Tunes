@@ -5,12 +5,12 @@ import { toast } from 'react-toastify';
 
 export const useSpotifyToken = () => {
     const navigate = useNavigate();
-    const { state, dispatch } = useAuthContext()
+    const {dispatch } = useAuthContext()
   
-    const SpotifyTokenSearch = () => {
+    const SpotifyTokenSearch = async () => {
       const urlSearch = new URLSearchParams(window.location.search);
       const Spotify_access = urlSearch.get('SAT');
-      const Spotify_refresh = urlSearch.get('SRT');
+      const expirationTime = urlSearch.get('expiresin');
       const Error = urlSearch.get('error');
 
       if (Error) {
@@ -19,8 +19,8 @@ export const useSpotifyToken = () => {
         navigate('/error');
         return ;
       }
-      if (!Spotify_access || !Spotify_refresh) {
-        console.log("Either Refresh or Access Tokens were not received");
+      if (!Spotify_access || !expirationTime) {
+        console.log("One of the url parameters are missing");
         toast.error("You weren't given authorization, please try again");
         navigate('/login');
         return ;
@@ -30,13 +30,13 @@ export const useSpotifyToken = () => {
       let userState = JSON.parse(localStorage.getItem('UserState'));
       userState = {
           ...userState,
-          Spotify_access: Spotify_access,
-          Spotify_refresh: Spotify_refresh
+          Spotify_access,
+          expirationTime
       };
       localStorage.setItem('UserState', JSON.stringify(userState));
-      const SpotifyTokens = { Spotify_access, Spotify_refresh }
-      dispatch({ type: "SPOTIFY_ACCESS", payload: SpotifyTokens });
-      return SpotifyTokens
+      const SpotifyAccess = { Spotify_access, expirationTime }
+      dispatch({ type: "SPOTIFY_ACCESS", payload: SpotifyAccess });
+      return SpotifyAccess
     }
   
     return { SpotifyTokenSearch };

@@ -21,25 +21,31 @@ const SpotifyPage = () => {
   const { SpotifyTokenSearch } = useSpotifyToken()
 
   useEffect(() => {
-    const Token = SpotifyTokenSearch();
-    UserTopTracks(state.JWT_access, Token.Spotify_access).then(
-      (data) => { setTracks(data); });
+    SpotifyTokenSearch().then(
+      Token => {
+        UserTopTracks(state.JWT_access, Token.Spotify_access, Token.expirationTime).then(
+          (data) => { setTracks(data); });
+    
+        UserTopArtists(state.JWT_access, Token.Spotify_access, Token.expirationTime).then(
+          async (TopArtistsObj) => {
+            const { sortedArtistInfo, topGenresFiltered } = TopArtistsObj
+            setArtists(sortedArtistInfo);
+            setTopGenres(topGenresFiltered);
+            const albumPromises = sortedArtistInfo.map(artist => {
+              const artistData = { id: artist.ArtistID, name: artist.ArtistName, image: artist.ArtistImage};
+              return getArtistAlbums(state.JWT_access, Token.Spotify_access, artistData, Token.expirationTime);
+            });
+            const albumResolvedData = await Promise.all(albumPromises);
+    
+            setArtistData(albumResolvedData);
+            setIsLoading(false)
+          }
+        );
 
-    UserTopArtists(state.JWT_access, Token.Spotify_access).then(
-      async (TopArtistsObj) => {
-        const { sortedArtistInfo, topGenresFiltered } = TopArtistsObj
-        setArtists(sortedArtistInfo);
-        setTopGenres(topGenresFiltered);
-        const albumPromises = sortedArtistInfo.map(artist => {
-          const artistData = { id: artist.ArtistID, name: artist.ArtistName, image: artist.ArtistImage};
-          return getArtistAlbums(state.JWT_access, Token.Spotify_access, artistData);
-        });
-        const albumResolvedData = await Promise.all(albumPromises);
-
-        setArtistData(albumResolvedData);
-        setIsLoading(false)
       }
     );
+
+   
   }, [dispatch]);
 
   return (
