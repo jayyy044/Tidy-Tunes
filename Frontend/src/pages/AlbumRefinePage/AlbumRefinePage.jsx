@@ -40,6 +40,8 @@ const AlbumRefinePage = () => {
             setIsLoading(true)
             setTrackAnalysis(null)
             setTracks(null)
+            setAlbums(null)
+            setAlbumAnalysis(null)
             searchitem(itemSearch, state.JWT_access, state.Spotify_access, state.expirationTime).then (
                 (data) =>{
                     setTracks(data.TrackResults)
@@ -59,7 +61,8 @@ const AlbumRefinePage = () => {
                 state.JWT_access, 
                 state.Spotify_access,
                 state.Email,
-                playlistState.PlaylistId
+                playlistState.PlaylistId,
+                state.expirationTime
                 )
             setTrackAnalysis(TrackAnalysisResult)
             setSearchLoader_T(false)
@@ -75,7 +78,8 @@ const AlbumRefinePage = () => {
                 state.JWT_access, 
                 state.Spotify_access,
                 state.Email,
-                playlistState.PlaylistId
+                playlistState.PlaylistId,
+                state.expirationTime
                 )
             setAlbumAnalysis(AlbumAnalysisResult)
             setSearchLoader_A(false)

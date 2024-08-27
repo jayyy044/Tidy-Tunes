@@ -2,9 +2,9 @@ import React from 'react'
 import { toast } from 'react-toastify'
 
 export const useTrackAnalysis = () => {
-    const TrackAnalysis = async (track, JWT, SAT, email, Id) => {
+    const TrackAnalysis = async (track, JWT, SAT, email, Id, EXPT) => {
         try{
-            const response = await fetch (`/api/feature/analyzetrack`,{
+            const response = await fetch (`/api/feature/analyzetrack?EXPT=${EXPT}`,{
                 method: 'POST',
                 headers:{
                     'Authorization':`Bearer ${JWT}`,

@@ -10,8 +10,8 @@
 .Login_WelcomeCard {
     background: rgba(255, 255, 255, 0.3); 
     border: 1px solid #030f19;
-    width: 576px;
-    height: 766px;  
+    width: 30vw;
+    height: 80vh;  
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     box-shadow: -10px 13px 28px -4px rgba(0,0,0,0.75);
@@ -23,7 +23,7 @@
 }
 
 .Login_WelcomeCard h1{
-    font-size: 5rem;
+    font-size: clamp(4.5rem, 3.15rem + 1.541vw, 5rem);
     margin-bottom: 50px;
     color: var(--AccentColor)
 }
@@ -57,8 +57,8 @@
 .Login_FormCard{
     background: rgba(255, 255, 255, 0.3);
     border: 1px solid #030f19;
-    width: 1344px;
-    height: 766px;  
+    width: 70vw;
+    height: 80vh;  
     box-shadow: 15px 9px 22px 5px rgba(0,0,0,0.75);
     margin-right: 4vw;
     display: flex;
@@ -146,8 +146,8 @@
 
 .Login_FormCard form button{
     background: transparent;
-    padding: 1% 5%;
-    font-size: 2em;
+    padding: 10px 25px;
+    font-size: 2rem;
     border-radius: 50px;
     margin: 0 auto; 
     margin-top: 3rem;
@@ -189,8 +189,36 @@
     color: red !important;
 }
 
-/* @media only screen and (max-width: 1400px){
+@media only screen and (max-width: 1400px){
+    .Login_WelcomeCard{
+        display: none;
+    }
 
-} */
+    .Login_FormCard{
+        border-radius: 20px;
+        margin-inline: auto;
+        width: 90vw;
+    }
+
+    .input_field_L{
+        width: clamp(15.313rem, 4.979rem + 51.667vw, 50.188rem);
+    }
+
+    .Login_FormCard h1{
+        font-size: clamp(4rem, 3.704rem + 1.481vw, 5rem);
+    }
+
+    .Login_FormCard h2{
+        font-size: clamp(1.5rem, 1.352rem + 0.741vw, 2rem);  
+        line-height: 2.3rem;
+    }
+
+    .Login_FormCard form button{
+        font-size: clamp(1.5rem, 1.352rem + 0.741vw, 2rem);
+    }
+
+
+
+}
 
 

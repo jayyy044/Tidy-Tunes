@@ -409,7 +409,10 @@
     max-Width: 90%;
 
 }
+/* .ant-modal-wrap.ant-modal-centered{
+    background-color: rgba(0, 0, 0, 0.1) !important;
 
+} */
 .ant-modal-mask{
     background-color: rgba(0, 0, 0, 0.1) !important;
 

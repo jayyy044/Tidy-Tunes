@@ -35,7 +35,6 @@ router.get('/delete', deleteTrack)
 router.get('/RecentlyPlayed', getRecentlyPlayed)
 router.post('/addtrack', AddTrack)
 router.get('/searchitem', searchitem )
-
-// router.post('/analyzetrack', TrackAnalyzer )
-// router.post('/analyzealbum', AlbumAnalyzer )
+router.post('/analyzetrack', TrackAnalyzer )
+router.post('/analyzealbum', AlbumAnalyzer )
 module.exports = router;

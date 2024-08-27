@@ -3,9 +3,9 @@ import { toast } from 'react-toastify'
 
 
 export const useAlbumAnalysis = () => {
-    const AlbumAnalysis = async (album, JWT, SAT, email, Id) => {
+    const AlbumAnalysis = async (album, JWT, SAT, email, Id, EXPT) => {
         try{
-            const response = await fetch(`/api/feature/analyzealbum`,{
+            const response = await fetch(`/api/feature/analyzealbum?EXPT=${EXPT}`,{
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

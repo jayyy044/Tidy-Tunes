@@ -42,14 +42,14 @@ const LoginForm = () => {
              <div className="Login_WelcomeCard">
                 <h1>Welcome</h1>
                 <h2>
-                    Don't have an account? That's okay, click below to sign up.
+                    Don't have an account? That's okay, click below to sign up
                 </h2>
                 <Link to='/register'>Sign Up</Link>
             </div>
             <div className="Login_FormCard">
                 <h1>Login</h1>
                 <h2>
-                    Login and let your Tidy Tunes redefine your music listening.
+                    Login and let your Tidy Tunes redefine your music listening
                 </h2>
                 <form onSubmit={FormSubmit} >
 

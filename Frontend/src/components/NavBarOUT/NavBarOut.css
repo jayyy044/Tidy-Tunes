@@ -11,7 +11,7 @@
     text-decoration: none;
 }
 .NavContainer h2{
-    font-size: 1.7rem;
+    font-size: clamp(1.125rem, 0.696rem + 2.145vw, 1.7rem);;
     color: white;
     border: 2px solid white;
     border-radius: 25px;
@@ -32,7 +32,7 @@
 
 .NavContainer a img {
     margin-top: 7px;
-    width: 77px;
+    width: clamp(4.063rem, 3.503rem + 2.797vw, 4.813rem);
     height: auto;
 }
   
@@ -48,7 +48,7 @@
 .icon {
     margin-left: auto;
     color: whitesmoke;
-    font-size: 35px; 
+    font-size: clamp(1.75rem, 1.424rem + 1.632vw, 2.188rem); 
     margin-right: 20px;
     transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
