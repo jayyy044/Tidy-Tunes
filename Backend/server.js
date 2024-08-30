@@ -42,7 +42,6 @@ app.use('/feature', FeaturesData)
 mongoose.connect(process.env.MONGO_URL)
  .then(() => {
    console.log('Connected to Database')
-
    app.listen(process.env.PORT, () =>{
       console.log(`Listening on Port ${process.env.PORT}`)
    })

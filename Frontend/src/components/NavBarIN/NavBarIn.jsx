@@ -56,7 +56,7 @@ const NavBarIn = () => {
           Tidy Tunes
           </h2>
         </Link>
-        <MediaQuery minWidth={750}>
+        <MediaQuery minWidth={1200}>
           <div className="Features">
             <NavLink to='/dashboard' >
               <h2>
@@ -80,7 +80,7 @@ const NavBarIn = () => {
             </NavLink>
           </div>
         </MediaQuery>
-        <MediaQuery maxWidth={749}>
+        <MediaQuery maxWidth={1199}>
           <TfiAlignJustify className= 'icon' onClick={showDrawer}/>
           <Drawer title="Get Started" onClose={closeDrawer} open={open} className='drawer'>
             <NavLink to='/playlistRefine' >

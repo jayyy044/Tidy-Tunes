@@ -25,7 +25,7 @@ const getTopTracks = async (req, res) => {
         }));
 
         const sortedTrackList = (tracksList.sort((a,b) => b.trackPop - a.trackPop)).slice(0,10)
-        return res.json({ sortedTrackList });
+        return res.status(200).json({ sortedTrackList });
     }
     catch(error){
         console.log("Error Fetching Top Tracks", error.message)
@@ -43,7 +43,7 @@ const getTopArtists_Genres = async (req, res) => {
         if(!response.ok){
             return res.status(404).json({error: 'Failed to fetch top artists'})
         }
-        console.log('Top artists recieved')
+        console.log('Top artists recieved', data.items[0].followers)
         const allGenres = [];
         data.items.forEach(artist => {
           artist.genres.forEach(genre => {
@@ -61,20 +61,15 @@ const getTopArtists_Genres = async (req, res) => {
         
         console.log("Top Genres recieved")
 
-        const ArtistInfo = data.items.map(item => {
-            if(!item.images){
-                console.log("No images available")
-            }
-            return{
+        const ArtistInfo = data.items.map(item => ({
                 ArtistPop:item.popularity,
                 ArtistID: item.id,
-                ArtistImage: item.images[1].url,
-                ArtistName: item.name
-            }
-          });
+                ArtistImage: item.images[1]?.url,
+                ArtistName: item.name,
+                follower: item.followers.total
+            }));
         
-        
-        return res.json({topGenresFiltered, ArtistInfo})
+        return res.status(200).json({topGenresFiltered, ArtistInfo})
     }
     catch(error){
         console.log("Error Fetching Top artists", error.message)
@@ -87,7 +82,7 @@ const getTopAlbums = async (req, res) => {
     if(!SAT || !artistID){
         console.log("Either the Spotify Access token was not recieved: ", SAT,
             "or the artist id wasn't: ", artistID)
-        res.json({error: 'There was an error recieving either the artist id or spotify access token'})
+        res.status(404).json({error: 'There was an error recieving either the artist id or spotify access token'})
         return
     }
     try{
@@ -100,11 +95,11 @@ const getTopAlbums = async (req, res) => {
             res.json({error:'There was an error fetching the albums'})
             return
         }
-        return res.json(data.items)
+        return res.status(200).json(data.items)
     }
     catch(error){
-        console.log("There was a server error", error.message)
-        res.json({error: "Internal Server Error" })
+        console.log("Failed to fetch artist albums", error.message)
+        res.status(404).json({error: "Error retrieving artist albums" })
     }
 }
 

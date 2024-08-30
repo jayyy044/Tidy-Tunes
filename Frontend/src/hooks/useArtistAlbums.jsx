@@ -4,7 +4,7 @@ import { useFetch } from './useFetch'
 
 export const useArtistAlbums = () => {
     const { AuthFetch }= useFetch()
-    const getArtistAlbums = async (JWT, SAT, artistdata, EXPT) => {
+    const getArtistAlbums = async (JWT, SAT, artistdata, EXPT, Popularity) => {
         try{
             const response = await AuthFetch(`/api/dashboard/TopAlbums?SAT=${SAT}&artistID=${artistdata.id}&EXPT=${EXPT}`,
                 {
@@ -26,12 +26,15 @@ export const useArtistAlbums = () => {
                     image: firstImage
                 };
             });
+            const artistpopularity = Popularity.find(artist => artist.ArtistName === artistdata.name )
             const albumdata = { 
                 name: artistdata.name,
                 albums: albumsWithImages,
-                image: artistdata.image
+                image: artistdata.image,
+                artistpop: artistpopularity.ArtistPop,
+                follower: artistdata.follower
             };
-    
+            console.log("Popularity", albumdata)
             return albumdata
     
         }
