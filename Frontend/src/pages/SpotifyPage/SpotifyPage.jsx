@@ -121,8 +121,7 @@ const SpotifyPage = () => {
                     <div className='albumartistinfo'>
                       <MediaQuery maxWidth={499}>
                         <div className="artistText">
-                          <p>Artist</p>
-                          <p>{artist.name}</p>
+                          <span> Artist: <p style={{ wordWrap:'break-word' }}>{artist.name}</p> </span>
                           <div className="artistStats">
                             <p>{`Popularity: ${artist.artistpop} | Followers: ${artist.follower} `}</p>
                           </div>

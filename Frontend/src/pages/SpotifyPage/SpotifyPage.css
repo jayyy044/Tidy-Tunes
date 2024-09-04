@@ -15,6 +15,7 @@
   color:white;
 }
 
+
 .albumdata { 
   grid-area: div1;
   box-shadow: inset 0px 1px 15px 5px rgba(255,255,255,0.3);
@@ -28,7 +29,7 @@
 }
 .albumdataTitle{
   /*This goes to 1000px*/
-  font-size: clamp(2.2rem, 1.874rem + 0.522vw, 2.5rem);
+  font-size: clamp(2rem, 0.328rem + 2.676vw, 2.5rem);
   color: var(--AccentColor);
   padding-left: 20px;
   padding-top: 20px;
@@ -65,7 +66,7 @@
 
 .artistText p:nth-of-type(2) {
   font-size: clamp(2.2rem, 1.571rem + 0.774vw, 2.5rem);/*1300px*/
-  color: var(--AccentColor)
+  color: var(--AccentColor);
 }
 .artistStats p{
   font-size: clamp(1.4rem, 0.771rem + 0.774vw, 1.7rem);/*1300px*/
@@ -146,7 +147,7 @@
 }
 
 .genres{
-  margin-top: clamp(0rem, -3.913rem + 6.261vw, 3.6rem);/*1000px*/
+  margin-top: clamp(0.5rem, -0.587rem + 1.739vw, 1.5rem);/*1000px*/
   margin-right: 1vw;
   padding-left: clamp(0rem, -1.087rem + 1.739vw, 1rem);
   column-width: 16vw; 
@@ -173,7 +174,7 @@
 
 .TopTracks p{
   color: var(--AccentColor);
-  font-size: clamp(2.2rem, 1.874rem + 0.522vw, 2.5rem);/*1000px*/
+  font-size: clamp(2rem, 0.328rem + 2.676vw, 2.5rem)/*1000px*/
 }
 
 .TopTracksCont{
@@ -233,7 +234,7 @@
 @media only screen and (max-width:1299px) {
   /*This is goes to 1000px*/
   .genres p{
-    font-size: clamp(1.2rem, 0.367rem + 1.333vw, 1.45rem);
+    font-size: clamp(1.1rem, -0.071rem + 1.873vw, 1.45rem);
   }
 
   .genres{
@@ -380,19 +381,82 @@
 @media only screen and (max-width:499px) {
   .albumartistinfo{
     display: block;
+    padding-left: clamp(1.5rem, 2.394rem + -4.469vw, 1rem);
+    /* padding-left: clamp(1.4rem, 0.774rem + 3.128vw, 1.75rem); */
   }
   .albumdataTitle{
     font-size: clamp(1.5rem, 1.144rem + 1.778vw, 1.7rem);
     padding-left: clamp(1.438rem, 0.66rem + 3.889vw, 1.875rem);
   }
+  .artistText{
 
-  /* .albumartistinfo img{
-    width: 10rem !important;
-    height: 10rem !important;
-  } */
+    max-width: clamp(16rem, -3.665rem + 98.324vw, 27rem);
+    margin-bottom: 2vh;
+    line-height: clamp(1.8rem, 1.085rem + 3.575vw, 2.2rem);
+  }
+  .artistText span{
+    display: flex;
+    font-size: clamp(1.2rem, 0.664rem + 2.682vw, 1.5rem);
+    margin-inline: auto;
+  }
+  .artistText p{
+    max-width: clamp(12.438rem, -2.535rem + 74.86vw, 20.813rem);
+    font-size: clamp(2rem, 1.642rem + 1.788vw, 2.2rem);
+    margin-left: 2vw;
+    color: var(--AccentColor);
+
+  }
+
+  .artistStats p{
+    max-width: none;
+    color: white ;
+    font-size: clamp(1.05rem, 0.603rem + 2.235vw, 1.3rem);
+    margin-left: 0vw;
+
+  }
+  .albumartistinfo img{
+    margin-left: clamp(3.188rem, -5.081rem + 41.341vw, 7.813rem);
+    width: clamp(9rem, 7.212rem + 8.939vw, 10rem) !important;
+    height: clamp(9rem, 7.212rem + 8.939vw, 10rem) !important;
+  }
+  .albumsCont{
+    height: clamp(6.125rem, 5.343rem + 3.911vw, 6.563rem);
+  }
+  .albumlist img{
+    width: clamp(3rem, 0.542rem + 12.291vw, 4.375rem);
+  }
+  .albumlist p {
+    font-size: clamp(0.9rem, 0.185rem + 3.575vw, 1.3rem);
+    max-width: clamp(12.063rem, -3.245rem + 76.536vw, 20.625rem);
+  }
+
+  .genre-frequency p{
+    font-size: clamp(1.7rem, 1.164rem + 2.682vw, 2rem);
+  }
+  .genrescolumncont{
+    padding-right: 0px;
+    padding-left: clamp(0.125rem, -1.328rem + 7.263vw, 0.938rem);
+  }
+  .genrecolumn p{
+    font-size: clamp(0.9rem, 0.542rem + 1.788vw, 1.1rem);
+  }
+
+  .TopTracks p{
+    font-size: clamp(1.8rem, 1.442rem + 1.788vw, 2rem);
+  }
 
   .TopTracksCont{
-    width: 20px;
+    width: clamp(17rem, -2.888rem + 99.441vw, 28.125rem);
+  }
+
+  .track p{
+    font-size: clamp(0.9rem, 0.364rem + 2.682vw, 1.2rem);
+    border: 0.2px solid khaki;
+    max-width: clamp(11.313rem, -5.112rem + 82.123vw, 20.5rem);
+  }
+
+  .track img{
+    width: clamp(3.5rem, 0.818rem + 13.408vw, 5rem) !important;
   }
   
 }

@@ -112,12 +112,13 @@
   
 .refine-1 { 
     grid-area: refine-1; 
-    background: linear-gradient(to top,#1f2130, #11162a,#14182e);
+    box-shadow: inset 0px 1px 15px 5px rgba(255,255,255,0.3);
+    background-color: #021223;
     margin-left: 1vw;
     margin-block: 2vh;
     border-radius: 25px;
     border: 1px solid rgba(255, 255, 255, 0.20);
-    box-shadow: -3px 0px 17px 3px rgba(255,255,255,0.5);
+    padding: 10px 10px 0 10px;
     display: flex;
     flex-direction: column;
     flex:1;
@@ -133,15 +134,16 @@
     
 }
 .PlaylistContainer img{
-    width: 250px;
+    width: clamp(10.625rem, 5.19rem + 8.696vw, 15.625rem);/*1000px*/
     border-radius: 20px;
     margin-right: 3.5vw;
+
 }
 .PlaylistText p {
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 0.874rem + 0.522vw, 1.5rem);/*1000px*/
 }
 .PlaylistText h2{
-    font-size: 4rem;
+    font-size: clamp(3.5rem, 2.957rem + 0.87vw, 4rem);/*1000px*/
     line-height: 5rem;
     color: var(--AccentColor)
 }
@@ -149,7 +151,7 @@
     display: flex;
 }
 .UserText p{
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 0.783rem + 0.348vw, 1.2rem);/*1000px*/
 }
 .TT{
     margin-left: 0.5vw;
@@ -162,7 +164,7 @@
     margin-bottom: 4vh;
 }
 .buttonsTooltip{
-    font-size: 45px;
+    font-size: clamp(1.875rem, 0.856rem + 1.63vw, 2.813rem);/*1000px*/
     color:var(--AccentColor);
     margin: 3vh 3vw auto auto;
     padding: 10px;
@@ -178,14 +180,14 @@
 
 .RefineTitle2{
     color: var(--AccentColor);
-    font-size: 2.5rem;
+    font-size: clamp(2.2rem, 1.129rem + 1.143vw, 2.5rem);/*1500px*/
     margin-left: 1vw;
     margin-top: 1vh;
     width: fit-content;
 }
 .RefineCarousel{
     padding: 15px 25px 15px 30px;
-    height: 50vh;
+    height: clamp(21.375rem, -6.304rem + 29.524vw, 29.125rem);/*1500px*/
 
 }
 .RefiningTracksCont {
@@ -197,22 +199,20 @@
 }
 .Refine-Artist{
     border: 1px solid gray;
-    width: 36vw;
+    width: clamp(30.438rem, -10.857rem + 44.048vw, 42rem);
     border-radius: 25px;
     display: flex;
-    height: 38vh;
-
-    
 }
 
 .Refine-Artist img {
-    width: 350px;
-    height: 350px !important;
+    width: clamp(14.375rem, -12.411rem + 28.571vw, 21.875rem);/*1500px*/
+    height: clamp(14.375rem, -12.411rem + 28.571vw, 21.875rem) !important;/*1500px*/
     border-radius: 25px;
     padding-left: 5px;
     padding-block: 5px;
 }
 .Refine-ArtistDescription{
+    height: clamp(13.875rem, -11.348rem + 26.905vw, 20.938rem);/*1500px*/
     overflow-y: auto;
     margin-right:0.5vw;
     margin-block: 1vh;
@@ -233,8 +233,16 @@
     border-radius: 8px;
     background-color: #cbcbcb;
 }
-.Refine-ArtistDescription P{
-    font-size: 1.4rem;    
+.Refine-ArtistDescription p:first-of-type{
+    font-size: clamp(2rem, -1.571rem + 3.81vw, 3rem);/*1500px*/
+    border-bottom: 1px solid darkgrey;
+    color: var(--AccentColor);
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+}
+.Refine-ArtistDescription p{
+    font-size: clamp(1.1rem, 0.029rem + 1.143vw, 1.4rem);/*1500px*/    
     margin-top: 2vh;
     word-wrap: break-word;  
     overflow-wrap: break-word;
@@ -242,7 +250,7 @@
 
 .Refine-Track{
     margin-right: 2vw;
-    width: 16vw;
+    width: clamp(15.938rem, 4.33rem + 12.381vw, 19.188rem);
     height: 45vh;
     overflow-y:auto;
     padding-right: 10px;
@@ -251,51 +259,67 @@
 }
 
 .Refine-Track::-webkit-scrollbar {
-    width: 12px;
+    width: 8px;
 }
 
 .Refine-Track::-webkit-scrollbar-track {
     border-radius: 8px;
     background: transparent;
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .8);
 }
 
 .Refine-Track::-webkit-scrollbar-thumb {
     border-radius: 8px;
     background-color: #cbcbcb;
 }
-.Refine-Track p {
-    padding-left: 10px;
+.Refine-Track p:first-of-type{
+    font-size: clamp(1.35rem, 0.814rem + 0.571vw, 1.5rem);/*1500px*/
+    margin-top: 1vh;
+    max-width: 98%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    color: var(--AccentColor);
+}
+
+.Refine-Track p{
+    font-size: 1.1rem;
 }
 .Refine-Track img{
-    width: 300px !important;
-    height: 300px !important;
+    width: clamp(13rem, -7.536rem + 21.905vw, 18.75rem) !important;/*1500px*/
+    height: clamp(13rem, -7.536rem + 21.905vw, 18.75rem) !important;/*1500px*/
     border-radius: 30px;
 }
 
 .similarity{
-    display: flex !important;
-    align-items: center;
     margin-top: 2vh;
-    justify-content: space-between;
 }
-.similarity p,
 .similarity span{
-    font-size: 1.2rem;
-}
-
-
-
-.similaritytext{
     display: flex;
-    
-}
-.TrackDelete{
+    align-items: center;
 
+}
+
+.similarity span p{
+    font-size: clamp(1.1rem, -0.329rem + 1.524vw, 1.5rem);/*1500px*/
+}
+.similarity span p:nth-of-type(2){
+    margin-left: 0.4vw;
+}
+
+.QuestionMarkIcon{
+    margin-inline: 0.2vw;
+    font-size: clamp(1rem, -2.125rem + 3.333vw, 1.875rem);
+    margin-bottom: 0.3vh;
+}
+
+.TrackDelete{
+    margin-left: clamp(0.938rem, -4.196rem + 5.476vw, 2.375rem); /*1500px*/
     background:transparent;
     border-radius: 15px;
-    padding: 7px 15px 3px 15px;
+    padding: 7px 10px 3px 10px;
     border: 1px solid gray;
+    font-size: clamp(1.2rem, 0.129rem + 1.143vw, 1.5rem)!important; /*1500px*/
+    color: var(--AccentColor);
     transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out, 
     color 0.5s ease-in-out, transform 0.5s ease-in-out; 
 }
@@ -307,7 +331,8 @@
 }
 
 .TrackDelete p{
-    font-size: 1.5rem;
+    border: none !important;
+    font-size: 1.5rem !important;
     color: var(--AccentColor);
 }
 
@@ -316,29 +341,29 @@
 
 .refine-2 { 
     grid-area: refine-2;
-    background: linear-gradient(to top,#1f2130, #11162a,#14182e);
+    box-shadow: inset 0px 1px 15px 5px rgba(255,255,255,0.3);
+    background-color: #021223;    
     margin-top: 2vh;
     margin-right: 1vw;
     border-radius: 25px;
     border: 1px solid rgba(255, 255, 255, 0.20);
-    box-shadow: 3px -1px 17px 3px rgba(255,255,255,0.5);
 
 }
 
 .RecentlyAddedCarousel{
     height: 32vh;
-    margin-top: 2vh;
+    margin-top: 1vh;
 }
 .RecentlyAddedTitle{
-    font-size: 2.5rem;
+    font-size: clamp(2.2rem, 1.129rem + 1.143vw, 2.5rem);/*1500px*/
     padding: 25px 0px 0px 30px;
     color: var(--AccentColor);
 }
 
 .RecentAddedCont img{
-    width: 245px;
+    width: clamp(13rem, 4.739rem + 8.811vw, 15.313rem);/*1500px*/
     border-radius: 25px;
-    margin-right: 4vw;
+    margin-right: clamp(3.125rem, -2.857rem + 6.381vw, 4.8rem);/*1500px*/
 }
 
 .RecentAddedCont{
@@ -351,44 +376,41 @@
 
 }
 .RecentlyAddedTrack{
-    margin-bottom: auto;
-    margin-top: 4vh;
     color: white;
-    line-height: 2.5rem;
+    line-height:  clamp(2.1rem, 0.671rem + 1.524vw, 2.5rem);/*1500px*/
 }
 .RecentlyAddedTrack p{
-    max-width: 100%;
+    max-width: clamp(15.25rem, 2.75rem + 13.333vw, 18.75rem);
+    line-height: clamp(1.3rem, -0.486rem + 1.905vw, 1.8rem);/*1500px*/
     word-Wrap: break-word;
     overflow-Wrap: break-word
+}
+
+.RecentlyAddedTrack p:first-of-type{
+    font-size: clamp(1.5rem, -0.286rem + 1.905vw, 2rem);/*1500px*/
+    line-height: clamp(1.9rem, 0.114rem + 1.905vw, 2.4rem);/*1500px*/
 }
 
 
 .refine-3 { 
     grid-area: refine-3; 
-    background: linear-gradient(to top,#1f2130, #11162a,#14182e);
+    box-shadow: inset 0px 1px 15px 5px rgba(255,255,255,0.3);
+    background-color: #021223;
     margin-bottom: 2vh;
     margin-right: 1vw;
     border-radius: 25px;
     border: 1px solid rgba(255, 255, 255, 0.20);
-    box-shadow: 3px 1px 17px 3px rgba(255,255,255,0.5);
 
 }
 .RecentlyPlayedTitle{
-    font-size: 2.5rem;
+    font-size: clamp(2.2rem, 1.129rem + 1.143vw, 2.5rem);/*1500px*/
     padding: 25px 0px 0px 30px;
     color: var(--AccentColor);
 }
 
 .RecentlyPlayCarousel{
-    margin-top: 2vh;
+    margin-top: 1vh;
     height: 32vh;
-}
-
-
-.RecentlyPlayedTrackCont img{
-    width: 245px;
-    border-radius: 25px;
-    margin-right: 4vw;
 }
 
 .RecentlyPlayedTrackCont{
@@ -398,16 +420,43 @@
     height: 29vh;
 }
 
+.RecentlyPlayedTrackCont img{
+    width: clamp(13rem, 4.739rem + 8.811vw, 15.313rem);/*1500px*/
+    border-radius: 25px;
+    margin-right: clamp(2.625rem, -4.964rem + 8.095vw, 4.75rem);
+}
 .RecentTracksText{
-    margin-bottom: auto;
-    margin-top: 4vh;
+    border: 0.5px solid red;
+    padding: 5px;
+    width: clamp(16.5rem, -2.696rem + 20.476vw, 21.875rem);
+    overflow-y: auto;
+    margin-top: clamp(0.938rem, -0.179rem + 1.19vw, 1.25rem);/*1500px*/
+    height: clamp(12.25rem, 2.429rem + 10.476vw, 15rem);/*1500px*/
     color: white;
-    line-height: 2.5rem;
+    line-height: clamp(2.1rem, 0.671rem + 1.524vw, 2.5rem);/*1500px*/
+}
+.RecentTracksText::-webkit-scrollbar {
+    width: 8px;
+}
+.RecentTracksText::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background: transparent;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
+}
+.RecentTracksText::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #cbcbcb;
 }
 
 .RecentTracksText p{
-    max-Width: 90%;
+    line-height:clamp(1.4rem, 6.4rem + -5.333vw, 0rem);/*1500px*/
+    max-width: clamp(15.5rem, -1.688rem + 18.333vw, 20.313rem);/*1500px*/
+  
+}
 
+.RecentTracksText p:first-of-type{
+    font-size: clamp(1.4rem, -0.743rem + 2.286vw, 2rem);/*1500px*/
+    line-height: clamp(2rem, 0.571rem + 1.524vw, 2.4rem);/*1500px*/
 }
 /* .ant-modal-wrap.ant-modal-centered{
     background-color: rgba(0, 0, 0, 0.1) !important;
@@ -428,4 +477,169 @@
 .cancelButton:hover{
     border-color: #e5a255 !important;
     color: #e5a255 !important   ;
+}
+
+@media only screen and (max-width: 1499px){
+    /*goes to 1000px*/
+    .RefineCarousel{
+        height: clamp(19rem, 11.986rem + 11.222vw, 22.5rem);
+    }
+    .RefineTitle2{
+        font-size: clamp(1.9rem, 1.3rem + 0.96vw, 2.2rem);
+    }
+    .Refine-Track{
+        width: 17vw;
+        height: clamp(15.375rem, 8.611rem + 10.822vw, 18.75rem);
+        margin-right: 1vw;
+    }
+    .Refine-Track img{
+        width: clamp(10rem, 0rem + 16vw, 15rem) !important ;
+        height: clamp(10rem, 0rem + 16vw, 15rem) !important;
+        margin-bottom: 1.5vh;
+    }
+    .Refine-Track p:first-of-type{
+        font-size: clamp(1.2rem, 0.8rem + 0.64vw, 1.4rem);
+        margin-bottom: 1vh;
+        max-width: 90%;
+    }
+    .Refine-Track p{
+        font-size: clamp(0.9rem, 0.3rem + 0.96vw, 1.2rem);
+        line-height: clamp(1.2rem, 0.6rem + 0.96vw, 1.5rem);
+        max-width:90%;
+    }
+    .AboutArtist{
+        display: flex;
+        flex-direction: column;
+        padding-top: clamp(0rem, -1.875rem + 3vw, 0.938rem);
+        width: clamp(18.75rem, -5.625rem + 39vw, 30.938rem);
+    }
+    .DescriptionCont{
+        border: 0.5px solid darkgray; 
+        padding-right: 7px;  
+        padding-block: 7px;
+        border-radius: 20px;
+        padding-left: 10px;
+    }
+    .Description{
+        overflow-y: auto;
+        height: clamp(9.5rem, 7.496rem + 3.206vw, 10.5rem);
+        line-height: clamp(1.9rem, 1.5rem + 0.64vw, 2.1rem);
+    }
+    .Description::-webkit-scrollbar {
+        width: 8px;
+    }
+    .Description::-webkit-scrollbar-track {
+        border-radius: 8px;
+        background: transparent;
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
+    }
+    .Description::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        background-color: #cbcbcb;
+    }
+    .Description p:first-of-type{
+        font-size: clamp(1.4rem, 0.8rem + 0.96vw, 1.7rem);
+    }
+    .Description p:nth-of-type(2){
+        color: var(--AccentColor);
+        font-size: clamp(1.9rem, 1.3rem + 0.96vw, 2.2rem);
+        margin-top: 1vh;
+    }
+    .Description p{
+        font-size: clamp(1rem, 0.4rem + 0.96vw, 1.3rem);
+        max-width: clamp(16.375rem, -7.673rem + 38.477vw, 28.375rem);
+    }
+    .AboutArtist span{
+        display: flex;
+        margin-top: 1vh;
+    }
+    .AboutArtist span p{
+        font-size: clamp(1rem, 0rem + 1.6vw, 1.5rem);
+        margin-left: 0.2vw;
+    }
+    .AboutArtist span p:last-of-type{
+        margin-left: 0.5vw;
+
+    }
+    .QuestionMarkIcon{
+        margin-top: 0.5vh;
+        font-size: clamp(1.188rem, 0.438rem + 1.2vw, 1.563rem);
+    }
+    .DeleteButton{
+        font-size: clamp(1.2rem, 0.2rem + 1.6vw, 1.7rem);
+        background: transparent;
+        color:var(--AccentColor);
+        border: 0.5px solid gray;
+        width: fit-content;
+        padding: 5px 15px 2px 15px;
+        border-radius: 20px;
+        margin-top: 2vh; 
+        margin-left: 0.2vw;
+    }
+    .RecentlyAddedTitle{
+        font-size: clamp(1.9rem, 1.3rem + 0.96vw, 2.2rem);
+        padding-top: clamp(1.125rem, 0.25rem + 1.4vw, 1.563rem);
+        padding-left: clamp(1.188rem, -0.188rem + 2.2vw, 1.875rem);
+    }
+    .RecentAddedCont img{
+        margin-right: clamp(2.125rem, -0.506rem + 4.21vw, 3.438rem);
+        width: clamp(8.5rem, -0.518rem + 14.429vw, 13rem);
+    }
+
+    .RecentlyAddedTrack{
+        margin-top: clamp(0.438rem, -1.441rem + 3.006vw, 1.375rem);
+        overflow-y: auto;
+        height: clamp(8.125rem, -1.394rem + 15.23vw, 12.875rem);
+        width: clamp(9.625rem, -2.524rem + 19.439vw, 15.688rem);
+    }
+
+    .RecentlyAddedTrack::-webkit-scrollbar {
+        width: 7px;
+    }
+    .RecentlyAddedTrack::-webkit-scrollbar-track {
+        border-radius: 8px;
+        background: transparent;
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
+    }
+    .RecentlyAddedTrack::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        background-color: #cbcbcb;
+    }
+
+    .RecentlyAddedTrack p:first-of-type{
+        font-size: clamp(1rem, -0.102rem + 1.764vw, 1.55rem);
+        line-height: clamp(1.3rem, 0.498rem + 1.283vw, 1.7rem);
+    }
+
+    .RecentlyAddedTrack p{
+        font-size: clamp(0.75rem, 0.249rem + 0.802vw, 1rem);
+        line-height: 1.2rem;
+        max-width: clamp(8.688rem, -2.71rem + 18.236vw, 14.375rem);
+
+    }
+    .RecentlyPlayedTitle{
+        font-size: clamp(1.9rem, 1.3rem + 0.96vw, 2.2rem);
+        padding-top: clamp(1.125rem, 0.25rem + 1.4vw, 1.563rem);
+        padding-left: clamp(1.188rem, -0.188rem + 2.2vw, 1.875rem);
+    }
+
+
+    .RecentlyPlayedTrackCont img{
+        margin-right: clamp(1.563rem, -0.563rem + 3.4vw, 2.625rem);
+        width: clamp(8.5rem, -0.518rem + 14.429vw, 13rem);
+    }
+
+    .RecentTracksText{
+        margin-top: clamp(0rem, -1.876rem + 3.002vw, 0.938rem);
+        height:clamp(8.25rem, 0.25rem + 12.8vw, 12.25rem);
+        width: clamp(9.813rem, -3.563rem + 21.4vw, 16.5rem);
+    }
+
+    .RecentTracksText p{
+        max-width: clamp(8.75rem, -4.75rem + 21.6vw, 15.5rem)   ;
+        border: 0.5px solid yellow
+    }
+
+ 
+
 }
