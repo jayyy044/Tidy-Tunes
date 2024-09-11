@@ -21,23 +21,31 @@
 
 }
 .albumrefine1 { 
+    width: clamp(56.813rem, -4.261rem + 97.717vw, 113rem);/*1000px*/
+    height: 245px;
     grid-area: albumrefine1;    
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.20);
-    box-shadow: -3px 0px 17px 3px rgba(255,255,255,0.5); 
-    background: linear-gradient(to top,#1f2130, #11162a,#14182e);
+    box-shadow: inset 0px 0px 15px 5px rgba(255,255,255,0.3);
+    background-color: #021223;
     margin-right: 1vw;
     margin-left: 1vw;
     margin-top: 2vh;
     padding-left: 35px;
+    padding-right: 35px;
     padding-top: 25px;
     
 }
 
-.albumrefine1 p{
+.SearchTitle p:first-of-type{
+    font-size: 2.5rem;
+    color: var(--AccentColor);
+}
+.SearchTitle p{
     line-height: 2.5rem;
     font-size: 1.4rem;
 }
+
 
 .albumrefine1 form{
     display: flex;
@@ -49,7 +57,8 @@
 }
 
 .albumrefine1 form input{
-    width: 60vw;
+    border-radius: 15px;
+    width: clamp(51.25rem, 28.696rem + 36.087vw, 72rem);/*1000px*/
     height: 5vh;
     background: transparent;
     text-align: center;
@@ -61,11 +70,12 @@
 
 .albumrefine1 form input:active,
 .albumrefine1 form input:focus{
+    outline: none;
     border-color: var(--AccentColor) !important;
 }
 
 .albumrefine1 form button{
-    width: 8vw;
+    width:clamp(8.75rem, 7.826rem + 1.478vw, 9.6rem);
     padding-block: 10px;
     font-size: 1.2rem;
     background: transparent;
@@ -83,11 +93,13 @@
 
 
 .albumrefine2 { 
+    width: clamp(29.75rem, -0.753rem + 48.804vw, 57.813rem);/*1000px*/
+    height:clamp(30.25rem, 23.567rem + 8.226vw, 33.438rem);/*1300px*/
     grid-area: albumrefine2;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.20);
-    box-shadow: -3px 0px 17px 3px rgba(255,255,255,0.5); 
-    background: linear-gradient(to top,#1f2130, #11162a,#14182e);
+    box-shadow: inset 0px 0px 15px 5px rgba(255,255,255,0.3);
+    background-color: #021223;
     margin-bottom: 2vh;
     margin-left: 1vw;
     /* position: relative; */
@@ -96,7 +108,8 @@
 .tracksresulttite{
     /* color: var(--AccentColor);
     font-size: 2rem; */
-    padding-left: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
     padding-top: 20px;
     display: flex;
     justify-content: center; /* Centers the "Tracks Results" text */
@@ -106,14 +119,14 @@
 .tracksresulttite p{
     margin: 0;
     color: var(--AccentColor);
-    font-size: 2rem;
+    font-size: clamp(1.6rem, 1.165rem + 0.696vw, 2rem);/*1000px*/
 }
 
 .backbutton{
-    position: absolute; /* Positions the back button absolutely */
-    left: 2.5%;
-    top: 10%; 
-    font-size: 30px;
+    position: absolute; 
+    left: clamp(1rem, 0.738rem + 0.323vw, 1.125rem);/*1300px*/
+    top: 10px; 
+    font-size: clamp(1.688rem, 1.294rem + 0.484vw, 1.875rem);/*1300px*/
     margin-top: 1vh;
     border: 1px solid gray;
     padding: 5px;
@@ -136,7 +149,7 @@
     margin-top: 1.5vh;
     padding-inline: 10px;
     padding-bottom: 10px;
-    width: 100%;
+    width: clamp(17.625rem, -2.163rem + 24.355vw, 27.063rem);/*1300px*/
 }
 
 .resultsCont {
@@ -144,36 +157,38 @@
     display: flex;
     margin-bottom: 1vh; 
     padding: 10px;
-    transition: background-color 0.3s ease; /* Smooth transition */
+    transition: background-color 0.3s ease; 
 }
 
 .resultsCont:hover{
-    background-color: rgba(255, 255, 255, 0.1); /* Slightly whiter background */
+    background-color: rgba(255, 255, 255, 0.1); 
 }
 
 .resultsCont img{
-    width: 85px;
+    width: clamp(4.375rem, 2.409rem + 2.419vw, 5.313rem);/*1300px*/
+    height: clamp(4.375rem, 2.409rem + 2.419vw, 5.313rem);/*1300px*/
     border-radius: 8px;
 }
 
 .resultText{
     margin-left: 1vw;
-    font-size: 1.15rem;
-    line-height: 1.5rem;
-    width: 100%;
+    font-size: clamp(1rem, 0.685rem + 0.387vw, 1.15rem);/*1300px*/
+    line-height: clamp(1.2rem, 0.571rem + 0.774vw, 1.5rem);/*1300px*/
+    width: clamp(11.563rem, -4.294rem + 19.516vw, 19.125rem);/*1300px*/
     overflow-y: auto;
-    height: 85px;
+    height: clamp(4.375rem, 2.409rem + 2.419vw, 5.313rem);/*1300px*/
     padding-right: 5px;
 }
 
+
 .resultText::-webkit-scrollbar {
-    width: 12px;
+    width: 8px;
 }
 
 .resultText::-webkit-scrollbar-track {
     border-radius: 8px;
     background: transparent;
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
    
 }
 
@@ -183,12 +198,13 @@
 }
 
 .albumrefine3 { 
+    width: clamp(29.75rem, -0.753rem + 48.804vw, 57.813rem);/*1000px*/
+    height: clamp(30.25rem, 23.567rem + 8.226vw, 33.438rem);/*1300px*/
     grid-area: albumrefine3;
     border-radius: 20px;
-
     border: 1px solid rgba(255, 255, 255, 0.20);
-    box-shadow: -3px 0px 17px 3px rgba(255,255,255,0.5); 
-    background: linear-gradient(to top,#1f2130, #11162a,#14182e); 
+    box-shadow: inset 0px 1px 15px 5px rgba(255,255,255,0.3);
+    background-color: #021223; 
     margin-bottom: 2vh;
     margin-right: 1vw;
 }
@@ -219,71 +235,87 @@
 }
 
 .Trackanalysiscont img{
-    width: 320px;
-    height: 320px;
+    width: clamp(16.25rem, 8.406rem + 9.662vw, 20rem);/*1300px*/
+    height: clamp(16.25rem, 8.406rem + 9.662vw, 20rem);/*1300px*/
     border-radius: 15px;
 }
 
 .a_trackcont{
     display: flex;
-    margin-top: 5vh;
+    margin-top: clamp(0.188rem, -1.381rem + 1.932vw, 0.938rem);/*1300px*/
     padding-right: 5px;
-    padding-left: 15px;
+    padding-left: 25px;
 
 
 }
 .a_tracktextCont{
+    width: clamp(18.938rem, -12.439rem + 38.647vw, 33.938rem);/*1300px*/
+    margin-top: clamp(1.875rem, -1.394rem + 4.027vw, 3.438rem);/*1300px*/
+    height: clamp(11.875rem, 7.299rem + 5.636vw, 14.063rem);/*1300px*/
     overflow-y: auto;
     padding-inline: 10px;
     padding-top: 10px;
-    margin-top: 2vh;
-    font-size: 1.3rem;
-    line-height: 1.6rem;
+
 }
 .a_tracktextCont::-webkit-scrollbar {
-    width: 12px;
+    width: 10px;
 }
 
 .a_tracktextCont::-webkit-scrollbar-track {
     border-radius: 8px;
     background: transparent;
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
 }
 
 .a_tracktextCont::-webkit-scrollbar-thumb {
     border-radius: 8px;
     background-color: #cbcbcb;
 }
-.a_trackcont p{
-    font-size: 1.1rem;
-    padding-left: 5px;
-    margin-top: 0.25vh;
-    max-width: 100%;
+.a_tracktextCont p:first-of-type{
+    font-size: clamp(1.4rem, 0.772rem + 0.773vw, 1.7rem);/*1300px*/
+    color: var(--AccentColor);
+    margin-bottom: 15px;
+}    
+.a_tracktextCont p:nth-of-type(3){
+    font-size: clamp(1.4rem, 0.772rem + 0.773vw, 1.7rem);/*1300px*/
+    color: var(--AccentColor);
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid darkgray;
+    width: fit-content;
+}
+.a_tracktextCont p{
+    font-size: clamp(1rem, 0.582rem + 0.515vw, 1.2rem);/*1300px*/
+    max-width: clamp(18.188rem, -13.059rem + 38.486vw, 33.125rem);/*1300px*/
 }
 
 .similarRating{
-    padding-left: 15px;
+    padding-left: clamp(0.5rem, -2.115rem + 3.221vw, 1.75rem);/*1300px*/
     padding-top: 20px;
     display: flex;
-    margin-top: 1vh;
+    margin-top: 35px;
 }
 
-.similarRating p,
-.similarRating span{
-    font-size: 1.4rem;
+.similarRating p{
+    font-size: clamp(1.2rem, 0.782rem + 0.515vw, 1.4rem);/*1300px*/
 }
 
 .similarRating p{
     padding-left: 10px;
 }
+.questiontooltip{
+    margin-inline: 5px;
+    font-size: 20px;
+}
+
 .addsongbutton{
     color: white ;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 0.582rem + 0.515vw, 1.2rem);/*1300px*/
     background: transparent;
     margin-left: auto;
-    margin-right: 2vw;
+    margin-right: clamp(1.125rem, -1.098rem + 2.738vw, 2.188rem);/*1300px*/
     border: 1px solid gray;
-    padding: 5px;
+    padding: clamp(0.438rem, 0.699rem + -0.322vw, 0.313rem);/*1300px*/
     padding-top: 10px;
     border-radius: 15px;
     transition: border-color 0.5s ease-in-out,
@@ -301,24 +333,41 @@
 }
 
 .albumanalysisinfo{
-    /* border: 2px solid beige; */
-    width: min-content;
+    width: clamp(11rem, 2.613rem + 10.323vw, 15rem);/*1300px*/
     padding-left: 5px;
-    margin-top: 1.5vh;
-    margin-left: 1vw;
+    margin-top: 13px;
+    margin-left: clamp(0.938rem, 0.282rem + 0.806vw, 1.25rem);/*1300px*/
 }
 
 .albumanalysisinfo img{
-    width: 240px;
-    height: 230px;
+    width: clamp(10.625rem, 2.762rem + 9.677vw, 14.375rem);/*1300px*/
+    height: clamp(10.625rem, 2.762rem + 9.677vw, 14.375rem);/*1300px*/
     border-radius: 15px;
     margin-bottom: 1vh;
 }
 
 .albumanalysisinfotext{
-    height: 22vh;
+    height: 202px;
     padding-left: 5px;
     overflow-y: auto;
+}
+.albumanalysisinfotext p{
+    font-size: clamp(0.9rem, 0.481rem + 0.516vw, 1.1rem);/*1300px*/
+    line-height: clamp(1.3rem, 0.881rem + 0.516vw, 1.5rem);/*1300px*/
+    max-width: clamp(9.625rem, 1.5rem + 10vw, 13.5rem);/*1300px*/
+}
+.albumanalysisinfotext p:first-of-type{
+    font-size: clamp(1.2rem, 0.781rem + 0.516vw, 1.4rem);/*1300px*/
+    color: var(--AccentColor);
+    margin-bottom: 5px;
+}
+
+.albumanalysisinfotext p:nth-of-type(3){
+    font-size: clamp(1.2rem, 0.781rem + 0.516vw, 1.4rem);/*1300px*/
+    color: var(--AccentColor);
+    margin-top: 5px;
+    margin-bottom: 5px;
+
 }
 .albumanalysisinfotext::-webkit-scrollbar {
     width: 10px;
@@ -327,7 +376,7 @@
 .albumanalysisinfotext::-webkit-scrollbar-track {
     border-radius: 8px;
     background: transparent;
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
 }
 
 .albumanalysisinfotext::-webkit-scrollbar-thumb {
@@ -335,37 +384,35 @@
     background-color: #cbcbcb;
 }
 
-.albumanalysisinfotext p{
-    max-width: 99%;
-    font-size: 1.1rem;
-    line-height: 1.5rem;
-
-}
 .AlbumTracksInfo{
-    margin-left: 1.5vw;
-    margin-top: 1.5vh;
-    width: 67%;
+    margin-left: clamp(0.875rem, 0.089rem + 0.968vw, 1.25rem);/*1300px*/
+    margin-top: 15px;
+    width: clamp(24.563rem, -3.875rem + 35vw, 38.125rem);/*1300px*/
 }
 
 .analyzedsongstitles{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2vh;
-    width: 98%;
+    width: clamp(24.125rem, -5.23rem + 36.129vw, 38.125rem);/*1300px*/
+    margin-bottom: 12px;
     
 }
 
 .analyzedsongstitles p,
 .analyzedsongstitles span{
-    font-size: 1.5rem;
+    font-size: clamp(1.3rem, 0.881rem + 0.516vw, 1.5rem);/*1300px*/
     border-bottom: 1px solid gray;
     color: var(--AccentColor);
     padding-bottom: 5px;
 }
 
-.AnalyzedSongsInfoCont{
+.tooltipicon{
+    font-size: 25px;
+    margin-left: 2px;
+}
 
-    height: 42vh;
+.AnalyzedSongsInfoCont{
+    height:clamp(21.563rem, 14.093rem + 9.194vw, 25.125rem);/*1300px*/
     overflow-y: auto;
 }
 
@@ -376,7 +423,7 @@
 .AnalyzedSongsInfoCont::-webkit-scrollbar-track {
     border-radius: 8px;
     background: transparent;
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, .8);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
 }
 
 .AnalyzedSongsInfoCont::-webkit-scrollbar-thumb {
@@ -386,11 +433,11 @@
 
 .analyzedsongsinfo{
     display: flex; 
-    margin-bottom: 2vh;
+    margin-bottom: 20px;
     padding-bottom: 5px;
     border-bottom: 1px solid gray;
     justify-content: space-between;
-    margin-right: 0.5vw;
+    margin-right: 9px;
     padding-top: 8px;
     padding-inline: 5px;
 }
@@ -398,9 +445,13 @@
     background: rgba(255, 255, 255, 0.1);
 
 }
+.analyzedsongsinfo p:first-of-type{
+    max-width: clamp(15.813rem, -10.266rem + 32.097vw, 28.25rem);/*1300px*/
+}
 
 .analyzedsongsinfo p {
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 0.681rem + 0.516vw, 1.3rem);/*1300px*/
+    
 }
  /* .ant-modal-wrap .AddTrackModal  {
     background: rgba(0, 0, 0, 1)
@@ -411,3 +462,521 @@
     background: rgba(0, 0, 0, 0.3) ;
 
 } */
+
+
+@media only screen and (max-width:1299px){
+    /*goes to 1000px*/
+    .Column {
+        width: clamp(13.25rem, -1.333rem + 23.333vw, 17.625rem);
+    }
+    .resultsCont img{
+        width: clamp(3.5rem, 0.583rem + 4.667vw, 4.375rem);
+        height: clamp(3.5rem, 0.583rem + 4.667vw, 4.375rem);
+    }
+    .resultText{
+        height: clamp(3.5rem, 0.583rem + 4.667vw, 4.375rem);
+        width: clamp(7.563rem, -5.773rem + 21.336vw, 11.563rem);
+        font-size: clamp(0.8rem, 0.133rem + 1.067vw, 1rem);
+    }
+    .albumrefine2{
+        height: clamp(27rem, 16.167rem + 17.333vw, 30.25rem);
+    }
+    .albumrefine3{
+        height: clamp(27rem, 16.167rem + 17.333vw, 30.25rem);
+    }
+    .albumanalysisinfo img{
+        width: clamp(7rem, -5.083rem + 19.333vw, 10.625rem);
+        height: clamp(7rem, -5.083rem + 19.333vw, 10.625rem);
+    }
+    .backbutton{
+        font-size: clamp(1.438rem, 0.603rem + 1.336vw, 1.688rem);
+    }
+    .albumanalysisinfo{
+        width: clamp(7rem, -6.333rem + 21.333vw, 11rem);
+        padding-left: clamp(0.188rem, -0.229rem + 0.667vw, 0.313rem);
+    }
+    .albumanalysisinfotext{
+        height: clamp(14.188rem, 19.396rem + -8.333vw, 12.625rem);
+    }
+    .albumanalysisinfotext p:first-of-type{
+        font-size: clamp(1rem, 0.333rem + 1.067vw, 1.2rem);
+    }
+    .albumanalysisinfotext p{
+        font-size: clamp(0.75rem, 0.25rem + 0.8vw, 0.9rem);
+        max-width: clamp(5.625rem, -7.708rem + 21.333vw, 9.625rem);
+    }
+    .albumanalysisinfotext p:nth-of-type(3){
+        font-size: clamp(1rem, 0.333rem + 1.067vw, 1.2rem);
+    }
+    .analyzedsongstitles{
+        width: clamp(19.75rem, 5.167rem + 23.333vw, 24.125rem);
+    }
+    .analyzedsongstitles p, 
+    .analyzedsongstitles span{
+        font-size: clamp(1.1rem, 0.433rem + 1.067vw, 1.3rem);
+        padding-bottom: clamp(0rem, -1.042rem + 1.667vw, 0.313rem);
+    }
+    .tooltipicon{
+        font-size: clamp(1.25rem, 0.208rem + 1.667vw, 1.563rem);
+        margin-bottom: clamp(0.188rem, 0.813rem + -1vw, 0rem);
+    }
+    .AlbumTracksInfo{
+        width: clamp(19.813rem, 3.978rem + 25.336vw, 24.563rem);
+    }
+    .AnalyzedSongsInfoCont{
+        height: clamp(19.813rem, 13.978rem + 9.336vw, 21.563rem);
+    }
+    .analyzedsongsinfo p{
+        font-size: clamp(0.95rem, 0.45rem + 0.8vw, 1.1rem);
+    }
+    .analyzedsongsinfo p:first-of-type{
+        max-width: clamp(12rem, -0.71rem + 20.336vw, 15.813rem);
+    }
+    .a_trackcont{
+        padding-left: clamp(1.125rem, -0.338rem + 2.341vw, 1.563rem);
+        margin-top: clamp(0.625rem, 2.087rem + -2.338vw, 0.188rem);
+    }
+    .a_tracktextCont{
+        height: clamp(8.125rem, 3.944rem + 6.689vw, 9.375rem);
+        width: clamp(15.438rem, 3.941rem + 18.395vw, 18.875rem);
+        margin-top: clamp(1.25rem, -6.484rem + 12.375vw, 3.563rem);
+    }
+    .a_tracktextCont p:first-of-type{
+        font-size: clamp(1.4rem, 0.731rem + 1.07vw, 1.6rem);
+    }
+    .a_tracktextCont p{
+        font-size: clamp(1rem, 0.331rem + 1.07vw, 1.2rem);
+        max-width: clamp(15rem, 4.338rem + 17.06vw, 18.188rem);
+    }
+    .AboutTheArtist{
+        margin-top: clamp(1rem, 1.836rem + -1.338vw, 0.75rem);
+        margin-left: clamp(1.25rem, 0.205rem + 1.672vw, 1.563rem);
+        margin-bottom: 5px;
+
+    }
+    .AboutTheArtist p:first-of-type{
+        font-size: clamp(1.3rem, 0.966rem + 0.535vw, 1.4rem);
+        color: var(--AccentColor);
+        margin-bottom: clamp(0.625rem, 2.088rem + -2.341vw, 0.188rem);
+        border-bottom: 0.5px solid darkgray;
+        width: fit-content;
+    }
+    .AboutTheArtist p{
+        font-size: 1rem;
+        line-height: 1.5rem;
+        max-width: clamp(27.125rem, -1.512rem + 45.819vw, 35.688rem);
+        
+    }
+
+    .Trackanalysiscont img{
+        width: clamp(11rem, -6.559rem + 28.094vw, 16.25rem);
+        height: clamp(11rem, -6.559rem + 28.094vw, 16.25rem);
+    }
+    .similarRating{
+        padding-top:0px !important;
+        margin-top: 0px !important;
+        padding-left: clamp(0.5rem, -0.963rem + 2.341vw, 0.938rem);
+    }
+    .similarRating p{
+        font-size: clamp(0.9rem, 0.231rem + 1.07vw, 1.1rem);
+    }
+    .addsongbutton{
+        font-size: clamp(0.8rem, 0.131rem + 1.07vw, 1rem);
+        margin-right: clamp(0.438rem, -1.862rem + 3.679vw, 1.125rem);
+    }
+}
+
+
+
+@media only screen and (max-width:999px) {
+    /*Goes to 500px*/
+    .AlbumRefineCont{
+        grid-template-areas: 
+        "albumrefine1 albumrefine1 albumrefine1 albumrefine1"
+        "albumrefine1 albumrefine1 albumrefine1 albumrefine1"
+        "albumrefine2 albumrefine2 albumrefine2 albumrefine2"
+        "albumrefine2 albumrefine2 albumrefine2 albumrefine2"
+        "albumrefine3 albumrefine3 albumrefine3 albumrefine3"
+        "albumrefine3 albumrefine3 albumrefine3 albumrefine3";
+    }
+    .albumrefine1{
+        width: clamp(28.7rem, 0.644rem + 89.78vw, 56.7rem);
+        padding-left:clamp(0.938rem, -0.315rem + 4.008vw, 2.188rem);
+        padding-top: clamp(0.938rem, 0.311rem + 2.004vw, 1.563rem);
+        padding-right: clamp(0.938rem, -0.315rem + 4.008vw, 2.188rem);
+        height: clamp(11.75rem, 8.18rem + 11.423vw, 15.313rem);
+    }
+    .SearchTitle p:first-of-type{
+        font-size: clamp(1.7rem, 0.898rem + 2.565vw, 2.5rem);
+        margin-bottom: clamp(0.313rem, 0.626rem + -1.002vw, 0rem);
+    }
+    .SearchTitle p{
+        font-size: clamp(1rem, 0.599rem + 1.283vw, 1.4rem);
+        line-height: clamp(1.4rem, 0.298rem + 3.527vw, 2.5rem);
+    }
+    .albumrefine1 form input{
+        font-size: clamp(1.2rem, 0.899rem + 0.962vw, 1.5rem);
+        width: clamp(26rem, 0.699rem + 80.962vw, 51.25rem);
+        height: clamp(1.875rem, 1.562rem + 1.002vw, 2.188rem);
+        margin-top: -6px;
+        margin-bottom: 20px;
+    }
+    .albumrefine1 form button{
+        font-size: clamp(1rem, 0.8rem + 0.641vw, 1.2rem);
+        width: clamp(6rem, 3.244rem + 8.818vw, 8.75rem);
+    }
+    .Column{
+        width: clamp(19.5rem, -1.5rem + 48vw, 28.5rem);/*700px*/
+    }
+    .resultsCont img{
+        width: 5rem;
+        height: 5rem;
+    }
+    .resultText{
+        font-size: clamp(1.15rem, 0.333rem + 1.867vw, 1.5rem);/*700px*/
+        line-height:clamp(1.5rem, 1.267rem + 0.533vw, 1.6rem);/*700px*/
+        height: 4.5rem;
+        width: clamp(12rem, -9rem + 48vw, 21rem);/*700px*/
+    }
+    .albumrefine2{
+        width:clamp(30.5rem, -0.061rem + 97.796vw, 61rem);
+        height: 33rem;
+    }
+    .tracksresulttite p{
+        font-size: clamp(1.7rem, 1.399rem + 0.962vw, 2rem);
+    }
+    .FillinText p{
+        margin-left: 15px;
+        font-size:clamp(2rem, 1.499rem + 1.603vw, 2.5rem) ;
+    }
+    .albumrefine3{
+        height: 33rem;
+        width: clamp(30.5rem, -0.061rem + 97.796vw, 61rem);
+        margin-left: 1vw;
+        margin-top: -2vh;
+    }
+    .backbutton{
+        font-size: clamp(1.688rem, 1.25rem + 1vw, 1.875rem);/*700px*/
+    }
+    .albumanalysisinfo{
+        width: clamp(9.8rem, 2.8rem + 16vw, 12.8rem);/*700px*/
+    }
+    .albumanalysisinfo img {
+        width: clamp(10rem, 3rem + 16vw, 13rem);/*700px*/
+        height: clamp(10rem, 3rem + 16vw, 13rem);/*700px*/
+    }
+    .albumanalysisinfotext{
+        max-height: clamp(16rem, 20.682rem + -10.702vw, 14rem);/*700px*/
+    }
+    .albumanalysisinfotext p:first-of-type {
+        font-size: clamp(1.2rem, 0.733rem + 1.067vw, 1.4rem);/*700px*/
+    }
+    .albumanalysisinfotext p{
+        max-width: clamp(8.313rem, 2.187rem + 14vw, 10.938rem);/*700px*/
+        font-size: clamp(1rem, 0.533rem + 1.067vw, 1.2rem);/*700px*/
+        line-height: clamp(1.5rem, 1.033rem + 1.067vw, 1.7rem);/*700px*/
+    }
+    .albumanalysisinfotext p:nth-of-type(3){
+        font-size:clamp(1.2rem, 0.733rem + 1.067vw, 1.4rem);/*700px*/
+    }
+    .analyzedsongstitles{
+        width: clamp(29.688rem, -6.042rem + 81.667vw, 45rem);/*700px*/
+        margin-left: 5px;
+    }
+    .AlbumTracksInfo{
+        width: clamp(30.125rem, -5.167rem + 80.667vw, 45.25rem);/*700px*/
+    }
+    .AnalyzedSongsInfoCont{
+        height: 400px;
+    }
+    .analyzedsongstitles p, 
+    .analyzedsongstitles span{
+        font-size: clamp(1.25rem, 0.9rem + 0.8vw, 1.4rem);/*700px*/
+    }
+    .analyzedsongsinfo p:first-of-type{
+        width: 192px;
+    }
+    .analyzedsongsinfo p {
+        font-size: clamp(1.2rem, 0.733rem + 1.067vw, 1.4rem);/*700px*/
+
+    }
+    .Trackanalysiscont img{
+        width: clamp(18rem, 8.635rem + 21.405vw, 22rem);
+        height: clamp(18rem, 8.635rem + 21.405vw, 22rem);
+    }
+    .a_tracktextCont{
+        margin-top: 30px;
+        width: clamp(21.5rem, -11.276rem + 74.916vw, 35.5rem);
+        height: 19rem;
+    }
+    .a_tracktextCont p{
+        max-width: clamp(20.625rem, -12.297rem + 75.251vw, 34.688rem);
+        font-size: clamp(1.3rem, 0.832rem + 1.07vw, 1.5rem);
+    }
+    .a_tracktextCont p:first-of-type{
+        font-size: clamp(1.7rem, 0.998rem + 1.605vw, 2rem);
+    }
+    .a_tracktextCont p:nth-of-type(3){
+        font-size: clamp(1.7rem, 0.998rem + 1.605vw, 2rem);
+    }
+    .similarRating{
+        margin-top: 20px !important;
+    }
+    .similarRating p{
+        font-size: clamp(1.35rem, -0.172rem + 3.478vw, 2rem);
+    }
+    .addsongbutton{
+        font-size: clamp(1.2rem, 0.498rem + 1.605vw, 1.5rem);
+        margin-right: clamp(0.688rem, -0.044rem + 1.672vw, 1rem);
+    }
+
+
+}
+
+
+@media only screen and (max-width:699px){
+    /*goes to 499px*/
+    .ResultContainer{
+        width: clamp(28.5rem, -1.44rem + 96vw, 40.5rem);
+        margin-left: 15px;
+        height: 28.5rem;
+        overflow-y: auto;
+    }
+    .ResultContainer::-webkit-scrollbar {
+        width: 8px;
+    }
+    .ResultContainer::-webkit-scrollbar-track {
+        border-radius: 8px;
+        background: transparent;
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
+       
+    }
+    .ResultContainer::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        background-color: #cbcbcb;
+    }
+    .resultsCont{
+        width: clamp(26rem, -3.94rem + 96vw, 38rem);
+    }
+    .resultText{
+        width: clamp(21rem, -8.94rem + 96vw, 33rem);
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+    }   
+    .albumanalysiscont{
+        display: block;
+    }
+    .albumanalysisinfo{
+        display: flex;
+        width: fit-content ;
+    }
+    .albumanalysisinfotext {
+        width: clamp(20.688rem, -3.81rem + 78.392vw, 30.438rem);
+        height: clamp(7rem, -0.538rem + 24.121vw, 10rem);
+        padding-top: 5px;
+        padding-left: 10px;
+    }
+    .albumanalysisinfotext p:first-of-type,
+    .albumanalysisinfotext p:nth-of-type(3){
+        font-size: clamp(1.3rem, 0.546rem + 2.412vw, 1.6rem);
+    }
+    .albumanalysisinfotext p{
+        max-width: clamp(19.5rem, -3.741rem + 74.372vw, 28.75rem);
+        font-size: clamp(1rem, 0.246rem + 2.412vw, 1.3rem);
+        line-height: clamp(1.3rem, 0.295rem + 3.216vw, 1.7rem);
+    }
+    .analyzedsongstitles{
+        width: clamp(28.125rem, -2.968rem + 99.497vw, 40.5rem);
+    }
+    .AlbumTracksInfo{
+        width: clamp(28.938rem, -1.213rem + 96.482vw, 40.938rem);
+    }
+    .AnalyzedSongsInfoCont{
+        max-height: clamp(16.5rem, 22.781rem + -20.101vw, 14rem);
+    }
+    .albumanalysisinfo img {
+        width:clamp(7rem, -0.538rem + 24.121vw, 10rem) ;
+        height: clamp(7rem, -0.538rem + 24.121vw, 10rem);
+    }    
+    .backbutton{
+        font-size: clamp(1.375rem, 0.589rem + 2.517vw, 1.688rem);
+    }
+    .Trackanalysiscont img{
+        width: clamp(12.5rem, 8.731rem + 12.06vw, 14rem);
+        height: clamp(12.5rem, 8.731rem + 12.06vw, 14rem);
+    }
+    .a_tracktextCont{
+        margin-top: 40px;
+        height: 8rem;
+        width: clamp(15rem, -10.126rem + 80.402vw, 25rem);
+
+    }
+    .a_tracktextCont p:first-of-type {
+        font-size: clamp(1.5rem, 0.997rem + 1.608vw, 1.7rem);
+    }
+    .a_tracktextCont p{
+        font-size: clamp(1.1rem, 0.597rem + 1.608vw, 1.3rem);
+        max-width: clamp(14.625rem, -9.401rem + 76.884vw, 24.188rem);
+    }
+    .AboutTheArtist{
+        margin-top: 15px;
+        width: clamp(28rem, -2.151rem + 96.482vw, 40rem);
+        margin-bottom: clamp(1.563rem, 4.703rem + -10.05vw, 0.313rem);
+    }
+    .AboutTheArtist p:first-of-type{
+        font-size: clamp(1.4rem, 0.897rem + 1.608vw, 1.6rem);
+    }
+    .AboutTheArtist p{
+        font-size: clamp(1.2rem, 0.697rem + 1.608vw, 1.4rem);
+        line-height: clamp(1.8rem, 2.051rem + -0.804vw, 1.7rem);
+        max-width: clamp(27.063rem, -3.559rem + 97.99vw, 39.25rem);
+    }
+    .similarRating p{
+        font-size: clamp(0.9rem, -0.231rem + 3.618vw, 1.35rem);
+    }
+    .addsongbutton{
+        font-size: clamp(0.9rem, 0.146rem + 2.412vw, 1.2rem);
+    }
+
+ 
+    
+}
+
+@media only screen and (max-width:499px){
+    /*goes to 320px*/
+    .albumrefine1{
+        width: clamp(17.4rem, -2.689rem + 100.444vw, 28.7rem);
+        height: clamp(13rem, 15.222rem + -11.111vw, 11.75rem);
+        padding-left:clamp(1.063rem, 1.302rem + -1.196vw, 0.928rem);
+        padding-top: clamp(1.063rem, 1.302rem + -1.196vw, 0.928rem);
+        padding-right: clamp(1.063rem, 1.302rem + -1.196vw, 0.928rem);
+    }
+    .SearchTitle p:first-of-type{
+        font-size: clamp(1.4rem, 1.099rem + 0.962vw, 1.7rem);
+    }
+    .SearchTitle p{
+        font-size: clamp(0.8rem, 0.6rem + 0.641vw, 1rem);
+        line-height: clamp(1.2rem, 1rem + 0.641vw, 1.4rem);
+
+    }
+    .albumrefine1 form input{
+        width: clamp(17rem, 1rem + 80vw, 26rem);
+        font-size: clamp(1rem, 0.644rem + 1.778vw, 1.2rem);
+        padding-top:clamp(0.125rem, 0.347rem + -1.111vw, 0rem);
+    }
+    .albumrefine1 form button {
+        font-size: clamp(0.8rem, 0.444rem + 1.778vw, 1rem);
+        width: clamp(5rem, 3.222rem + 8.889vw, 6rem);
+    }
+    
+    .albumrefine2{
+        width: clamp(19.5rem, -0.056rem + 97.778vw, 30.5rem);
+    }
+    .tracksresulttite p{
+        font-size: clamp(1.4rem, 0.867rem + 2.667vw, 1.7rem);
+    }
+    .FillinText p{
+        font-size: clamp(1.5rem, 0.611rem + 4.444vw, 2rem);
+        margin-left: clamp(0.188rem, -1.146rem + 6.667vw, 0.938rem);
+    }
+    .albumrefine3{
+        width:clamp(19.5rem, -0.056rem + 97.778vw, 30.5rem) ;
+    }
+    .ResultContainer{
+        width: clamp(17.5rem, -2.165rem + 98.324vw, 28.5rem);
+    }
+    .resultsCont{
+        width: clamp(15rem, -4.665rem + 98.324vw, 26rem);
+    }
+    .resultsCont img{
+        width: clamp(3.5rem, 0.818rem + 13.408vw, 5rem);
+        height: clamp(3.5rem, 0.818rem + 13.408vw, 5rem);
+    }
+    .resultText{
+        height: clamp(3.2rem, 0.876rem + 11.62vw, 4.5rem);
+        width: clamp(11rem, -6.877rem + 89.385vw, 21rem);
+        margin-left: 6px;
+        font-size: clamp(0.9rem, 0.364rem + 2.682vw, 1.2rem);
+        line-height:clamp(1.3rem, 0.942rem + 1.788vw, 1.5rem);
+    }
+    .backbutton{
+        font-size: clamp(1.188rem, 0.854rem + 1.667vw, 1.375rem);
+    }
+    .albumanalysisinfo img {
+        width:clamp(5.5rem, 2.833rem + 13.333vw, 7rem) ;
+        height: clamp(5.5rem, 2.833rem + 13.333vw, 7rem);
+    } 
+    .albumanalysisinfotext{
+        height: clamp(5.3rem, 2.278rem + 15.111vw, 7rem) ;
+        width: clamp(11.438rem, -5.008rem + 82.227vw, 20.688rem);
+    }
+    .albumanalysisinfotext p:first-of-type, 
+    .albumanalysisinfotext p:nth-of-type(3){
+        font-size: clamp(1.1rem, 0.744rem + 1.778vw, 1.3rem);
+    }
+    .albumanalysisinfotext p{
+        font-size: clamp(0.9rem, 0.722rem + 0.889vw, 1rem);
+        max-width: clamp(10.188rem, -6.368rem + 82.778vw, 19.5rem);
+    }
+    .analyzedsongstitles{
+        width: clamp(17.375rem, -1.736rem + 95.556vw, 28.125rem);
+    }
+    .analyzedsongstitles p, 
+    .analyzedsongstitles span {
+        font-size: clamp(1rem, 0.556rem + 2.222vw, 1.25rem);
+    }
+    .AlbumTracksInfo{
+        width:clamp(17.688rem, -2.313rem + 100.004vw, 28.938rem);
+    }
+    .AnalyzedSongsInfoCont{
+        height: 30vh !important;
+        max-height: none ;
+    }
+    .analyzedsongsinfo p:first-of-type{
+        max-width: clamp(7.125rem, -1.542rem + 43.333vw, 12rem);
+    }
+    .analyzedsongsinfo p {
+        font-size: clamp(0.9rem, 0.367rem + 2.667vw, 1.2rem);
+    }
+    .similarRating{
+        display: block;
+    }
+    .similarRating p{
+        font-size: clamp(0.9rem, 0.006rem + 4.469vw, 1.4rem);
+        padding-left: clamp(0.5rem, -0.282rem + 3.911vw, 0.938rem);
+    }
+    .addsongbutton{
+        margin-top: clamp(2.563rem, 6.026rem + -17.318vw, 0.625rem);
+        margin-left: clamp(3.25rem, -2.672rem + 29.609vw, 6.563rem);
+        font-size: clamp(1rem, 0.464rem + 2.682vw, 1.3rem);
+    }
+    .Trackanalysiscont img{
+        width: clamp(7rem, -2.832rem + 49.162vw, 12.5rem);
+        height: clamp(7rem, -2.832rem + 49.162vw, 12.5rem);
+    }
+    .a_tracktextCont{
+        margin-top: clamp(1.125rem, -1.333rem + 12.291vw, 2.5rem);
+        width: clamp(9.5rem, -0.332rem + 49.162vw, 15rem);
+        height: clamp(4.5rem, -1.757rem + 31.285vw, 8rem);
+    }
+    .a_tracktextCont p:first-of-type{
+        font-size: clamp(1.1rem, 0.385rem + 3.575vw, 1.5rem);
+        margin-bottom: clamp(0.25rem, -0.979rem + 6.145vw, 0.938rem);
+    }
+    .a_tracktextCont p{
+        font-size: clamp(0.9rem, 0.542rem + 1.788vw, 1.1rem);
+        max-width: clamp(8.875rem, -1.404rem + 51.397vw, 14.625rem);
+    }
+    .AboutTheArtist {
+        width: clamp(17.5rem, -1.271rem + 93.855vw, 28rem);
+        margin-top: clamp(2.25rem, 4.596rem + -11.732vw, 0.938rem);
+    }
+    .AboutTheArtist p:first-of-type{
+        font-size: clamp(1rem, 0.285rem + 3.575vw, 1.4rem);
+    }
+    .AboutTheArtist p{
+        font-size: clamp(0.9rem, 0.364rem + 2.682vw, 1.2rem);
+        line-height: clamp(0.9rem, 0.364rem + 2.682vw, 1.2rem);
+        max-width:clamp(16.875rem, -1.338rem + 91.066vw, 27.063rem);
+    }
+}
