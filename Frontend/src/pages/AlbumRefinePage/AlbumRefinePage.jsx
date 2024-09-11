@@ -10,6 +10,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { Modal, Tooltip } from 'antd';
 import { GrCircleQuestion } from "react-icons/gr";
 import { useAddTrack } from '../../hooks/useAddTrack'
+import MediaQuery from 'react-responsive'
 
 
 
@@ -92,7 +93,8 @@ const AlbumRefinePage = () => {
             state.Spotify_access,
             state.JWT_access,
             data,
-            playlistState.PlaylistId
+            playlistState.PlaylistId,
+            state.expirationTime
         )
         setSearchLoader_T(false)
     }
@@ -107,7 +109,9 @@ const AlbumRefinePage = () => {
             state.Spotify_access,
             state.JWT_access,
             selectedsong,
-            playlistState.PlaylistId
+            playlistState.PlaylistId,
+            state.expirationTime
+
         )
         setSearchLoader_A(false)
     }
@@ -130,11 +134,10 @@ const AlbumRefinePage = () => {
     <>
         <div className="AlbumRefineCont">
             <div className="albumrefine1">
-                <p style ={{
-                    color: 'var(--AccentColor)',
-                    fontSize: '2.5rem'
-                }}>Search</p>
-                <p>Check what songs are similar to your music taste</p>
+                <div className="SearchTitle">
+                    <p>Search</p>
+                    <p>Check what songs are similar to your music taste</p>   
+                </div>
                 <form onSubmit={SubmitForm}>
                     <input
                         type='text'
@@ -143,7 +146,7 @@ const AlbumRefinePage = () => {
                         value={itemSearch}
                     />  
                     <button type="submit" disabled={isloading}>Search</button>
-                </form>
+                </form>   
             </div>
 
             <div className='albumrefine2'>
@@ -159,34 +162,42 @@ const AlbumRefinePage = () => {
                             <div className="a_trackcont">
                                 <img src={trackAnalysis.trackimg} alt={`Track: "${trackAnalysis.name} image"`}/>
                                 <div className="a_tracktextCont">
-                                    <p style={{
-                                        fontSize:'1.5rem', 
-                                        color:'var(--AccentColor)',
-                                        marginTop: '0.5vh'}}>
-                                            {trackAnalysis.name}
-                                    </p>
-                                    <p>{`By ${trackAnalysis.artist}`}</p>   
-                                    <p style={{fontSize:'1.7rem', 
-                                        color:'var(--AccentColor)',
-                                        marginTop: '3vh',
-                                        marginBottom: '1.5vh',
-                                        borderBottom: '1px solid gray',
-                                        width: 'fit-content'}}>{`About the Artist: ${trackAnalysis.mainartist}`}</p>
+                                    <p>{trackAnalysis.name} </p>
+                                    <p>{`By ${trackAnalysis.artist}`}</p> 
+                                    <MediaQuery minWidth={1300}>
+                                        <p>{`About the Artist: ${trackAnalysis.mainartist}`}</p>
+                                        <p>{`Followers: ${trackAnalysis.artistFollowers}`}</p>
+                                        <p>{`Main Genres: ${trackAnalysis.artistGenres.join(', ')}`}</p>
+                                    </MediaQuery> 
+                                    <MediaQuery maxWidth={999} minWidth={700}>
+                                        <p>{`About the Artist: ${trackAnalysis.mainartist}`}</p>
+                                        <p>{`Followers: ${trackAnalysis.artistFollowers}`}</p>
+                                        <p>{`Main Genres: ${trackAnalysis.artistGenres.join(', ')}`}</p>
+                                    </MediaQuery> 
+                                </div>
+                            </div>   
+                            <MediaQuery maxWidth={1299} minWidth={1000}>
+                                <div className="AboutTheArtist">
+                                    <p>{`About the Artist: ${trackAnalysis.mainartist}`}</p>
                                     <p>{`Followers: ${trackAnalysis.artistFollowers}`}</p>
                                     <p>{`Main Genres: ${trackAnalysis.artistGenres.join(', ')}`}</p>
                                 </div>
-
-                            </div>                                
+                            </MediaQuery>
+                            <MediaQuery maxWidth={699}>
+                                <div className="AboutTheArtist">
+                                    <p>{`About the Artist: ${trackAnalysis.mainartist}`}</p>
+                                    <p>{`Followers: ${trackAnalysis.artistFollowers}`}</p>
+                                    <p>{`Main Genres: ${trackAnalysis.artistGenres.join(', ')}`}</p>
+                                </div>
+                            </MediaQuery>
                             <div className="similarRating">
                                 <span style={{display: 'flex', alignItems: 'center'}}>
-                                    Tidy Tunes Similarity Decision
+                                    <p>Similarity Decision</p>
                                     <Tooltip placement='top'  color='rgba(0, 0, 0, 0.8)' title={
                                     <p style={{color: 'var(--AccentColor)'}}
                                     >The similarity analysis is not 100% percent accurate user discretion advised</p>
                                     }>
-                                    <GrCircleQuestion style={{
-                                    marginInline: '0.2vw',
-                                    fontSize: '20px'}} />
+                                    <GrCircleQuestion className='questiontooltip'/>
                                     </Tooltip>
                                     : 
                                     <p style={{color: 'var(--AccentColor)'}}>{trackAnalysis.decision}</p>
@@ -202,31 +213,47 @@ const AlbumRefinePage = () => {
                             </p>
                         </div> 
                     :
-                    <div className="ColumnContainer">
-                        <div className="Column">
-                        {tracks.slice(0,4).map((item) => (
-                        <div key={item.trackid} className="resultsCont" onClick={() => AnalyzeTrack(item)}>
-                            <img  src={item.trackimg} alt={item.name} />
-                            <div className="resultText">
-                                <p>{item.name}</p>
-                                <p>{` By ${item.artist} ` }</p>
+                    <>
+                        <MediaQuery minWidth={700}>
+                            <div className="ColumnContainer">
+                                <div className="Column">
+                                    {tracks.slice(0,4).map((item) => (
+                                        <div key={item.trackid} className="resultsCont" onClick={() => AnalyzeTrack(item)}>
+                                            <img  src={item.trackimg} alt={item.name} />
+                                            <div className="resultText">
+                                                <p>{item.name}</p>
+                                                <p>{` By ${item.artist} ` }</p>
+                                            </div>
+                                        </div>
+                                    ))}   
+                                </div>
+                                <div className="Column">
+                                    {tracks.slice(4,8).map((item) => (
+                                        <div key={item.trackid} className="resultsCont" onClick={() => AnalyzeTrack(item)}>
+                                            <img src={item.trackimg} alt={item.name} />
+                                            <div className="resultText">
+                                                <p>{item.name}</p>
+                                                <p>{` By ${item.artist} `}</p>
+                                            </div>
+                                        </div>
+                                    ))}   
+                                </div>
                             </div>
-                        </div>
-                        ))}   
-                        </div>
-                        <div className="Column">
-                        {tracks.slice(4,8).map((item) => (
-                        <div key={item.trackid} className="resultsCont" onClick={() => AnalyzeTrack(item)}>
-                            <img src={item.trackimg} alt={item.name} />
-                            <div className="resultText">
-                                <p>{item.name}</p>
-                                <p>{` By ${item.artist} `}</p>
+                        </MediaQuery>
+                        <MediaQuery maxWidth={699}>
+                            <div className="ResultContainer">
+                                {tracks.map((item) => (
+                                    <div key={item.trackid} className="resultsCont" onClick={() => AnalyzeTrack(item)} >
+                                        <img src={item.trackimg}/>
+                                        <div className="resultText">
+                                            <p>{item.name}</p>
+                                            <p>{`By ${item.artist}`}</p>
+                                        </div>
+                                    </div>
+                                ))}       
                             </div>
-                        </div>
-                        ))}   
-                        </div>
-                        
-                    </div>
+                        </MediaQuery>
+                    </>
                 }
             </div>
 
@@ -244,13 +271,9 @@ const AlbumRefinePage = () => {
                             <div className="albumanalysisinfo">
                                 <img src={albumAnalysis.albumimg} alt={`${albumAnalysis.name}'s album image`}/>
                                 <div className="albumanalysisinfotext">
-                                    <p style={{fontSize:'1.3rem', color:'var(--AccentColor)'}}>{albumAnalysis.name}</p>
+                                    <p>{albumAnalysis.name}</p>
                                     <p>{`By: ${albumAnalysis.artist}`}</p>
-                                    <p style={{
-                                        marginTop: '1vh', 
-                                        color: 'var(--AccentColor)',
-                                        fontSize:'1.3rem',
-                                        marginBottom: '1vh'}}>{`About The Artist: ${albumAnalysis.mainartist}`}</p>
+                                    <p>{`About The Artist: ${albumAnalysis.mainartist}`}</p>
                                     <p>{`Followers: ${albumAnalysis.artistFollowers}`}</p>
                                     <p>{`Main Genres: ${albumAnalysis.artistGenres.join(', ')}`}</p>
                                 </div>
@@ -264,19 +287,17 @@ const AlbumRefinePage = () => {
                                         <p style={{color: 'var(--AccentColor)'}}
                                         >The similarity analysis is not 100% percent accurate user discretion advised</p>
                                         }>
-                                        <GrCircleQuestion style={{
-                                        marginInline: '0.2vw',
-                                        fontSize: '20px'}} />
+                                        <GrCircleQuestion className='tooltipicon'/>
                                         </Tooltip>
                                     </span>
                                 </div>
                                 <div className="AnalyzedSongsInfoCont">
-                                  {albumAnalysis.tracksdata.map((song, index) => (
-                                    <div onClick={() => showModal(setSelectedAlbumSong(song))} 
-                                    key={index} className="analyzedsongsinfo">
-                                        <p>{song.trackname}</p>
-                                        <p style={{marginLeft: '1vw'}}>{song.decision}</p>
-                                    </div>
+                                    {albumAnalysis.tracksdata.map((song, index) => (
+                                        <div onClick={() => showModal(setSelectedAlbumSong(song))} 
+                                            key={index} className="analyzedsongsinfo">
+                                                <p>{song.trackname}</p>
+                                                <p>{song.decision}</p>
+                                        </div>
                                     ))}  
                                 </div>
                                 <Modal
@@ -305,32 +326,50 @@ const AlbumRefinePage = () => {
                             </p>
                         </div> 
                     :
-                    <div className="ColumnContainer">
-                        <div className="Column">
-                            {albums.slice(0, 4).map((album) => (
-                                <div key={album.albumid} className="resultsCont" onClick={() => AnalyzeAlbum(album)}>
-                                    <img src={album.albumimg}/>
-                                    <div className="resultText">
-                                        <p>{album.name}</p>
-                                        <p>{`Album Type: ${album.type}`}</p>
-                                        <p>{`By ${album.artist}`}</p>
-                                    </div>
+                    <>
+                        <MediaQuery minWidth={700}>
+                            <div className="ColumnContainer">
+                                <div className="Column">
+                                    {albums.slice(0, 4).map((album) => (
+                                        <div key={album.albumid} className="resultsCont" onClick={() => AnalyzeAlbum(album)}>
+                                            <img src={album.albumimg}/>
+                                            <div className="resultText">
+                                                <p>{album.name}</p>
+                                                <p>{`Album Type: ${album.type}`}</p>
+                                                <p>{`By ${album.artist}`}</p>
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
-                        </div>
-                        <div className="Column">
-                            {albums.slice(4, 8).map((album) => (
-                                <div key={album.albumid} className="resultsCont" onClick={() => AnalyzeAlbum(album)} >
-                                    <img src={album.albumimg}/>
-                                    <div className="resultText">
-                                        <p>{album.name}</p>
-                                        <p>{`Album Type: ${album.type}`}</p>
-                                        <p>{`By ${album.artist}`}</p>
-                                    </div>
+                                <div className="Column">
+                                    {albums.slice(4, 8).map((album) => (
+                                        <div key={album.albumid} className="resultsCont" onClick={() => AnalyzeAlbum(album)} >
+                                            <img src={album.albumimg}/>
+                                            <div className="resultText">
+                                                <p>{album.name}</p>
+                                                <p>{`Album Type: ${album.type}`}</p>
+                                                <p>{`By ${album.artist}`}</p>
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
-                        </div>
-                    </div>
+                            </div>
+                        </MediaQuery>
+                        <MediaQuery maxWidth={699}>
+                            <div className="ResultContainer">
+                                {albums.map((album) => (
+                                    <div key={album.albumid} className="resultsCont" onClick={() => AnalyzeAlbum(album)} >
+                                        <img src={album.albumimg}/>
+                                        <div className="resultText">
+                                            <p>{album.name}</p>
+                                            <p>{`Album Type: ${album.type}`}</p>
+                                            <p>{`By ${album.artist}`}</p>
+                                        </div>
+                                    </div>
+                                ))}       
+                            </div>
+                        </MediaQuery>
+                    </>
                 }
             </div>
         </div>    

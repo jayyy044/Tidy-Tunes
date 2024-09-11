@@ -183,9 +183,6 @@ const SpotifyPage = () => {
                 ))}
               </div>
             </div>
-
-
-
           </div>
         </MediaQuery>
       </>

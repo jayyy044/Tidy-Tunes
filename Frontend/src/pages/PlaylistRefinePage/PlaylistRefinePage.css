@@ -226,7 +226,7 @@
 .Refine-ArtistDescription::-webkit-scrollbar-track {
     border-radius: 8px;
     background: transparent;
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
 }
 
 .Refine-ArtistDescription::-webkit-scrollbar-thumb {
@@ -426,9 +426,12 @@
     margin-right: clamp(2.625rem, -4.964rem + 8.095vw, 4.75rem);
 }
 .RecentTracksText{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     border: 0.5px solid red;
     padding: 5px;
-    width: clamp(16.5rem, -2.696rem + 20.476vw, 21.875rem);
+    width: clamp(15.5rem, -7.268rem + 24.286vw, 21.875rem);
     overflow-y: auto;
     margin-top: clamp(0.938rem, -0.179rem + 1.19vw, 1.25rem);/*1500px*/
     height: clamp(12.25rem, 2.429rem + 10.476vw, 15rem);/*1500px*/
@@ -449,7 +452,8 @@
 }
 
 .RecentTracksText p{
-    line-height:clamp(1.4rem, 6.4rem + -5.333vw, 0rem);/*1500px*/
+    font-size: clamp(0.9rem, 0.186rem + 0.762vw, 1.1rem);/*1500px*/
+    line-height:clamp(1.4rem, 0.686rem + 0.762vw, 1.6rem);/*1500px*/
     max-width: clamp(15.5rem, -1.688rem + 18.333vw, 20.313rem);/*1500px*/
   
 }
@@ -630,9 +634,12 @@
     }
 
     .RecentTracksText{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         margin-top: clamp(0rem, -1.876rem + 3.002vw, 0.938rem);
         height:clamp(8.25rem, 0.25rem + 12.8vw, 12.25rem);
-        width: clamp(9.813rem, -3.563rem + 21.4vw, 16.5rem);
+        width: clamp(9.2rem, -5.429rem + 23.407vw, 16.5rem);
     }
 
     .RecentTracksText p{
@@ -640,6 +647,130 @@
         border: 0.5px solid yellow
     }
 
+    .RecentTracksText p:first-of-type{
+        font-size: clamp(1.2rem, 0.799rem + 0.641vw, 1.4rem);
+        line-height: clamp(1.5rem, 0.498rem + 1.603vw, 2rem);
+    }
+
  
 
+}
+
+@media only screen and (max-width:1400px){
+    .RecentTracksText{
+        display: block;
+        
+    }
+}
+
+@media only screen and (max-width:999px){
+    /*goes to 700px*/
+    .refine-1{
+        margin-right:1vw ;
+        color: white;
+        padding-left: 5px;
+        padding-top: 2px;
+    }
+    .PlaylistContainer img{
+        width: 12rem;
+    }
+    .PlaylistText p{
+        font-size: 1.5rem;
+    }
+    .PlaylistText h2{
+        font-size: 3.6rem;
+    }
+    .buttonsTooltip{
+        font-size: 2rem;
+    }
+    .RefineTitle2{
+        font-size: 2rem;
+        margin-left: 15px;
+    }
+    .Refine-Track{
+        border: 0.5px solid sandybrown;
+        margin-left: -9px;
+        padding-right: 0;
+        display: flex;
+        width: clamp(19.6rem, -7.134rem + 53.467vw, 26.25rem);/*800px*/
+    }
+    .Refine-Track img{
+        width: clamp(11rem, 2.96rem + 16.08vw, 13rem) !important;/*800px*/
+        height: clamp(11rem, 2.96rem + 16.08vw, 13rem) !important;/*800px*/
+    }
+    .Refine-TrackText{
+        width: clamp(8.4rem, -14.113rem + 45.025vw, 14rem);/*800px*/
+        margin-left: 5px;
+        height: clamp(11rem, 2.96rem + 16.08vw, 13rem);/*800px*/
+        overflow-y: auto;
+    }
+    .Refine-TrackText::-webkit-scrollbar {
+        width: 8px;
+    }
+      
+    .Refine-TrackText::-webkit-scrollbar-track {
+        border-radius: 8px;
+        background: transparent;
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
+    }
+    
+    .Refine-TrackText::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        background-color: #cbcbcb;
+    }
+    .Refine-Track p{
+        padding-left: 10px;
+        max-width: clamp(6.688rem, -10.4rem + 34.175vw, 10.938rem);/*800px*/
+        font-size: clamp(1rem, -0.206rem + 2.412vw, 1.3rem);/*800px*/
+        line-height: clamp(1.2rem, -0.006rem + 2.412vw, 1.5rem);/*800px*/
+    }
+    .Refine-Track p:first-of-type{
+        max-width:clamp(6.688rem, -10.4rem + 34.175vw, 10.938rem);/*800px*/
+        font-size: clamp(1.4rem, 0.194rem + 2.412vw, 1.7rem);/*800px*/
+        line-height: clamp(1.4rem, -0.61rem + 4.02vw, 1.9rem);/*800px*/
+    }
+    .Refine-ArtistCont{
+        padding-right: 0;
+    }
+    .Refine-Artist{
+        width: clamp(24rem, 1.889rem + 44.221vw, 29.5rem);
+    }
+    .Refine-Artist img{
+        width: clamp(9rem, 1.977rem + 16.054vw, 12rem) !important;/*700px*/
+        height: clamp(9rem, 1.977rem + 16.054vw, 12rem) !important;/*700px*/
+    }
+    .Refine-ArtistDescription{
+        width: clamp(11.938rem, -1.63rem + 27.136vw, 15.313rem);
+        height: clamp(10rem, 3.719rem + 12.563vw, 11.563rem);
+    }
+    .Refine-ArtistDescription::-webkit-scrollbar {
+        width: 8px;
+    }
+    .Refine-ArtistDescription p{
+        max-width: 230px;
+    }
+    .similarity{
+        margin-left: 5px;
+    }
+    .similarity span p{
+        font-size: clamp(0.83rem, 0.147rem + 1.367vw, 1rem);
+    }
+    .TrackDelete{
+        font-size: clamp(0.9rem, -0.306rem + 2.412vw, 1.2rem) !important;
+    }
+
+
+    .refine-2,
+    .refine-3{
+        margin-left: 1vw;
+        margin-bottom: 2vh;
+    }
+    
+}
+
+@media only screen and (max-width: 800px){
+    .Refine-Track{
+        display: block;
+        border: 0.5px solid sandybrown;
+    }
 }

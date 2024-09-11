@@ -1,10 +1,13 @@
 import React from 'react'
 import { toast } from 'react-toastify'
+import { useFetch } from './useFetch'
+
 
 export const useAddTrack = () => {
-    const addtrack = async (SAT, JWT, track, Id) => {
+    const { AuthFetch } = useFetch()
+    const addtrack = async (SAT, JWT, track, Id, EXPT) => {
         try{
-           const response = await fetch('/api/feature/addtrack',{
+           const response = await AuthFetch(`/api/feature/addtrack?EXPT=${EXPT}`,{
                 method: "POST",
                 headers: {
                     'Authorization': `Bearer ${JWT}`,

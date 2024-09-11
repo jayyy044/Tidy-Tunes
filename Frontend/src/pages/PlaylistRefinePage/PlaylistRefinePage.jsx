@@ -162,7 +162,7 @@ const PlaylistRefinePage = () => {
 <>
     {playlists ? 
       <div className="PlaylistRefineCont">
-         <div className="Playlists">
+        <div className="Playlists">
           <div className="refineTitle">
             <p>Select your Playlist</p>
           </div>
@@ -182,169 +182,303 @@ const PlaylistRefinePage = () => {
         </div> 
       </div>      
         :
-      <div className="PlaylistCont">
-        <div className="refine-1">
-          <div className="PlaylistContainer">
-            <img src={recentlyadded.playlistImage} alt = {`${recentlyadded.playlistname} Image`}/>
-            <div className="PlaylistText" >
-              <p>Playlist</p>
-              <h2>{recentlyadded.playlistname}</h2>
-              <div className="UserText">
-                <p>{`User: ${recentlyadded.username}  | `}</p>
-                <p className='TT'>{`Total Tracks: ${recentlyadded.totalTracks}`}</p>
-              </div>
-            </div >
-            <div className='buttonscont'>
-              <Tooltip className='buttonsTooltip' 
-              color='rgba(255, 255, 255, 0.15)' placement='left' 
-              title ={<p style={{color: 'var(--AccentColor)'}}>Refresh Tracks</p>}
-              onClick={() => window.location.reload()}>
-                <MdOutlineRefresh />
-              </Tooltip>
-              <Tooltip className='buttonsTooltip'
-              color='rgba(255, 255, 255, 0.15)' placement='left' 
-              title ={<p style={{color: 'var(--AccentColor)'}}>Switch Playlist</p>}
-              onClick={() => playlistchange()}>
-                <PiPlaylist  />
-              </Tooltip>
-            </div>
-            
-          </div>
-          <div className="RefineTitle2">
-            Refine Your Playlist
-          </div>
-          <Carousel arrows infinite className='RefineCarousel'>
-            {analyzedsongs.map((track, index) => (
-              <div key={index} className="RefiningTracksCont">
-                <div className="Refine-Track">
-                  <img src ={track.trackimg} alt={`${track.trackname}'s Image`}/>
-                  <p>{`${track.trackname}`}</p>
-                  <p>{`${track.artistname}`}</p>
+      <>
+        <MediaQuery minWidth={1000}>
+          <div className="PlaylistCont">
+            <div className="refine-1">
+              <div className="PlaylistContainer">
+                <img src={recentlyadded.playlistImage} alt = {`${recentlyadded.playlistname} Image`}/>
+                <div className="PlaylistText" >
+                  <p>Playlist</p>
+                  <h2>{recentlyadded.playlistname}</h2>
+                  <div className="UserText">
+                    <p>{`User: ${recentlyadded.username}  | `}</p>
+                    <p className='TT'>{`Total Tracks: ${recentlyadded.totalTracks}`}</p>
+                  </div>
+                </div >
+                <div className='buttonscont'>
+                  <Tooltip className='buttonsTooltip' 
+                  color='rgba(255, 255, 255, 0.15)' placement='left' 
+                  title ={<p style={{color: 'var(--AccentColor)'}}>Refresh Tracks</p>}
+                  onClick={() => window.location.reload()}>
+                    <MdOutlineRefresh />
+                  </Tooltip>
+                  <Tooltip className='buttonsTooltip'
+                  color='rgba(255, 255, 255, 0.15)' placement='left' 
+                  title ={<p style={{color: 'var(--AccentColor)'}}>Switch Playlist</p>}
+                  onClick={() => playlistchange()}>
+                    <PiPlaylist  />
+                  </Tooltip>
                 </div>
-                <div className="Refine-ArtistCont">
-                  <MediaQuery maxWidth={1499}>
-                    <div className="AboutArtist">
-                      <div className="DescriptionCont">
-                        <div className="Description">
-                          <p>About the artist: </p>
+              </div>
+              <div className="RefineTitle2">
+                Refine Your Playlist
+              </div>
+              <Carousel arrows infinite className='RefineCarousel'>
+                {analyzedsongs.map((track, index) => (
+                  <div key={index} className="RefiningTracksCont">
+                    <div className="Refine-Track">
+                      <img src ={track.trackimg} alt={`${track.trackname}'s Image`}/>
+                      <p>{`${track.trackname}`}</p>
+                      <p>{`${track.artistname}`}</p>
+                    </div>
+                    <div className="Refine-ArtistCont">
+                      <MediaQuery maxWidth={1499}>
+                        <div className="AboutArtist">
+                          <div className="DescriptionCont">
+                            <div className="Description">
+                              <p>About the artist: </p>
+                              <p>{`${track.mainartistname}`}</p>
+                              <p>{`Followers: ${track.artistFollowers}`}</p>
+                              <p>{`Main Genres: ${track.artistGenres}`}</p>
+                            </div>
+                          </div>
+                          <span>
+                            <p>Similarity Decision</p>
+                            <Tooltip placement='top'  color='rgba(0, 0, 0, 0.8)' title={
+                              <p style={{color: 'var(--AccentColor)'}}
+                              >The similarity analysis is not 100% percent accurate user discretion advised</p>
+                              }>
+                              <GrCircleQuestion className='QuestionMarkIcon'/>
+                            </Tooltip>
+                            <p>:</p>
+                            <p>{track.decision}</p>  
+                          </span> 
+                          <button className='DeleteButton' type="primary" onClick={() => showModal(track)}>Delete Track</button>
+                          <Modal
+                            className='DeleteTrackModal'
+                            title={<span style={{color: 'var(--AccentColor)',
+                              display: 'flex',
+                              alignContent: 'center'
+                            }}><FiAlertTriangle style={{fontSize: '20px', marginRight: '0.25vw'}}/> Warning</span> }
+                            centered
+                            open={visible}
+                            onOk={handleOk}
+                            onCancel={handleCancel}
+                            okText="Confirm"
+                            cancelText="Cancel"
+                            okButtonProps={{ className: 'okButton' }}
+                            cancelButtonProps={{ className: 'cancelButton'}}
+                          >
+                            <p>Are your sure you would like to delete this song?</p>
+                          </Modal>
+                        </div>
+                      </MediaQuery>
+                      <MediaQuery minWidth={1500}>
+                        <div className="Refine-Artist">
+                          <img src={track.artistImage} alt={`${track.mainartistname}'s Name`}/>
+                          <div className="Refine-ArtistDescription">
+                            <p>{`${track.mainartistname}`}</p>
+                            <p>{`Followers: ${track.artistFollowers}`}</p>
+                            <p>{`Main Genres: ${track.artistGenres}`}</p>
+                          </div>
+                        </div>
+                        <div className="similarity">
+                          <span>
+                            <p>Similarity Decision</p>
+                            <Tooltip placement='top'  color='rgba(0, 0, 0, 0.8)' title={
+                              <p style={{color: 'var(--AccentColor)'}}
+                              >The similarity analysis is not 100% percent accurate user discretion advised</p>
+                              }>
+                              <GrCircleQuestion className='QuestionMarkIcon'/>
+                            </Tooltip>
+                            :
+                            <p>{track.decision}</p>
+                            <button className='TrackDelete' type="primary" onClick={() => showModal(track)}>Delete Track</button>  
+                          </span> 
+                          <Modal
+                            className='DeleteTrackModal'
+                            title={<span style={{color: 'var(--AccentColor)',
+                              display: 'flex',
+                              alignContent: 'center'
+                            }}><FiAlertTriangle style={{fontSize: '20px', marginRight: '0.25vw'}}/> Warning</span> }
+                            centered
+                            open={visible}
+                            onOk={handleOk}
+                            onCancel={handleCancel}
+                            okText="Confirm"
+                            cancelText="Cancel"
+                            okButtonProps={{ className: 'okButton' }}
+                            cancelButtonProps={{ className: 'cancelButton'}}
+                          >
+                            <p>Are your sure you would like to delete this song?</p>
+                          </Modal>
+                        </div> 
+                      </MediaQuery>
+                    </div>
+                  </div>
+                ))}
+              </Carousel>
+            </div>
+            <div className="refine-2">
+              <div className="RecentlyAddedTitle">
+                <p>Recently Added </p>
+              </div>
+              <Carousel arrows infinite dotPosition="right" className='RecentlyAddedCarousel'>
+                {recentlyadded.recentTracks.map((track, index) => (
+                  <div key={index} className="RecentAddedCont">
+                      <img src ={track.trackImage} alt={`${track.trackName}'s Image`}/>
+                      <div className="RecentlyAddedTrack">
+                        <p>{`${track.trackName}`}</p>
+                        <p style={{color: 'var(--AccentColor)'}}>{`${track.artistName}`}</p>
+                        <p>{track.addedAt}</p>
+                      </div>
+                    </div>
+                  ))} 
+              </Carousel>
+            </div>
+
+            <div className="refine-3"> 
+              <div className="RecentlyPlayedTitle">
+                <p>Recently Played</p>
+              </div>
+              <Carousel arrows dotPosition="right" infinite className='RecentlyPlayCarousel'>
+              {recentlyplayed.map((recentTrack, index) => (
+                <div key = {index} className="RecentlyPlayedTrackCont" >
+                  <img src={recentTrack.trackImg} alt = {`${recentTrack.track}`}/>
+                  <div className="RecentTracksText">
+                    <p>{recentTrack.track}</p>
+                    <p style={{color: 'var(--AccentColor)'}}>{recentTrack.artist}</p>
+                    <p>{recentTrack.time_ago}</p>
+                  </div>
+                </div>
+                ))}
+              </Carousel>
+            </div>
+          </div>
+        </MediaQuery>
+        <MediaQuery maxWidth={999}>
+          <div className="PlaylistCont1">
+            <div className="refine-1">
+              <div className="PlaylistContainer">
+                <img src={recentlyadded.playlistImage} alt = {`${recentlyadded.playlistname} Image`}/>
+                <div className="PlaylistText" >
+                  <p>Playlist</p>
+                  <h2>{recentlyadded.playlistname}</h2>
+                  <div className="UserText">
+                    <p>{`User: ${recentlyadded.username}  | `}</p>
+                    <p className='TT'>{`Total Tracks: ${recentlyadded.totalTracks}`}</p>
+                  </div>
+                </div >
+                <div className='buttonscont'>
+                  <Tooltip className='buttonsTooltip' 
+                  color='rgba(255, 255, 255, 0.15)' placement='left' 
+                  title ={<p style={{color: 'var(--AccentColor)'}}>Refresh Tracks</p>}
+                  onClick={() => window.location.reload()}>
+                    <MdOutlineRefresh />
+                  </Tooltip>
+                  <Tooltip className='buttonsTooltip'
+                  color='rgba(255, 255, 255, 0.15)' placement='left' 
+                  title ={<p style={{color: 'var(--AccentColor)'}}>Switch Playlist</p>}
+                  onClick={() => playlistchange()}>
+                    <PiPlaylist  />
+                  </Tooltip>
+                </div>
+              </div>
+              <div className="RefineTitle2">
+                Refine Your Playlist
+              </div>
+              <Carousel arrows infinite className='RefineCarousel'>
+                {analyzedsongs.map((track, index) => (
+                  <div key={index} className="RefiningTracksCont">
+                    <div className="Refine-Track">
+                      <img src ={track.trackimg} alt={`${track.trackname}'s Image`}/>
+                      <div className="Refine-TrackText">
+                        <p>{`${track.trackname}`}</p>
+                        <p>{`${track.artistname}`}</p>
+                      </div>
+                    </div>
+                    <div className="Refine-ArtistCont">
+                      <div className="Refine-Artist">
+                        <img src={track.artistImage} alt={`${track.mainartistname}'s Name`}/>
+                        <div className="Refine-ArtistDescription">
                           <p>{`${track.mainartistname}`}</p>
                           <p>{`Followers: ${track.artistFollowers}`}</p>
                           <p>{`Main Genres: ${track.artistGenres}`}</p>
                         </div>
                       </div>
-                      
-                      <span>
-                        <p>Similarity Decision</p>
-                        <Tooltip placement='top'  color='rgba(0, 0, 0, 0.8)' title={
-                          <p style={{color: 'var(--AccentColor)'}}
-                          >The similarity analysis is not 100% percent accurate user discretion advised</p>
-                          }>
-                          <GrCircleQuestion className='QuestionMarkIcon'/>
-                        </Tooltip>
-                        <p>:</p>
-                        <p>{track.decision}</p>  
-                      </span> 
-                      <button className='DeleteButton' type="primary" onClick={() => showModal(track)}>Delete Track</button>
-                      <Modal
-                        className='DeleteTrackModal'
-                        title={<span style={{color: 'var(--AccentColor)',
-                          display: 'flex',
-                          alignContent: 'center'
-                        }}><FiAlertTriangle style={{fontSize: '20px', marginRight: '0.25vw'}}/> Warning</span> }
-                        centered
-                        open={visible}
-                        onOk={handleOk}
-                        onCancel={handleCancel}
-                        okText="Confirm"
-                        cancelText="Cancel"
-                        okButtonProps={{ className: 'okButton' }}
-                        cancelButtonProps={{ className: 'cancelButton'}}
-                      >
-                        <p>Are your sure you would like to delete this song?</p>
-                      </Modal>
+                      <div className="similarity">
+                        <span>
+                          <p>Similarity Decision</p>
+                          <Tooltip placement='top'  color='rgba(0, 0, 0, 0.8)' title={
+                            <p style={{color: 'var(--AccentColor)'}}
+                            >The similarity analysis is not 100% percent accurate user discretion advised</p>
+                            }>
+                            <GrCircleQuestion className='QuestionMarkIcon'/>
+                          </Tooltip>
+                          :
+                          <p>{track.decision}</p>
+                          <button className='TrackDelete' type="primary" onClick={() => showModal(track)}>Delete Track</button>  
+                        </span> 
+                        <Modal
+                          className='DeleteTrackModal'
+                          title={<span style={{color: 'var(--AccentColor)',
+                            display: 'flex',
+                            alignContent: 'center'
+                          }}><FiAlertTriangle style={{fontSize: '20px', marginRight: '0.25vw'}}/> Warning</span> }
+                          centered
+                          open={visible}
+                          onOk={handleOk}
+                          onCancel={handleCancel}
+                          okText="Confirm"
+                          cancelText="Cancel"
+                          okButtonProps={{ className: 'okButton' }}
+                          cancelButtonProps={{ className: 'cancelButton'}}
+                        >
+                          <p>Are your sure you would like to delete this song?</p>
+                        </Modal>
+                      </div> 
                     </div>
-                  </MediaQuery>
-                  <MediaQuery minWidth={1500}>
-                   <div className="Refine-Artist">
-                      <img src={track.artistImage} alt={`${track.mainartistname}'s Name`}/>
-                      <div className="Refine-ArtistDescription">
-                        <p>{`${track.mainartistname}`}</p>
-                        <p>{`Followers: ${track.artistFollowers}`}</p>
-                        <p>{`Main Genres: ${track.artistGenres}`}</p>
+                  </div>
+                ))}
+              </Carousel>
+            </div>
+
+            <div className="refine-2">
+              <div className="RecentlyAddedTitle">
+                <p>Recently Added </p>
+              </div>
+              <Carousel arrows infinite dotPosition="right" className='RecentlyAddedCarousel'>
+                {recentlyadded.recentTracks.map((track, index) => (
+                  <div key={index} className="RecentAddedCont">
+                      <img src ={track.trackImage} alt={`${track.trackName}'s Image`}/>
+                      <div className="RecentlyAddedTrack">
+                        <p>{`${track.trackName}`}</p>
+                        <p style={{color: 'var(--AccentColor)'}}>{`${track.artistName}`}</p>
+                        <p>{track.addedAt}</p>
                       </div>
                     </div>
-                    <div className="similarity">
-                      <span>
-                        <p>Similarity Decision</p>
-                        <Tooltip placement='top'  color='rgba(0, 0, 0, 0.8)' title={
-                          <p style={{color: 'var(--AccentColor)'}}
-                          >The similarity analysis is not 100% percent accurate user discretion advised</p>
-                          }>
-                          <GrCircleQuestion className='QuestionMarkIcon'/>
-                        </Tooltip>
-                        :
-                        <p>{track.decision}</p>
-                        <button className='TrackDelete' type="primary" onClick={() => showModal(track)}>Delete Track</button>  
-                      </span> 
-                      <Modal
-                        className='DeleteTrackModal'
-                        title={<span style={{color: 'var(--AccentColor)',
-                          display: 'flex',
-                          alignContent: 'center'
-                        }}><FiAlertTriangle style={{fontSize: '20px', marginRight: '0.25vw'}}/> Warning</span> }
-                        centered
-                        open={visible}
-                        onOk={handleOk}
-                        onCancel={handleCancel}
-                        okText="Confirm"
-                        cancelText="Cancel"
-                        okButtonProps={{ className: 'okButton' }}
-                        cancelButtonProps={{ className: 'cancelButton'}}
-                      >
-                        <p>Are your sure you would like to delete this song?</p>
-                      </Modal>
-                    </div> 
-                  </MediaQuery>
-                </div>
+                  ))} 
+              </Carousel>
+            </div>
+
+            <div className="refine-3"> 
+              <div className="RecentlyPlayedTitle">
+                <p>Recently Played</p>
               </div>
-            ))}
-          </Carousel>
-        </div>
-        <div className="refine-2">
-          <div className="RecentlyAddedTitle">
-            <p>Recently Added </p>
-          </div>
-          <Carousel arrows infinite dotPosition="right" className='RecentlyAddedCarousel'>
-            {recentlyadded.recentTracks.map((track, index) => (
-               <div key={index} className="RecentAddedCont">
-                  <img src ={track.trackImage} alt={`${track.trackName}'s Image`}/>
-                   <div className="RecentlyAddedTrack">
-                    <p>{`${track.trackName}`}</p>
-                    <p style={{color: 'var(--AccentColor)'}}>{`${track.artistName}`}</p>
-                    <p>{track.addedAt}</p>
+              <Carousel arrows dotPosition="right" infinite className='RecentlyPlayCarousel'>
+              {recentlyplayed.map((recentTrack, index) => (
+                <div key = {index} className="RecentlyPlayedTrackCont" >
+                  <img src={recentTrack.trackImg} alt = {`${recentTrack.track}`}/>
+                  <div className="RecentTracksText">
+                    <p>{recentTrack.track}</p>
+                    <p style={{color: 'var(--AccentColor)'}}>{recentTrack.artist}</p>
+                    <p>{recentTrack.time_ago}</p>
                   </div>
                 </div>
-              ))} 
-          </Carousel>
-        </div>
-        <div className="refine-3"> 
-          <div className="RecentlyPlayedTitle">
-            <p>Recently Played</p>
-          </div>
-          <Carousel arrows dotPosition="right" infinite className='RecentlyPlayCarousel'>
-          {recentlyplayed.map((recentTrack, index) => (
-            <div key = {index} className="RecentlyPlayedTrackCont" >
-              <img src={recentTrack.trackImg} alt = {`${recentTrack.track}`}/>
-              <div className="RecentTracksText">
-                <p>{recentTrack.track}</p>
-                <p style={{color: 'var(--AccentColor)'}}>{recentTrack.artist}</p>
-                <p>{recentTrack.time_ago}</p>
-              </div>
+                ))}
+              </Carousel>
             </div>
-            ))}
-          </Carousel>
-        </div>
-      </div>
+
+
+
+
+
+          </div>
+        </MediaQuery>
+      </>
+      
+
       
     }
   </>
@@ -352,3 +486,4 @@ const PlaylistRefinePage = () => {
 }
 
 export default PlaylistRefinePage
+
