@@ -88,9 +88,9 @@ const NavBarIn = () => {
                 Playlist refine
               </h2>
             </NavLink>
-            <NavLink to='/register' onClick={closeDrawer} >
+            <NavLink to='/albumrefine' onClick={closeDrawer} >
               <h2>
-                Sign Up
+                Refine Album
               </h2>
             </NavLink>
           </Drawer>
