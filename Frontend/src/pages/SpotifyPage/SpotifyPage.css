@@ -25,11 +25,11 @@
   margin-bottom: 1.5vh;
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.20);
+  height: 830px;
   
 }
 .albumdataTitle{
-  /*This goes to 1000px*/
-  font-size: clamp(2rem, 0.328rem + 2.676vw, 2.5rem);
+  font-size:  2.5rem;
   color: var(--AccentColor);
   padding-left: 20px;
   padding-top: 20px;
@@ -37,46 +37,47 @@
 .Carousel{
   color:white;
   margin-top: 1vh;
-  height: 78vh;
-  width: 57vw;
+  height: 746px;
+  width: clamp(46.563rem, 0.827rem + 56.29vw, 68.375rem);/*1300px*/
   margin-left: 0.7vw;
 }
 
 .OuterAlbumCont{
-  /* width: 77vw !important; */
-  height: 75vh;
+  width: clamp(45.313rem, -2.52rem + 58.871vw, 68.125rem) !important;/*1300px*/
+  height: 718px;
 }
 .albumartistinfo{
   display: flex;
-  height: max-content;
-  padding-left: 45px;
+  padding-left: clamp(1.125rem, -2.413rem + 4.355vw, 2.813rem);/*1300px*/
   margin-top: 2vh;
 }
 
 .artistText{
+  width: clamp(24.938rem, -10.577rem + 43.71vw, 41.875rem);/*1300px*/
   margin-top: 1vh;
   margin-left: 2vw;
-  line-height: 2.7rem;
+  line-height: clamp(3rem, 1.952rem + 1.29vw, 3.5rem);/*1300px*/
   margin-block: auto;
 }
 
 .artistText p{
-  font-size: clamp(1.7rem, 1.071rem + 0.774vw, 2rem);/*1300px*/
+  font-size:  clamp(2rem, 0.952rem + 1.29vw, 2.5rem);/*1300px*/
+  max-width:clamp(24.375rem, -11.008rem + 43.548vw, 41.25rem);
 }
 
 .artistText p:nth-of-type(2) {
-  font-size: clamp(2.2rem, 1.571rem + 0.774vw, 2.5rem);/*1300px*/
+  font-size:  clamp(3.5rem, 2.452rem + 1.29vw, 4rem);/*1300px*/
   color: var(--AccentColor);
+  word-break: break-all;
 }
 .artistStats p{
-  font-size: clamp(1.4rem, 0.771rem + 0.774vw, 1.7rem);/*1300px*/
+  font-size:  clamp(1.5rem, 0.452rem + 1.29vw, 2rem);/*1300px*/
 }
 .albumartistinfo img{
   border: 1px solid white;
   border-radius: 20px;
-  width: clamp(18.125rem, 15.504rem + 3.226vw, 19.375rem) !important;/*1300px*/
-  height: clamp(18.125rem, 15.504rem + 3.226vw, 19.375rem) !important;/*1300px*/
-
+  width:  clamp(17rem, 12.02rem + 6.129vw, 19.375rem) !important;/*1300px*/
+  height:  clamp(17rem, 12.02rem + 6.129vw, 19.375rem) !important;/*1300px*/
 }
 .latestReleases{
  margin-left: 1vw;
@@ -86,29 +87,24 @@
   font-size: 2rem;
   color: var(--AccentColor);
   margin-top: 2vh;
-  padding-left: 25px;
-  
+  padding-left: clamp(0.5rem, -3.054rem + 5.686vw, 1.563rem);
 }
-
 .albumsCont{
   margin-left: 1vw;
   margin-right: 2vw;
   overflow-y: auto;
-  height: 31vh;
+  height:clamp(20.938rem, 27.098rem + -7.582vw, 18rem);/*1300px*/
   margin-top: 1vh;
   box-sizing: border-box;
 }
-
 .albumsCont::-webkit-scrollbar {
   width: 12px;
 }
-
 .albumsCont::-webkit-scrollbar-track {
   border-radius: 8px;
   background: transparent;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
 }
-
 .albumsCont::-webkit-scrollbar-thumb {
   border-radius: 8px;
   background-color: #cbcbcb;
@@ -119,15 +115,14 @@
   padding: 0px 15px;
   margin-bottom: 2vh;
 }
-
 .albumlist img{
-  width: clamp(6.25rem, 2.974rem + 4.032vw, 7.813rem); /*1300px*/
+  width: 7.813rem; /*1300px*/
   border-radius: 10px;
 }
-
 .albumlist p{
-  font-size: clamp(1.5rem, 0.871rem + 0.774vw, 1.8rem);/*1300px*/
+  font-size: 1.8rem;/*1300px*/
   margin-left: 1vw;
+  max-width: clamp(30.5rem, -13.008rem + 53.548vw, 51.25rem);
 }
 
 .genre-frequency{ 
@@ -138,27 +133,45 @@
   grid-area: div2;
   margin-right: 1vw;
   margin-top: 1.5vh;
-  padding: 20px 0px 0px 25px;
+  height: 310px;
+  position: relative;
 }
-
-.genre-frequency p{
-  font-size: clamp(2.2rem, 1.874rem + 0.522vw, 2.5rem);/*1000px*/
-
+ .genre-frequency p{
+  font-size:  clamp(2.1rem, 1.261rem + 1.032vw, 2.5rem);/*1300px*/
+  margin-bottom: clamp(0.625rem, 1.935rem + -1.613vw, 0rem);/*1300px*/
+  margin-top: 20px;
+  margin-left: 25px;
 }
-
 .genres{
-  margin-top: clamp(0.5rem, -0.587rem + 1.739vw, 1.5rem);/*1000px*/
-  margin-right: 1vw;
-  padding-left: clamp(0rem, -1.087rem + 1.739vw, 1rem);
-  column-width: 16vw; 
-  column-gap: 23px; 
-  height: 23vh;  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height:clamp(13.438rem, 14.093rem + -0.806vw, 13.125rem);/*1300px*/
+  overflow-y: auto;
+  margin-inline: 25px;
+}
+.genres::-webkit-scrollbar {
+  width: 10px;
+}
+
+.genres::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
+}
+
+.genres::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: whitesmoke;
 }
 
 .genres p{
-  padding-top: 10px;
-  font-size: clamp(1.45rem, 0.926rem + 0.645vw, 1.7rem);
+  font-size: clamp(1.7rem, 1.071rem + 0.774vw, 2rem);/*1300px*/
+  margin-left: 0;
+  margin-top: 0;
+  margin-bottom: 15px;
 }
+
 
 .TopTracks { 
   grid-area: div3;
@@ -169,18 +182,22 @@
   margin-right: 1vw;
   margin-bottom: 1.5vh;
   padding: 25px 0px 0px 25px;
-
+  height: 471px;
+  margin-top: 349px;
+  width: clamp(29.438rem, -1.621rem + 38.226vw, 44.25rem);/*1300px*/
+  position: absolute;
+  margin-left: clamp(49.313rem, 0.038rem + 60.645vw, 72.813rem);/*1300px*/
 }
 
 .TopTracks p{
   color: var(--AccentColor);
-  font-size: clamp(2rem, 0.328rem + 2.676vw, 2.5rem)/*1000px*/
+  font-size:  clamp(2.1rem, 1.261rem + 1.032vw, 2.5rem);/*1300px*/
 }
 
 .TopTracksCont{
   overflow-x: hidden;
   overflow-y:auto;
-  height: 39vh;
+  height: 373px;
   width: clamp(21.5rem, -1.394rem + 36.63vw, 42.563rem);
   margin-top: 2vh;
 }
@@ -205,258 +222,242 @@
   align-items: center;
   margin-bottom: 2vh;
   padding-left: 5px;
-  width: 34vw;
+  width: clamp(26.563rem, -3.317rem + 36.774vw, 40.813rem);/*1300px*/
 }
 
 .track img{
-  /*This goes to 1300px*/
-  width: clamp(5.625rem, 4.315rem + 1.613vw, 6.25rem) !important;
+  
+  width:clamp(5.25rem, 3.153rem + 2.581vw, 6.25rem) !important;/*1300px*/
   border-radius: 15px;
 }
 
 .track p{
-  /*Good until 1300px*/
-  font-size: clamp(1.3rem, 0.881rem + 0.516vw, 1.5rem);
+  font-size: clamp(1.3rem, 0.881rem + 0.516vw, 1.5rem);/*1300px*/
   margin-left: 1vw;
-  max-width: clamp(20.313rem, -5.242rem + 31.452vw, 32.5rem);
+  max-width: clamp(19.5rem, -7.758rem + 33.548vw, 32.5rem);/*1300px*/
   color: white;
 }
- 
-@media only screen and (max-width:1560px){
-  .albumlist p{
-    max-width: clamp(33.125rem, 6.56rem + 32.695vw, 38.438rem);/*1300px*/
+
+
+@media only screen and (max-width: 1299px){
+  .albumdataTitle{
+    font-size: clamp(2rem, 0.328rem + 2.676vw, 2.5rem);
+  }
+  .Carousel{
+    width: clamp(36rem, 0.672rem + 56.524vw, 46.563rem);
+  }
+  .OuterAlbumCont{
+    width: clamp(34.5rem, -1.664rem + 57.862vw, 45.313rem) !important;
+  }
+  .albumartistinfo img{
+    width: clamp(13rem, -0.378rem + 21.405vw, 17rem) !important;
+    height: clamp(13rem, -0.378rem + 21.405vw, 17rem) !important;
   }
   .artistText{
-    max-width: clamp(22.688rem, -11.063rem + 41.538vw, 29.438rem);
+    width: clamp(18rem, -5.204rem + 37.126vw, 24.938rem);
   }
-  
-}
-@media only screen and (max-width:1299px) {
-  /*This is goes to 1000px*/
-  .genres p{
-    font-size: clamp(1.1rem, -0.071rem + 1.873vw, 1.45rem);
+  .artistText p{
+    max-width: clamp(17.375rem, -6.036rem + 37.458vw, 24.375rem);
+    font-size: clamp(1.6rem, 0.262rem + 2.14vw, 2rem);
   }
-
-  .genres{
-    column-gap: clamp(1.063rem, -0.192rem + 2.007vw, 1.438rem);
+  .artistText p:nth-of-type(2){
+    font-size: clamp(3rem, 1.328rem + 2.676vw, 3.5rem);
   }
-
-  .track img{
-    width: clamp(4.375rem, 0.208rem + 6.667vw, 5.625rem) !important;
-
+  .artistStats p{
+    font-size: clamp(1.3rem, 0.631rem + 1.07vw, 1.5rem);
   }
-
-  .track p{
-    font-size: clamp(1.1rem, 0.433rem + 1.067vw, 1.3rem);
-    max-width: clamp(14.375rem, -5.417rem + 31.667vw, 20.313rem);
+  .albumsCont{
+    height: clamp(23rem, 29.896rem + -11.034vw, 20.938rem);
   }
-
-  .albumlist p{
-    font-size: clamp(1.2rem, 0.2rem + 1.6vw, 1.5rem);
-    max-width: clamp(23rem, -10.75rem + 54vw, 33.125rem);
-  }
-
   .albumlist img{
-    width: clamp(5rem, 0.833rem + 6.667vw, 6.25rem)
+    width: clamp(5.813rem, -0.876rem + 10.702vw, 7.813rem);
+  }
+  .albumlist p{
+    font-size: clamp(1.4rem, 0.062rem + 2.14vw, 1.8rem);
+    max-width: clamp(22.688rem, -3.441rem + 41.806vw, 30.5rem);
+  }
+  .TopTracks{
+    margin-left: clamp(37.9rem, -0.271rem + 61.073vw, 49.313rem);
+    width: clamp(22.25rem, -1.79rem + 38.464vw, 29.438rem);
+  }
+  .track{
+    width: clamp(20rem, -1.95rem + 35.12vw, 26.563rem);
+  }
+  .track img{
+    width: clamp(4.2rem, 0.688rem + 5.619vw, 5.25rem) !important;
+  }
+  .track p{
+    font-size: clamp(1.15rem, 0.648rem + 0.803vw, 1.3rem);
+    max-width: clamp(14.688rem, -1.408rem + 25.753vw, 19.5rem);
   }
 
-  .albumartistinfo img {
-    width: clamp(14rem, 0.25rem + 22vw, 18.125rem) !important;
-    height: clamp(14rem, 0.25rem + 22vw, 18.125rem) !important;
-  }
-
-  .artistText{
-    max-width:clamp(15rem, -10.627rem + 41.003vw, 22.688rem);
-  }
-
-  
 }
 
-/*Layout Changed*/
-
-@media only screen and (max-width:999px) {
-  /*goes to 500px*/
+@media only screen and (max-width: 999px){
+  .Dashboard{
+    grid-template-areas: 
+    "div1 div1 div1 div1 div1"
+    "div1 div1 div1 div1 div1"
+    "div1 div1 div1 div1 div1"
+    "div1 div1 div1 div1 div1"
+    "div2 div2 div2 div2 div2"
+    "div2 div2 div2 div2 div2"
+    "div3 div3 div3 div3 div3"
+    "div3 div3 div3 div3 div3"
+    "div3 div3 div3 div3 div3"; 
+  }
   .albumdata{
     margin-right: 1vw;
   }
-
-  .albumdataTitle{
-    font-size: clamp(1.7rem, 1.099rem + 1.924vw, 2.3rem);
-    padding-left: 30px;
-    padding-top: 30px;
-  }
-
   .Carousel{
-    width: 96.5vw;
+    width: clamp(30rem, -0.06rem + 96.192vw, 60rem);
   }
-
-  .artistText{
-    line-height: 2rem;
-    max-width: clamp(12.5rem, -10.671rem + 74.148vw, 35.625rem);
+  .OuterAlbumCont{
+    width: clamp(29rem, -1.06rem + 96.192vw, 59rem) !important;
   }
-
-  .artistText p{
-    font-size: clamp(1.4rem, 0.799rem + 1.924vw, 2rem);
-
+  .albumdataTitle{
+    font-size: clamp(1.8rem, 1.299rem + 1.603vw, 2.3rem);
   }
-
-  .artistText p:nth-of-type(2){
-    font-size: clamp(1.9rem, 1.299rem + 1.924vw, 2.5rem);
+  .albumartistinfo{
+    padding-left: clamp(1.25rem, -0.316rem + 5.01vw, 2.813rem);
   }
-
-  .artistStats p{
-    font-size: clamp(1.1rem, 0.499rem + 1.924vw, 1.7rem);
-  }
-
   .albumartistinfo img{
-    width: clamp(11.25rem, 9.997rem + 4.008vw, 12.5rem) !important;
-    height: clamp(11.25rem, 9.997rem + 4.008vw, 12.5rem) !important;
+    width: clamp(12.5rem, 8.993rem + 11.222vw, 16rem) !important;
+    height: clamp(12.5rem, 8.993rem + 11.222vw, 16rem) !important;
   }
-
-  .latestreleasetitle{
-    font-size: clamp(1.3rem, 0.799rem + 1.603vw, 1.8rem);  }
-
+  .artistText{
+    width: clamp(14rem, -10.048rem + 76.954vw, 38rem);
+  }
+  .artistText p{
+    font-size: clamp(1.4rem, 0.999rem + 1.283vw, 1.8rem);
+    max-width: clamp(13.563rem, -10.423rem + 76.754vw, 37.5rem);
+    line-height: clamp(2.5rem, 1.498rem + 3.206vw, 3.5rem);
+  }
+  .artistText p:nth-of-type(2){
+    font-size: clamp(2.8rem, 2.299rem + 1.603vw, 3.3rem);
+  }
+  .artistStats p{
+    font-size: clamp(1.1rem, 0.799rem + 0.962vw, 1.4rem);
+  }
   .albumsCont{
-    width: 91vw;
+    height:clamp(25rem, 30.01rem + -16.032vw, 20rem);
   }
-
-
   .albumlist img{
-    width: clamp(4.375rem, 2.496rem + 6.012vw, 6.25rem);
+    width: clamp(4.8rem, 3.097rem + 5.451vw, 6.5rem);
   }
-  
   .albumlist p{
-    font-size: clamp(1.3rem, 1.1rem + 0.641vw, 1.5rem);
-    margin-left: 2vw;
-    max-width: clamp(20.625rem, -5.051rem + 82.164vw, 46.25rem);
-  }
-
-  .genre-frequency{
-    margin-left: 1vw;
-    margin-bottom: 1.5vh;
-  }
-
-  .genre-frequency p{
-    font-size: clamp(2rem, 1.699rem + 0.962vw, 2.3rem);
- }
-
-  .genrescolumncont{
-    display: flex;
-    justify-content: space-between;
-    color: white;
-    margin-top: 2vh;
-    margin-bottom: 4vh;
-    padding-right: 25px;
-    padding-left: 15px;
-  }
-  .genrecolumn p {
-    font-size: clamp(1.1rem, 0.699rem + 1.283vw, 1.5rem);
+    font-size: clamp(1.35rem, 1.099rem + 0.802vw, 1.6rem);
+    max-width: clamp(19.75rem, -7.054rem + 85.772vw, 46.5rem);
   }
   .TopTracks{
+    position: relative;
     margin-left: 1vw;
+    width: auto;
+    margin-top: 1vh;
   }
   .TopTracks p{
-    font-size: clamp(2rem, 1.699rem + 0.962vw, 2.3rem);
+    font-size: clamp(2.2rem, 1.899rem + 0.962vw, 2.5rem);
   }
   .TopTracksCont{
-    width: clamp(28.125rem, -2.06rem + 96.593vw, 58.25rem);
-    margin-bottom: 2vh;
+    width: clamp(27rem, -4.062rem + 99.399vw, 58rem);
   }
   .track{
-    width: 90vw;
+    width: clamp(25rem, -6.062rem + 99.399vw, 56rem);
   }
   .track img{
-    width: clamp(5rem, 3.747rem + 4.008vw, 6.25rem) !important;
+    width: clamp(5.5rem, 2.995rem + 8.016vw, 8rem) !important;
+    margin-right: 15px;
   }
   .track p{
-    max-width: clamp(20.5rem, 0.335rem + 64.529vw, 40.625rem);
-    font-size: clamp(1.2rem, 0.699rem + 1.603vw, 1.7rem);
-    margin-left: 2vw;
+    font-size: clamp(1.35rem, 0.899rem + 1.443vw, 1.8rem);
+    max-width: clamp(18rem, -13.062rem + 99.399vw, 49rem);
   }
-
-
-
+  .genre-frequency{
+    margin-top: 0;
+    margin-left: 1vw;
+  }
+  .genre-frequency p{
+    font-size: clamp(2.2rem, 1.899rem + 0.962vw, 2.5rem);
+  }
+  .genres p{
+    font-size: clamp(1.65rem, 1.5rem + 0.481vw, 1.8rem);
+  }
 }
 
-@media only screen and (max-width:499px) {
-  .albumartistinfo{
-    display: block;
-    padding-left: clamp(1.5rem, 2.394rem + -4.469vw, 1rem);
-    /* padding-left: clamp(1.4rem, 0.774rem + 3.128vw, 1.75rem); */
+@media only screen and (max-width: 499px) {
+  .albumdata{
+    height: clamp(52.688rem, 54.14rem + -7.263vw, 51.875rem);
   }
   .albumdataTitle{
-    font-size: clamp(1.5rem, 1.144rem + 1.778vw, 1.7rem);
-    padding-left: clamp(1.438rem, 0.66rem + 3.889vw, 1.875rem);
+    font-size: clamp(1.6rem, 1.242rem + 1.788vw, 1.8rem);
   }
-  .artistText{
-
-    max-width: clamp(16rem, -3.665rem + 98.324vw, 27rem);
-    margin-bottom: 2vh;
-    line-height: clamp(1.8rem, 1.085rem + 3.575vw, 2.2rem);
+  .Carousel{
+    width: clamp(19rem, -0.665rem + 98.324vw, 30rem);
   }
-  .artistText span{
-    display: flex;
-    font-size: clamp(1.2rem, 0.664rem + 2.682vw, 1.5rem);
-    margin-inline: auto;
+  .OuterAlbumCont{
+    width: clamp(18rem, -1.665rem + 98.324vw, 29rem) !important;
   }
-  .artistText p{
-    max-width: clamp(12.438rem, -2.535rem + 74.86vw, 20.813rem);
-    font-size: clamp(2rem, 1.642rem + 1.788vw, 2.2rem);
-    margin-left: 2vw;
-    color: var(--AccentColor);
-
-  }
-
-  .artistStats p{
-    max-width: none;
-    color: white ;
-    font-size: clamp(1.05rem, 0.603rem + 2.235vw, 1.3rem);
-    margin-left: 0vw;
-
+  .albumartistinfo{
+    display: block;
   }
   .albumartistinfo img{
-    margin-left: clamp(3.188rem, -5.081rem + 41.341vw, 7.813rem);
-    width: clamp(9rem, 7.212rem + 8.939vw, 10rem) !important;
-    height: clamp(9rem, 7.212rem + 8.939vw, 10rem) !important;
+    margin-inline: auto;
+    width: clamp(14.5rem, 11.818rem + 13.408vw, 16rem) !important;
+    height: clamp(14.5rem, 11.818rem + 13.408vw, 16rem) !important;
+  }
+  .artistText{
+    text-align: center;
+    margin-top: 15px;
+    width: clamp(15.5rem, -3.271rem + 93.855vw, 26rem);
+  }
+  .artistText p{
+    margin-inline: auto;
+    max-width: clamp(14.875rem, -1.773rem + 83.24vw, 24.188rem);
+    font-size: clamp(1.25rem, 0.803rem + 2.235vw, 1.5rem);
+    line-height: clamp(2.3rem, 1.942rem + 1.788vw, 2.5rem);
+  }
+  .artistText p:nth-of-type(2){
+    font-size: clamp(2.7rem, 2.164rem + 2.682vw, 3rem);
+  }
+  .artistStats p{
+    font-size: clamp(0.95rem, 0.592rem + 1.788vw, 1.15rem);
+  }
+  .latestreleasetitle{
+    font-size: clamp(1.7rem, 1.164rem + 2.682vw, 2rem);
+    padding-left: clamp(1.875rem, -5.946rem + 39.106vw, 6.25rem);
   }
   .albumsCont{
-    height: clamp(6.125rem, 5.343rem + 3.911vw, 6.563rem);
+    height: clamp(12rem, 10.212rem + 8.939vw, 13rem);
   }
   .albumlist img{
-    width: clamp(3rem, 0.542rem + 12.291vw, 4.375rem);
-  }
-  .albumlist p {
-    font-size: clamp(0.9rem, 0.185rem + 3.575vw, 1.3rem);
-    max-width: clamp(12.063rem, -3.245rem + 76.536vw, 20.625rem);
+    margin-right: 10px;
   }
 
-  .genre-frequency p{
-    font-size: clamp(1.7rem, 1.164rem + 2.682vw, 2rem);
+  .albumlist p{
+    font-size: clamp(1.15rem, 0.792rem + 1.788vw, 1.35rem);
+    max-width: clamp(8.75rem, -9.797rem + 92.737vw, 19.125rem);
   }
-  .genrescolumncont{
-    padding-right: 0px;
-    padding-left: clamp(0.125rem, -1.328rem + 7.263vw, 0.938rem);
-  }
-  .genrecolumn p{
-    font-size: clamp(0.9rem, 0.542rem + 1.788vw, 1.1rem);
-  }
-
   .TopTracks p{
-    font-size: clamp(1.8rem, 1.442rem + 1.788vw, 2rem);
+    font-size: clamp(1.65rem, 0.667rem + 4.916vw, 2.2rem);
   }
-
   .TopTracksCont{
-    width: clamp(17rem, -2.888rem + 99.441vw, 28.125rem);
+    width: clamp(16.5rem, -2.271rem + 93.855vw, 27rem);
+    height: clamp(25rem, 28.017rem + -15.084vw, 23.313rem);
   }
-
-  .track p{
-    font-size: clamp(0.9rem, 0.364rem + 2.682vw, 1.2rem);
-    border: 0.2px solid khaki;
-    max-width: clamp(11.313rem, -5.112rem + 82.123vw, 20.5rem);
+  .track{
+    width: clamp(15rem, -2.877rem + 89.385vw, 25rem);
   }
-
   .track img{
-    width: clamp(3.5rem, 0.818rem + 13.408vw, 5rem) !important;
+    width: clamp(4rem, 1.318rem + 13.408vw, 5.5rem) !important;
   }
-  
+  .track p{
+    font-size: clamp(1.1rem, 0.653rem + 2.235vw, 1.35rem);
+    max-width:clamp(9.75rem, -4.999rem + 73.743vw, 18rem);
+  }
+  .genre-frequency p{
+    font-size: clamp(1.65rem, 0.667rem + 4.916vw, 2.2rem);
+  }
+  .genres p{
+    font-size: 1.6rem;
+  }
 }

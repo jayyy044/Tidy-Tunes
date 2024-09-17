@@ -57,8 +57,6 @@ const SpotifyPage = () => {
   return (
     <>
       {isLoading ? <Loader/>: 
-      <>
-        <MediaQuery minWidth={1000}>
           <div className="Dashboard">
             <div className="albumdata">
               <p className='albumdataTitle'>Top Artist & Latest Releases</p>
@@ -90,6 +88,21 @@ const SpotifyPage = () => {
                 ))}   
               </Carousel>
             </div>
+            {/* <div className="genre-frequency">
+              <p style={{color: 'var(--AccentColor)'}}>Top Genres</p> 
+              <div className="genrescolumncont">
+                <div className="genrecolumn">
+                  {topGenres.slice(0,4).map((genre, index) => (
+                      <p key={index}>{index+1}. {genre[0]}</p>
+                  ))}
+                </div>
+                <div className="genrecolumn">
+                  {topGenres.slice(4,8).map((genre, index) => (
+                      <p key={index}>{index+5}. {genre[0]}</p>
+                  ))}
+                </div>
+              </div>
+            </div> */}
 
             <div className="genre-frequency">
               <p style={{color: 'var(--AccentColor)'}}>Top Genres</p> 
@@ -112,82 +125,6 @@ const SpotifyPage = () => {
               </div>
             </div>
           </div>
-        </MediaQuery>
-        <MediaQuery maxWidth={999}>
-          <div className="DashboardCont">
-            <div className="albumdata">
-              <p className='albumdataTitle'>Top Artist & Latest Releases</p>
-              <Carousel arrows infinite className='Carousel'>
-                {artistData.map((artist, index) => (
-                  <div key={index} className="OuterAlbumCont">
-                    <div className='albumartistinfo'>
-                      <MediaQuery maxWidth={499}>
-                        <div className="artistText">
-                          <span> Artist: <p style={{ wordWrap:'break-word' }}>{artist.name}</p> </span>
-                          <div className="artistStats">
-                            <p>{`Popularity: ${artist.artistpop} | Followers: ${artist.follower} `}</p>
-                          </div>
-                        </div>
-                        <img src={artist.image} alt={`${artist.name}'s image`}/>
-                      </MediaQuery>
-                      <MediaQuery minWidth={500}>
-                        <img src={artist.image} alt={`${artist.name}'s image`}/>
-                        <div className="artistText">
-                          <p>Artist</p>
-                          <p>{artist.name}</p>
-                          <div className="artistStats">
-                            <p>{`Popularity: ${artist.artistpop} | Followers: ${artist.follower} `}</p>
-                          </div>
-                        </div> 
-                      </MediaQuery>
-
-                    </div>
-                    <div className="latestReleases">
-                      <p className='latestreleasetitle'>Latest Releases:</p>
-                      <div className="albumsCont">
-                        {artist.albums.map((album, idx) => (
-                        <div key={idx} className='albumlist'>
-                          <img src={album.image} alt={album.name} />
-                          <p>{album.name}</p>
-                        </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                ))}   
-              </Carousel>
-            </div>
-
-            <div className="genre-frequency">
-              <p style={{color: 'var(--AccentColor)'}}>Top Genres</p> 
-              <div className="genrescolumncont">
-                <div className="genrecolumn">
-                  {topGenres.slice(0,4).map((genre, index) => (
-                      <p key={index}>{index+1}. {genre[0]}</p>
-                  ))}
-                </div>
-                <div className="genrecolumn">
-                  {topGenres.slice(4,8).map((genre, index) => (
-                      <p key={index}>{index+5}. {genre[0]}</p>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="TopTracks">
-              <p>Top Songs</p>
-              <div className="TopTracksCont">
-                {tracks.map((track,index) => (
-                  <div key={index} className="track">
-                    <img src={track.trackImage} alt={`${track.trackName}'s Image`}/>
-                    <p>{`${track.trackName} by ${track.artistName}`}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </MediaQuery>
-      </>
       } 
     </>
   );
