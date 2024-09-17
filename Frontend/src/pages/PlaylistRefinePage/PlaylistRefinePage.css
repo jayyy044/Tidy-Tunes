@@ -1,39 +1,43 @@
 .PlaylistRefineCont{
-    height: calc(100dvh - var(--navbarHeight));
+    height: calc(96dvh - var(--navbarHeight));
     width: 100%;
     color:white;
-    overflow: hidden;
 }
 
 .Playlists{
-    width: 55%;
-    height: 92%;
+    width: clamp(49.813rem, 32.217rem + 28.152vw, 66rem);/*1000px*/
+    height: 784px;
     display: flex;
     flex-direction: column;
     margin-inline: auto;
     align-items: center;
-    margin-top: 2.5vh;
     background: rgba(255, 255, 255, 0.3); 
-    box-shadow: 0px 13px 28px -4px rgba(255, 255, 255, 0.75);
+    box-shadow: 0px 0px 20px 6px rgba(255, 255, 255, 1);
+    margin-top: 35px;
     border-radius: 20px;
-    /* padding: 30px 25px 0px 30px; */
+
 
 }
 .refineTitle p{
-    width: 35vw;
-    font-size: 3rem;
-    text-shadow: 0px 4px 9px rgba(0,0,0,0.51);
+    margin-top: clamp(0.5rem, 1.043rem + -0.87vw, 0rem);/*1000px*/
+    width: clamp(37.063rem, 31.696rem + 8.587vw, 42rem);/*1000px*/
+    font-size: clamp(2.7rem, 2.374rem + 0.522vw, 3rem);/*1000px*/
+    text-shadow: 0px 4px 9px rgba(0,0,0,0.6);
     color: var(--AccentColor);
-    margin-bottom: 2vh;
+    margin-bottom: 20px;
     text-align: center;
     border-bottom: 3px solid rgb(202, 202, 202);
     padding-block: 20px;
 }
 
 .PlaylistListCont{
+    height: 645px;
     overflow-y: auto;
-    margin-right: 30px;
+    margin-inline: auto;
+    margin-right: clamp(1.375rem, -0.188rem + 2.5vw, 2.813rem);
+    padding-inline: 15px;
 }
+
 
 .PlaylistListCont::-webkit-scrollbar {
     width: 12px;
@@ -42,7 +46,7 @@
 .PlaylistListCont::-webkit-scrollbar-track {
     border-radius: 8px;
     background: transparent;
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
 }
 
 .PlaylistListCont::-webkit-scrollbar-thumb {
@@ -51,14 +55,14 @@
 }
 
 .playlistList{
-    width: 90%;
+    width: clamp(45.25rem, 33.293rem + 19.13vw, 56.25rem);/*1000px*/
     margin-inline:auto;
 }
 
 .playlistInfo{
     display: flex;
     align-items: center;
-    margin-bottom: 2vh;
+    padding-top: 10px;
     border-bottom: 2px solid grey;
 
 }
@@ -70,26 +74,28 @@
 .playlistInfo p{
     margin-right: 2vw;
     margin-top: auto;
-    width: 20%;
 }
 .playlist{
     display: flex;
-    align-items: center;
+    width: clamp(35.188rem, 25.88rem + 14.891vw, 43.75rem) !important;/*1000px*/
 }
 .playlist p{
-    font-size: 2rem;
-    margin-left: 2vw;
+    border: none;
+    font-size: clamp(1.7rem, 1.374rem + 0.522vw, 2rem);/*1000px*/
+    margin-left: clamp(0.938rem, -0.625rem + 2.5vw, 2.375rem);/*1000px*/
     margin-top: 0;
     width: fit-content;
     text-align: center;
-    line-height: 2.5rem;
+    padding-top: 80px;
+    line-height: clamp(2rem, 1.457rem + 0.87vw, 2.5rem);/*1000px*/
 }
  .playlist img{
-    width: 230px;
+    height: clamp(11.875rem, 9.158rem + 4.348vw, 14.375rem);/*1000px*/
+    width: clamp(11.875rem, 9.158rem + 4.348vw, 14.375rem);/*1000px*/
     border-radius: 30px;
-    margin-right: 4vw;
-    margin-left: 1vw;
-    margin-block: 1vh;
+    margin-right: 77px;
+    margin-left: 19px;
+    margin-block: 10px;
 }
 /* -------------------------------------------------------------------------- */
 
@@ -115,6 +121,7 @@
     box-shadow: inset 0px 1px 15px 5px rgba(255,255,255,0.3);
     background-color: #021223;
     margin-left: 1vw;
+    height: clamp(44rem, 19.893rem + 25.714vw, 50.75rem);/*1500px*/
     margin-block: 2vh;
     border-radius: 25px;
     border: 1px solid rgba(255, 255, 255, 0.20);
@@ -127,23 +134,23 @@
 }
 .PlaylistContainer{
     display: flex;
-    padding-left: 15px;
-    padding-top: 15px;
+    padding-left: clamp(0.688rem, -0.205rem + 0.952vw, 0.938rem);/*1500px*/
+    padding-top: clamp(0.313rem, -1.921rem + 2.383vw, 0.938rem);/*1500px*/
     padding-bottom: 15px;
     align-items: center;
     
 }
 .PlaylistContainer img{
-    width: clamp(10.625rem, 5.19rem + 8.696vw, 15.625rem);/*1000px*/
+    width: clamp(13rem, 3.625rem + 10vw, 15.625rem);/*1500px*/
     border-radius: 20px;
-    margin-right: 3.5vw;
+    margin-right: 67px;
 
 }
 .PlaylistText p {
-    font-size: clamp(1.2rem, 0.874rem + 0.522vw, 1.5rem);/*1000px*/
+    font-size:1.5rem;
 }
 .PlaylistText h2{
-    font-size: clamp(3.5rem, 2.957rem + 0.87vw, 4rem);/*1000px*/
+    font-size:4rem;
     line-height: 5rem;
     color: var(--AccentColor)
 }
@@ -151,7 +158,7 @@
     display: flex;
 }
 .UserText p{
-    font-size: clamp(1rem, 0.783rem + 0.348vw, 1.2rem);/*1000px*/
+    font-size: 1.2rem;
 }
 .TT{
     margin-left: 0.5vw;
@@ -161,12 +168,14 @@
     margin-left: auto;
     display: flex;
     flex-direction: column;
-    margin-bottom: 4vh;
+    margin-bottom: 38px;
 }
 .buttonsTooltip{
-    font-size: clamp(1.875rem, 0.856rem + 1.63vw, 2.813rem);/*1000px*/
+    font-size: clamp(2.5rem, 1.382rem + 1.192vw, 2.813rem);/*1500px*/
     color:var(--AccentColor);
-    margin: 3vh 3vw auto auto;
+    margin-inline: auto ;
+    margin-top: 29px;
+    margin-right: 58px;
     padding: 10px;
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.3); 
@@ -182,12 +191,12 @@
     color: var(--AccentColor);
     font-size: clamp(2.2rem, 1.129rem + 1.143vw, 2.5rem);/*1500px*/
     margin-left: 1vw;
-    margin-top: 1vh;
+    margin-top: 5px;
     width: fit-content;
 }
 .RefineCarousel{
     padding: 15px 25px 15px 30px;
-    height: clamp(21.375rem, -6.304rem + 29.524vw, 29.125rem);/*1500px*/
+    height:  clamp(24rem, 5.696rem + 19.524vw, 29.125rem);/*1500px*/
 
 }
 .RefiningTracksCont {
@@ -197,30 +206,33 @@
     padding-inline: 10px;
 
 }
+
 .Refine-Artist{
     border: 1px solid gray;
-    width: clamp(30.438rem, -10.857rem + 44.048vw, 42rem);
+    width: clamp(28.5rem, -16.143rem + 47.619vw, 41rem);/*1500px*/
     border-radius: 25px;
     display: flex;
+    padding: 0;
+    
 }
 
 .Refine-Artist img {
-    width: clamp(14.375rem, -12.411rem + 28.571vw, 21.875rem);/*1500px*/
-    height: clamp(14.375rem, -12.411rem + 28.571vw, 21.875rem) !important;/*1500px*/
+    width:  clamp(15.5rem, -7.268rem + 24.286vw, 21.875rem)!important;/*1500px*/
+    height:  clamp(15.5rem, -7.268rem + 24.286vw, 21.875rem) !important;/*1500px*/
     border-radius: 25px;
     padding-left: 5px;
     padding-block: 5px;
 }
 .Refine-ArtistDescription{
-    height: clamp(13.875rem, -11.348rem + 26.905vw, 20.938rem);/*1500px*/
+    height:  clamp(14.938rem, -6.491rem + 22.857vw, 20.938rem);/*1500px*/
     overflow-y: auto;
-    margin-right:0.5vw;
+    width: clamp(10.5rem, -10.214rem + 22.095vw, 16.3rem);/*1500px*/
     margin-block: 1vh;
     margin-left: 1.5vw;
     overflow-x: hidden;
 }
 .Refine-ArtistDescription::-webkit-scrollbar {
-    width: 12px;
+    width: 10px;
 }
 
 .Refine-ArtistDescription::-webkit-scrollbar-track {
@@ -234,7 +246,7 @@
     background-color: #cbcbcb;
 }
 .Refine-ArtistDescription p:first-of-type{
-    font-size: clamp(2rem, -1.571rem + 3.81vw, 3rem);/*1500px*/
+    font-size:clamp(2.3rem, -0.2rem + 2.667vw, 3rem);/*1500px*/
     border-bottom: 1px solid darkgrey;
     color: var(--AccentColor);
     overflow-wrap: break-word;
@@ -242,7 +254,8 @@
 
 }
 .Refine-ArtistDescription p{
-    font-size: clamp(1.1rem, 0.029rem + 1.143vw, 1.4rem);/*1500px*/    
+    font-size:  clamp(1.15rem, 0.257rem + 0.952vw, 1.4rem);/*1500px*/    
+    max-width:clamp(9.25rem, -11.063rem + 21.667vw, 14.938rem);/*1500px*/ 
     margin-top: 2vh;
     word-wrap: break-word;  
     overflow-wrap: break-word;
@@ -250,12 +263,11 @@
 
 .Refine-Track{
     margin-right: 2vw;
-    width: clamp(15.938rem, 4.33rem + 12.381vw, 19.188rem);
-    height: 45vh;
+    width:  clamp(18rem, 13.757rem + 4.526vw, 19.188rem) !important;/*1500px*/
+    height: 428px;
     overflow-y:auto;
     padding-right: 10px;
     overflow-x: hidden;
-    
 }
 
 .Refine-Track::-webkit-scrollbar {
@@ -265,7 +277,7 @@
 .Refine-Track::-webkit-scrollbar-track {
     border-radius: 8px;
     background: transparent;
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, .8);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
 }
 
 .Refine-Track::-webkit-scrollbar-thumb {
@@ -273,9 +285,8 @@
     background-color: #cbcbcb;
 }
 .Refine-Track p:first-of-type{
-    font-size: clamp(1.35rem, 0.814rem + 0.571vw, 1.5rem);/*1500px*/
+    font-size:  1.5rem;
     margin-top: 1vh;
-    max-width: 98%;
     word-wrap: break-word;
     overflow-wrap: break-word;
     color: var(--AccentColor);
@@ -283,10 +294,11 @@
 
 .Refine-Track p{
     font-size: 1.1rem;
+    max-width: clamp(15.125rem, 3.518rem + 12.381vw, 18.375rem);
 }
 .Refine-Track img{
-    width: clamp(13rem, -7.536rem + 21.905vw, 18.75rem) !important;/*1500px*/
-    height: clamp(13rem, -7.536rem + 21.905vw, 18.75rem) !important;/*1500px*/
+    width:  clamp(15.5rem, 3.893rem + 12.381vw, 18.75rem) !important;/*1500px*/
+    height:  clamp(15.5rem, 3.893rem + 12.381vw, 18.75rem) !important;/*1500px*/
     border-radius: 30px;
 }
 
@@ -300,7 +312,7 @@
 }
 
 .similarity span p{
-    font-size: clamp(1.1rem, -0.329rem + 1.524vw, 1.5rem);/*1500px*/
+    font-size:  clamp(1rem, -0.786rem + 1.905vw, 1.5rem);/*1500px*/
 }
 .similarity span p:nth-of-type(2){
     margin-left: 0.4vw;
@@ -308,17 +320,17 @@
 
 .QuestionMarkIcon{
     margin-inline: 0.2vw;
-    font-size: clamp(1rem, -2.125rem + 3.333vw, 1.875rem);
-    margin-bottom: 0.3vh;
+    font-size:  clamp(1.4rem, -0.296rem + 1.81vw, 1.875rem);
+    margin-bottom: 3px;
 }
 
 .TrackDelete{
-    margin-left: clamp(0.938rem, -4.196rem + 5.476vw, 2.375rem); /*1500px*/
+    margin-left:  clamp(1.5rem, -1.625rem + 3.333vw, 2.375rem); /*1500px*/
     background:transparent;
     border-radius: 15px;
     padding: 7px 10px 3px 10px;
     border: 1px solid gray;
-    font-size: clamp(1.2rem, 0.129rem + 1.143vw, 1.5rem)!important; /*1500px*/
+    font-size:  clamp(1rem, -0.786rem + 1.905vw, 1.5rem) !important; /*1500px*/
     color: var(--AccentColor);
     transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out, 
     color 0.5s ease-in-out, transform 0.5s ease-in-out; 
@@ -343,27 +355,35 @@
     grid-area: refine-2;
     box-shadow: inset 0px 1px 15px 5px rgba(255,255,255,0.3);
     background-color: #021223;    
-    margin-top: 2vh;
+    height: clamp(20.938rem, 12.419rem + 10.484vw, 25rem);
+    margin-top: 20px;
     margin-right: 1vw;
     border-radius: 25px;
     border: 1px solid rgba(255, 255, 255, 0.20);
+    position: relative;
 
 }
 
 .RecentlyAddedCarousel{
-    height: 32vh;
+    height: clamp(16.375rem, 10.609rem + 7.097vw, 19.125rem);
     margin-top: 1vh;
 }
 .RecentlyAddedTitle{
-    font-size: clamp(2.2rem, 1.129rem + 1.143vw, 2.5rem);/*1500px*/
-    padding: 25px 0px 0px 30px;
+    font-size:  clamp(2rem, 0.952rem + 1.29vw, 2.5rem);/*1300px*/
+    padding-top: clamp(1.25rem, 0.595rem + 0.806vw, 1.563rem);/*1300px*/
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 30px;
     color: var(--AccentColor);
+}
+.RecentlyAddedTitle P{
+    margin-left: clamp(-0.625rem, -1.935rem + 1.613vw, 0rem);/*1300px*/
 }
 
 .RecentAddedCont img{
-    width: clamp(13rem, 4.739rem + 8.811vw, 15.313rem);/*1500px*/
+    width: clamp(12.5rem, 6.602rem + 7.259vw, 15.313rem);/*1300px*/
     border-radius: 25px;
-    margin-right: clamp(3.125rem, -2.857rem + 6.381vw, 4.8rem);/*1500px*/
+    margin-right:  clamp(2.5rem, -2.323rem + 5.935vw, 4.8rem);/*1300px*/
 }
 
 .RecentAddedCont{
@@ -371,24 +391,38 @@
     color: white;
     align-items: center;
     padding-left: 30px;
-    height: 29vh;
-
-
+    height: clamp(16.563rem, 14.859rem + 2.097vw, 17.375rem);
+    width: clamp(27.313rem, -4.139rem + 38.71vw, 42.313rem) !important;
 }
 .RecentlyAddedTrack{
+    width: clamp(12rem, -8.313rem + 25vw, 21.688rem);
+    height: clamp(9.625rem, 6.873rem + 3.387vw, 10.938rem);
     color: white;
-    line-height:  clamp(2.1rem, 0.671rem + 1.524vw, 2.5rem);/*1500px*/
+    overflow-y: auto;
 }
+.RecentlyAddedTrack::-webkit-scrollbar {
+    width: 8px;
+}
+.RecentlyAddedTrack::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background: transparent;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
+}
+.RecentlyAddedTrack::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #cbcbcb;
+}
+
 .RecentlyAddedTrack p{
-    max-width: clamp(15.25rem, 2.75rem + 13.333vw, 18.75rem);
-    line-height: clamp(1.3rem, -0.486rem + 1.905vw, 1.8rem);/*1500px*/
+    max-width:  clamp(11rem, -7.871rem + 23.226vw, 20rem);/*1300px*/
+    line-height:  clamp(2rem, 1.476rem + 0.645vw, 2.25rem);/*1300px*/
     word-Wrap: break-word;
-    overflow-Wrap: break-word
+    overflow-Wrap: break-word;
+    font-size: clamp(0.95rem, 0.635rem + 0.387vw, 1.1rem);/*1300px*/
 }
 
 .RecentlyAddedTrack p:first-of-type{
-    font-size: clamp(1.5rem, -0.286rem + 1.905vw, 2rem);/*1500px*/
-    line-height: clamp(1.9rem, 0.114rem + 1.905vw, 2.4rem);/*1500px*/
+    font-size:  clamp(1.6rem, 0.761rem + 1.032vw, 2rem);/*1300px*/
 }
 
 
@@ -396,47 +430,53 @@
     grid-area: refine-3; 
     box-shadow: inset 0px 1px 15px 5px rgba(255,255,255,0.3);
     background-color: #021223;
-    margin-bottom: 2vh;
+    height: clamp(20.938rem, 12.419rem + 10.484vw, 25rem);
     margin-right: 1vw;
+    margin-top: clamp(23.375rem, 14.595rem + 10.806vw, 27.563rem);/*1300px*/
     border-radius: 25px;
     border: 1px solid rgba(255, 255, 255, 0.20);
+    position: absolute;
+    width: 38.4vw;
+    margin-left: clamp(49.313rem, 0.431rem + 60.161vw, 72.625rem);/*1300px*/
 
 }
 .RecentlyPlayedTitle{
-    font-size: clamp(2.2rem, 1.129rem + 1.143vw, 2.5rem);/*1500px*/
-    padding: 25px 0px 0px 30px;
+    font-size:clamp(2rem, 0.952rem + 1.29vw, 2.5rem);/*1300px*/
+    padding-top: clamp(1.25rem, 0.595rem + 0.806vw, 1.563rem);/*1300px*/
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: clamp(1.25rem, -0.06rem + 1.613vw, 1.875rem);/*1300px*/
     color: var(--AccentColor);
 }
 
 .RecentlyPlayCarousel{
     margin-top: 1vh;
-    height: 32vh;
+    height: clamp(16.375rem, 10.609rem + 7.097vw, 19.125rem);/*1300px*/
 }
 
 .RecentlyPlayedTrackCont{
     display: flex !important;
     align-items: center;
     padding-left: 35px;
-    height: 29vh;
+    height: clamp(17rem, 16.214rem + 0.968vw, 17.375rem);/*1300px*/
+    width: clamp(27.313rem, -4.139rem + 38.71vw, 42.313rem) !important;/*1300px*/
 }
 
 .RecentlyPlayedTrackCont img{
-    width: clamp(13rem, 4.739rem + 8.811vw, 15.313rem);/*1500px*/
+    width: clamp(12.5rem, 6.602rem + 7.259vw, 15.313rem);/*1300px*/
     border-radius: 25px;
-    margin-right: clamp(2.625rem, -4.964rem + 8.095vw, 4.75rem);
+    margin-right:  clamp(2.5rem, -2.323rem + 5.935vw, 4.8rem);/*1300px*/
 }
 .RecentTracksText{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: 0.5px solid red;
     padding: 5px;
-    width: clamp(15.5rem, -7.268rem + 24.286vw, 21.875rem);
+    width:  clamp(12rem, -218.383rem + 283.548vw, 121.875rem);/*1300px*/
     overflow-y: auto;
-    margin-top: clamp(0.938rem, -0.179rem + 1.19vw, 1.25rem);/*1500px*/
-    height: clamp(12.25rem, 2.429rem + 10.476vw, 15rem);/*1500px*/
+    height:  clamp(9rem, 6.903rem + 2.581vw, 10rem);/*1300px*/
     color: white;
-    line-height: clamp(2.1rem, 0.671rem + 1.524vw, 2.5rem);/*1500px*/
+    
 }
 .RecentTracksText::-webkit-scrollbar {
     width: 8px;
@@ -452,15 +492,15 @@
 }
 
 .RecentTracksText p{
-    font-size: clamp(0.9rem, 0.186rem + 0.762vw, 1.1rem);/*1500px*/
-    line-height:clamp(1.4rem, 0.686rem + 0.762vw, 1.6rem);/*1500px*/
-    max-width: clamp(15.5rem, -1.688rem + 18.333vw, 20.313rem);/*1500px*/
+    font-size: clamp(0.95rem, 0.635rem + 0.387vw, 1.1rem);/*1300px*/
+    max-width: clamp(11rem, -7.871rem + 23.226vw, 20rem);/*1300px*/
+    line-height:  clamp(2rem, 1.476rem + 0.645vw, 2.25rem);/*1300px*/
   
 }
 
 .RecentTracksText p:first-of-type{
-    font-size: clamp(1.4rem, -0.743rem + 2.286vw, 2rem);/*1500px*/
-    line-height: clamp(2rem, 0.571rem + 1.524vw, 2.4rem);/*1500px*/
+    font-size:  clamp(1.6rem, 0.761rem + 1.032vw, 2rem);/*1300px*/
+    line-height: clamp(2.1rem, 1.471rem + 0.774vw, 2.4rem);/*1300px*/
 }
 /* .ant-modal-wrap.ant-modal-centered{
     background-color: rgba(0, 0, 0, 0.1) !important;
@@ -483,39 +523,15 @@
     color: #e5a255 !important   ;
 }
 
-@media only screen and (max-width: 1499px){
-    /*goes to 1000px*/
-    .RefineCarousel{
-        height: clamp(19rem, 11.986rem + 11.222vw, 22.5rem);
-    }
-    .RefineTitle2{
-        font-size: clamp(1.9rem, 1.3rem + 0.96vw, 2.2rem);
-    }
-    .Refine-Track{
-        width: 17vw;
-        height: clamp(15.375rem, 8.611rem + 10.822vw, 18.75rem);
-        margin-right: 1vw;
-    }
-    .Refine-Track img{
-        width: clamp(10rem, 0rem + 16vw, 15rem) !important ;
-        height: clamp(10rem, 0rem + 16vw, 15rem) !important;
-        margin-bottom: 1.5vh;
-    }
-    .Refine-Track p:first-of-type{
-        font-size: clamp(1.2rem, 0.8rem + 0.64vw, 1.4rem);
-        margin-bottom: 1vh;
-        max-width: 90%;
-    }
-    .Refine-Track p{
-        font-size: clamp(0.9rem, 0.3rem + 0.96vw, 1.2rem);
-        line-height: clamp(1.2rem, 0.6rem + 0.96vw, 1.5rem);
-        max-width:90%;
+@media only screen and (max-width: 1499px) {
+    .refine-1{
+        height: clamp(41rem, 34.988rem + 9.619vw, 44rem);
     }
     .AboutArtist{
         display: flex;
         flex-direction: column;
-        padding-top: clamp(0rem, -1.875rem + 3vw, 0.938rem);
-        width: clamp(18.75rem, -5.625rem + 39vw, 30.938rem);
+        padding-top: clamp(0.1rem, -1.579rem + 2.687vw, 0.938rem);
+        width:  clamp(17.2rem, -5.445rem + 36.232vw, 28.5rem);
     }
     .DescriptionCont{
         border: 0.5px solid darkgray; 
@@ -523,11 +539,14 @@
         padding-block: 7px;
         border-radius: 20px;
         padding-left: 10px;
+        height: 13rem;
+        margin-bottom: clamp(0.5rem, 1.502rem + -1.603vw, 0rem);
     }
     .Description{
         overflow-y: auto;
-        height: clamp(9.5rem, 7.496rem + 3.206vw, 10.5rem);
-        line-height: clamp(1.9rem, 1.5rem + 0.64vw, 2.1rem);
+        width:clamp(15.7rem, -7.546rem + 37.194vw, 27.3rem);
+        height:12.75rem;
+        line-height:  2.1rem;
     }
     .Description::-webkit-scrollbar {
         width: 8px;
@@ -542,235 +561,618 @@
         background-color: #cbcbcb;
     }
     .Description p:first-of-type{
-        font-size: clamp(1.4rem, 0.8rem + 0.96vw, 1.7rem);
+        font-size:  clamp(1.4rem, 0.799rem + 0.962vw, 1.7rem);
     }
     .Description p:nth-of-type(2){
         color: var(--AccentColor);
-        font-size: clamp(1.9rem, 1.3rem + 0.96vw, 2.2rem);
+        font-size:clamp(1.9rem, 1.299rem + 0.962vw, 2.2rem);
         margin-top: 1vh;
+        margin-bottom: 8px;
     }
     .Description p{
-        font-size: clamp(1rem, 0.4rem + 0.96vw, 1.3rem);
-        max-width: clamp(16.375rem, -7.673rem + 38.477vw, 28.375rem);
+        font-size: clamp(1.1rem, 0.699rem + 0.641vw, 1.3rem);
+        max-width: clamp(14.6rem, -8.646rem + 37.194vw, 26.2rem);
+        word-wrap: break-word;  
+        overflow-wrap: break-word;
     }
     .AboutArtist span{
         display: flex;
         margin-top: 1vh;
+        margin-left: clamp(0.125rem, -0.501rem + 1.002vw, 0.438rem);
     }
     .AboutArtist span p{
-        font-size: clamp(1rem, 0rem + 1.6vw, 1.5rem);
-        margin-left: 0.2vw;
+        font-size: clamp(0.9rem, -0.302rem + 1.924vw, 1.5rem);
     }
     .AboutArtist span p:last-of-type{
         margin-left: 0.5vw;
-
     }
     .QuestionMarkIcon{
-        margin-top: 0.5vh;
-        font-size: clamp(1.188rem, 0.438rem + 1.2vw, 1.563rem);
+        margin-top: clamp(0.125rem, -0.126rem + 0.401vw, 0.25rem);
+        font-size: clamp(1.2rem, 0.473rem + 1.164vw, 1.563rem);
     }
     .DeleteButton{
-        font-size: clamp(1.2rem, 0.2rem + 1.6vw, 1.7rem);
+        font-size:clamp(1.3rem, 0.498rem + 1.283vw, 1.7rem);
         background: transparent;
         color:var(--AccentColor);
         border: 0.5px solid gray;
         width: fit-content;
         padding: 5px 15px 2px 15px;
         border-radius: 20px;
-        margin-top: 2vh; 
-        margin-left: 0.2vw;
+        margin-top: clamp(0.938rem, 2.19rem + -2.004vw, 0.313rem); 
+        margin-inline: auto;
     }
-    .RecentlyAddedTitle{
-        font-size: clamp(1.9rem, 1.3rem + 0.96vw, 2.2rem);
-        padding-top: clamp(1.125rem, 0.25rem + 1.4vw, 1.563rem);
-        padding-left: clamp(1.188rem, -0.188rem + 2.2vw, 1.875rem);
-    }
-    .RecentAddedCont img{
-        margin-right: clamp(2.125rem, -0.506rem + 4.21vw, 3.438rem);
-        width: clamp(8.5rem, -0.518rem + 14.429vw, 13rem);
-    }
-
-    .RecentlyAddedTrack{
-        margin-top: clamp(0.438rem, -1.441rem + 3.006vw, 1.375rem);
-        overflow-y: auto;
-        height: clamp(8.125rem, -1.394rem + 15.23vw, 12.875rem);
-        width: clamp(9.625rem, -2.524rem + 19.439vw, 15.688rem);
-    }
-
-    .RecentlyAddedTrack::-webkit-scrollbar {
-        width: 7px;
-    }
-    .RecentlyAddedTrack::-webkit-scrollbar-track {
-        border-radius: 8px;
-        background: transparent;
-        box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
-    }
-    .RecentlyAddedTrack::-webkit-scrollbar-thumb {
-        border-radius: 8px;
-        background-color: #cbcbcb;
-    }
-
-    .RecentlyAddedTrack p:first-of-type{
-        font-size: clamp(1rem, -0.102rem + 1.764vw, 1.55rem);
-        line-height: clamp(1.3rem, 0.498rem + 1.283vw, 1.7rem);
-    }
-
-    .RecentlyAddedTrack p{
-        font-size: clamp(0.75rem, 0.249rem + 0.802vw, 1rem);
-        line-height: 1.2rem;
-        max-width: clamp(8.688rem, -2.71rem + 18.236vw, 14.375rem);
-
-    }
-    .RecentlyPlayedTitle{
-        font-size: clamp(1.9rem, 1.3rem + 0.96vw, 2.2rem);
-        padding-top: clamp(1.125rem, 0.25rem + 1.4vw, 1.563rem);
-        padding-left: clamp(1.188rem, -0.188rem + 2.2vw, 1.875rem);
-    }
-
-
-    .RecentlyPlayedTrackCont img{
-        margin-right: clamp(1.563rem, -0.563rem + 3.4vw, 2.625rem);
-        width: clamp(8.5rem, -0.518rem + 14.429vw, 13rem);
-    }
-
-    .RecentTracksText{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin-top: clamp(0rem, -1.876rem + 3.002vw, 0.938rem);
-        height:clamp(8.25rem, 0.25rem + 12.8vw, 12.25rem);
-        width: clamp(9.2rem, -5.429rem + 23.407vw, 16.5rem);
-    }
-
-    .RecentTracksText p{
-        max-width: clamp(8.75rem, -4.75rem + 21.6vw, 15.5rem)   ;
-        border: 0.5px solid yellow
-    }
-
-    .RecentTracksText p:first-of-type{
-        font-size: clamp(1.2rem, 0.799rem + 0.641vw, 1.4rem);
-        line-height: clamp(1.5rem, 0.498rem + 1.603vw, 2rem);
-    }
-
- 
-
-}
-
-@media only screen and (max-width:1400px){
-    .RecentTracksText{
-        display: block;
-        
-    }
-}
-
-@media only screen and (max-width:999px){
-    /*goes to 700px*/
-    .refine-1{
-        margin-right:1vw ;
-        color: white;
-        padding-left: 5px;
-        padding-top: 2px;
+    .PlaylistContainer{
+        padding-bottom: clamp(0rem, -1.879rem + 3.006vw, 0.938rem);
     }
     .PlaylistContainer img{
-        width: 12rem;
+        width: clamp(10.5rem, 5.49rem + 8.016vw, 13rem);
+        margin-right: clamp(1.813rem, -2.947rem + 7.615vw, 4.188rem);
+        margin-bottom: clamp(1.875rem, 5.633rem + -6.012vw, 0rem);
     }
-    .PlaylistText p{
-        font-size: 1.5rem;
-    }
-    .PlaylistText h2{
-        font-size: 3.6rem;
+    .buttonscont{
+        margin-bottom: clamp(2.875rem, 3.877rem + -1.603vw, 2.375rem);
     }
     .buttonsTooltip{
-        font-size: 2rem;
+        margin-top:clamp(1.313rem, 0.31rem + 1.603vw, 1.813rem) ;
+        margin-right: clamp(0.813rem, -4.824rem + 9.018vw, 3.625rem);
+    }
+    .PlaylistText p{
+        font-size: clamp(1.3rem, 0.899rem + 0.641vw, 1.5rem);
+    }
+    .PlaylistText h2{
+        font-size: clamp(3.6rem, 2.798rem + 1.283vw, 4rem);
+    }
+    .UserText p{
+        font-size: clamp(1rem, 0.599rem + 0.641vw, 1.2rem);
+        margin-bottom: clamp(0.938rem, 2.816rem + -3.006vw, 0rem);
     }
     .RefineTitle2{
-        font-size: 2rem;
-        margin-left: 15px;
+        margin-top: clamp(0rem, -0.626rem + 1.002vw, 0.313rem);
+        font-size: clamp(2rem, 1.599rem + 0.641vw, 2.2rem);
+    }
+    .RefineCarousel{
+        padding-left: clamp(1rem, -0.754rem + 2.806vw, 1.875rem);
     }
     .Refine-Track{
-        border: 0.5px solid sandybrown;
-        margin-left: -9px;
-        padding-right: 0;
-        display: flex;
-        width: clamp(19.6rem, -7.134rem + 53.467vw, 26.25rem);/*800px*/
+        width: clamp(12.7rem, 2.079rem + 16.994vw, 18rem) !important;
+        height: clamp(21.188rem, 10.04rem + 17.836vw, 26.75rem) ;
+    }
+    .Refine-Track p:first-of-type{
+        font-size: clamp(1.35rem, 1.049rem + 0.481vw, 1.5rem);
+    }
+    .Refine-Track p{
+        font-size:clamp(0.85rem, 0.349rem + 0.802vw, 1.1rem);
+        max-width: clamp(12.063rem, 5.925rem + 9.82vw, 15.125rem);
     }
     .Refine-Track img{
-        width: clamp(11rem, 2.96rem + 16.08vw, 13rem) !important;/*800px*/
-        height: clamp(11rem, 2.96rem + 16.08vw, 13rem) !important;/*800px*/
+        width: clamp(12.5rem, 6.488rem + 9.619vw, 15.5rem) !important;
+        height: clamp(12.5rem, 6.488rem + 9.619vw, 15.5rem) !important;
     }
-    .Refine-TrackText{
-        width: clamp(8.4rem, -14.113rem + 45.025vw, 14rem);/*800px*/
-        margin-left: 5px;
-        height: clamp(11rem, 2.96rem + 16.08vw, 13rem);/*800px*/
+}
+@media only screen and (max-width: 1299px) {
+    .refine-2{
+        height: clamp(20rem, 16.873rem + 5.003vw, 20.938rem);
+    }
+    .RecentlyAddedTitle{
+        font-size: clamp(1.65rem, 0.479rem + 1.873vw, 2rem);
+    }
+    .RecentlyAddedCarousel{
+        height: clamp(16.5rem, 14.828rem + 2.676vw, 17rem);
+        margin-top: clamp(0.125rem, 0.752rem + -1.003vw, -0.063rem);
+    }
+    .RecentAddedCont{
+        height: clamp(16.375rem, 15.746rem + 1.006vw, 16.563rem);
+        padding-left: clamp(1.375rem, -0.297rem + 2.676vw, 1.875rem);
+    }
+    .RecentAddedCont img{
+        width: clamp(9rem, -2.706rem + 18.729vw, 12.5rem);
+        margin-right: clamp(1.7rem, -0.976rem + 4.281vw, 2.5rem);
+    }
+    .RecentlyAddedTrack{
+        width: clamp(9.7rem, 2.008rem + 12.308vw, 12rem);
+    }
+    .RecentlyAddedTrack p:first-of-type{
+        font-size: clamp(1.2rem, -0.138rem + 2.14vw, 1.6rem);
+        line-height: clamp(1.6rem, 0.597rem + 1.605vw, 1.9rem);
+    }
+    .RecentlyAddedTrack p{
+        max-width: clamp(8.875rem, 1.768rem + 11.371vw, 11rem);
+        font-size: clamp(0.75rem, 0.081rem + 1.07vw, 0.95rem);
+        line-height: clamp(1.6rem, 0.597rem + 1.605vw, 1.9rem);
+    }
+
+    .refine-3{
+        height: clamp(20rem, 16.873rem + 5.003vw, 20.938rem);
+        width: 38.1vw;
+        margin-top: clamp(22.75rem, 20.242rem + 4.013vw, 23.5rem);
+        margin-left: clamp(38.15rem, 0.816rem + 59.735vw, 49.313rem);
+    }
+    .RecentlyPlayedTitle{
+        font-size: clamp(1.65rem, 0.479rem + 1.873vw, 2rem);
+    }
+    .RecentlyPlayedTrackCont img{
+        width: clamp(9rem, -2.706rem + 18.729vw, 12.5rem);
+        margin-right: clamp(1.7rem, -0.976rem + 4.281vw, 2.5rem);
+    }
+    .RecentlyPlayCarousel{
+        height: clamp(16.5rem, 14.828rem + 2.676vw, 17rem);
+        margin-top: clamp(0.125rem, 0.752rem + -1.003vw, -0.063rem);
+
+    }
+    .RecentlyPlayedTrackCont{
+        height: clamp(16.3rem, 15.631rem + 1.07vw, 16.5rem);
+        padding-left: clamp(1.375rem, -0.297rem + 2.676vw, 1.875rem);
+    }
+    .RecentTracksText{
+        width: clamp(9.7rem, 2.008rem + 12.308vw, 12rem);
+    }
+    .RecentTracksText p:first-of-type{
+        font-size: clamp(1.2rem, -0.138rem + 2.14vw, 1.6rem);
+        line-height: clamp(1.6rem, 0.597rem + 1.605vw, 1.9rem);
+    }    
+    .RecentTracksText p{
+        max-width: clamp(8.875rem, 1.768rem + 11.371vw, 11rem);
+        font-size: clamp(0.75rem, 0.081rem + 1.07vw, 0.95rem);
+        line-height: clamp(1.6rem, 0.597rem + 1.605vw, 1.9rem);
+    }
+
+}
+@media only screen and (max-width: 999px){
+    .Playlists{
+        width: clamp(27rem, 4.141rem + 73.148vw, 49.813rem);/*500px*/
+        height: clamp(41.875rem, 34.736rem + 22.846vw, 49rem);/*500px*/
+    }
+
+    .refineTitle p{
+        font-size: clamp(2rem, 1.299rem + 2.244vw, 2.7rem);/*500px*/
+        width: clamp(22.5rem, 2.585rem + 63.727vw, 42.375rem);/*500px*/
+    }
+    .playlistList{
+        width: clamp(22.375rem, 0.018rem + 71.543vw, 44.688rem);/*500px*/
+    }
+    .playlistInfo p{
+        font-size: clamp(0.8rem, 0.399rem + 1.283vw, 1.2rem);/*500px*/
+    }
+    .playlist{
+        width: clamp(14.938rem, -5.354rem + 64.931vw, 35.188rem)!important;/*500px*/
+    }
+    .playlist img{
+        margin-top: 5px;
+        width: clamp(6.875rem, 1.865rem + 16.032vw, 11.875rem);/*500px*/
+        height: clamp(6.875rem, 1.865rem + 16.032vw, 11.875rem)/*500px*/
+    }
+    .playlist p{
+        font-size: clamp(1.3rem, 0.899rem + 1.283vw, 1.7rem);/*500px*/
+        padding-top: clamp(1.25rem, -2.508rem + 12.024vw, 5rem);/*500px*/
+        margin-left: clamp(-3.75rem, -8.447rem + 15.032vw, 0.938rem);/*500px*/
+    }
+
+    .PlaylistCont{
+        display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
+  gap: 20px 20px; 
+  grid-template-areas: 
+    "refine-1 refine-1"
+    "refine-1 refine-1"
+    "refine-1 refine-1"
+    "refine-2 refine-2"
+    "refine-2 refine-2"
+    "refine-3 refine-3"
+    "refine-3 refine-3"; 
+    }
+    .refine-1{
+        margin-block: 0;
+        margin-top: 2vh;
+        margin-right: 1.5vw;
+        height: clamp(41rem, 36.318rem + 10.702vw, 43rem);/*700px*/
+    }
+    .PlaylistContainer img{
+        width: clamp(7.5rem, 4.495rem + 12.02vw, 12rem);/*400px*/
+        margin-top:clamp(0.313rem, 0.521rem + -0.835vw, 0rem);/*400px*/
+        margin-bottom: clamp(2.188rem, 3.022rem + -3.339vw, 0.938rem);/*400px*/
+        margin-right: clamp(0.938rem, 0.353rem + 2.339vw, 1.813rem);/*400px*/
+    }
+    .PlaylistContainer p{
+        font-size: clamp(1.15rem, 1.05rem + 0.401vw, 1.3rem);/*400px*/
+    }
+    .PlaylistText h2{
+        font-size: clamp(3rem, 1.662rem + 5.351vw, 4rem);/*400px*/
+        line-height: clamp(4rem, 3.332rem + 2.671vw, 5rem);/*400px*/
+    }
+    .UserText p{
+        font-size: clamp(0.7rem, 0.366rem + 1.336vw, 1.2rem);/*400px*/
+        margin-bottom: clamp(1.625rem, 2.71rem + -4.341vw, 0rem);/*400px*/
+    }
+    .buttonscont{
+        margin-bottom: 60px;
+        margin-right: clamp(-0.5rem, -0.834rem + 1.336vw, 0rem);
+    }
+    .RefineTitle2{
+        font-size: clamp(1.8rem, 1.533rem + 1.068vw, 2.2rem);
+        margin-top: clamp(-1.25rem, -2.419rem + 4.674vw, 0.5rem);
+        margin-left: clamp(0.375rem, 0.625rem + -1.002vw, 0rem);
+    }
+    .RefineCarousel{
+        padding-left: clamp(1.25rem, 1.835rem + -1.338vw, 1rem);/*700px*/
+    }
+    .Refine-Track{
+        width: clamp(12.8rem, 4.606rem + 18.729vw, 16.3rem) !important;/*700px*/
+    }
+    .Refine-Track p:first-of-type{
+        font-size: clamp(1.4rem, 1.166rem + 0.535vw, 1.5rem);/*700px*/
+    }
+    .Refine-Track p{
+        font-size: clamp(1.05rem, 0.699rem + 0.803vw, 1.2rem);/*700px*/
+        max-width: clamp(11.75rem, 4.141rem + 17.391vw, 15rem);/*700px*/
+    }
+    .Refine-Track img{
+        width: clamp(12.5rem, 4.306rem + 18.729vw, 16rem) !important;/*700px*/
+        height: clamp(12.5rem, 4.306rem + 18.729vw, 16rem) !important;/*700px*/
+    }
+    .AboutArtist{
+        width: clamp(23.5rem, -8.105rem + 72.241vw, 37rem);/*700px*/
+    }
+    .Description{
+        width: clamp(22.2rem, -11.278rem + 76.522vw, 36.5rem);/*700px*/
+    }
+    .Description p:first-of-type{
+        font-size: clamp(1.5rem, 1.032rem + 1.07vw, 1.7rem);/*700px*/
+    }
+    .Description p:nth-of-type(2){
+        font-size: clamp(2rem, 1.532rem + 1.07vw, 2.2rem);/*700px*/
+    }
+    .Description p{
+        font-size: clamp(1.15rem, 0.799rem + 0.803vw, 1.3rem);/*700px*/
+        max-width: clamp(21.125rem, -11.358rem + 74.247vw, 35rem);/*700px*/
+    }
+    .AboutArtist span p{
+        font-size: clamp(1.25rem, 0.665rem + 1.338vw, 1.5rem);/*700px*/
+    }
+    .QuestionMarkIcon{
+        font-size: clamp(1.4rem, 1.018rem + 0.872vw, 1.563rem);/*700px*/
+        margin-top: clamp(0.125rem, 0rem + 0.501vw, 0.313rem);/*400px*/
+    }
+    .DeleteButton{
+        font-size: clamp(1.4rem, 0.698rem + 1.605vw, 1.7rem);/*700px*/
+    }
+    .refine-2{
+        margin-left: 10px;   
+        margin-top: 0;     
+    }
+    .RecentlyAddedTitle{
+        font-size: clamp(1.8rem, 1.399rem + 1.283vw, 2.2rem);
+    }
+    .RecentlyAddedCarousel{
+        height: clamp(16rem, 16.501rem + -1.603vw, 15.5rem);
+    }
+    .RecentAddedCont{
+        width: clamp(27rem, 7.962rem + 60.922vw, 46rem) !important;
+        padding-left: clamp(1.5rem, -10.775rem + 39.279vw, 13.75rem);
+    }
+    .RecentAddedCont img{
+        width: clamp(10rem, 6.493rem + 11.222vw, 13.5rem);
+        margin-bottom: 8px;
+        margin-right: clamp(3.75rem, 2.184rem + 5.01vw, 5.313rem);
+    }
+    .RecentlyAddedTrack{
+        width: clamp(13rem, -0.026rem + 41.683vw, 26rem);
+        height: clamp(9.5rem, 6.995rem + 8.016vw, 12rem);
+    }
+    .RecentlyAddedTrack p:first-of-type{
+        font-size: clamp(1.7rem, 1.199rem + 1.603vw, 2.2rem);
+        line-height: clamp(1.9rem, 1.599rem + 0.962vw, 2.2rem);
+    }
+    .RecentlyAddedTrack p{
+        max-width: clamp(12.063rem, -0.275rem + 39.479vw, 24.375rem);
+        line-height: clamp(1.7rem, 1.399rem + 0.962vw, 2rem);
+        font-size: clamp(0.95rem, 0.699rem + 0.802vw, 1.2rem);
+    }
+    .refine-3{
+        position: relative;
+        margin-top: 0;
+        margin-left: 10px;
+        width:auto;
+    }
+    .RecentlyPlayedTitle{
+        font-size: clamp(1.8rem, 1.399rem + 1.283vw, 2.2rem);
+    }
+    .RecentlyPlayCarousel{
+        height: clamp(16rem, 16.501rem + -1.603vw, 15.5rem);
+    }
+    .RecentlyPlayedTrackCont{
+        width: clamp(27rem, 7.962rem + 60.922vw, 46rem) !important;
+        padding-left: clamp(1.5rem, -10.775rem + 39.279vw, 13.75rem);
+    }
+    .RecentlyPlayedTrackCont img{
+        width: clamp(10rem, 6.493rem + 11.222vw, 13.5rem);
+        margin-bottom: 8px;
+        margin-right: clamp(3.75rem, 2.184rem + 5.01vw, 5.313rem);
+    }
+    .RecentTracksText{
+        width: clamp(13rem, -0.026rem + 41.683vw, 26rem);
+        height: clamp(9.5rem, 6.995rem + 8.016vw, 12rem);
+    }
+    .RecentTracksText p:first-of-type{
+        font-size: clamp(1.7rem, 1.199rem + 1.603vw, 2.2rem);
+        line-height: clamp(1.9rem, 1.599rem + 0.962vw, 2.2rem);
+    }
+    .RecentTracksText p{
+        max-width: clamp(12.063rem, -0.275rem + 39.479vw, 24.375rem);
+        line-height: clamp(1.7rem, 1.399rem + 0.962vw, 2rem);
+        font-size: clamp(0.95rem, 0.699rem + 0.802vw, 1.2rem);
+    }
+
+}
+
+@media only screen and (max-width: 699px) {
+    .refine-1{
+        height: clamp(44rem, 35.973rem + 32.107vw, 50rem);
+    }
+    .RefineCarousel{
+        height: clamp(30rem, 25.987rem + 16.054vw, 33rem);
+        padding-left: clamp(0.188rem, -1.234rem + 5.686vw, 1.25rem);
+    }
+    .RefiningTracksCont{
+        display: block !important;
+    }
+    .Refine-Track{
+        display: flex;
+        height: clamp(7.8rem, 3.92rem + 15.518vw, 10.7rem);
+        width: clamp(20.5rem, -1.574rem + 88.294vw, 37rem) !important;
+        overflow-y: hidden;
+        padding-right: 0;
+    }
+    .Track-Description{
+        height: clamp(7.8rem, 4.857rem + 11.773vw, 10rem);
+        width: clamp(12rem, -8.067rem + 80.268vw, 27rem);
         overflow-y: auto;
+        margin-left: 15px;
     }
-    .Refine-TrackText::-webkit-scrollbar {
+    .Track-Description::-webkit-scrollbar {
         width: 8px;
-    }
+      }
       
-    .Refine-TrackText::-webkit-scrollbar-track {
+    .Track-Description::-webkit-scrollbar-track {
         border-radius: 8px;
         background: transparent;
         box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
     }
     
-    .Refine-TrackText::-webkit-scrollbar-thumb {
+    .Track-Description::-webkit-scrollbar-thumb {
         border-radius: 8px;
         background-color: #cbcbcb;
     }
-    .Refine-Track p{
-        padding-left: 10px;
-        max-width: clamp(6.688rem, -10.4rem + 34.175vw, 10.938rem);/*800px*/
-        font-size: clamp(1rem, -0.206rem + 2.412vw, 1.3rem);/*800px*/
-        line-height: clamp(1.2rem, -0.006rem + 2.412vw, 1.5rem);/*800px*/
-    }
     .Refine-Track p:first-of-type{
-        max-width:clamp(6.688rem, -10.4rem + 34.175vw, 10.938rem);/*800px*/
-        font-size: clamp(1.4rem, 0.194rem + 2.412vw, 1.7rem);/*800px*/
-        line-height: clamp(1.4rem, -0.61rem + 4.02vw, 1.9rem);/*800px*/
+        font-size: clamp(1.3rem, 1.032rem + 1.07vw, 1.5rem);
     }
-    .Refine-ArtistCont{
-        padding-right: 0;
+    .Refine-Track p{
+        max-width: clamp(10.875rem, -6.684rem + 70.234vw, 24rem);
+        font-size: clamp(1rem, 0.732rem + 1.07vw, 1.2rem);
     }
-    .Refine-Artist{
-        width: clamp(24rem, 1.889rem + 44.221vw, 29.5rem);
+
+    .Refine-Track img{
+        width: clamp(7.5rem, 3.487rem + 16.054vw, 10.5rem) !important;
+        height: clamp(7.5rem, 3.487rem + 16.054vw, 10.5rem) !important;
     }
-    .Refine-Artist img{
-        width: clamp(9rem, 1.977rem + 16.054vw, 12rem) !important;/*700px*/
-        height: clamp(9rem, 1.977rem + 16.054vw, 12rem) !important;/*700px*/
+    .AboutArtist{
+        width: clamp(20rem, -2.742rem + 90.97vw, 37rem);
+        margin-top: clamp(0.938rem, 1.774rem + -3.344vw, 0.313rem);
+        margin-left: clamp(0.625rem, 1.461rem + -3.344vw, 0rem);
     }
-    .Refine-ArtistDescription{
-        width: clamp(11.938rem, -1.63rem + 27.136vw, 15.313rem);
-        height: clamp(10rem, 3.719rem + 12.563vw, 11.563rem);
+    .DescriptionCont{
+        height: clamp(11rem, 16.351rem + -21.405vw, 7rem);
     }
-    .Refine-ArtistDescription::-webkit-scrollbar {
-        width: 8px;
+    .Description{
+        height: clamp(10.8rem, 16.151rem + -21.405vw, 6.8rem);
+        width: clamp(18.8rem, -2.872rem + 86.689vw, 35rem);
     }
-    .Refine-ArtistDescription p{
-        max-width: 230px;
+    .Description p:first-of-type{
+        font-size: clamp(1.2rem, 0.799rem + 1.605vw, 1.5rem);
     }
-    .similarity{
+    .Description p:nth-of-type(2){
+        font-size: clamp(1.7rem, 1.299rem + 1.605vw, 2rem);
+    }
+    .Description p{
+        font-size: clamp(1rem, 0.799rem + 0.803vw, 1.15rem);
+        max-width: clamp(18rem, -3.405rem + 85.619vw, 34rem);
+        line-height: clamp(1.65rem, 1.048rem + 2.408vw, 2.1rem);
+    }
+    .AboutArtist span{
+        margin-left: clamp(0.938rem, -4.915rem + 23.411vw, 5.313rem);
+        margin-bottom: 5px;
+    }
+    .AboutArtist span p{
+        font-size: clamp(1rem, 0.331rem + 2.676vw, 1.5rem);
+    }
+    .DeleteButton{
+        margin-top:clamp(0.625rem, 1.461rem + -3.344vw, 0rem);
+        font-size: clamp(1.2rem, 0.932rem + 1.07vw, 1.4rem);
+    }
+    .buttonsTooltip{
+        font-size: clamp(1.5rem, 0.162rem + 5.351vw, 2.5rem);
+    }
+}
+
+@media only screen and (max-width: 499px) {
+    .Playlists{
+        width: clamp(13.75rem, -6.362rem + 100.559vw, 25rem);
+    }
+    .refineTitle p{
+        font-size: clamp(1.1rem, -0.151rem + 6.257vw, 1.8rem);
+        width: clamp(11.75rem, -5.233rem + 84.916vw, 21.25rem);
+    }
+    .PlaylistListCont{
+        height: 545px;
+    }
+    .SinglePlaylist{
+        display: block;
+        margin-inline: auto;
+        padding-top: 20px;
+        border-bottom: 3px solid gray;
+        width: clamp(10.313rem, -4.771rem + 75.419vw, 18.75rem) !important;
+    }
+
+    .SinglePlaylist:hover{
+        background: rgba(255, 255, 255, 0.1);
+
+    }
+    .SinglePlaylist img{
+        width: clamp(6.25rem, 0.663rem + 27.933vw, 9.375rem);
+        height: clamp(6.25rem, 0.663rem + 27.933vw, 9.375rem);
+        margin-left: clamp(1.875rem, -2.036rem + 19.553vw, 4.063rem);
+        border-radius: 20px;
+        
+    }
+    .SinglePlaylist p:first-of-type{
+        font-size: clamp(1.1rem, 0.564rem + 2.682vw, 1.4rem);
+        margin-top: 5px;
+    }
+    .SinglePlaylist p{
+        text-align: center;
+        font-size: clamp(0.9rem, 0.364rem + 2.682vw, 1.2rem);
+        line-height: 1.7rem;
+        max-width: clamp(9.875rem, -4.427rem + 71.508vw, 17.875rem);
+    }
+    .RecentlyAddedCarousel{
+        height: clamp(14.5rem, 11.818rem + 13.408vw, 16rem);
+    }
+    .RecentlyAddedTitle{
+        font-size: clamp(1.5rem, 0.964rem + 2.682vw, 1.8rem);
+        margin-bottom: 8px;
+    }
+    .RecentAddedCont{
+        height: clamp(16rem, 15.33rem + 3.352vw, 16.375rem);
+        padding-left: clamp(1.125rem, 0.455rem + 3.352vw, 1.5rem);
+        width: clamp(16.5rem, -2.271rem + 93.855vw, 27rem) !important;
+    }
+    .RecentAddedCont img{
+        width: clamp(7.5rem, 3.031rem + 22.346vw, 10rem);
+        margin-right: clamp(1.125rem, -3.568rem + 23.464vw, 3.75rem);
+    }
+    .RecentlyAddedTrack{
+        width: clamp(8rem, -0.939rem + 44.693vw, 13rem);
+    }
+    .RecentlyAddedTrack p:first-of-type{
+        font-size: clamp(1.15rem, 0.167rem + 4.916vw, 1.7rem);
+        line-height:clamp(1.3rem, 0.227rem + 5.363vw, 1.9rem);
+    }
+    .RecentlyAddedTrack p{
+        font-size: clamp(0.75rem, 0.392rem + 1.788vw, 0.95rem);
+        line-height: clamp(1.3rem, 0.585rem + 3.575vw, 1.7rem);
+        max-width: clamp(6.875rem, -2.4rem + 46.373vw, 12.063rem);
+    }
+    .RecentlyPlayCarousel{
+        height: clamp(14.5rem, 11.818rem + 13.408vw, 16rem);
+    }
+    .RecentlyPlayedTitle{
+        font-size: clamp(1.5rem, 0.964rem + 2.682vw, 1.8rem);
+        margin-bottom: 8px;
+    }
+    .RecentlyPlayedTrackCont{
+        height: clamp(16rem, 15.33rem + 3.352vw, 16.375rem);
+        padding-left: clamp(1.125rem, 0.455rem + 3.352vw, 1.5rem);
+        width: clamp(16.5rem, -2.271rem + 93.855vw, 27rem) !important;
+    }
+    .RecentlyPlayedTrackCont img{
+        width: clamp(7.5rem, 3.031rem + 22.346vw, 10rem);
+        margin-right: clamp(1.125rem, -3.568rem + 23.464vw, 3.75rem);
+    }
+    .RecentTracksText p:first-of-type{
+        font-size: clamp(1.15rem, 0.167rem + 4.916vw, 1.7rem);
+        line-height:clamp(1.3rem, 0.227rem + 5.363vw, 1.9rem);
+    }
+    .RecentTracksText p{
+        font-size: clamp(0.75rem, 0.392rem + 1.788vw, 0.95rem);
+        line-height: clamp(1.3rem, 0.585rem + 3.575vw, 1.7rem);
+        max-width: clamp(6.875rem, -2.4rem + 46.373vw, 12.063rem);
+
+    }
+
+}
+
+@media only screen and (max-width: 399px) {
+    .refine-1{
+        height: clamp(46rem, 33.848rem + 60.759vw, 49rem);
+    }
+    .PlaylistContainer{
+        display: block;
+        height: 19rem;
+    }
+    .PlaylistContainer img{
+        margin-bottom: 15px;
+    }
+    .userplaylistinfocont{
+        display: flex;
+    }
+    .PlaylistText{
         margin-left: 5px;
     }
-    .similarity span p{
-        font-size: clamp(0.83rem, 0.147rem + 1.367vw, 1rem);
+    .buttonscont{
+        margin-top: -30px;
+        margin-right: 5px;
     }
-    .TrackDelete{
-        font-size: clamp(0.9rem, -0.306rem + 2.412vw, 1.2rem) !important;
+    .RefineTitle2{
+        margin-top: -40px;
+        margin-left: 10px;
+        font-size: clamp(1.6rem, 0.79rem + 4.051vw, 1.8rem);
     }
-
-
-    .refine-2,
-    .refine-3{
-        margin-left: 1vw;
-        margin-bottom: 2vh;
+    .RefineCarousel{
+        height: clamp(27rem, 18.899rem + 40.506vw, 29rem);
     }
-    
-}
-
-@media only screen and (max-width: 800px){
     .Refine-Track{
-        display: block;
-        border: 0.5px solid sandybrown;
+        width: clamp(15.6rem, -4.248rem + 99.241vw, 20.5rem) !important;
+        height: clamp(6.3rem, 0.224rem + 30.38vw, 7.8rem);
+    }
+    .Track-Description{
+        width: clamp(9rem, -3.152rem + 60.759vw, 12rem);
+        height: clamp(5.8rem, -2.301rem + 40.506vw, 7.8rem);
+    }
+    .Refine-Track p{
+        max-width: clamp(7.625rem, -5.54rem + 65.823vw, 10.875rem);
+    }
+    .Refine-Track img{
+        width: clamp(6rem, -0.076rem + 30.38vw, 7.5rem) !important;
+        height: clamp(6rem, -0.076rem + 30.38vw, 7.5rem) !important;
+    }
+    .AboutArtist{
+        width: clamp(15rem, -4.443rem + 97.215vw, 19.8rem);
+    }
+    .Description{
+        width: clamp(13.7rem, -5.743rem + 97.215vw, 18.5rem);
+    }
+    .Description p:first-of-type{
+        font-size: clamp(1rem, 0.19rem + 4.051vw, 1.2rem);
+    }
+    .Description p:nth-of-type(2){
+        font-size: clamp(1.5rem, 0.69rem + 4.051vw, 1.7rem);
+    }
+    .Description p{
+        max-width: clamp(12.563rem, -9.463rem + 110.127vw, 18rem);
+        font-size: clamp(0.85rem, 0.242rem + 3.038vw, 1rem);
+    }
+    .AboutArtist span{
+        margin-left: clamp(0.625rem, -0.388rem + 5.063vw, 0.875rem);
+
+    }
+    .AboutArtist span p{
+        font-size: clamp(0.77rem, -0.162rem + 4.658vw, 1rem);
+    }
+    .QuestionMarkIcon{
+        font-size: clamp(1rem, -0.62rem + 8.101vw, 1.4rem);
+    }
+    .DeleteButton{
+        font-size: clamp(1rem, 0.19rem + 4.051vw, 1.2rem);
     }
 }
+
+
+
+
+
+
+
+
+
+
+ 

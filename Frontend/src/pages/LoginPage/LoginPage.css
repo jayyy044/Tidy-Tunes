@@ -3,19 +3,27 @@
     flex-direction: row;
     align-items: center;
     height: calc(100dvh - var(--navbarHeight));
-    background: linear-gradient(to top,#141a1f,#051522,#000912 );
-    /* background: radial-gradient(circle farthest-corner at 950px 900px,#7d7d7d,#030f19,#000912); */
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr 1fr; 
+    gap: 20px 0px; 
+    grid-template-areas: 
+    "Login_FormCard Login_FormCard Login_FormCard Login_WelcomeCard Login_WelcomeCard"
+    "Login_FormCard Login_FormCard Login_FormCard Login_WelcomeCard Login_WelcomeCard"
+    "Login_FormCard Login_FormCard Login_FormCard Login_WelcomeCard Login_WelcomeCard"
+    "Login_FormCard Login_FormCard Login_FormCard Login_WelcomeCard Login_WelcomeCard"; 
+    /* background: linear-gradient(to top,#141a1f,#051522,#000912 ); */
 }
 
 .Login_WelcomeCard {
     background: rgba(255, 255, 255, 0.3); 
     border: 1px solid #030f19;
-    width: 30vw;
-    height: 80vh;  
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    box-shadow: -10px 13px 28px -4px rgba(0,0,0,0.75);
-    margin-left: 4vw;
+    width: clamp(23.063rem, 0.653rem + 27.581vw, 33.75rem);
+    height: 766px;  
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 10px 10px 25px 1px rgba(0,0,0,0.75);
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,21 +31,22 @@
 }
 
 .Login_WelcomeCard h1{
-    font-size: clamp(4.5rem, 3.15rem + 1.541vw, 5rem);
+    font-size: clamp(4.2rem, 2.523rem + 2.065vw, 5rem);
     margin-bottom: 50px;
     color: var(--AccentColor)
 }
 
 .Login_WelcomeCard h2{
-    font-size: 1.5rem;
+    font-size: clamp(1.35rem, 1.14rem + 0.258vw, 1.45rem);
     text-align: center; 
+    padding-inline: 0.6vw;
     margin-bottom: 50px;
     color: var(--FontBorderColor)
 }
 
 .Login_WelcomeCard a{
     padding: 7px 25px;
-    font-size: 1.9rem;
+    font-size: clamp(1.65rem, 1.126rem + 0.645vw, 1.9rem);
     border-radius: 50px;
     border: 2px solid var(--FontBorderColor);
     transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out, 
@@ -56,16 +65,17 @@
 
 .Login_FormCard{
     background: rgba(255, 255, 255, 0.3);
+    margin-top: 50px;
     border: 1px solid #030f19;
-    width: 70vw;
-    height: 80vh;  
-    box-shadow: 15px 9px 22px 5px rgba(0,0,0,0.75);
-    margin-right: 4vw;
+    width: clamp(52.5rem, 1.391rem + 62.903vw, 76.875rem);
+    height: 766px;  
+    box-shadow: -10px 10px 25px 1px rgba(0,0,0,0.75);
+    margin-left: clamp(3.313rem, 1.085rem + 2.742vw, 4.375rem);
     display: flex;
     flex-direction: column;
     align-items: center; 
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
  .Login_FormCard h1{
@@ -106,7 +116,7 @@
     padding-left: 10px;
     padding-bottom: 15px;
     font-size: 1.2rem;
-    width: 803px;
+    width: clamp(45.313rem, 35.091rem + 12.581vw, 50.188rem);
     box-sizing: border-box;
     display: block;
     border: 1px solid var(--FontBorderColor);
@@ -139,7 +149,7 @@
 .input_field_L:focus + .input_label_L,
 .input_field_L.has-value + .input_label_L{
     margin-top: 7px;
-    background: #525c65;
+    background: #4d535a;
     transform: translate(.25rem, -65%) scale(.8);
     color: var(--AccentColor);
 }
@@ -189,35 +199,88 @@
     color: red !important;
 }
 
-@media only screen and (max-width: 1400px){
+@media only screen and (max-width: 1299px) {
+    .Login_FormCard{
+        width: clamp(40.625rem, 0.909rem + 63.545vw, 52.5rem);
+        margin-left: clamp(2.188rem, -1.575rem + 6.02vw, 3.313rem);
+    }
+    .Login_WelcomeCard{
+        width: clamp(17.813rem, 0.254rem + 28.094vw, 23.063rem);
+    }
+    .Login_FormCard h1{
+        font-size: clamp(4.5rem, 2.828rem + 2.676vw, 5rem);
+    }
+    .Login_FormCard h2{
+        font-size: clamp(1.6rem, 0.262rem + 2.14vw, 2rem);
+    }
+    .input_field_L{
+        width: clamp(35.938rem, 4.581rem + 50.17vw, 45.313rem);
+    }
+    .Login_FormCard form button{
+        font-size: clamp(1.8rem, 1.131rem + 1.07vw, 2rem);
+    }
+    .Login_WelcomeCard h1{
+        font-size: clamp(3.3rem, 0.29rem + 4.816vw, 4.2rem);
+    }
+    .Login_WelcomeCard h2{
+        font-size: clamp(1.1rem, 0.264rem + 1.338vw, 1.35rem);
+        line-height: clamp(1.5rem, 6.517rem + -8.027vw, 0rem);
+    }
+    .Login_WelcomeCard a {
+        font-size: clamp(1.4rem, 0.564rem + 1.338vw, 1.65rem);
+
+    }
+}
+
+@media only screen and (max-width: 999px) {
     .Login_WelcomeCard{
         display: none;
     }
-
     .Login_FormCard{
+        width: clamp(26.75rem, -4.5rem + 100vw, 57.938rem);
         border-radius: 20px;
-        margin-inline: auto;
-        width: 90vw;
     }
-
-    .input_field_L{
-        width: clamp(15.313rem, 4.979rem + 51.667vw, 50.188rem);
-    }
-
     .Login_FormCard h1{
-        font-size: clamp(4rem, 3.704rem + 1.481vw, 5rem);
+        font-size: clamp(3.4rem, 2.298rem + 3.527vw, 4.5rem);
+        margin-top: clamp(9.5rem, 10.502rem + -3.206vw, 8.5rem);
     }
-
     .Login_FormCard h2{
-        font-size: clamp(1.5rem, 1.352rem + 0.741vw, 2rem);  
-        line-height: 2.3rem;
+        font-size: clamp(1.4rem, 0.799rem + 1.924vw, 2rem);
+        line-height: clamp(1.7rem, 3.403rem + -5.451vw, 0rem);
+    }
+    .input_field_L{
+        width: clamp(23rem, -4.054rem + 86.573vw, 50rem);
+    }
+    .Login_FormCard form button {
+        font-size: clamp(1.7rem, 1.399rem + 0.962vw, 2rem);
     }
 
-    .Login_FormCard form button{
-        font-size: clamp(1.5rem, 1.352rem + 0.741vw, 2rem);
+}
+@media only screen and (max-width: 499px) {
+    .Login_FormCard{
+        width: clamp(18.125rem, 2.706rem + 77.095vw, 26.75rem);
+        margin-left: clamp(0.938rem, -1.298rem + 11.178vw, 2.188rem);
     }
-
-
+    .Login_FormCard h1{
+        font-size: clamp(3rem, 2.285rem + 3.575vw, 3.4rem);
+        margin-top: clamp(11rem, 13.682rem + -13.408vw, 9.5rem);
+    }
+    .Login_FormCard h2{
+        font-size: clamp(1.2rem, 0.842rem + 1.788vw, 1.4rem);
+        margin-inline: clamp(0.625rem, 1.742rem + -5.587vw, 0rem);
+    }
+    .input_field_L{
+        width: clamp(16rem, 3.486rem + 62.57vw, 23rem);
+        padding-bottom: clamp(0.5rem, -0.282rem + 3.911vw, 0.938rem);
+        font-size: clamp(1rem, 0.642rem + 1.788vw, 1.2rem);
+    }
+    .input_label_L{
+        font-size: clamp(1.2rem, 0.664rem + 2.682vw, 1.5rem);
+        margin-top: clamp(0.813rem, 0.477rem + 1.676vw, 1rem);
+    }
+    .Login_FormCard form button {
+        font-size: clamp(1.3rem, 0.585rem + 3.575vw, 1.7rem);
+    }
 
 }
 

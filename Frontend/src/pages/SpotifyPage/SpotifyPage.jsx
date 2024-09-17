@@ -24,7 +24,9 @@ const SpotifyPage = () => {
     SpotifyTokenSearch().then(
       Token => {
         UserTopTracks(state.JWT_access, Token.Spotify_access, Token.expirationTime).then(
-          (data) => { setTracks(data); });
+          (data) => { 
+            setTracks(data);
+           });
     
         UserTopArtists(state.JWT_access, Token.Spotify_access, Token.expirationTime).then(
           async (TopArtistsObj) => {

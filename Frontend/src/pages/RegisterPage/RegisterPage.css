@@ -1,35 +1,46 @@
 .Register_Container{
-    display: flex;
+    /* display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: center; */
     height: calc(100dvh - var(--navbarHeight));
-    background: linear-gradient(to top,#141a1f,#051522,#000912 );
+    width: 100%;
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr 1fr; 
+    gap: 20px 0px; 
+    grid-template-areas: 
+    "Register_WelcomeCard Register_WelcomeCard Register_FormCard Register_FormCard Register_FormCard"
+    "Register_WelcomeCard Register_WelcomeCard Register_FormCard Register_FormCard Register_FormCard"
+    "Register_WelcomeCard Register_WelcomeCard Register_FormCard Register_FormCard Register_FormCard"
+    "Register_WelcomeCard Register_WelcomeCard Register_FormCard Register_FormCard Register_FormCard"; 
+    /* background: linear-gradient(to top,#141a1f,#051522,#000912 ); */
 }
 
 .Register_WelcomeCard {
     background: rgba(255, 255, 255, 0.3); 
     border: 1px solid #030f19;
-    width: 30vw;
-    height: 80vh;  
+    width: clamp(23.313rem, 1.427rem + 26.935vw, 33.75rem);
+    height: 766px;  
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     box-shadow: -10px 13px 28px -4px rgba(0,0,0,0.75);
-    margin-left: 4vw;
+    margin-left: clamp(2.5rem, -2.349rem + 5.968vw, 4.813rem);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; ; 
+    align-items: center; 
+    margin-top: 45px;
 }
 
 .Register_WelcomeCard h1{
-    font-size: 5rem;
+    font-size: clamp(4.3rem, 2.832rem + 1.806vw, 5rem);
     margin-bottom: 50px;
     color: var(--AccentColor)
 }
 
 .Register_WelcomeCard h2{
     padding-inline: 1vw;
-    font-size: 1.5rem;
+    font-size: clamp(1.35rem, 1.035rem + 0.387vw, 1.5rem);
     text-align: center; 
     margin-bottom: 50px;
     color: var(--AccentColor)
@@ -37,7 +48,7 @@
 
 .Register_WelcomeCard a{
     padding: 7px 25px;
-    font-size: 1.9rem;
+    font-size: clamp(1.75rem, 1.435rem + 0.387vw, 1.9rem);
     border-radius: 50px;
     border: 2px solid var(--FontBorderColor);
     transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out, 
@@ -55,28 +66,28 @@
 }
 
 .Register_FormCard{
-    background: rgba(255, 255, 255, 0.13);
+    background: rgba(255, 255, 255, 0.3);
     border: 1px solid #030f19;
-    width: 70vw;
-    height: 80vh;  
-    box-shadow: 15px 9px 22px 5px rgba(0,0,0,0.75);
-    margin-right: 77px;
+    width: clamp(53.125rem, 3.327rem + 61.29vw, 76.875rem);
+    height: 766px;  
+    box-shadow: 10px 10px 22px 1px rgba(0,0,0,0.75);
     display: flex;
     flex-direction: column;
     align-items: center; 
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px; 
+    margin-top: 45px;
 }
 
 .Register_FormCard h1{
-    font-size: 5rem;
-    margin-top: 5rem;
+    font-size: clamp(4.6rem, 3.761rem + 1.032vw, 5rem);
+    margin-top: clamp(8.438rem, 13.024rem + -5.645vw, 6.25rem);
     margin-bottom: 50px;
     color: var(--FontBorderColor);
 }
 
 .Register_FormCard h2{
-    font-size: 1.8rem;
+    font-size: clamp(1.6rem, 1.181rem + 0.516vw, 1.8rem);
     margin-bottom: 50px;
     font-style: italic;
     color: var(--AccentColor);
@@ -96,9 +107,9 @@
 .input_field_R {
     padding-top: 20px;
     padding-left: 10px;
-    padding-bottom: 15px;
+    padding-bottom: clamp(0.625rem, -0.03rem + 0.806vw, 0.938rem);
     font-size: 1.2rem;
-    width: 803px;
+    width: clamp(46.875rem, 25.907rem + 25.806vw, 56.875rem);
     box-sizing: border-box;
     display: block;
     border: 1px solid var(--FontBorderColor);
@@ -116,12 +127,12 @@
 .input_label_R{
     
     margin-left: 5px;
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 0.571rem + 0.774vw, 1.5rem);
     padding: 2px 20px; 
     color: var(--FontBorderColor);
     position: absolute;
     left: 0;
-    top: 0;
+    top: 15px;
     white-space: nowrap;
     transform: translate(0, 0);
     transform-origin: 0 0;
@@ -130,7 +141,7 @@
 
 .input_field_R:focus + .input_label_R,
 .input_field_R.has-value + .input_label_R{
-    margin-top: 7px;
+    margin-top: -8px;
     background: #525c65;
     transform: translate(.25rem, -65%) scale(.8);
     color: var(--AccentColor);
@@ -139,7 +150,7 @@
 .Register_FormCard form button{
     background: transparent;
     padding: 1% 5%;
-    font-size: 1.5em;
+    font-size: clamp(1.7rem, 1.071rem + 0.774vw, 2rem);
     border-radius: 50px;
     margin: 0 auto; 
     margin-top: 3vh;
@@ -170,4 +181,92 @@
 .input_label_R.error{
     color: red !important;
 }
+
+@media only screen and (max-width: 1299px) {
+    .Register_WelcomeCard{
+        width: clamp(17.688rem, -1.127rem + 30.103vw, 23.313rem);
+        margin-left: clamp(2.313rem, 1.685rem + 1.003vw, 2.5rem);
+    }
+    .Register_FormCard{
+        width: clamp(40.313rem, -2.539rem + 68.562vw, 53.125rem);
+    }
+    .Register_FormCard h1{
+        font-size: clamp(3.6rem, 0.256rem + 5.351vw, 4.6rem);
+        margin-top: clamp(10.313rem, 16.583rem + -10.033vw, 8.438rem);
+    }
+    .Register_FormCard h2{
+        font-size: clamp(1.25rem, 0.079rem + 1.873vw, 1.6rem);
+    }
+    .input_field_R{
+        width: clamp(35.313rem, -3.358rem + 61.873vw, 46.875rem);
+        font-size: clamp(1rem, 0.331rem + 1.07vw, 1.2rem);
+    }
+    .input_label_R{
+        font-size: clamp(1.1rem, 0.766rem + 0.535vw, 1.2rem);
+    }
+    .Register_FormCard form button {
+        font-size:clamp(1.5rem, 0.831rem + 1.07vw, 1.7rem);
+    }
+    .Register_WelcomeCard h1 {
+        font-size:clamp(3.25rem, -0.262rem + 5.619vw, 4.3rem);
+    }
+    .Register_WelcomeCard h2{
+        font-size: clamp(1.15rem, 0.481rem + 1.07vw, 1.35rem);
+    }
+    .Register_WelcomeCard a{
+        font-size: clamp(1.5rem, 0.664rem + 1.338vw, 1.75rem);
+    }
+    
+}
+
+@media only screen and (max-width: 999px){
+    .Register_WelcomeCard{
+        display: none;
+    }
+    .Register_FormCard{
+        width: clamp(26.5rem, -5.063rem + 101.002vw, 58rem);
+        margin-left: 37px;
+        border-radius:20px ;
+    }
+    .Register_FormCard h1{
+        font-size: clamp(2.35rem, -0.005rem + 7.535vw, 4.7rem);
+        margin-top: 120px;
+    }
+    .Register_FormCard h2 {
+        font-size: clamp(1.3rem, 0.999rem + 0.962vw, 1.6rem);
+        margin-left: clamp(2.875rem, 5.756rem + -9.218vw, 0rem);
+    }
+    .input_field_R{
+        width: clamp(23.125rem, 2.459rem + 66.132vw, 43.75rem);
+        padding-bottom: clamp(0.625rem, 0.312rem + 1.002vw, 0.938rem);
+    }
+    .input_label_R{
+        font-size: clamp(1.1rem, 0.9rem + 0.641vw, 1.3rem);
+    }
+    .Register_FormCard form button{
+        font-size: clamp(1.6rem, 1.199rem + 1.283vw, 2rem);
+    }
+}
+
+@media only screen and (max-width: 499px) {
+    
+    .Register_FormCard{
+        width: clamp(16.9rem, -0.262rem + 85.81vw, 26.5rem);
+        margin-left: clamp(1.563rem, 0.222rem + 6.704vw, 2.313rem);
+    }
+    .Register_FormCard h1{
+        font-size: 2.35rem;
+        text-align: center;
+    }
+    .Register_FormCard h2{
+        font-size: clamp(0.95rem, 0.324rem + 3.128vw, 1.3rem);
+        margin-left: clamp(1.063rem, -2.178rem + 16.201vw, 2.875rem);
+    }
+    .input_field_R{
+        width: clamp(15rem, 0.475rem + 72.626vw, 23.125rem);
+    }
+    .Register_FormCard form button{
+        font-size: clamp(1.4rem, 1.042rem + 1.788vw, 1.6rem);
+    }
+ }
 

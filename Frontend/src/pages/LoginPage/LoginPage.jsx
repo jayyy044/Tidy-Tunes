@@ -39,15 +39,8 @@ const LoginForm = () => {
     
     return (
         <div className="Login_Container">
-             <div className="Login_WelcomeCard">
-                <h1>Welcome</h1>
-                <h2>
-                    Don't have an account? That's okay, click below to sign up
-                </h2>
-                <Link to='/register'>Sign Up</Link>
-            </div>
             <div className="Login_FormCard">
-                <h1>Login</h1>
+                 <h1>Login</h1>
                 <h2>
                     Login and let your Tidy Tunes redefine your music listening
                 </h2>
@@ -84,7 +77,14 @@ const LoginForm = () => {
                     {errors.password && <div className="Login_Error_P">{errors.password}</div>}
 
                     <button type="submit" disabled={isLoading}>Login</button>
-                </form>
+                </form> 
+            </div>
+            <div className="Login_WelcomeCard">
+                <h1>Welcome</h1>
+                <h2>
+                    Don't have an account? That's okay, click below to sign up
+                </h2>
+                <Link to='/register'>Sign Up</Link>
             </div>
         </div>
     );

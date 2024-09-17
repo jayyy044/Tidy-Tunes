@@ -93,6 +93,11 @@ const NavBarIn = () => {
                 Refine Album
               </h2>
             </NavLink>
+            <NavLink onClick={handleClicker} >
+              <h2>
+                Logout
+              </h2>
+            </NavLink>
           </Drawer>
         </MediaQuery>
       </nav>

@@ -929,7 +929,7 @@
         width:clamp(17.688rem, -2.313rem + 100.004vw, 28.938rem);
     }
     .AnalyzedSongsInfoCont{
-        height: 30vh !important;
+        height: 40vh !important;
         max-height: none ;
     }
     .analyzedsongsinfo p:first-of-type{
@@ -941,12 +941,16 @@
     .similarRating{
         display: block;
     }
+    .similarRating span{
+        margin-bottom: 2vw !important;
+        /* margin-bottom:clamp(2.5rem, 4.714rem + -11.071vw, 0.563rem); */
+    }
     .similarRating p{
         font-size: clamp(0.9rem, 0.006rem + 4.469vw, 1.4rem);
         padding-left: clamp(0.5rem, -0.282rem + 3.911vw, 0.938rem);
     }
     .addsongbutton{
-        margin-top: clamp(2.563rem, 6.026rem + -17.318vw, 0.625rem);
+        /* margin-top: clamp(2.563rem, 6.026rem + -17.318vw, 0.625rem); */
         margin-left: clamp(3.25rem, -2.672rem + 29.609vw, 6.563rem);
         font-size: clamp(1rem, 0.464rem + 2.682vw, 1.3rem);
     }
@@ -978,5 +982,15 @@
         font-size: clamp(0.9rem, 0.364rem + 2.682vw, 1.2rem);
         line-height: clamp(0.9rem, 0.364rem + 2.682vw, 1.2rem);
         max-width:clamp(16.875rem, -1.338rem + 91.066vw, 27.063rem);
+    }
+
+}
+
+@media only screen and (max-width: 400px) {
+    .albumrefine2{
+        height: clamp(27rem, 15rem + 60vw, 30rem);
+    }
+    .albumrefine3{
+        height: clamp(31.5rem, 25.5rem + 30vw, 33rem);
     }
 }
