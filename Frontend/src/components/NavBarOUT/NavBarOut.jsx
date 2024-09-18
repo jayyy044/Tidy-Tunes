@@ -51,7 +51,7 @@ const NavBarOut = () => {
                 Tidy Tunes
             </h2>
         </Link>
-        <MediaQuery minWidth={750}>
+        <MediaQuery minWidth={850}>
           <div className="user">
             <NavLink to= '/login' >
               <h2>
@@ -65,7 +65,7 @@ const NavBarOut = () => {
             </NavLink>
           </div>
         </MediaQuery>
-        <MediaQuery maxWidth={749}>
+        <MediaQuery maxWidth={849}>
           <TfiAlignJustify className= 'icon' onClick={showDrawer}/>
           <Drawer title="Get Started" onClose={closeDrawer} open={open} className='drawer'>
             <NavLink to= '/login' onClick={closeDrawer} >

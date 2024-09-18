@@ -14,15 +14,23 @@ const createNewUser = async (req, res) => {
             User.findOne({ email }),
             User.findOne({ username })
         ]);
+        const count = await User.countDocuments()
 
         if (uniqueEmail && uniqueUsername) {
+            console.log(`Both the email: ${email} and the username: ${username} already exist.`)
             return res.status(400).json({ error: `Both the email: ${email} and the username: ${username} already exist.` });
         }
         if (uniqueEmail) {
+            console.log(`The email: ${email} already exists.`)
             return res.status(400).json({ error: `The email: ${email} already exists.` });
         }
         if (uniqueUsername) {
+            console.log(`The username: ${username} already exists.`)
             return res.status(400).json({ error: `The username: ${username} already exists.` });
+        }
+        if(count>=10){
+            console.log("This is the count", count);
+            return res.status(400).json({ error: 'Max number of users reached' });
         }
 
         const salt = await bcrypt.genSalt();

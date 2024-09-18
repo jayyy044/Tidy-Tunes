@@ -104,6 +104,13 @@
     text-shadow: 1px 5px 10px var(--AccentColor);
 }
 
+@media only screen and (max-width: 399px) {
+    .NavContainer h2{
+        display: none ;
+    }
+    
+}
+
 
 
 

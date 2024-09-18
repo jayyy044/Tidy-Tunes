@@ -1,8 +1,6 @@
-/* .errorcontainer{
-
-    background-color: #EDE8F5;
-
-    height: 100vh;
+.errorcontainer{
+    height: calc(83dvh - var(--navbarHeight));
+    width: 100%;
     
 }
 
@@ -12,45 +10,48 @@
     align-items: center;
     justify-content: center;
     justify-content: space-between;
-    background-color:white;
-    border: 4px solid #ccc;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); 
+    border: 1px solid gray;
+    box-shadow: inset 0px 1px 15px 5px rgba(255,255,255,0.3);
+    background-color: #021223;
     width: 95vw;
+    height: clamp(27.063rem, 15.717rem + 18.152vw, 37.5rem);
     margin:auto;
     margin-top: 17vh;
     border-radius: 50px;
 }
 .errortext{
-    width: 60vw;
-    height: 35vh;
     margin-left: 5vw;
-    
+    color: var(--AccentColor);
 }
 .errortext h2{
     margin-top: 5vh;
     margin-bottom: 5vh;
-    font-size: 250%;
+    font-size: 2.5rem;
 }
 .errortext h3{
     margin-bottom: 8vh;
-    font-size: 150%;
+    font-size: 1.5rem;
 }
 .errortext a{
     text-decoration: none;
     color: black;
-    border: 3px solid black ;
+    border: 3px solid white ;
     border-radius: 50px;
     padding: 10px;
+    color: white;
     transition: transform 0.3s ease, background-color 0.3s ease; 
-    font-size: 120%;
+    font-size: 1.35rem;
 }
 
 .errortext a:hover {
     transform: translateY(-10px);
-    background-color: #ccc; 
+    background-color: var(--AccentColor); 
 }
 
-.image{
+.message img{
     width:20vw;
     margin-right: 5vw;
-} */
+    height: clamp(27.063rem, 17.416rem + 15.435vw, 35.938rem);
+    border-radius: 50px;
+    background-color: transparent;
+}

@@ -83,14 +83,19 @@ const NavBarIn = () => {
         <MediaQuery maxWidth={1199}>
           <TfiAlignJustify className= 'icon' onClick={showDrawer}/>
           <Drawer title="Get Started" onClose={closeDrawer} open={open} className='drawer'>
-            <NavLink to='/playlistRefine' >
+            <NavLink to='/playlistRefine' onClick={closeDrawer}>
               <h2>
-                Playlist refine
+                Refine Playlist
               </h2>
             </NavLink>
             <NavLink to='/albumrefine' onClick={closeDrawer} >
               <h2>
-                Refine Album
+                Find New Music
+              </h2>
+            </NavLink>
+            <NavLink to='/dashboard' onClick={closeDrawer} >
+              <h2>
+                Dashboard
               </h2>
             </NavLink>
             <NavLink onClick={handleClicker} >

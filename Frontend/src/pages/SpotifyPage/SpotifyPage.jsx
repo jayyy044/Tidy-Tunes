@@ -88,21 +88,6 @@ const SpotifyPage = () => {
                 ))}   
               </Carousel>
             </div>
-            {/* <div className="genre-frequency">
-              <p style={{color: 'var(--AccentColor)'}}>Top Genres</p> 
-              <div className="genrescolumncont">
-                <div className="genrecolumn">
-                  {topGenres.slice(0,4).map((genre, index) => (
-                      <p key={index}>{index+1}. {genre[0]}</p>
-                  ))}
-                </div>
-                <div className="genrecolumn">
-                  {topGenres.slice(4,8).map((genre, index) => (
-                      <p key={index}>{index+5}. {genre[0]}</p>
-                  ))}
-                </div>
-              </div>
-            </div> */}
 
             <div className="genre-frequency">
               <p style={{color: 'var(--AccentColor)'}}>Top Genres</p> 

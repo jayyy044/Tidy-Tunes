@@ -11,12 +11,11 @@ import { Modal, Tooltip } from 'antd';
 import { GrCircleQuestion } from "react-icons/gr";
 import { useAddTrack } from '../../hooks/useAddTrack'
 import MediaQuery from 'react-responsive'
-
-
-
-
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const AlbumRefinePage = () => {
+    const navigate = useNavigate()
     const { searchitem } = useSearchItem()
     const { state } = useAuthContext()
     const { state: playlistState} = usePlaylistContext()
@@ -34,6 +33,12 @@ const AlbumRefinePage = () => {
     const [visible, setVisible] = useState(false)
     const [selectedsong, setSelectedAlbumSong] = useState(null)
     
+    useEffect(() => {
+        if(playlistState.PlaylistId === ""){
+            navigate('/playlistrefine')
+            toast.warn('This feature is currently unavailable please select a playlist first')
+        }
+    }, [])
 
     const SubmitForm = async (event) => {
         event.preventDefault()

@@ -20,9 +20,7 @@ const HomePage = () => {
               </h3>
               <Link to = '/login' >Login Page</Link>
             </div>
-            <div className="image">
-              <img src={question_mark}/>
-            </div>
+            <img src={question_mark}/>
           </div>         
         </div>
     </>

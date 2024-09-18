@@ -437,7 +437,7 @@
     border: 1px solid rgba(255, 255, 255, 0.20);
     position: absolute;
     width: 38.4vw;
-    margin-left: clamp(49.313rem, 0.431rem + 60.161vw, 72.625rem);/*1300px*/
+    margin-left: clamp(48.8rem, -1.156rem + 61.484vw, 72.625rem);/*1300px*/
 
 }
 .RecentlyPlayedTitle{
@@ -635,7 +635,7 @@
     }
     .Refine-Track{
         width: clamp(12.7rem, 2.079rem + 16.994vw, 18rem) !important;
-        height: clamp(21.188rem, 10.04rem + 17.836vw, 26.75rem) ;
+        height: clamp(20rem, 6.573rem + 21.483vw, 26.7rem) ;
     }
     .Refine-Track p:first-of-type{
         font-size: clamp(1.35rem, 1.049rem + 0.481vw, 1.5rem);
